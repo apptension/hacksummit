@@ -7,11 +7,25 @@ module.exports = function(sequelize, DataTypes) {
     },
     startDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      get: function () {
+        return Date.parse(this.getDataValue('startDate'));
+      },
+      set: function (value) {
+        var _date = new Date(value);
+        this.setDataValue('startDate', _date.toISOString().substr(0, 10));
+      }
     },
     endDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      get: function () {
+        return Date.parse(this.getDataValue('endDate'));
+      },
+      set: function (value) {
+        var _date = new Date(value);
+        this.setDataValue('endDate', _date.toISOString().substr(0, 10));
+      }
     }
   }, {
     tableName: 'projects',

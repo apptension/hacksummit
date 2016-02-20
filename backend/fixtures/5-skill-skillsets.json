@@ -235,7 +235,7 @@
     "model": "SkillSkillset",
     "keys": ["id"],
     "data": {
-      "SkillId": 30,
+      "SkillId": 2,
       "SkillsetId": 13
     }
   },
@@ -243,7 +243,7 @@
     "model": "SkillSkillset",
     "keys": ["id"],
     "data": {
-      "SkillId": 31,
+      "SkillId": 3,
       "SkillsetId": 12
     }
   },
