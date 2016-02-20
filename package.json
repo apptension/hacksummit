@@ -28,6 +28,7 @@
   "dependencies": {
     "angular": "^1.4.7",
     "angular-cookies": "^1.4.7",
+    "angular-material": "^1.0.5",
     "angular-mocks": "^1.4.7",
     "angular-sanitize": "^1.4.7",
     "angular-touch": "^1.4.7",
