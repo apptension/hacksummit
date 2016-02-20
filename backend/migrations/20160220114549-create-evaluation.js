@@ -61,6 +61,16 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         allowNull: false
+      },
+      skillId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'skills',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull: false
       }
     });
   },

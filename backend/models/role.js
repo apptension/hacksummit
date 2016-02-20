@@ -1,7 +1,10 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Role = sequelize.define('Role', {
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     tableName: 'roles',
     classMethods: {
@@ -9,6 +12,14 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         Role.belongsToMany(models.User, { through: models.UserRole});
         Role.belongsToMany(models.Skill, { through: models.SkillRole});
+      }
+    },
+    getterMethods: {
+      createdAt: function() {
+        return Date.parse(this.getDataValue('createdAt'));
+      },
+      updatedAt: function() {
+        return Date.parse(this.getDataValue('updatedAt'));
       }
     }
   });

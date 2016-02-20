@@ -7,25 +7,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     startDate: {
       type: DataTypes.DATE,
-      allowNull: false,
-      get: function () {
-        return Date.parse(this.getDataValue('startDate'));
-      },
-      set: function (value) {
-        var _date = new Date(value);
-        this.setDataValue('startDate', _date.toISOString().substr(0, 10));
-      }
+      allowNull: false
     },
     endDate: {
       type: DataTypes.DATE,
-      allowNull: false,
-      get: function () {
-        return Date.parse(this.getDataValue('endDate'));
-      },
-      set: function (value) {
-        var _date = new Date(value);
-        this.setDataValue('endDate', _date.toISOString().substr(0, 10));
-      }
+      allowNull: false
     }
   }, {
     tableName: 'projects',
@@ -35,6 +21,30 @@ module.exports = function(sequelize, DataTypes) {
         models.Project.belongsToMany(models.User, { through: models.UserProject });
         models.Project.hasMany(models.Evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
         models.Project.hasMany(models.Skillset, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
+      }
+    },
+    getterMethods: {
+      startDate: function() {
+        return Date.parse(this.getDataValue('startDate'));
+      },
+      endDate: function() {
+        return Date.parse(this.getDataValue('endDate'));
+      },
+      createdAt: function() {
+        return Date.parse(this.getDataValue('createdAt'));
+      },
+      updatedAt: function() {
+        return Date.parse(this.getDataValue('updatedAt'));
+      }
+    },
+    setterMethods: {
+      startDate: function(value) {
+        var _date = new Date(value);
+        this.setDataValue('startDate', _date.toISOString().substr(0, 10));
+      },
+      endDate: function(value) {
+        var _date = new Date(value);
+        this.setDataValue('endDate', _date.toISOString().substr(0, 10));
       }
     }
   });

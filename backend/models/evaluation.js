@@ -7,14 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: false,
-      get: function () {
-        return Date.parse(this.getDataValue('date'));
-      },
-      set: function (value) {
-        var _date = new Date(value);
-        this.setDataValue('date', _date.toISOString().substr(0, 10));
-      }
+      allowNull: false
     },
     state: {
       type: DataTypes.INTEGER,
@@ -35,7 +28,18 @@ module.exports = function(sequelize, DataTypes) {
         models.Evaluation.belongsTo(models.Skill, {
           onDelEte: 'CASCADE',
           foreignKey: { allowNull: false }
-        })
+        });
+      }
+    },
+    getterMethods: {
+      createdAt: function() {
+        return Date.parse(this.getDataValue('createdAt'));
+      },
+      updatedAt: function() {
+        return Date.parse(this.getDataValue('updatedAt'));
+      },
+      date: function() {
+        return Date.parse(this.getDataValue('date'));
       }
     }
   });

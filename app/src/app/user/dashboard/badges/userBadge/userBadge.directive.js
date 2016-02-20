@@ -1,5 +1,7 @@
 import template from './userBadge.html';
 
+const defaultPhoto = 'http://lorempixel.com/100/100/people';
+
 export default ngInject(() => {
   return {
     restrict: 'A',
@@ -12,7 +14,7 @@ export default ngInject(() => {
         if (!scope.data) {return {};}
 
         return {
-          backgroundImage: `url(${scope.data.image})`
+          backgroundImage: `url(${scope.data.image || defaultPhoto})`
         };
       };
     }

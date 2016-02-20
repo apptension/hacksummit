@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -53,7 +54,7 @@ module.exports = {
         }
       }).then(() => {
         return queryInterface.createTable('skillRoles', {
-          userId: {
+          skillId: {
             type: Sequelize.INTEGER,
             references: {
               model: 'skills',

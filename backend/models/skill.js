@@ -18,6 +18,14 @@ module.exports = function(sequelize, DataTypes) {
         Skill.belongsToMany(models.Role, { through: models.SkillRole });
         models.Skill.hasMany(models.Evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
+    },
+    getterMethods: {
+      createdAt: function() {
+        return Date.parse(this.getDataValue('createdAt'));
+      },
+      updatedAt: function() {
+        return Date.parse(this.getDataValue('updatedAt'));
+      }
     }
   });
   return Skill;
