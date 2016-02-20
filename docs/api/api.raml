@@ -92,17 +92,43 @@ schemas:
       responses:
         204:
           description: No content
+    /skillsets:
+      get:
+        description: Returns list of assigned skillsets to a project
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ./examples/skillsets.json
 
-  /skills:
+/skills:
+  get:
+    description: Returns list of the skills
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/skills.json
+  post:
+    description: Add new skill
+    body:
+      application/json:
+        schema: Skill
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Skill
+  /{id}:
     get:
-      description: Returns list of the skills
+      description: Get single skill
       responses:
         200:
           body:
             application/json:
-              example: !include examples/skills.json
-    post:
-      description: Add new skill
+              schema: Skill
+    put:
+      description: Update skill
       body:
         application/json:
           schema: Skill
@@ -111,40 +137,40 @@ schemas:
           body:
             application/json:
               schema: Skill
-    /{id}:
-      get:
-        description: Get single skill
-        responses:
-          200:
-            body:
-              application/json:
-                schema: Skill
-      put:
-        description: Update skill
+    delete:
+      description: Remove skill
+      responses:
+        204:
+          description: No content
+
+/skillsets:
+  get:
+    description: Returns list of the skillsets
+    responses:
+      200:
         body:
           application/json:
-            schema: Skill
-        responses:
-          200:
-            body:
-              application/json:
-                schema: Skill
-      delete:
-        description: Remove skill
-        responses:
-          204:
-            description: No content
-
-  /skillsets:
+            example: !include examples/skillsets.json
+  post:
+    description: Add new skillset
+    body:
+      application/json:
+        schema: Skillset
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Skillset
+  /{id}:
     get:
-      description: Returns list of the skillsets
+      description: Get single skillset
       responses:
         200:
           body:
             application/json:
-              example: !include examples/skillsets.json
-    post:
-      description: Add new skillset
+              schema: Skillset
+    put:
+      description: Update skillset
       body:
         application/json:
           schema: Skillset
@@ -153,44 +179,36 @@ schemas:
           body:
             application/json:
               schema: Skillset
-    /{id}:
+    delete:
+      description: Remove skillset
+      responses:
+        204:
+          description: No content
+    /skills:
       get:
-        description: Get single skillset
+        description: return skills assigned to skillset
         responses:
           200:
             body:
               application/json:
-                schema: Skillset
-      put:
-        description: Update skillset
+                example: !include examples/skills.json
+      post:
+        description: assign skills to skillset
         body:
           application/json:
-            schema: Skillset
+            schema: !include schemas/skills_assign_post.json
         responses:
           200:
             body:
               application/json:
-                schema: Skillset
-      delete:
-        description: Remove skillset
-        responses:
-          204:
-            description: No content
-      /skills:
-        get:
-          description: return skills assigned to skillset
-          responses:
-            200:
-              body:
-                application/json:
-                  example: !include examples/skills.json
-        post:
-          description: assign skills to skillset
+                example: !include examples/skills.json
+
+/stats:
+  /user/{id}:
+    get:
+      description: Returns stats for given user
+      responses:
+        200:
           body:
             application/json:
-              schema: !include schemas/skills_assign_post.json
-          responses:
-            200:
-              body:
-                application/json:
-                  example: !include examples/skills.json
+              example: !include ./examples/stats.json
