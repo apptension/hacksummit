@@ -18,13 +18,14 @@ export default ngInject(function NotificationService() {
     let notification = new Notification('Hello,', config);
     notification.addEventListener('click', () => {
       window.open('http://localhost:3000/user/rate', '_self');
+      notification.close();
     });
   };
 
   this.prepareConfig = () => {
     return {
       body: 'Would you mind rating someone? :)',
-      icon: 'http://placehold.it/100x100'
+      icon: 'http://lorempixel.com/100/100/cats/'
     };
   };
 });
