@@ -7,7 +7,7 @@ import routes from './dashboard.routes';
 import DashboardController from './dashboard.controller';
 import userStatsChart from './userStatsChart.directive';
 import pieChart from './pieChart.directive';
-import skillBadge from './badges/skillValueBadge/skillValueBadge.directive';
+import skillBadge from './skillBadge/skillBadge.directive';
 import softSkills from './softSkills.filter';
 import profileImage from './profile/profileImage/profileImage.directive';
 

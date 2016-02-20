@@ -1,4 +1,4 @@
-import template from './skillValueBadge.html';
+import template from './skillBadge.html';
 
 export default ngInject(() => {
   return {
