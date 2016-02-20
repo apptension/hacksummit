@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require("passport");
 var session = require('express-session');
+var epilogue = require('epilogue');
 
 var models = require('./models'),
   config = require('config');
@@ -48,6 +49,52 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/users', users);
 app.use('/login', login);
 app.use('/user', user);
+
+// Initialize epilogue
+epilogue.initialize({
+  app: app,
+  sequelize: models.sequelize
+});
+
+// Create REST resources
+var usersResource = epilogue.resource({
+  model: models.user,
+  endpoints: ['/api/users']
+});
+
+var projectsResource = epilogue.resource({
+  model: models.project,
+  endpoints: ['/api/projects', '/api/projects/:id']
+});
+
+var skillsResource = epilogue.resource({
+  model: models.skill,
+  endpoints: ['/api/skills', '/api/skills/:id']
+});
+
+var skillsetsResource = epilogue.resource({
+  model: models.skill,
+  endpoints: ['/api/skillsets', '/api/skillsets/:id']
+});
+
+var ForbiddenError = epilogue.Errors.ForbiddenError;
+
+[usersResource, projectsResource, skillsResource, skillsetsResource].map(function(res) {
+  res.list.fetch.before(function(req, res, context) {
+    return passport.authenticate('token', function(err, user, info) {
+      if (err) {
+        res.status(500);
+        return context.stop();
+      }
+    
+      if (user) {
+        context.continue();
+      } else {
+        context.error(new ForbiddenError());
+      }
+    })(req, res, context);
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
