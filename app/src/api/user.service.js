@@ -4,4 +4,8 @@ export default ngInject(function UserService(API) {
   this.getList = () => {
     return usersAPI.getList();
   };
+
+  this.get = (id) => {
+    return usersAPI.get(id);
+  };
 });
