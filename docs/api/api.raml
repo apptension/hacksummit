@@ -225,24 +225,24 @@ schemas:
       responses:
         204:
           description: No content
-    /skill:
-      get:
-        description: return skills assigned to skillset
-        responses:
-          200:
-            body:
-              application/json:
-                example: !include examples/skills.json
-      post:
-        description: assign skills to skillset
-        body:
-          application/json:
-            schema: !include schemas/skills_assign_post.json
-        responses:
-          200:
-            body:
-              application/json:
-                example: !include examples/skills.json
+    # /skill:
+    #   get:
+    #     description: return skills assigned to skillset
+    #     responses:
+    #       200:
+    #         body:
+    #           application/json:
+    #             example: !include examples/skills.json
+    #   post:
+    #     description: assign skills to skillset
+    #     body:
+    #       application/json:
+    #         schema: !include schemas/skills_assign_post.json
+    #     responses:
+    #       200:
+    #         body:
+    #           application/json:
+    #             example: !include examples/skills.json
 
 /role:
   get:
@@ -285,24 +285,24 @@ schemas:
       responses:
         204:
           description: No content
-    /skill:
-      get:
-        description: return skills assigned to role
-        responses:
-          200:
-            body:
-              application/json:
-                example: !include examples/skills.json
-      post:
-        description: assign skills to role
-        body:
-          application/json:
-            schema: !include schemas/skills_assign_post.json
-        responses:
-          200:
-            body:
-              application/json:
-                example: !include examples/skills.json
+    # /skill:
+    #   get:
+    #     description: return skills assigned to role
+    #     responses:
+    #       200:
+    #         body:
+    #           application/json:
+    #             example: !include examples/skills.json
+    #   post:
+    #     description: assign skills to role
+    #     body:
+    #       application/json:
+    #         schema: !include schemas/skills_assign_post.json
+    #     responses:
+    #       200:
+    #         body:
+    #           application/json:
+    #             example: !include examples/skills.json
 
 /stat:
   /user/{id}:

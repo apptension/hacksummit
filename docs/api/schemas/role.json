@@ -1,4 +1,13 @@
 {
   "id": 1,
-  "name": "Role name"
+  "name": "Role name",
+  "Skills": [{
+    "id": 1,
+    "name": "skill name",
+    "isSoft": true
+  }, {
+    "id": 2,
+    "name": "another skill name",
+    "isSoft": false
+  }]
 }

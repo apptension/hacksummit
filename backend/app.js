@@ -16,6 +16,8 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var user = require('./routes/user');
 
+var assoMiddleware = require('./middleware/associationFactory');
+
 var app = express();
 
 passport.serializeUser(function(user, done) {
@@ -79,11 +81,23 @@ var skillsetsResource = epilogue.resource({
   endpoints: ['/api/skillset', '/api/skillset/:id']
 });
 
+skillsetsResource.use(assoMiddleware({
+  associatedModel: models.Skill,
+  attribute: 'Skills',
+  setMethod: 'setSkills'
+}));
+
 var rolesResource = epilogue.resource({
   model: models.Role,
   include     : [models.Skill],
   endpoints: ['/api/role', '/api/role/:id']
 });
+
+rolesResource.use(assoMiddleware({
+  associatedModel: models.Skill,
+  attribute: 'Skills',
+  setMethod: 'setSkills'
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
