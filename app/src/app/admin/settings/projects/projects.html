@@ -44,7 +44,16 @@
       </div>
       <div class="adminTabItem__editContainer" ng-show="active">
         <div layout="column" class="adminTabItem__editForm">
-          aaa
+          
+          <div layout="row" layout-align="space-between center">
+            <md-button class="md-icon-button adminTabItem__removeIcon" flex="none">
+              <md-icon>delete</md-icon>
+            </md-button>
+            <div flex="none" class="adminTabItem__submitButtons">
+              <md-button class="md-primary">cancel</md-button>
+              <md-button class="md-primary">change</md-button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
