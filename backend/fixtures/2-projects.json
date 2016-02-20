@@ -1,6 +1,6 @@
 [
   {
-    "model": "project",
+    "model": "Project",
     "data": {
       "id": 1,
       "name": "Kiwi Tapp",
@@ -9,7 +9,7 @@
     }
   },
   {
-    "model": "project",
+    "model": "Project",
     "data": {
       "id": 2,
       "name": "Tommy's Pen",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "model": "project",
+    "model": "Project",
     "data": {
       "id": 3,
       "name": "Sorro",
@@ -27,7 +27,7 @@
     }
   },
   {
-    "model": "project",
+    "model": "Project",
     "data": {
       "id": 4,
       "name": "Maria Vidi",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "model": "project",
+    "model": "Project",
     "data": {
       "id": 5,
       "name": "Godio",

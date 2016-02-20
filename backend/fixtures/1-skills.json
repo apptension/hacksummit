@@ -1,6 +1,6 @@
 [
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 1,
       "name": "Creativity",
@@ -8,7 +8,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 2,
       "name": "PHP basis",
@@ -16,7 +16,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 3,
       "name": "JS basis",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 4,
       "name": "Symfony2",
@@ -32,7 +32,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 5,
       "name": "Angular 2",
@@ -40,7 +40,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 6,
       "name": "Android",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 7,
       "name": "Designing",
@@ -56,7 +56,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 8,
       "name": "Open-minded",
@@ -64,7 +64,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 9,
       "name": "Full-time availability",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 10,
       "name": "iOS",
@@ -80,7 +80,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 11,
       "name": "Multitasking",
@@ -88,7 +88,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 12,
       "name": "Advanced English",
@@ -96,7 +96,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 13,
       "name": "WebGL",
@@ -104,7 +104,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 14,
       "name": "Java basis",
@@ -112,7 +112,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 15,
       "name": "CSS3",
@@ -120,7 +120,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 16,
       "name": "AngularJS",
@@ -128,7 +128,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 17,
       "name": "Yii2",
@@ -136,7 +136,7 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 18,
       "name": "MariaDB",
@@ -144,10 +144,42 @@
     }
   },
   {
-    "model": "skill",
+    "model": "Skill",
     "data": {
       "id": 19,
       "name": "React",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 20,
+      "name": "Full-time availability",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 21,
+      "name": "Android",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 22,
+      "name": "iOS",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 23,
+      "name": "PhoneGap",
       "isSoft": false
     }
   }

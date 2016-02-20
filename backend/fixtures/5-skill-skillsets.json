@@ -1,135 +1,142 @@
 [
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 1,
-      "skillsetId": 4
+      "SkillId": 1,
+      "SkillsetId": 4
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 2,
-      "skillsetId": 2
+      "SkillId": 2,
+      "SkillsetId": 2
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 3,
-      "skillsetId": 1
+      "SkillId": 3,
+      "SkillsetId": 1
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 4,
-      "skillsetId": 2
+      "SkillId": 4,
+      "SkillsetId": 2
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 5,
-      "skillsetId": 1
+      "SkillId": 5,
+      "SkillsetId": 1
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 6,
-      "skillsetId": 5
+      "SkillId": 6,
+      "SkillsetId": 5
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 7,
-      "skillsetId": 1
+      "SkillId": 7,
+      "SkillsetId": 1
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 8,
-      "skillsetId": 4
+      "SkillId": 8,
+      "SkillsetId": 4
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 9,
-      "skillsetId": 3
+      "SkillId": 9,
+      "SkillsetId": 3
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 10,
-      "skillsetId": 5
+      "SkillId": 10,
+      "SkillsetId": 5
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 11,
-      "skillsetId": 3
+      "SkillId": 11,
+      "SkillsetId": 3
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 12,
-      "skillsetId": 4
+      "SkillId": 12,
+      "SkillsetId": 4
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 13,
-      "skillsetId": 1
+      "SkillId": 13,
+      "SkillsetId": 1
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 14,
-      "skillsetId": 5
+      "SkillId": 14,
+      "SkillsetId": 5
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 15,
-      "skillsetId": 1
+      "SkillId": 15,
+      "SkillsetId": 1
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 16,
-      "skillsetId": 6
+      "SkillId": 16,
+      "SkillsetId": 6
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 17,
-      "skillsetId": 7
+      "SkillId": 17,
+      "SkillsetId": 7
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 18,
-      "skillsetId": 7
+      "SkillId": 18,
+      "SkillsetId": 7
     }
   },
   {
-    "model": "skillSkillset",
+    "model": "SkillSkillset",
     "data": {
-      "skillId": 19,
-      "skillsetId": 6
+      "SkillId": 19,
+      "SkillsetId": 6
+    }
+  },
+  {
+    "model": "SkillSkillset",
+    "data": {
+      "SkillId": 20,
+      "SkillsetId": 8
     }
   }
 ]

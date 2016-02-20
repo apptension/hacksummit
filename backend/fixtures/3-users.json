@@ -1,6 +1,6 @@
 [
   {
-    "model": "user",
+    "model": "User",
     "data": {
       "id": 1,
       "username": "AdminUser",
@@ -8,7 +8,7 @@
     }
   },
   {
-    "model": "user",
+    "model": "User",
     "data": {
       "id": 2,
       "username": "User",
