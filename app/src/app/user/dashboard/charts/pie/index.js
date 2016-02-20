@@ -53,10 +53,15 @@ export default function PieChart(_config) {
   function renderPieShadow(selection) {
     let series = selection.selectAll('.pie-chart-shadow').data((data) => [data]);
     series.enter()
-    .append('path')
-    .style('fill', '#515050')
-    .attr('d', shadowArc)
-    .classed('pie-chart-shadow', true);
+      .append('path')
+      .style('fill', '#515050')
+      .attr('d', shadowArc)
+      .classed('pie-chart-shadow', true)
+      .style('transform', 'scale(0)')
+      .transition()
+      .duration(1000)
+      .style('transform', 'scale(1)');
+
 
     series.exit().remove();
   }
@@ -70,6 +75,7 @@ export default function PieChart(_config) {
       .attr('d', arc(0))
       .transition()
       .duration(1000)
+      .delay(1000)
       .attrTween('d', function (d) {
         var interpolate = d3.interpolate(0, d);
         return function (t) {
