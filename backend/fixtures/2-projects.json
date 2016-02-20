@@ -5,8 +5,8 @@
     "data": {
       "id": 1,
       "name": "Kiwi Tapp",
-      "startDate": "2016-02-01",
-      "endDate": "2016-03-22"
+      "startDate": 1454284800000,
+      "endDate": 1458604800000
     }
   },
   {
@@ -15,8 +15,8 @@
     "data": {
       "id": 2,
       "name": "Tommy's Pen",
-      "startDate": "2016-05-15",
-      "endDate": "2016-06-14"
+      "startDate": 1463270400000,
+      "endDate": 1465862400000
     }
   },
   {
@@ -25,8 +25,8 @@
     "data": {
       "id": 3,
       "name": "Sorro",
-      "startDate": "2016-02-10",
-      "endDate": "2016-05-22"
+      "startDate": 1455062400000,
+      "endDate": 1463875200000
     }
   },
   {
@@ -35,8 +35,8 @@
     "data": {
       "id": 4,
       "name": "Maria Vidi",
-      "startDate": "2016-03-11",
-      "endDate": "2016-03-28"
+      "startDate": 1457654400000,
+      "endDate": 1459123200000
     }
   },
   {
@@ -45,8 +45,8 @@
     "data": {
       "id": 5,
       "name": "Godio",
-      "startDate": "2015-10-01",
-      "endDate": "2016-06-30"
+      "startDate": 1443657600000,
+      "endDate": 1467244800000
     }
   }
 ]

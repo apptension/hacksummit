@@ -3,15 +3,22 @@ module.exports = function(sequelize, DataTypes) {
   var Evaluation = sequelize.define('Evaluation', {
     starred: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     state: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0,
+      values: {
+        PENDING: 0,
+        ANSWERED: 1,
+        SKIPPED: 2
+      }
     },
     comment: {
       type: DataTypes.TEXT,
@@ -44,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     setterMethods: {
       date: function(value) {
-        var _date = new Date(value - 0);
+        var _date = new Date(parseInt(value));
         this.setDataValue('date', _date.toISOString().substr(0, 10));
       }
     }
