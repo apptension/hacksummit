@@ -21,11 +21,17 @@
     <div>
         <md-button class="md-raised" ui-sref="app.user.rate">I WANT TO RATE SOMEONE NOW!!</md-button>
         <div>
-            <span profile-row data="vm.userData"></span>
+            <h3>Your team skills</h3>
             <span ng-repeat="skill in vm.userStats.skills | softSkills" skill-badge data="skill" ng-if="vm.userStats"></span>
         </div>
 
         <div>
+            <h3>Contributors this week</h3>
+            <span profile-row data="vm.userData"></span>
+        </div>
+
+        <div>
+            <h3>Your technical skills</h3>
             <user-stats-chart data="vm.userStats"
                               skillpoint-selected="vm.skillpointSelected(skillName, date)"></user-stats-chart>
         </div>
