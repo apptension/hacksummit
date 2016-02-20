@@ -5,6 +5,10 @@ baseUri: http://hacksummit.apptension.com
 mediaType:  application/json
 schemas:
   - User: !include schemas/user.json
+  - Project: !include schemas/project.json
+  - Skillset: !include schemas/skillset.json
+  - Skill: !include schemas/skill.json
+  - Evaluation: !include schemas/evaluation.json
 /user:
   get:
     description: Returns current logged user
@@ -13,10 +17,32 @@ schemas:
         body:
           application/json:
             schema: User
-  /login:
-    /{id}:
-      post:
-        description: Loggin user with a given id
+  /evaluation:
+    get:
+      description: return latest evaluation
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Evaluation
+    post:
+      description: save the evaluation
+      body:
+        application/json:
+          schema: Evaluation
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "success": true
+                }
+
+/login:
+  /{id}:
+    post:
+      description: Loggin user with a given id
 /users:
   get:
     description: Return the list of the users
@@ -24,4 +50,147 @@ schemas:
       200:
         body:
           application/json:
-            example: !include schemas/users.json
+            example: !include examples/users.json
+/projects:
+  get:
+    description: Returns list of the projects
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/projects.json
+  post:
+    description: Add new project
+    body:
+      application/json:
+        schema: Project
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Project
+  /{id}:
+    get:
+      description: Get single project
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Project
+    put:
+      description: Update project
+      body:
+        application/json:
+          schema: Project
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Project
+    delete:
+      description: Remove project
+      responses:
+        204:
+          description: No content
+
+  /skills:
+    get:
+      description: Returns list of the skills
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/skills.json
+    post:
+      description: Add new skill
+      body:
+        application/json:
+          schema: Skill
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Skill
+    /{id}:
+      get:
+        description: Get single skill
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Skill
+      put:
+        description: Update skill
+        body:
+          application/json:
+            schema: Skill
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Skill
+      delete:
+        description: Remove skill
+        responses:
+          204:
+            description: No content
+
+  /skillsets:
+    get:
+      description: Returns list of the skillsets
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/skillsets.json
+    post:
+      description: Add new skillset
+      body:
+        application/json:
+          schema: Skillset
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Skillset
+    /{id}:
+      get:
+        description: Get single skillset
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Skillset
+      put:
+        description: Update skillset
+        body:
+          application/json:
+            schema: Skillset
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Skillset
+      delete:
+        description: Remove skillset
+        responses:
+          204:
+            description: No content
+      /skills:
+        get:
+          description: return skills assigned to skillset
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/skills.json
+        post:
+          description: assign skills to skillset
+          body:
+            application/json:
+              schema: !include schemas/skills_assign_post.json
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/skills.json

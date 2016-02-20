@@ -1,7 +1,9 @@
 [{
+  "id": 1,
   "username": "sample_username",
   "isAdmin": true
 }, {
+  "id": 2,
   "username": "second_sample_username",
   "isAdmin": false
 }]

@@ -1,0 +1,11 @@
+[{
+  "id": 1,
+  "name": "Sample projet name",
+  "startDate": "2016-02-20",
+  "endDate": "2016-03-20"
+}, {
+  "id": 2,
+  "name": "Another projet name",
+  "startDate": "2016-02-20",
+  "endDate": "2016-03-20"
+}]
