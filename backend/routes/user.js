@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
   } else {
     return res.status(401).json({
       error: 'log in first!'
-    })
+    });
   }
 });
 

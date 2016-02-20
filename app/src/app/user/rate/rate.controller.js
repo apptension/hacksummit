@@ -7,7 +7,8 @@ export default ngInject(function RateController(User, Evaluation, $state) {
     Evaluation.submit({
       value: feedback,
       comment: this.feedbackText
+    }).finally(() => {
+      $state.go('app.user.dashboard');
     });
-    $state.go('app.user.dashboard');
   };
 });

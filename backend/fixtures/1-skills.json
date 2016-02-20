@@ -1,6 +1,7 @@
 [
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 1,
       "name": "Creativity",
@@ -9,6 +10,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 2,
       "name": "PHP basis",
@@ -17,6 +19,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 3,
       "name": "JS basis",
@@ -25,6 +28,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 4,
       "name": "Symfony2",
@@ -33,6 +37,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 5,
       "name": "Angular 2",
@@ -41,6 +46,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 6,
       "name": "Android",
@@ -49,6 +55,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 7,
       "name": "Designing",
@@ -57,6 +64,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 8,
       "name": "Open-minded",
@@ -65,6 +73,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 9,
       "name": "Full-time availability",
@@ -73,6 +82,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 10,
       "name": "iOS",
@@ -81,6 +91,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 11,
       "name": "Multitasking",
@@ -89,6 +100,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 12,
       "name": "Advanced English",
@@ -97,6 +109,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 13,
       "name": "WebGL",
@@ -105,6 +118,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 14,
       "name": "Java basis",
@@ -113,6 +127,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 15,
       "name": "CSS3",
@@ -121,6 +136,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 16,
       "name": "AngularJS",
@@ -129,6 +145,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 17,
       "name": "Yii2",
@@ -137,6 +154,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 18,
       "name": "MariaDB",
@@ -145,6 +163,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 19,
       "name": "React",
@@ -153,6 +172,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 20,
       "name": "Full-time availability",
@@ -161,6 +181,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 21,
       "name": "Android",
@@ -169,6 +190,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 22,
       "name": "iOS",
@@ -177,6 +199,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 23,
       "name": "PhoneGap",
@@ -185,6 +208,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 24,
       "name": "PHP",
@@ -193,6 +217,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 25,
       "name": "Wordpress",
@@ -201,6 +226,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 26,
       "name": "Wordpress plugins development",
@@ -209,6 +235,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 27,
       "name": "Text writing",
@@ -217,6 +244,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 28,
       "name": "Information research",
@@ -225,6 +253,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 29,
       "name": "Creativity",
@@ -233,6 +262,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 30,
       "name": "PHP basis",
@@ -241,6 +271,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 31,
       "name": "JS basis",
@@ -249,6 +280,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 32,
       "name": "Yii2",
@@ -257,6 +289,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 33,
       "name": "AngularJS",
@@ -265,6 +298,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 34,
       "name": "PostgreSQL",
@@ -273,6 +307,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 35,
       "name": "Material Design",
@@ -281,6 +316,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 36,
       "name": "Open-minded",
@@ -289,6 +325,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 37,
       "name": "Full-time availability",
@@ -297,6 +334,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 38,
       "name": "Information research",
@@ -305,6 +343,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 39,
       "name": "Multitasking",
@@ -313,6 +352,7 @@
   },
   {
     "model": "Skill",
+    "keys": ["id"],
     "data": {
       "id": 40,
       "name": "Advanced Spanish",
