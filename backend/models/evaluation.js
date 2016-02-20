@@ -20,7 +20,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        evaluation.hasOne(models.skill);
+        evaluation.hasOne(models.project);
+        evaluation.hasOne(models.user);
+        evaluation.hasOne(models.user);
       }
     }
   });
