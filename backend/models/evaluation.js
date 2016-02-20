@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var evaluation = sequelize.define('evaluation', {
     starred: {
-      type: DataTypes.BOOL,
+      type: DataTypes.BOOLEAN,
       allowNull: false
     },
     date: {
