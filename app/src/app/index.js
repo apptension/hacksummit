@@ -1,7 +1,6 @@
 import angular from 'angular';
 import ngSanitize from 'angular-sanitize';
 import ngCookies from 'angular-cookies';
-import ngTouch from 'angular-touch';
 import uirouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 

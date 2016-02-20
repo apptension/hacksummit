@@ -27,8 +27,8 @@ export default function PieChart(_config) {
     arc = d3.svg.arc()
       .innerRadius(radius - 10)
       .outerRadius(radius)
-      .startAngle((d) => d.start / 100  * 2 * Math.PI)
-      .endAngle((d) => d.end / 100  * 2 * Math.PI);
+      .startAngle((d) => d.start / 100 * 2 * Math.PI)
+      .endAngle((d) => d.end / 100 * 2 * Math.PI);
 
     chart.call(renderPie);
 
@@ -39,8 +39,7 @@ export default function PieChart(_config) {
     let series = selection.selectAll('.pie-chart-series').data((data) => [data]);
     series.enter()
       .append('path')
-      .style("fill", '#7b6888')
-      .style("stroke", '#7b6888')
+      .style('fill', '#7b6888')
       .classed('pie-chart-series', true);
 
     series
