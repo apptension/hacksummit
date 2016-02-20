@@ -10,6 +10,6 @@ export default ngInject(function UserService(API) {
   };
 
   this.getSuggestedEvaluation = () => {
-    return usersAPI.customGET('evaluate');
+    return usersAPI.customGET('evaluation');
   };
 });
