@@ -6,12 +6,13 @@ const defaultConfig = Object.freeze({
   height: 100
 });
 
-const thickness = 12;
+const thickness = 6;
+const shadowThickness = 2;
 
 export default function PieChart(_config) {
   let config = _.extend({}, defaultConfig, _config);
   let radius = Math.min(config.width, config.height) / 2;
-  let arc;
+  let arc, shadowArc;
 
   function chart(selection) {
     selection.each(render);
@@ -37,16 +38,34 @@ export default function PieChart(_config) {
       .startAngle(0)
       .endAngle(mapValueToAngle);
 
+    shadowArc = d3.svg.arc()
+      .innerRadius(radius - thickness / 2 - shadowThickness / 2)
+      .outerRadius(radius - thickness / 2 + shadowThickness / 2)
+      .startAngle(0)
+      .endAngle(2 * Math.PI);
+
+    chart.call(renderPieShadow);
     chart.call(renderPie);
 
     chart.exit().remove();
+  }
+
+  function renderPieShadow(selection) {
+    let series = selection.selectAll('.pie-chart-shadow').data((data) => [data]);
+    series.enter()
+    .append('path')
+    .style('fill', '#515050')
+    .attr('d', shadowArc)
+    .classed('pie-chart-shadow', true);
+
+    series.exit().remove();
   }
 
   function renderPie(selection) {
     let series = selection.selectAll('.pie-chart-series').data((data) => [data]);
     series.enter()
       .append('path')
-      .style('fill', '#7b6888')
+      .style('fill', '#009bf1')
       .classed('pie-chart-series', true)
       .attr('d', arc(0))
       .transition()
