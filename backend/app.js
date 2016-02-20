@@ -47,8 +47,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', routes);
 //app.use('/users', users);
-app.use('/login', login);
 app.use('/user', user);
+app.use('/user/login', login);
 
 // Initialize epilogue
 epilogue.initialize({

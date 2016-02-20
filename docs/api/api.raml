@@ -27,6 +27,10 @@ schemas:
             application/json:
               example: |
                 { "success": true }
+  /login:
+    /{id}:
+      post:
+        description: Loggin user with a given id
 
   /evaluation:
     get:
@@ -49,11 +53,6 @@ schemas:
                 {
                   "success": true
                 }
-
-/login:
-  /{id}:
-    post:
-      description: Loggin user with a given id
 /users:
   get:
     description: Return the list of the users
