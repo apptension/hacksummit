@@ -5,6 +5,6 @@ export default ngInject(($stateProvider) => {
     url: '/rate',
     template: rateTemplate,
     controller: 'RateController',
-    controllerAs: 'rate'
+    controllerAs: 'vm'
   });
 });

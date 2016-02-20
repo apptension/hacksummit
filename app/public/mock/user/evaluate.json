@@ -1,4 +1,6 @@
 {
+  "id": 1,
   "user": "Mike",
+  "evaluatedUser": "John",
   "skill": "Angular"
 }
