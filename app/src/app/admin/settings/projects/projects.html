@@ -1,20 +1,21 @@
-<div layout="column" class="adminProjects__layout">
-  <div layout="column" layout-fill class="adminProjects__header">
-    <div flex layout="column" layout-fill class="adminProjects__header">
-      <h1 class="md-title">Manage Projects</h1>
-      <div class="adminProjects__desc">
-        Lorem ipsum...
-      </div>
+<div layout="column" class="adminTabContent__layout">
+  <div flex layout="column" layout-fill class="adminTabContent__header">
+    <h1 class="md-title adminTabContent__tabTitle">Manage Projects</h1>
+    <div class="adminTabContent__tabDesc">
+      Lorem ipsum...
     </div>
-    <div flex layout="row" class="adminProjects__sortControls" layout-align="start center">
+    <div flex layout="row" class="adminTabContent__sortControls" layout-align="start center">
       <md-menu>
-        <div class="adminProjects__sortDropdown" ng-click="$mdOpenMenu($event)" layout="row" layout-align="space-between center">
-          <span flex="grow">{{ sortBy.label }}</span>
+        <div class="adminTabContent__sortDropdown" ng-click="$mdOpenMenu($event)" layout="row" layout-align="space-between center">
+          <span flex="grow">sorting 1</span>
           <md-icon flex="nogrow">arrow_drop_down</md-icon>
         </div>
         <md-menu-content width="3">
-          <md-menu-item ng-repeat="option in sortOptions[show]">
-            <md-button ng-click="sortItems($index)">{{ option.label }}</md-button>
+          <md-menu-item>
+            <md-button>sorting 1</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>sorting 2</md-button>
           </md-menu-item>
         </md-menu-content>
       </md-menu>
@@ -25,54 +26,27 @@
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>
 
-  <md-content flex class="adminProjects__projectsList">
-    <div flex class="projectBlock__mainContainer">
-      <div layout class="projectBlock__labelContainer">
+  <div flex layout layout-align="center center">
+    <div flex="none" class="adminTabItem__mainContainer">
+      <div layout class="adminTabItem__labelContainer">
         <md-list-item>
-          <div class="projectBlock__projectIcon" layout layout-align="center center">
+          <div class="projectItem__icon" layout layout-align="center center">
             <md-icon flex>markunread_mailbox</md-icon>
           </div>
           <div class="md-list-item-text">
-            <h3 class="md-body-2">nazwa projektu</h3>
-            <h4 class="md-caption">jakiś opis</h4>
+            <span class="adminTabItem__name">Nazwa projektu</span>
+            <span class="adminTabItem__desc">jakiś opis</span>
           </div>
-          <div class="md-secondary projectBlock__date">
+          <div class="md-secondary adminTabItem__date">
             2 III 2016
           </div>
         </md-list-item>
       </div>
-      <div class="projectBlock__editContainer">
-        <div layout="column" class="projectBlock__editForm">
+      <div class="adminTabItem__editContainer">
+        <div layout="column" class="adminTabItem__editForm">
           aaa
         </div>
       </div>
     </div>
-  </md-content>
+  </div>
 </div>
-
-<!--   <div flex>
-    <form name="projectForm">
-      <md-input-container>
-        <input type="text" name="name" placeholder="Name" required>
-        <ng-messages>
-          <ng-message for="required">This is required</ng-message>
-        </ng-messages>
-      </md-input-container>
-      <md-button>Create</md-button>
-    </form>
-  </div> -->
-
-<!--   <md-content flex>
-    <md-list ng-cloak>
-      <div class="md-list-item-text" layout="column">
-      <md-list-item ng-repeat="project in projects" class="md-2-line">
-        <img src="https://material.angularjs.org/HEAD/img/list/60.jpeg" class="md-avatar" alt="{{item.who}}" />
-        <div class="md-list-item-text">
-          <h3>{{ project.name }}</h3>
-          <p>Secondary text</p>
-        </div>
-        <md-button class="md-icon-button" ng-click="removeProject(project)" aria-label="Remove"><md-icon>delete</md-icon></md-button>
-      </md-list-item>
-    </md-list>
-  </md-content>
-  <md-button ui-sref="app.admin.home">Back</md-button> -->

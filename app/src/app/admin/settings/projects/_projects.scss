@@ -1,48 +1,6 @@
-.adminProjects {
-  &__header {
-    align-self: flex-start;
-    background: #fafafa;
-    border-bottom: 1px solid #dcdcdc;
-  }
+.projectItem {
 
-  &__sortControls {
-    font-size: 12px;
-    margin-top: 13px;
-    letter-spacing: 0.007em;
-    line-height: 13px;
-    color: rgba(33, 33, 33, 0.38);
-  }
-
-  &__sortDropdown {
-    outline: none;
-    cursor: pointer;
-    width: 186px;
-  }
-
-  &__desc {
-    color: rgba(0, 0, 0, 0.54);
-    padding: 8px 0;
-    font-size: 14px;
-  }
-}
-
-.projectBlock {
-  &__mainContainer {
-    align-content: center;
-    min-height: 83px;
-    margin-bottom: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-  }
-
-  &__labelContainer {
-    height: 83px;
-    padding: 0px 12px;
-    align-content: center;
-    outline: none;
-  }
-
-  &__projectIcon {
+  &__icon {
     width: 40px;
     height: 40px;
     background-size: cover;
@@ -54,35 +12,4 @@
     }
   }
 
-  &__date {
-    height: 40px;
-    color: #757575;
-    text-transform: uppercase;
-  }
-
-  &__editContainer {
-    transition: height 0.5s ease-in-out;
-    background: #fafafa;
-    border-top: 1px solid #dcdcdc;
-    overflow: hidden;
-    height: 245px;
-    box-sizing: border-box;
-    &.ng-hide {
-      height: 0px;
-    }
-  }
-
-  &__submitButtons {
-    position: relative;
-    right: -8px;
-  }
-
-  &__removeIcon {
-    position: relative;
-    left: -14px;
-  }
-
-  &__editForm {
-    margin: 20px 28px 15px 28px;
-  }
 }
