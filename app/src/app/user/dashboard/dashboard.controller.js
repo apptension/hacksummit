@@ -1,4 +1,4 @@
-export default ngInject(function DashboardController($scope, $mdSidenav, Stats, Evaluation, Project, Skill, User) {
+export default ngInject(function DashboardController($scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
   Stats.getUserStats(1).then((stats) => {
     this.userStats = stats;
   });
@@ -32,4 +32,9 @@ export default ngInject(function DashboardController($scope, $mdSidenav, Stats, 
   function fetchData() {
 
   }
+  Notification.scheduleNotfication();
+
+  $scope.$on('$destroy', () => {
+    Notification.cancelScheduled();
+  })
 });

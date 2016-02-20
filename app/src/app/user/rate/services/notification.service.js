@@ -1,9 +1,19 @@
-export default ngInject(function NotificationService() {
+export default ngInject(function NotificationService($state) {
   Notification.requestPermission();
+  let notificationScheduled;
+
+  this.scheduleNotfication = () => {
+    this.cancelScheduled();
+    notificationScheduled = setTimeout(this.showNotification.bind(this), 5000);
+  };
+
+  this.cancelScheduled = () => {
+    clearTimeout(notificationScheduled);
+  };
 
   this.notify = (content) => {
     if (!this.isEnabled()) {
-      this.proceed();
+      console.warn('Notifications not supported :(')
     } else {
       this.showNotification(content);
     }
@@ -14,7 +24,7 @@ export default ngInject(function NotificationService() {
   };
 
   this.proceed = () => {
-    window.open('http://localhost:3000/user/rate', '_self');
+    $state.go('app.user.rate');
   };
 
   this.showNotification = () => {

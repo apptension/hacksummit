@@ -2,11 +2,13 @@
     <div>
         <div layout="row">
             <div flex="33">
-                <filter-list filter-collection="vm.projects" filter-model="vm.filters.projects" filter-name-attributes="['name']" placeholder="All Projects"></filter-list>
+                <filter-list filter-collection="vm.projects" filter-model="vm.filters.projects"
+                             filter-name-attributes="['name']" placeholder="All Projects"></filter-list>
             </div>
 
             <div flex="33">
-                <filter-list filter-collection="vm.skills" filter-model="vm.filters.skills" filter-name-attributes="['name']" placeholder="All Skills"></filter-list>
+                <filter-list filter-collection="vm.skills" filter-model="vm.filters.skills"
+                             filter-name-attributes="['name']" placeholder="All Skills"></filter-list>
             </div>
 
             <div flex="33">
@@ -17,25 +19,25 @@
     </div>
 
     <div>
-        <md-button class="md-raised" notify-button>I WANT TO RATE SOMEONE NOW!!</md-button>
-    <div>
-        <span user-badge data="vm.userData"></span>
-        <span ng-repeat="skill in vm.userStats.skills" skill-badge data="skill" ng-if="vm.userStats"></span>
-    </div>
+        <md-button class="md-raised" ui-sref="app.user.rate">I WANT TO RATE SOMEONE NOW!!</md-button>
+        <div>
+            <span user-badge data="vm.userData"></span>
+            <span ng-repeat="skill in vm.userStats.skills" skill-badge data="skill" ng-if="vm.userStats"></span>
+        </div>
 
-    <div>
-        <user-stats-chart data="vm.userStats"
-                          skillpoint-selected="vm.skillpointSelected(skillName, date)"></user-stats-chart>
-    </div>
+        <div>
+            <user-stats-chart data="vm.userStats"
+                              skillpoint-selected="vm.skillpointSelected(skillName, date)"></user-stats-chart>
+        </div>
 
-    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">
-        <md-toolbar class="md-theme-light">
-            <h1 class="md-toolbar-tools">Comments</h1>
-        </md-toolbar>
-        <md-content layout-padding>
-            <div ng-repeat="evaluation in vm.evaluations" ng-if="::evaluation.comment">
-                <p>{{::evaluation.comment }}</p>
-            </div>
-        </md-content>
-    </md-sidenav>
-</div>
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">Comments</h1>
+            </md-toolbar>
+            <md-content layout-padding>
+                <div ng-repeat="evaluation in vm.evaluations" ng-if="::evaluation.comment">
+                    <p>{{::evaluation.comment }}</p>
+                </div>
+            </md-content>
+        </md-sidenav>
+    </div>
