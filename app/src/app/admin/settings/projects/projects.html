@@ -1,25 +1,51 @@
-<div class="adminProjects__layout">
-  <div layout="column" flex="40" flex-offset="30">
-    <div flex>
-      <form name="projectForm">
-        <md-input-container>
-          <input type="text" name="name" placeholder="Name" required>
-          <ng-messages>
-            <ng-message for="required">This is required</ng-message>
-          </ng-messages>
-        </md-input-container>
-        <md-button>Create</md-button>
-    </form>
+<div layout="column" class="adminProjects__layout">
+  <div layout="column" layout-fill class="adminProjects__header">
+    <div flex class="adminProjects__header" layout="column" layout-fill>
+      <h1 class="md-title">Manage Projects</h1>
+      <div class="adminProjects__desc">
+        Lorem ipsum...
+      </div>
     </div>
-    <md-content flex="30">
-      <md-list ng-cloak>
-        <md-subheader class="md-no-sticky">Current Projects</md-subheader>
-        <md-list-item ng-repeat="project in projects">
-          <p> {{ project.name }} </p>
-          <md-button class="md-icon-button" ng-click="removeProject(project)" aria-label="Remove"><md-icon>delete</md-icon></md-button>
-        </md-list-item>
-      </md-list>
-    </md-content>
-    <md-button ui-sref="app.admin.home">Back</md-button>
+    <div flex layout="row" class="adminProjects__sortControls" layout-align="start center">
+      <md-menu>
+        <div class="adminProjects__sortDropdown" ng-click="$mdOpenMenu($event)" layout="row" layout-align="space-between center">
+          <span flex="grow">{{ sortBy.label }}</span>
+          <md-icon flex="nogrow">arrow_drop_down</md-icon>
+        </div>
+        <md-menu-content width="3">
+          <md-menu-item ng-repeat="option in sortOptions[show]">
+            <md-button ng-click="sortItems($index)">{{ option.label }}</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
   </div>
+
+
+
+  <div flex>
+    <form name="projectForm">
+      <md-input-container>
+        <input type="text" name="name" placeholder="Name" required>
+        <ng-messages>
+          <ng-message for="required">This is required</ng-message>
+        </ng-messages>
+      </md-input-container>
+      <md-button>Create</md-button>
+  </form>
+  </div>
+  <md-content flex>
+    <md-list ng-cloak>
+      <div class="md-list-item-text" layout="column">
+      <md-list-item ng-repeat="project in projects" class="md-2-line">
+        <img src="https://material.angularjs.org/HEAD/img/list/60.jpeg" class="md-avatar" alt="{{item.who}}" />
+        <div class="md-list-item-text">
+          <h3>{{ project.name }}</h3>
+          <p>Secondary text</p>
+        </div>
+        <md-button class="md-icon-button" ng-click="removeProject(project)" aria-label="Remove"><md-icon>delete</md-icon></md-button>
+      </md-list-item>
+    </md-list>
+  </md-content>
+  <md-button ui-sref="app.admin.home">Back</md-button>
 </div>
