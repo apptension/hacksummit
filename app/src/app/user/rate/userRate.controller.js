@@ -1,4 +1,4 @@
-export default ngInject(function UserRateController(Evaluation) {
+export default ngInject(function UserRateController(Evaluation, $state) {
   Evaluation.getTargetSuggestion().then((evaluation) => {
     let data = evaluation.plain()[0];
     this.user = data.user;
@@ -7,5 +7,6 @@ export default ngInject(function UserRateController(Evaluation) {
 
   this.submit = (feedback) => {
     Evaluation.submit(feedback);
-  }
+    $state.go('app.user.dashboard');
+  };
 });
