@@ -1,5 +1,11 @@
 <div class="rate__layout">
-  <p>
-    Rate me, pls.
-  </p>
+  <h1 class="rate__target-user">{{ rate.user }}</h1>
+  <h2 class="rate__target-skill">{{ rate.skill }}</h2>
+  <p class="rate__subtitle"> Rate me, pls. </p>
+
+  <div class="rate__options">
+    <button ng-click="rate.submit('ZERO')">ZERO</button>
+    <button ng-click="rate.submit('DISMISSED')">DISMISS</button>
+    <button ng-click="rate.submit('PLUS ONE')">PLUS ONE</button>
+  </div>
 </div>
