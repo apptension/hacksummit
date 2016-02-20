@@ -3,7 +3,7 @@ export default ngInject(function NotificationService() {
 
   this.notify = (content) => {
     if (!this.isEnabled()) {
-      console.log(content);
+      this.proceed();
     } else {
       this.showNotification(content);
     }
@@ -13,11 +13,15 @@ export default ngInject(function NotificationService() {
     return ('Notification' in window) && (Notification.permission === 'granted');
   };
 
+  this.proceed = () => {
+    window.open('http://localhost:3000/user/rate', '_self');
+  };
+
   this.showNotification = () => {
     let config = this.prepareConfig();
     let notification = new Notification('Hello,', config);
     notification.addEventListener('click', () => {
-      window.open('http://localhost:3000/user/rate', '_self');
+      this.proceed();
       notification.close();
     });
   };
