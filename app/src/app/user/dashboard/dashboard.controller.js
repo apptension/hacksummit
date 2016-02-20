@@ -1,4 +1,8 @@
 export default ngInject(function DashboardController($state, $scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
+  let applyFilters = (filterData) => {
+
+  };
+
   Stats.getUserStats(1).then((stats) => {
     this.userStats = stats;
   });
@@ -13,6 +17,7 @@ export default ngInject(function DashboardController($state, $scope, $mdSidenav,
 
   User.getProfile().then((profile) => {
     this.userData = profile;
+    console.log(profile);
   }, () => {
     $state.go('app.home');
   });
@@ -29,11 +34,7 @@ export default ngInject(function DashboardController($state, $scope, $mdSidenav,
     });
   };
 
-  $scope.$watch('vm.filters', fetchData, true);
-
-  function fetchData() {
-
-  }
+  $scope.$watch('vm.filters', applyFilters, true);
 
   Notification.scheduleNotfication();
 
