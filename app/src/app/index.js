@@ -10,6 +10,8 @@ import uirouter from 'angular-ui-router';
 import routing from './app.routes';
 import error404 from './error404';
 import home from './home';
+import user from './user';
+import admin from './admin';
 
 /**
  * Local imports
@@ -23,7 +25,9 @@ export default angular.module('app', [
   ngTouch,
   uirouter,
   error404,
-  home
+  home,
+  admin,
+  user
 ])
   .config(routing)
   .controller('AppController', AppController)

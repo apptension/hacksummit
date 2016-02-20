@@ -1,3 +1,3 @@
-export default ngInject(function AppController($state) {
+export default ngInject(function AppController() {
 
 });
