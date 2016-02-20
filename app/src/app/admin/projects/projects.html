@@ -8,12 +8,14 @@
     </md-input-container>
     <md-button>Create</md-button>
   </form>
-  <md-list ng-cloak>
-    <md-subheader class="md-no-sticky">Current Projects</md-subheader>
-    <md-list-item ng-repeat="project in projects">
-      <p> {{ project.name }} </p>
-      <md-icon ng-click="removeProject(project)" aria-label="Remove" class="md-secondary" >remove</md-icon>
-    </md-list-item>
-  </md-list>
+  <md-content flex="50">
+    <md-list ng-cloak>
+      <md-subheader class="md-no-sticky">Current Projects</md-subheader>
+      <md-list-item ng-repeat="project in projects">
+        <p> {{ project.name }} </p>
+        <md-button class="md-icon-button" ng-click="removeProject(project)" aria-label="Remove"><md-icon>delete</md-icon></md-button>
+      </md-list-item>
+    </md-list>
+  </md-content>
   <a ui-sref="app.admin.home">Back</a>
 </div>
