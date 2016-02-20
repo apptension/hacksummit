@@ -1,9 +1,9 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import routing from './users.routes';
+import routing from './users.routes.js';
 
-import usersController from './users.controller';
+import usersController from './users.controller.js';
 
 
 export default angular.module('app.admin.users', [

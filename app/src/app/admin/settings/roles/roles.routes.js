@@ -2,7 +2,7 @@ import rolesTemplate from './roles.html';
 
 export default ngInject(function ($stateProvider) {
   $stateProvider
-    .state('app.admin.roles', {
+    .state('app.admin.settings.roles', {
       url: '/roles',
       template: rolesTemplate,
       controller: 'RolesController',
