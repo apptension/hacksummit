@@ -1,5 +1,5 @@
 export default {
   api: {
-    baseURL: '/publick/mock'
+    baseURL: '/public/mock'
   }
 };
