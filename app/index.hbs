@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <base href="/">
+    <link rel="stylesheet" type="text/css" href="src/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body ng-app="app">
+
+<div ui-view></div>
+
+{{#if development}}
+    <script src="http://localhost:3000/webpack-dev-server.js"></script>
+{{/if}}
+<script src="src/main.js"></script>
+</body>
+</html>

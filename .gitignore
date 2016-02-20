@@ -1,0 +1,9 @@
+.idea
+.tmp
+
+coverage
+node_modules
+bower_components
+dist
+dist.zip
+.vagrant

@@ -1,0 +1,19 @@
+{
+  "name": "hacksummit",
+  "version": "0.0.0",
+  "authors": [
+    "Apptension"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "UNLICENSED",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}
