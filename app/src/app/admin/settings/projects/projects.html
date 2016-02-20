@@ -1,5 +1,52 @@
-<div class="adminProjects__layout">
-  <p>
-    Welcome to Projects page!
-  </p>
+<div layout="column" class="adminTabContent__layout">
+  <div flex layout="column" layout-fill class="adminTabContent__header">
+    <h1 class="md-title adminTabContent__tabTitle">Manage Projects</h1>
+    <div class="adminTabContent__tabDesc">
+      Lorem ipsum...
+    </div>
+    <div flex layout="row" class="adminTabContent__sortControls" layout-align="start center">
+      <md-menu>
+        <div class="adminTabContent__sortDropdown" ng-click="$mdOpenMenu($event)" layout="row" layout-align="space-between center">
+          <span flex="grow">sorting 1</span>
+          <md-icon flex="nogrow">arrow_drop_down</md-icon>
+        </div>
+        <md-menu-content width="3">
+          <md-menu-item>
+            <md-button>sorting 1</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>sorting 2</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </div>
+
+  <div layout flex="none" layout-align="center center" ng-show="pending">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+
+  <div flex layout layout-align="center center">
+    <div flex="none" class="adminTabItem__mainContainer">
+      <div layout class="adminTabItem__labelContainer" ng-click="active=!active">
+        <md-list-item>
+          <div class="projectItem__icon" layout layout-align="center center">
+            <md-icon flex>markunread_mailbox</md-icon>
+          </div>
+          <div class="md-list-item-text">
+            <span class="adminTabItem__name">Nazwa projektu</span>
+            <span class="adminTabItem__desc">jakiś opis</span>
+          </div>
+          <div class="md-secondary adminTabItem__date">
+            2 III 2016
+          </div>
+        </md-list-item>
+      </div>
+      <div class="adminTabItem__editContainer" ng-show="active">
+        <div layout="column" class="adminTabItem__editForm">
+          aaa
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

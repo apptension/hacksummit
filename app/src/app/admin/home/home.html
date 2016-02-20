@@ -1,5 +1,75 @@
 <div class="adminHome__layout">
-  <p>
-    Welcome to Admin page!
-  </p>
+
+  <div class="adminHome__filters">
+    <h2>Filters</h2>
+  </div>
+
+  <div layout="row" layout-fill>
+    <div flex="60">
+      <h2>Project Name</h2>
+
+      <div class="adminHome__usersGroup">
+        <h3>Most Active</h3>
+        <div class="adminHome__usersList">
+          <div class="adminHome__usersListItem">
+            <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+          </div>
+          <div class="adminHome__usersListItem">
+            <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+          </div>
+          <div class="adminHome__usersListItem">
+            <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+          </div>
+          <div class="adminHome__usersListItem">
+            <img  class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="adminHome__usersGroup">
+        <h3>Top Rated By Skill</h3>
+
+        <md-list class="adminHome__skillsList">
+          <md-list-item class="adminHome__skillsListItem">
+            <div flex="10">CSS</div>
+            <div flex>
+              <div class="adminHome__usersList">
+                <div class="adminHome__usersListItem">
+                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                </div>
+                <div class="adminHome__usersListItem">
+                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                </div>
+                <div class="adminHome__usersListItem">
+                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                </div>
+                <div class="adminHome__usersListItem">
+                  <img  class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                </div>
+              </div>
+            </div>
+          </md-list-item>
+          <md-list-item class="adminHome__skillsListItem">
+            <div flex="10">JavaScript</div>
+            <div flex>
+              <div class="adminHome__usersList">
+                <div class="adminHome__usersListItem">
+                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                </div>
+                <div class="adminHome__usersListItem">
+                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                </div>
+              </div>
+            </div>
+          </md-list-item>
+        </md-list>
+
+      </div>
+
+    </div>
+    <div flex="40">
+      <h2>11 May - 21 Jun</h2>
+      <h3> Overall happiness 66% </h3>
+    </div>
+  </div>
 </div>

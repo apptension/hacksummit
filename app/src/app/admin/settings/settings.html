@@ -1,6 +1,6 @@
 <div class="adminSettings__layout" layout-fill>
   <div layout="row" layout-fill>
-    <div class="adminSettings__sideMenu" flex="30">
+    <div class="adminSettings__sideMenu" flex="15">
       <md-list ng-cloak>
         <md-list-item class="adminSettings__sideMenuItem" ng-class="{ 'adminSettings__sideMenuItem--active' : getSelectedTab() == USERS_TAB }">
           <md-button ui-sref="app.admin.settings.users" class="adminSettings__sideMenuItem">Users</md-button>
@@ -14,7 +14,7 @@
       </md-list>
     </div>
     <div flex>
-      <div ui-view></div>
+      <div flex="none" class="adminSettings__componentContainer" ui-view></div>
     </div>
   </div>
 </div>
