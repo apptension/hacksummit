@@ -59,46 +59,27 @@ epilogue.initialize({
 // Create REST resources
 var usersResource = epilogue.resource({
   model: models.User,
-  endpoints: ['/api/users']
+  endpoints: ['/api/user', '/api/user/:id']
 });
 
 var projectsResource = epilogue.resource({
   model: models.Project,
-  endpoints: ['/api/projects', '/api/projects/:id']
+  endpoints: ['/api/project', '/api/project/:id']
 });
 
 var skillsResource = epilogue.resource({
   model: models.Skill,
-  endpoints: ['/api/skills', '/api/skills/:id']
+  endpoints: ['/api/skill', '/api/skill/:id']
 });
 
 var skillsetsResource = epilogue.resource({
   model: models.Skill,
-  endpoints: ['/api/skillsets', '/api/skillsets/:id']
+  endpoints: ['/api/skillset', '/api/skillset/:id']
 });
 
 var rolesResource = epilogue.resource({
   model: models.Role,
-  endpoints: ['/api/roles', '/api/roles/:id']
-});
-
-var ForbiddenError = epilogue.Errors.ForbiddenError;
-
-[usersResource, projectsResource, skillsResource, skillsetsResource, rolesResource].map(function(res) {
-  res.list.fetch.before(function(req, res, context) {
-    return passport.authenticate('token', function(err, user, info) {
-      if (err) {
-        res.status(500);
-        return context.stop();
-      }
-    
-      if (user) {
-        context.continue();
-      } else {
-        context.error(new ForbiddenError());
-      }
-    })(req, res, context);
-  });
+  endpoints: ['/api/role', '/api/role/:id']
 });
 
 // catch 404 and forward to error handler

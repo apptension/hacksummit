@@ -12,12 +12,20 @@ schemas:
   - Role: !include schemas/role.json
 /user:
   get:
-    description: Returns current logged user
+    description: Return the list of the users
     responses:
       200:
         body:
           application/json:
-            schema: User
+            example: !include examples/users.json
+  /me:
+    get:
+      description: Returns current logged user
+      responses:
+        200:
+          body:
+            application/json:
+              schema: User
   /logout:
     post:
       description: Log out current user
@@ -28,41 +36,21 @@ schemas:
               example: |
                 { "success": true }
   /login:
-    /{id}:
-      post:
-        description: Loggin user with a given id
-
-  /evaluation:
-    get:
-      description: return latest evaluation
-      responses:
-        200:
-          body:
-            application/json:
-              schema: Evaluation
     post:
-      description: save the evaluation
+      description: Loggin user with a given id
       body:
         application/json:
-          schema: Evaluation
+          example: |
+            { "userId": 1 }
       responses:
         200:
           body:
             application/json:
               example: |
-                {
-                  "success": true
-                }
-/users:
-  get:
-    description: Return the list of the users
-    responses:
-      200:
-        body:
-          application/json:
-            example: !include examples/users.json
+                { "success": true }
+
   /{id}:
-    /roles:
+    /role:
       get:
         description: list all user roles
         responses:
@@ -82,7 +70,29 @@ schemas:
                 example: |
                   { "success": true }
 
-/projects:
+    /evaluation:
+      get:
+        description: return latest evaluation
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Evaluation
+      post:
+        description: save the evaluation
+        body:
+          application/json:
+            schema: Evaluation
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    "success": true
+                  }
+
+/project:
   get:
     description: Returns list of the projects
     responses:
@@ -123,7 +133,7 @@ schemas:
       responses:
         204:
           description: No content
-    /skillsets:
+    /skillset:
       get:
         description: Returns list of assigned skillsets to a project
         responses:
@@ -132,7 +142,7 @@ schemas:
               application/json:
                 example: !include ./examples/skillsets.json
 
-/skills:
+/skill:
   get:
     description: Returns list of the skills
     responses:
@@ -174,7 +184,7 @@ schemas:
         204:
           description: No content
 
-/skillsets:
+/skillset:
   get:
     description: Returns list of the skillsets
     responses:
@@ -215,7 +225,7 @@ schemas:
       responses:
         204:
           description: No content
-    /skills:
+    /skill:
       get:
         description: return skills assigned to skillset
         responses:
@@ -234,7 +244,7 @@ schemas:
               application/json:
                 example: !include examples/skills.json
 
-/roles:
+/role:
   get:
     description: Returns list of roles
     responses:
@@ -275,7 +285,7 @@ schemas:
       responses:
         204:
           description: No content
-    /skills:
+    /skill:
       get:
         description: return skills assigned to role
         responses:
@@ -294,7 +304,7 @@ schemas:
               application/json:
                 example: !include examples/skills.json
 
-/stats:
+/stat:
   /user/{id}:
     get:
       description: Returns stats for given user
