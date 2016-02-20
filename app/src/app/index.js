@@ -27,7 +27,6 @@ import UserController from './user/user.controller';
 export default angular.module('app', [
   ngCookies,
   ngSanitize,
-  ngTouch,
   uirouter,
   error404,
   home,
