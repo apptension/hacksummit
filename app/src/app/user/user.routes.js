@@ -1,4 +1,7 @@
-export default ngInject(function ($stateProvider) {
+export default ngInject(function ($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider
+    .when('/user', '/user/dashboard');
+
   $stateProvider
     .state('app.user', {
       abstract: true,

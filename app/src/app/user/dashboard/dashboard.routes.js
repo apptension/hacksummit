@@ -6,6 +6,6 @@ export default ngInject(($stateProvider) => {
     url: '/dashboard',
     template: dashboardTemplate,
     controller: 'DashboardController',
-    controllerAs: 'dashboard'
+    controllerAs: 'vm'
   });
 });

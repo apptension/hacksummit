@@ -1,2 +1,7 @@
-<p>dashboard</p>
-<md-button class="md-raised" notify-button>I WANT TO RATE SOMEONE NOW!!</md-button>
+<div class="user-dashboard">
+    <p>dashboard</p>
+
+    <md-button class="md-raised" notify-button>I WANT TO RATE SOMEONE NOW!!</md-button>
+
+    <user-stats-chart data="vm.userStats" ng-if="vm.userStats"></user-stats-chart>
+</div>

@@ -1,0 +1,18 @@
+svg {
+  font: 10px sans-serif;
+}
+
+.line-chart-xaxis,
+.line-chart-yaxis {
+  path, line {
+    fill: none;
+    stroke: #e7e7e7;
+    shape-rendering: crispEdges;
+  }
+}
+
+.line-chart-series {
+  fill: none;
+  stroke: #00ff00;
+  stroke-width: 2;
+}

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon -L ./bin/www"
+    "start": "nodemon -L ./bin/www",
+    "fixtures": "node ./populate_db.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -17,6 +18,7 @@
     "mysql": "^2.10.2",
     "passport": "^0.3.2",
     "sequelize": "^3.19.3",
+    "sequelize-fixtures": "^0.4.8",
     "serve-favicon": "~2.3.0"
   }
 }

@@ -6,16 +6,13 @@ import routing from './admin.routes';
 import adminController from './admin.controller';
 
 import home from './home';
-import roles from './roles';
-import users from './users';
-import projects from './projects';
+import settings from './settings';
+
 
 export default angular.module('app.admin', [
   uirouter,
   home,
-  roles,
-  users,
-  projects
+  settings
 ])
   .controller('AdminController', adminController)
   .config(routing)

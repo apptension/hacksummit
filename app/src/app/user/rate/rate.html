@@ -4,13 +4,13 @@
   <p class="rate__subtitle"> Rate me, pls. </p>
 
   <div class="rate__options">
-    <button ng-click="rate.submit('ZERO')">ZERO</button>
-    <button ng-click="rate.submit('DISMISSED')">DISMISS</button>
-    <button ng-click="rate.submit('PLUS ONE')">PLUS ONE</button>
+    <md-button class="md-raised md-warn" ng-click="rate.submit('ZERO')">ZERO</md-button>
+    <md-button class="md-raised md-accent" ng-click="rate.submit('DISMISSED')">DISMISS</md-button>
+    <md-button class="md-raised md-primary" ng-click="rate.submit('PLUS ONE')">PLUS ONE</md-button>
   </div>
 
-  <div class="feedback">
+  <md-input-container class="feedback">
     <h3 class="feedback__title">Want to add some feedback?</h3>
     <textarea class="feedback__text" ng-model="rate.feedbackText"></textarea>
-  </div>
+  </md-input-container>
 </div>
