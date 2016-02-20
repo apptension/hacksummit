@@ -1,4 +1,8 @@
 <div class="adminRoles">
+    <section class="md-whiteframe-z1" ng-repeat="role in roles">
+        <h1>role.name</h1>
+        <p>role.id</p>
+    </section>
     <section class="md-whiteframe-z1">
         <md-button class="md-fab md-primary md-raised" ng-click="showAdvanced($event)"  aria-label="Add Role">
             <md-icon md-svg-src="img/icons/cake.svg"></md-icon>

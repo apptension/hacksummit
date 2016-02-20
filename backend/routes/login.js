@@ -14,7 +14,7 @@ router.post('/:id', function(req, res, next) {
         });
       });
     } else {
-      return res.status(404).json({ error: 'user not found' })
+      return res.status(404).json({ error: 'user not found' });
     }
   });
 });
