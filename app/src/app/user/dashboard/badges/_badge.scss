@@ -2,8 +2,9 @@
 @import "./userBadge/userBadge";
 
 .card {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   position: relative;
   width: 400px;
+  vertical-align: middle;
 }
