@@ -15,6 +15,6 @@ export default angular.module('app.admin', [
   .directive('projects', projectsComponent)
   .directive('users', usersComponent)
   .directive('roles', rolesComponent)
-  .controller('AdminController',adminController)
+  .controller('AdminController', adminController)
   .config(routing)
   .name;

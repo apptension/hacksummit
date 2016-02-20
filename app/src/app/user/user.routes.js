@@ -1,4 +1,3 @@
-import userTemplate from './user.html';
 import userRateTemplate from './rate/userRate.html';
 
 export default ngInject(function ($stateProvider) {

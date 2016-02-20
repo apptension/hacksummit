@@ -1,6 +1,6 @@
 export default ngInject(function API(Restangular) {
-  return Restangular.withConfig(function(RestangularConfigurer) {
+  return Restangular.withConfig(function (RestangularConfigurer) {
     RestangularConfigurer.setBaseUrl('/public/mock');
-    RestangularConfigurer.setRequestSuffix('.json')
+    RestangularConfigurer.setRequestSuffix('.json');
   });
 });
