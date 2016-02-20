@@ -61,8 +61,15 @@ epilogue.initialize({
 // Create REST resources
 var usersResource = epilogue.resource({
   model: models.User,
+  include     : [models.Role],
   endpoints: ['/api/user', '/api/user/:id']
 });
+
+usersResource.use(assoMiddleware({
+  associatedModel: models.Role,
+  attribute: 'Roles',
+  setMethod: 'setRoles'
+}));
 
 var projectsResource = epilogue.resource({
   model: models.Project,
