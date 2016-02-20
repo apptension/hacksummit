@@ -6,6 +6,8 @@ const defaultConfig = Object.freeze({
   height: 100
 });
 
+const thickness = 12;
+
 export default function PieChart(_config) {
   let config = _.extend({}, defaultConfig, _config);
   let radius = Math.min(config.width, config.height) / 2;
@@ -14,6 +16,11 @@ export default function PieChart(_config) {
   function chart(selection) {
     selection.each(render);
   }
+
+  let mapValueToAngle = d3.scale
+    .linear()
+    .domain([0, 100])
+    .range([0, 2 * Math.PI]);
 
   function render(data) {
     let chart = d3.select(this) // eslint-disable-line no-invalid-this
@@ -25,10 +32,10 @@ export default function PieChart(_config) {
       .classed('pie-chart', true);
 
     arc = d3.svg.arc()
-      .innerRadius(radius - 10)
+      .innerRadius(radius - thickness)
       .outerRadius(radius)
-      .startAngle((d) => d.start / 100  * 2 * Math.PI)
-      .endAngle((d) => d.end / 100  * 2 * Math.PI);
+      .startAngle(() => mapValueToAngle(0))
+      .endAngle(mapValueToAngle);
 
     chart.call(renderPie);
 
@@ -39,8 +46,7 @@ export default function PieChart(_config) {
     let series = selection.selectAll('.pie-chart-series').data((data) => [data]);
     series.enter()
       .append('path')
-      .style("fill", '#7b6888')
-      .style("stroke", '#7b6888')
+      .style('fill', '#7b6888')
       .classed('pie-chart-series', true);
 
     series

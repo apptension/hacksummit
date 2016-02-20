@@ -4,12 +4,14 @@ import d3 from 'd3';
 const defaultConfig = Object.freeze({
   width: 300,
   height: 200,
-  margin: {top: 20, right: 20, bottom: 20, left: 20}
+  margin: {top: 20, right: 20, bottom: 50, left: 50}
 });
 
 export default function LineChart(_config) {
   let config = _.extend({}, defaultConfig, _config);
-  let xAxis, yAxis, x, y, line;
+  let xAxis, yAxis, xTimeScale, xOrdinalScale, yScale, line;
+  let dispatch = d3.dispatch('valueSelected');
+  let colorScale = d3.scale.category20();
 
   config.width = config.width - config.margin.left - config.margin.right;
   config.height = config.height - config.margin.top - config.margin.bottom;
@@ -19,28 +21,42 @@ export default function LineChart(_config) {
   }
 
   function render(data) {
+    data = _.cloneDeep(data);
+    data.series = _.map(data.series, (series, seriesIndex) => {
+      series.index = seriesIndex;
+      series.values = _.map(series.values, (value) => {
+        value.seriesName = series.name;
+        value.seriesIndex = seriesIndex;
+        return value;
+      });
+      return series;
+    });
+
+    let xValues = _(data.series).map('values').flatten().map('x').value();
+    let yValues = _(data.series).map('values').flatten().map('y').value();
+
+    xOrdinalScale = d3.scale.ordinal().domain(xValues).rangeBands([0, config.width]);
+    xTimeScale = d3.time.scale().domain(d3.extent(xValues)).nice().range([0, config.width]);
+    yScale = d3.scale.linear().domain(d3.extent(yValues)).nice().range([config.height, 0]);
+    //colorScale.domain(d3.range(data.series.length));
+
+    xAxis = d3.svg.axis().scale(xTimeScale).orient('bottom').tickSize(-config.height);
+    yAxis = d3.svg.axis().scale(yScale).orient('left').ticks(5).tickSize(-config.width);
+    line = d3.svg.line()
+      .x((d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2)
+      .y((d) => yScale(d.y))
+      .interpolate('cardinal');
+
     let chart = d3.select(this) // eslint-disable-line no-invalid-this
       .selectAll('.line-chart').data([data]);
 
     chart.enter().append('g').classed('line-chart', true);
 
-    chart.attr('transform', `translate(${[config.margin.left, config.margin.top]})`);
-
-    let xValues = _(data.series).map('values').flatten().map('x').flatten().value();
-    let yValues = _(data.series).map('values').flatten().map('y').flatten().value();
-
-    x = d3.time.scale().domain(d3.extent(xValues)).range([0, config.width]);
-    y = d3.scale.linear().domain(d3.extent(yValues)).range([config.height, 0]);
-    xAxis = d3.svg.axis().scale(x).orient('bottom').tickSize(-config.height);
-    yAxis = d3.svg.axis().scale(y).orient('left').ticks(5).tickSize(-config.width);
-    line = d3.svg.line()
-      .x((d) => x(d.x))
-      .y((d) => y(d.y))
-      .interpolate('cardinal');
-
-    chart.call(renderXAxis);
-    chart.call(renderYAxis);
-    chart.call(renderSeries);
+    chart
+      .attr('transform', `translate(${[config.margin.left, config.margin.top]})`)
+      .call(renderXAxis)
+      .call(renderYAxis)
+      .call(renderSeries);
 
     chart.exit().remove();
   }
@@ -55,6 +71,11 @@ export default function LineChart(_config) {
     xAxisComponent
       .attr('transform', `translate(0, ${config.height})`)
       .call(xAxis);
+
+    xAxisComponent.selectAll('text')
+      .attr('transform', function () {
+        return `translate(${this.getBBox().height * -2},${this.getBBox().height}) rotate(-45)`; //eslint-disable-line no-invalid-this
+      });
 
     xAxisComponent.exit().remove();
   }
@@ -73,11 +94,35 @@ export default function LineChart(_config) {
     let series = selection.selectAll('.line-chart-series').data((data) => data.series);
 
     series.enter()
-      .append('path')
+      .append('g')
       .classed('line-chart-series', true);
-    series.attr('d', (d) => line(d.values));
+    series.call(renderPaths);
+    series.call(renderDots);
     series.exit().remove();
   }
+
+  function renderPaths(selection) {
+    let paths = selection.selectAll('.line-chart-series-path').data((data) => [data]);
+    paths.enter().append('path').classed('line-chart-series-path', true);
+    paths.attr('d', (d) => line(d.values)).attr('stroke', (d) => colorScale(d.index));
+    paths.exit().remove();
+  }
+
+  function renderDots(selection) {
+    let dots = selection.selectAll('.line-chart-series-dot').data((data) => data.values);
+    dots.enter().append('circle').classed('line-chart-series-dot', true);
+    dots.attr({
+      cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
+      cy: (d) => yScale(d.y),
+      r: 3,
+      fill: (d) => colorScale(d.seriesIndex)
+    }).on('click', (d) => {
+      dispatch.valueSelected(d);
+    });
+    dots.exit().remove();
+  }
+
+  d3.rebind(chart, dispatch, 'on');
 
   return chart;
 }

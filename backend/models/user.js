@@ -12,18 +12,18 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        user.belongsToMany(models.project, {
-          through: 'userProjects'
-        });
-        user.belongsTo(models.evaluation, {
+        // associations can be defined here
+        models.user.belongsToMany(models.project, { through: models.userProject });
+        user.hasMany(models.evaluation, {
           foreignKey: {
             allowNull: false
           }
         });
-        user.belongsTo(models.evaluation, {
+        user.hasMany(models.evaluation, {
           foreignKey: {
             allowNull: false
-          }
+          },
+          as: 'EvaluatedUser'
         });
       }
     }

@@ -12,14 +12,9 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        skill.belongsToMany(models.skillset, {
-          through: 'skillsetSkill'
-        });
-        skill.belongsTo(models.evaluation, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
+        // associations can be defined here
+        models.skill.belongsToMany(models.skillset, { through: models.skillSkillset });
+        models.skill.hasMany(models.evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
     }
   });

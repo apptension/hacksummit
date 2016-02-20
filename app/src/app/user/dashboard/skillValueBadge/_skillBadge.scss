@@ -1,6 +1,8 @@
 .skill-badge {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
   position: relative;
+  width: 400px;
 }
 
 .skill-badge__image {
@@ -10,11 +12,16 @@
   display: inline-block;
   width: 80px;
   height: 80px;
-  background-image: url("http://lorempixel.com/100/100/cats/");
   background-size: cover;
   border-radius: 50%;
 }
 
 .skill-badge__skill {
   text-align: center;
+  font-weight:bold;
+}
+
+.skill-badge__badge {
+  position: relative;
+  margin: 5px;
 }

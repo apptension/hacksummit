@@ -1,5 +1,4 @@
-import d3 from 'd3';
-import template from './skillValueBadge.html'
+import template from './skillValueBadge.html';
 
 export default ngInject(() => {
   return {
@@ -8,8 +7,16 @@ export default ngInject(() => {
     scope: {
       data: '='
     },
-    link: (scope, element) => {
+    link: (scope) => {
+      function determineBackground(ratio) {
+        if (ratio > 70) { return 'lightgreen'; }
+        if (ratio > 40) { return 'yellow'; }
+        return 'red';
+      }
 
+      scope.ratioAwareBackground = (ratio) => {
+        return {backgroundColor: determineBackground(ratio)};
+      };
     }
   };
 });

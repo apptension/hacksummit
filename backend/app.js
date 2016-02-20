@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use(session({
   secret: config.get('sessionSecret'),
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());

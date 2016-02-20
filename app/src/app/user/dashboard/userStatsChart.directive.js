@@ -5,7 +5,8 @@ export default ngInject(() => {
   return {
     restrict: 'E',
     scope: {
-      data: '='
+      data: '=',
+      skillpointSelected: '&'
     },
     link: (scope, element) => {
       let width = 600;
@@ -13,18 +14,33 @@ export default ngInject(() => {
 
       let lineChart = LineChart({width, height}); // eslint-disable-line new-cap
 
-      function render() {
-        if (!scope.data) {
+      lineChart.on('valueSelected', dispatchSelectedValue);
+      scope.$watch('data', render, true);
+      scope.$on('$destroy', () => {
+        render([]);
+      });
+
+      function dispatchSelectedValue(d) {
+        scope.$apply(() => {
+          scope.skillpointSelected({
+            skillName: d.seriesName,
+            date: d.x
+          });
+        });
+      }
+
+      function render(data) {
+        if (!data) {
           return;
         }
 
         let svg = d3.select(element[0]).selectAll('svg')
           .data([{
-            series: _.map(scope.data.skills, (skill) => {
+            series: _.map(data.skills, (skill) => {
               return {
                 name: skill.name,
                 values: _.map(skill.scores, (score) => {
-                  return {x: score.date.toDate(), y: score.value};
+                  return {x: score.date, y: score.value};
                 })
               };
             })
@@ -40,8 +56,6 @@ export default ngInject(() => {
         svg.call(lineChart);
         svg.exit().remove();
       }
-
-      scope.$watch('data', render, true);
     }
   };
 });

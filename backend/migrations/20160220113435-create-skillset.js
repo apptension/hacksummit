@@ -19,6 +19,16 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      projectId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'projects',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull: false
       }
     });
   },

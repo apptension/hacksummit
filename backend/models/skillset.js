@@ -8,9 +8,9 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        skillset.belongsToMany(models.skill, {
-          through: 'skillsetSkill'
-        });
+        // associations can be defined here
+        models.skillset.belongsToMany(models.skill, { through: models.skillSkillset });
+        models.skillset.belongsTo(models.project, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
     }
   });

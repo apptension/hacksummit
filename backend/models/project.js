@@ -16,15 +16,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        project.belongsToMany(models.user, {
-          through: 'userProjects'
-        });
-        project.hasMany(models.skillset);
-        project.belongsTo(models.evaluation, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
+        // associations can be defined here
+        models.project.belongsToMany(models.user, { through: models.userProject });
+        models.project.hasMany(models.evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
+        models.project.hasMany(models.skillset, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
     }
   });
