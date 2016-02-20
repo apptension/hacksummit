@@ -1,0 +1,67 @@
+[
+  {
+    "model": "skillset",
+    "data": {
+      "id": 1,
+      "name": "Frontend",
+      "projectId": 1
+    }
+  },
+  {
+    "model": "skillset",
+    "data": {
+      "id": 2,
+      "name": "Backend",
+      "projectId": 1
+    }
+  },
+  {
+    "model": "skillset",
+    "data": {
+      "id": 3,
+      "name": "Project management",
+      "projectId": 1
+    }
+  },
+  {
+    "model": "skillset",
+    "data": {
+      "id": 4,
+      "name": "Communication",
+      "projectId": 1
+    }
+  },
+  {
+    "model": "skillset",
+    "data": {
+      "id": 5,
+      "name": "Mobile",
+      "projectId": 1
+    }
+  },
+  
+  {
+    "model": "skillset",
+    "data": {
+      "id": 6,
+      "name": "Frontend",
+      "projectId": 2
+    }
+  },
+  {
+    "model": "skillset",
+    "data": {
+      "id": 7,
+      "name": "Backend",
+      "projectId": 2
+    }
+  },
+  {
+    "model": "skillset",
+    "data": {
+      "id": 8,
+      "name": "Project management",
+      "projectId": 2
+    }
+  }
+]
