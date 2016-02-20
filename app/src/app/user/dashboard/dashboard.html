@@ -1,9 +1,12 @@
 <div class="user-dashboard">
-    <p>dashboard</p>
+    <div>
+        <md-button class="md-raised" notify-button>I WANT TO RATE SOMEONE NOW!!</md-button>
+    </div>
 
-    <md-button class="md-raised" notify-button>I WANT TO RATE SOMEONE NOW!!</md-button>
-
-    <user-stats-chart data="vm.userStats" skillpoint-selected="vm.skillpointSelected(skillName, date)"></user-stats-chart>
+    <div>
+        <user-stats-chart data="vm.userStats"
+                          skillpoint-selected="vm.skillpointSelected(skillName, date)"></user-stats-chart>
+    </div>
 
     <span ng-repeat="skill in vm.userStats.skills" skill-badge data="skill" ng-if="vm.userStats"></span>
 
