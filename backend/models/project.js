@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var project = sequelize.define('project', {
+  var Project = sequelize.define('Project', {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -14,14 +14,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
+    tableName: 'projects',
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.project.belongsToMany(models.user, { through: models.userProject });
-        models.project.hasMany(models.evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
-        models.project.hasMany(models.skillset, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
+        models.Project.belongsToMany(models.User, { through: models.UserProject });
+        models.Project.hasMany(models.Evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
+        models.Project.hasMany(models.Skillset, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
     }
   });
-  return project;
+  return Project;
 };

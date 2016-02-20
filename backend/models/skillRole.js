@@ -1,13 +1,13 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var SkillSkillset = sequelize.define('SkillSkillset', {
+  var SkillRole = sequelize.define('SkillRole', {
   }, {
-    tableName: 'skillSkillsets',
+    tableName: 'skillRoles',
     classMethods: {
       associate: function(models) {
         // associations can be defined here
       }
     }
   });
-  return SkillSkillset;
+  return SkillRole;
 };

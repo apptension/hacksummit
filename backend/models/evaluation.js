@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var evaluation = sequelize.define('evaluation', {
+  var Evaluation = sequelize.define('Evaluation', {
     starred: {
       type: DataTypes.BOOLEAN,
       allowNull: false
@@ -18,18 +18,19 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
+    tableName: 'evaluations',
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.evaluation.belongsTo(models.project, { onDelete: 'CASCADE', foreignKey: { allowNull: false } });
-        models.evaluation.belongsTo(models.user, { as: 'EvaluatedUser', onDelete: 'CASCADE', foreignKey: { allowNull: false } });
-        models.evaluation.belongsTo(models.user, { onDelete: 'CASCADE', foreignKey: { allowNull: false } });
-        models.evaluation.belongsTo(models.skill, {
-          onDelete: 'CASCADE',
+        models.Evaluation.belongsTo(models.Project, { onDelete: 'CASCADE', foreignKey: { allowNull: false } });
+        models.Evaluation.belongsTo(models.User, { as: 'EvaluatedUser', onDelete: 'CASCADE', foreignKey: { allowNull: false } });
+        models.Evaluation.belongsTo(models.User, { onDelete: 'CASCADE', foreignKey: { allowNull: false } });
+        models.Evaluation.belongsTo(models.Skill, {
+          onDelEte: 'CASCADE',
           foreignKey: { allowNull: false }
         })
       }
     }
   });
-  return evaluation;
+  return Evaluation;
 };

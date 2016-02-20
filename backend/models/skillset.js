@@ -1,18 +1,19 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var skillset = sequelize.define('skillset', {
+  var Skillset = sequelize.define('Skillset', {
     name: {
       type: DataTypes.STRING,
       allowNull: false
     }
   }, {
     classMethods: {
+      tableName: 'skillsets',
       associate: function(models) {
         // associations can be defined here
-        models.skillset.belongsToMany(models.skill, { through: models.skillSkillset });
-        models.skillset.belongsTo(models.project, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
+        models.Skillset.belongsToMany(models.Skill, { through: models.SkillSkillset });
+        models.Skillset.belongsTo(models.Project, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
     }
   });
-  return skillset;
+  return Skillset;
 };

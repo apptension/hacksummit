@@ -58,22 +58,22 @@ epilogue.initialize({
 
 // Create REST resources
 var usersResource = epilogue.resource({
-  model: models.user,
+  model: models.User,
   endpoints: ['/api/users']
 });
 
 var projectsResource = epilogue.resource({
-  model: models.project,
+  model: models.Project,
   endpoints: ['/api/projects', '/api/projects/:id']
 });
 
 var skillsResource = epilogue.resource({
-  model: models.skill,
+  model: models.Skill,
   endpoints: ['/api/skills', '/api/skills/:id']
 });
 
 var skillsetsResource = epilogue.resource({
-  model: models.skill,
+  model: models.Skill,
   endpoints: ['/api/skillsets', '/api/skillsets/:id']
 });
 

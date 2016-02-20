@@ -5,7 +5,7 @@ let express = require('express'),
   models = require('../models');
 
 router.post('/:id', function(req, res, next) {
-  models.user.findById(parseInt(req.params.id)).then((user) => {
+  models.User.findById(parseInt(req.params.id)).then((user) => {
     if (user) {
       req.logIn(user, function(err) {
         if (err) { return next(err); }

@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var skill = sequelize.define('skill', {
+  var Skill = sequelize.define('Skill', {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -10,13 +10,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
+    tableName: 'skills',
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.skill.belongsToMany(models.skillset, { through: models.skillSkillset });
-        models.skill.hasMany(models.evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
+        models.Skill.belongsToMany(models.Skillset, { through: models.SkillSkillset });
+        Skill.belongsToMany(models.Role, { through: models.SkillRole });
+        models.Skill.hasMany(models.Evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
     }
   });
-  return skill;
+  return Skill;
 };

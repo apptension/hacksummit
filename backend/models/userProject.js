@@ -1,12 +1,13 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var userProject = sequelize.define('userProject', {
+  var UserProject = sequelize.define('UserProject', {
   }, {
+    tableName: 'userProjects',
     classMethods: {
       associate: function(models) {
         // associations can be defined here
       }
     }
   });
-  return userProject;
+  return UserProject;
 };
