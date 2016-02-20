@@ -7,7 +7,14 @@ module.exports = function(sequelize, DataTypes) {
     },
     date: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      get: function () {
+        return Date.parse(this.getDataValue('date'));
+      },
+      set: function (value) {
+        var _date = new Date(value);
+        this.setDataValue('date', _date.toISOString().substr(0, 10));
+      }
     },
     state: {
       type: DataTypes.INTEGER,
