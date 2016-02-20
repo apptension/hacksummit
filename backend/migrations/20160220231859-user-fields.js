@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       });
-    })
+    });
   },
 
   down: function (queryInterface, Sequelize) {
