@@ -1,0 +1,155 @@
+[
+  {
+    "model": "skill",
+    "data": {
+      "id": 1,
+      "name": "Creativity",
+      "isSoft": true,
+      "skillset_id": 4
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 2,
+      "name": "PHP basics",
+      "isSoft": false,
+      "skillset_id": 2
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 3,
+      "name": "JS basics",
+      "isSoft": false,
+      "skillset_id": 1
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 4,
+      "name": "Symfony2",
+      "isSoft": false,
+      "skillset_id": 2
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 5,
+      "name": "Angular 2",
+      "isSoft": false,
+      "skillset_id": 1
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 6,
+      "name": "Ruby basics",
+      "isSoft": false,
+      "skillset_id": 2
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 7,
+      "name": "Designing",
+      "isSoft": false,
+      "skillset_id": 1
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 8,
+      "name": "Open-minded",
+      "isSoft": true,
+      "skillset_id": 4
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 9,
+      "name": "Full-time availability",
+      "isSoft": true,
+      "skillset_id": 3
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 10,
+      "name": "React framework",
+      "isSoft": false,
+      "skillset_id": 1
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 11,
+      "name": "Multiple tasking",
+      "isSoft": true,
+      "skillset_id": 3
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 12,
+      "name": "Advanced English",
+      "isSoft": true,
+      "skillset_id": 4
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 13,
+      "name": "WebGL",
+      "isSoft": false,
+      "skillset_id": 1
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 14,
+      "name": "Python basics",
+      "isSoft": false,
+      "skillset_id": 2
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 15,
+      "name": "AngularJS",
+      "isSoft": false,
+      "skillset_id": 1
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 16,
+      "name": "CSS3",
+      "isSoft": false,
+      "skillset_id": 1
+    }
+  },
+  {
+    "model": "skill",
+    "data": {
+      "id": 17,
+      "name": "Yii2",
+      "isSoft": false,
+      "skillset_id": 2
+    }
+  }
+]
