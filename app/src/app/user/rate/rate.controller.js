@@ -1,4 +1,4 @@
-export default ngInject(function RateController(Evaluation, $state, Notification) {
+export default ngInject(function RateController(Evaluation, $state) {
   Evaluation.getTargetSuggestion().then((evaluation) => {
     let data = evaluation.plain();
     this.user = data.user;
