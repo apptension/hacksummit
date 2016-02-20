@@ -64,6 +64,7 @@ var usersResource = epilogue.resource({
 
 var projectsResource = epilogue.resource({
   model: models.Project,
+  include     : [models.Skillset],
   endpoints: ['/api/project', '/api/project/:id']
 });
 
@@ -73,12 +74,14 @@ var skillsResource = epilogue.resource({
 });
 
 var skillsetsResource = epilogue.resource({
-  model: models.Skill,
+  model: models.Skillset,
+  include     : [models.Skill],
   endpoints: ['/api/skillset', '/api/skillset/:id']
 });
 
 var rolesResource = epilogue.resource({
   model: models.Role,
+  include     : [models.Skill],
   endpoints: ['/api/role', '/api/role/:id']
 });
 
