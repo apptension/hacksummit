@@ -9,6 +9,7 @@ schemas:
   - Skillset: !include schemas/skillset.json
   - Skill: !include schemas/skill.json
   - Evaluation: !include schemas/evaluation.json
+  - Role: !include schemas/role.json
 /user:
   get:
     description: Returns current logged user
@@ -61,6 +62,27 @@ schemas:
         body:
           application/json:
             example: !include examples/users.json
+  /{id}:
+    /roles:
+      get:
+        description: list all user roles
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/roles.json
+      post:
+        description: sets user roles
+        body:
+          application/json:
+            schema: !include schemas/roles_assign_post.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  { "success": true }
+
 /projects:
   get:
     description: Returns list of the projects
@@ -204,6 +226,66 @@ schemas:
                 example: !include examples/skills.json
       post:
         description: assign skills to skillset
+        body:
+          application/json:
+            schema: !include schemas/skills_assign_post.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/skills.json
+
+/roles:
+  get:
+    description: Returns list of roles
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/roles.json
+  post:
+    description: Add new role
+    body:
+      application/json:
+        schema: Role
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Role
+  /{id}:
+    get:
+      description: Get single role
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Role
+    put:
+      description: Update role
+      body:
+        application/json:
+          schema: Role
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Role
+    delete:
+      description: Remove role
+      responses:
+        204:
+          description: No content
+    /skills:
+      get:
+        description: return skills assigned to role
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/skills.json
+      post:
+        description: assign skills to role
         body:
           application/json:
             schema: !include schemas/skills_assign_post.json
