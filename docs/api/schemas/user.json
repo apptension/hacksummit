@@ -1,5 +1,7 @@
 {
   "id": 1,
   "username": "sample_username",
-  "isAdmin": true
+  "isAdmin": true,
+  "name": "Zbigniew Czarnecki",
+  "avatar": "http://lorempixel.com/300/300/people/"
 }
