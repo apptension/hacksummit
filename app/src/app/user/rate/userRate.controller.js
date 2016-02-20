@@ -6,7 +6,10 @@ export default ngInject(function UserRateController(Evaluation, $state) {
   });
 
   this.submit = (feedback) => {
-    Evaluation.submit(feedback);
+    Evaluation.submit({
+      value: feedback,
+      comment: this.feedbackText
+    });
     $state.go('app.user.dashboard');
   };
 });
