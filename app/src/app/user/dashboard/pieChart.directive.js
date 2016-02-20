@@ -14,7 +14,7 @@ export default ngInject(() => {
       let pieChart = PieChart({width, height}); // eslint-disable-line new-cap
 
       let svg = d3.select(element[0]).selectAll('svg')
-        .data([ {start: 0, end: scope.data} ]);
+        .data([{start: 0, end: scope.data}]);
 
       svg.enter()
         .append('svg')
