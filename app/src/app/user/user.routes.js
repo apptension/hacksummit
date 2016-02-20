@@ -14,11 +14,5 @@ export default ngInject(function ($stateProvider) {
       template: userRateTemplate,
       controller: 'UserRateController',
       controllerAs: 'rate'
-    })
-    .state('app.user.dashboard', {
-      url: '/dashboard',
-      template: '',
-      controller: 'UserDashboardController',
-      controllerAs: 'dashboard'
     });
 });
