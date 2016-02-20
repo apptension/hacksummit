@@ -1,11 +1,11 @@
 export default ngInject(function EvaluationService(API) {
-  const evaluateAPI = API.all('evaluate');
+  const evaluateAPI = API.all('user');
 
   this.getTargetSuggestion = () => {
-    return evaluateAPI.customGET('randomize');
+    return evaluateAPI.customGET('evaluate');
   };
 
   this.submit = (data) => {
-    console.log('submitting ', data);
+    evaluateAPI.customPOST(data, 'submit');
   };
 });
