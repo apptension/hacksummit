@@ -27,8 +27,8 @@ export default function PieChart(_config) {
     arc = d3.svg.arc()
       .innerRadius(radius - 10)
       .outerRadius(radius)
-      .startAngle(0)
-      .endAngle((d) => d / 100  * 2 * Math.PI);
+      .startAngle((d) => d.start / 100  * 2 * Math.PI)
+      .endAngle((d) => d.end / 100  * 2 * Math.PI);
 
     chart.call(renderPie);
 
