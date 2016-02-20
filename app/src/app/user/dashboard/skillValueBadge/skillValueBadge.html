@@ -1,10 +1,18 @@
-<div class="skill-badge">
+<md-card class="skill-badge">
     <div class="skill-badge__badge">
         <span class="skill-badge__chart" pie-chart data="data.ratio"></span>
         <span class="skill-badge__image" ng-style="ratioAwareBackground(data.ratio)"></span>
     </div>
 
-    <p class="skill-badge__skill">
-      {{ data.name }}
-    </p>
-</div>
+    <div class="skill-badge__content">
+        <md-card-title>
+            <md-card-title-text class="skill-badge__skill">
+                {{ data.name }}
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+            <p>Some lorem ipsum feedback comment...</p>
+        </md-card-content>
+    </div>
+</md-card>

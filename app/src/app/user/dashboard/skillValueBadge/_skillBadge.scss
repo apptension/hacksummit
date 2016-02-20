@@ -1,6 +1,8 @@
 .skill-badge {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
   position: relative;
+  width: 400px;
 }
 
 .skill-badge__image {
@@ -16,4 +18,10 @@
 
 .skill-badge__skill {
   text-align: center;
+  font-weight:bold;
+}
+
+.skill-badge__badge {
+  position: relative;
+  margin: 5px;
 }
