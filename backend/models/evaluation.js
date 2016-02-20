@@ -41,6 +41,12 @@ module.exports = function(sequelize, DataTypes) {
       date: function() {
         return Date.parse(this.getDataValue('date'));
       }
+    },
+    setterMethods: {
+      date: function(value) {
+        var _date = new Date(value - 0);
+        this.setDataValue('date', _date.toISOString().substr(0, 10));
+      }
     }
   });
   return Evaluation;

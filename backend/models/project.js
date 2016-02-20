@@ -39,11 +39,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     setterMethods: {
       startDate: function(value) {
-        var _date = new Date(value);
+        var _date = new Date(value - 0);
         this.setDataValue('startDate', _date.toISOString().substr(0, 10));
       },
       endDate: function(value) {
-        var _date = new Date(value);
+        var _date = new Date(value - 0);
         this.setDataValue('endDate', _date.toISOString().substr(0, 10));
       }
     }
