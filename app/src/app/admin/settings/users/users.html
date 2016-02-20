@@ -35,14 +35,26 @@
           </div>
           <div class="md-list-item-text">
             <span class="adminTabItem__name">{{user.username}}</span>
-            <span class="adminTabItem__desc">...</span>
+            <span class="adminTabItem__desc">Last update at {{user.updatedAt}}</span>
           </div>
 
         </md-list-item>
       </div>
       <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="user.edit">
         <div layout="column" class="adminTabItem__editForm">
-         Test
+          <md-input-container class="md-icon-float md-block ">
+            <!-- Use floating label instead of placeholder -->
+            <label>Name</label>
+            <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+            <input ng-model="user.username" type="text">
+          </md-input-container>
+
+          <md-input-container class="md-icon-float md-block ">
+            <md-checkbox md-no-ink aria-label="Checkbox No Ink" class="md-primary" ng-model="user.isAdmin">
+              Admin
+            </md-checkbox>
+          </md-input-container>
+
         </div>
       </div>
     </div>
