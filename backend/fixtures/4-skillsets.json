@@ -71,5 +71,53 @@
       "name": "Mobile",
       "ProjectId": 3
     }
+  },
+  {
+    "model": "Skillset",
+    "data": {
+      "id": 10,
+      "name": "Web development",
+      "ProjectId": 4
+    }
+  },
+  {
+    "model": "Skillset",
+    "data": {
+      "id": 11,
+      "name": "Content",
+      "ProjectId": 4
+    }
+  },
+  {
+    "model": "Skillset",
+    "data": {
+      "id": 12,
+      "name": "Frontend",
+      "ProjectId": 5
+    }
+  },
+  {
+    "model": "Skillset",
+    "data": {
+      "id": 13,
+      "name": "Backend",
+      "ProjectId": 5
+    }
+  },
+  {
+    "model": "Skillset",
+    "data": {
+      "id": 14,
+      "name": "Project management",
+      "ProjectId": 5
+    }
+  },
+  {
+    "model": "Skillset",
+    "data": {
+      "id": 15,
+      "name": "Communication",
+      "ProjectId": 5
+    }
   }
 ]
