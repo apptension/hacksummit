@@ -1,1 +1,15 @@
-<div ui-view class="admin__container"></div>
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <div flex="10">
+            <h1>Logo</h1>
+        </div>
+        <div flex>
+            <md-tabs md-no-pagination md-selected="getSelectedTab()">
+                <md-tab label="Statistics" ui-sref="app.admin.home"></md-tab>
+                <md-tab label="Settings" ui-sref="app.admin.settings.users"></md-tab>
+            </md-tabs>
+        </div>
+    </div>
+</md-toolbar>
+
+<div ui-view class="admin__container" layout-fill></div>

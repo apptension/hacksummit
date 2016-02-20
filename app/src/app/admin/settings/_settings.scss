@@ -1,0 +1,18 @@
+.adminSettings__sideMenu {
+  border-right: 1px solid black;
+}
+
+.adminSettings__sideMenuItem {
+  border-left: 4px solid transparent;
+}
+
+
+.adminSettings__sideMenuItem--active {
+  border-left: 4px solid rgb(63,81,181);
+}
+
+.adminSettings__sideMenuItemLink {
+  width: 100%;
+  text-align: left;
+}
+

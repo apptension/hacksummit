@@ -1,0 +1,17 @@
+@import "settings/settings";
+
+md-tabs-canvas {
+  height: 64px;
+}
+
+md-pagination-wrapper {
+  height: 64px;
+}
+
+.md-tab {
+  line-height: 40px;
+}
+
+md-tabs .md-tab.md-active {
+  color: rgba(255, 255, 255, 0.87)
+}
