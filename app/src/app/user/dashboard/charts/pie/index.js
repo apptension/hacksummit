@@ -6,8 +6,8 @@ const defaultConfig = Object.freeze({
   height: 100
 });
 
-const thickness = 6;
-const shadowThickness = 2;
+const thickness = 4;
+const shadowThickness = 1;
 
 export default function PieChart(_config) {
   let config = _.extend({}, defaultConfig, _config);

@@ -1,3 +1,10 @@
+.card {
+  display: inline-flex;
+  flex-direction: row;
+  position: relative;
+  vertical-align: middle;
+}
+
 .card__content {
   position: absolute;
   left: 10px;
@@ -28,4 +35,5 @@
 .card__value {
   margin: 0;
   font-size: 28px;
+  font-weight: bold;
 }

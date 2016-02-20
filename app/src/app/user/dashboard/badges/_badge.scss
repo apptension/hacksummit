@@ -1,17 +1,2 @@
 @import "./skillValueBadge/skillBadge";
-@import "./userBadge/userBadge";
 
-.card {
-  display: inline-flex;
-  flex-direction: row;
-  position: relative;
-  vertical-align: middle;
-}
-
-.card--wide {
-  width: 400px;
-}
-
-.card__content--wide {
-  position: relative;
-}

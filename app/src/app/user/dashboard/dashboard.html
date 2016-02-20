@@ -21,7 +21,8 @@
     <div>
         <md-button class="md-raised" ui-sref="app.user.rate">I WANT TO RATE SOMEONE NOW!!</md-button>
         <div>
-            <span user-badge data="vm.userData"></span>
+            <!--<span user-badge data="vm.userData"></span>-->
+            <span profile-image data="vm.userData"></span>
             <span ng-repeat="skill in vm.userStats.skills | softSkills" skill-badge data="skill" ng-if="vm.userStats"></span>
         </div>
 
