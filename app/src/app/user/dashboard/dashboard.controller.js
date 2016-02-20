@@ -1,4 +1,4 @@
-export default ngInject(function DashboardController($scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
+export default ngInject(function DashboardController($state, $scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
   Stats.getUserStats(1).then((stats) => {
     this.userStats = stats;
   });
@@ -13,6 +13,8 @@ export default ngInject(function DashboardController($scope, $mdSidenav, Stats, 
 
   User.getProfile().then((profile) => {
     this.userData = profile;
+  }, () => {
+    $state.go('app.home');
   });
 
   this.filters = {
