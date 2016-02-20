@@ -77,9 +77,14 @@ var skillsetsResource = epilogue.resource({
   endpoints: ['/api/skillsets', '/api/skillsets/:id']
 });
 
+var rolesResource = epilogue.resource({
+  model: models.Role,
+  endpoints: ['/api/roles', '/api/roles/:id']
+});
+
 var ForbiddenError = epilogue.Errors.ForbiddenError;
 
-[usersResource, projectsResource, skillsResource, skillsetsResource].map(function(res) {
+[usersResource, projectsResource, skillsResource, skillsetsResource, rolesResource].map(function(res) {
   res.list.fetch.before(function(req, res, context) {
     return passport.authenticate('token', function(err, user, info) {
       if (err) {
