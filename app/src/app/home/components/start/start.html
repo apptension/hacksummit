@@ -5,17 +5,19 @@
         <div class="homeStart__description">
             <p>Copy Lines</p>
         </div>
-        <div class="homeStart__btnStart">
+
+        <div class="homeStart__btnStart" ng-click="startAs({userId: users[0].id})">
             <p>START AS USER</p>
         </div>
     </section>
+
     <section class="homeStart__admin">
         <h1>Start as Admin</h1>
         <div class="homeStart__photo"></div>
         <div class="homeStart__description">
             <p>Copy Lines</p>
         </div>
-        <div class="homeStart__btnStart">
+        <div class="homeStart__btnStart" ng-click="startAs({userId: admin.id})">
             <p>START AS USER</p>
         </div>
     </section>

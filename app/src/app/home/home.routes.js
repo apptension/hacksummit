@@ -5,6 +5,7 @@ export default ngInject(function ($stateProvider) {
     .state('app.home', {
       url: '/',
       controller: 'HomeController',
+      controllerAs: 'vm',
       template: homeTemplate
     });
 });
