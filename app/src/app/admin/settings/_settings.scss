@@ -1,1 +1,25 @@
 @import 'projects/projects';
+
+.adminSettings {
+  &__sideMenu {
+    border-right: 1px solid black;
+  }
+
+  &__sideMenuItem {
+    border-left: 4px solid transparent;
+  }
+
+
+  &__sideMenuItem--active {
+    border-left: 4px solid rgb(63,81,181);
+  }
+
+  &__sideMenuItemLink {
+    width: 100%;
+    text-align: left;
+  }
+
+  &__componentContainer {
+    width: 800px;
+  }
+}

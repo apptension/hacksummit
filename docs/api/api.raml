@@ -17,6 +17,16 @@ schemas:
         body:
           application/json:
             schema: User
+  /logout:
+    post:
+      description: Log out current user
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                { "success": true }
+
   /evaluation:
     get:
       description: return latest evaluation

@@ -12,7 +12,14 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        skill.belongsToMany(models.skillset, {
+          through: 'skillsetSkill'
+        });
+        skill.belongsTo(models.evaluation, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
       }
     }
   });

@@ -16,7 +16,15 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        project.belongsToMany(models.user, {
+          through: 'userProjects'
+        });
+        project.hasMany(models.skillset);
+        project.belongsTo(models.evaluation, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
       }
     }
   });
