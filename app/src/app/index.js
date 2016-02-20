@@ -22,6 +22,8 @@ import api from '../api';
  */
 import AppController from './app.controller';
 import UserController from './user/user.controller';
+import statsFilters from './directives/statsFilters/statsFilters.directive';
+import filterList from './directives/filterList/filterList.directive';
 
 export default angular.module('app', [
   ngCookies,
@@ -36,4 +38,6 @@ export default angular.module('app', [
 ]).config(routing)
   .controller('AppController', AppController)
   .controller('UserController', UserController)
+  .directive('filterList', filterList)
+  .directive('statsFilters', statsFilters)
   .name;
