@@ -44,7 +44,8 @@
           "date": 1461417753453
         }
       ],
-      "ratio": 33
+      "ratio": 33,
+      "isSoft": true
     },
     {
       "name": "Css",
@@ -90,7 +91,8 @@
           "date": 1461417753453
         }
       ],
-      "ratio": 66
+      "ratio": 66,
+      "isSoft": true
     }
   ]
 }
