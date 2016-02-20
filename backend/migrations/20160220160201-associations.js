@@ -62,6 +62,14 @@ module.exports = {
               onDelete: 'CASCADE',
               allowNull: false,
               primaryKey: true
+            },
+            createdAt: {
+              allowNull: false,
+              type: Sequelize.DATE
+            },
+            updatedAt: {
+              allowNull: false,
+              type: Sequelize.DATE
             }
           }).then(() => {
             return queryInterface.createTable('userProjects', {
@@ -86,6 +94,14 @@ module.exports = {
                 onDelete: 'CASCADE',
                 allowNull: false,
                 primaryKey: true
+              },
+              createdAt: {
+                allowNull: false,
+                type: Sequelize.DATE
+              },
+              updatedAt: {
+                allowNull: false,
+                type: Sequelize.DATE
               }
             });
           });

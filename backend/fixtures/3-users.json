@@ -1,6 +1,7 @@
 [
   {
     "model": "User",
+    "keys": ["id"],
     "data": {
       "id": 1,
       "username": "AdminUser",
@@ -9,6 +10,7 @@
   },
   {
     "model": "User",
+    "keys": ["id"],
     "data": {
       "id": 2,
       "username": "User",

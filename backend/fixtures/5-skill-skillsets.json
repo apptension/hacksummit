@@ -1,6 +1,7 @@
 [
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 1,
       "SkillsetId": 4
@@ -8,6 +9,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 2,
       "SkillsetId": 2
@@ -15,6 +17,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 3,
       "SkillsetId": 1
@@ -22,6 +25,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 4,
       "SkillsetId": 2
@@ -29,6 +33,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 5,
       "SkillsetId": 1
@@ -36,6 +41,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 6,
       "SkillsetId": 5
@@ -43,6 +49,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 7,
       "SkillsetId": 1
@@ -50,6 +57,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 8,
       "SkillsetId": 4
@@ -57,6 +65,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 9,
       "SkillsetId": 3
@@ -64,6 +73,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 10,
       "SkillsetId": 5
@@ -71,6 +81,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 11,
       "SkillsetId": 3
@@ -78,6 +89,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 12,
       "SkillsetId": 4
@@ -85,6 +97,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 13,
       "SkillsetId": 1
@@ -92,6 +105,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 14,
       "SkillsetId": 5
@@ -99,6 +113,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 15,
       "SkillsetId": 1
@@ -106,6 +121,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 16,
       "SkillsetId": 6
@@ -113,6 +129,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 17,
       "SkillsetId": 7
@@ -120,6 +137,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 18,
       "SkillsetId": 7
@@ -127,6 +145,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 19,
       "SkillsetId": 6
@@ -134,6 +153,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 20,
       "SkillsetId": 8
@@ -141,6 +161,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 21,
       "SkillsetId": 9
@@ -148,6 +169,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 22,
       "SkillsetId": 9
@@ -155,6 +177,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 23,
       "SkillsetId": 9
@@ -162,6 +185,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 24,
       "SkillsetId": 10
@@ -169,6 +193,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 25,
       "SkillsetId": 10
@@ -176,6 +201,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 26,
       "SkillsetId": 10
@@ -183,6 +209,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 27,
       "SkillsetId": 11
@@ -190,6 +217,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 28,
       "SkillsetId": 11
@@ -197,6 +225,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 29,
       "SkillsetId": 14
@@ -204,6 +233,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 30,
       "SkillsetId": 13
@@ -211,6 +241,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 31,
       "SkillsetId": 12
@@ -218,6 +249,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 32,
       "SkillsetId": 13
@@ -225,6 +257,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 33,
       "SkillsetId": 12
@@ -232,6 +265,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 34,
       "SkillsetId": 13
@@ -239,6 +273,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 35,
       "SkillsetId": 12
@@ -246,6 +281,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 36,
       "SkillsetId": 15
@@ -253,6 +289,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 37,
       "SkillsetId": 14
@@ -260,6 +297,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 37,
       "SkillsetId": 13
@@ -267,6 +305,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 38,
       "SkillsetId": 14
@@ -274,6 +313,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 39,
       "SkillsetId": 14
@@ -281,6 +321,7 @@
   },
   {
     "model": "SkillSkillset",
+    "keys": ["id"],
     "data": {
       "SkillId": 40,
       "SkillsetId": 15
