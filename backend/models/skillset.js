@@ -13,6 +13,14 @@ module.exports = function(sequelize, DataTypes) {
         models.Skillset.belongsToMany(models.Skill, { through: models.SkillSkillset });
         models.Skillset.belongsTo(models.Project, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
+    },
+    getterMethods: {
+      createdAt: function() {
+        return Date.parse(this.getDataValue('createdAt'));
+      },
+      updatedAt: function() {
+        return Date.parse(this.getDataValue('updatedAt'));
+      }
     }
   });
   return Skillset;

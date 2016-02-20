@@ -10,6 +10,14 @@ module.exports = function(sequelize, DataTypes) {
         Role.belongsToMany(models.User, { through: models.UserRole});
         Role.belongsToMany(models.Skill, { through: models.SkillRole});
       }
+    },
+    getterMethods: {
+      createdAt: function() {
+        return Date.parse(this.getDataValue('createdAt'));
+      },
+      updatedAt: function() {
+        return Date.parse(this.getDataValue('updatedAt'));
+      }
     }
   });
   return Role;

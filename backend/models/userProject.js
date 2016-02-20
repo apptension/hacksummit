@@ -7,6 +7,14 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
       }
+    },
+    getterMethods: {
+      createdAt: function() {
+        return Date.parse(this.getDataValue('createdAt'));
+      },
+      updatedAt: function() {
+        return Date.parse(this.getDataValue('updatedAt'));
+      }
     }
   });
   return UserProject;

@@ -28,6 +28,14 @@ module.exports = function(sequelize, DataTypes) {
           as: 'EvaluatedUser'
         });
       }
+    },
+    getterMethods: {
+      createdAt: function() {
+        return Date.parse(this.getDataValue('createdAt'));
+      },
+      updatedAt: function() {
+        return Date.parse(this.getDataValue('updatedAt'));
+      }
     }
   });
   return User;
