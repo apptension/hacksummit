@@ -10,6 +10,7 @@ import pieChart from './pieChart.directive';
 import skillBadge from './skillBadge/skillBadge.directive';
 import softSkills from './softSkills.filter';
 import profileImage from './profile/profileImage/profileImage.directive';
+import profileRow from './profile/profileRow/profileRow.directive';
 
 
 export default angular.module('app.user.dashboard', [
@@ -21,5 +22,6 @@ export default angular.module('app.user.dashboard', [
   .directive('pieChart', pieChart)
   .directive('skillBadge', skillBadge)
   .directive('profileImage', profileImage)
+  .directive('profileRow', profileRow)
   .filter('softSkills', softSkills)
   .name;
