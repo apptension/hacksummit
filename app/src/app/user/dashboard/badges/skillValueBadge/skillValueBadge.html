@@ -1,0 +1,18 @@
+<md-card class="card">
+    <div class="card__badge">
+        <span class="card__chart" pie-chart data="data.ratio"></span>
+        <span class="card__image" ng-style="ratioAwareBackground(data.ratio)"></span>
+    </div>
+
+    <div class="card__content">
+        <md-card-title>
+            <md-card-title-text class="card__skill">
+                {{ data.name }}
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+            <p>{{ ratioAwareCopy(data.ratio) }}</p>
+        </md-card-content>
+    </div>
+</md-card>

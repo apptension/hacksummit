@@ -1,11 +1,4 @@
-.skill-badge {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  width: 400px;
-}
-
-.skill-badge__image {
+.card__image {
   position: absolute;
   left: 10px;
   top: 10px;
@@ -16,12 +9,12 @@
   border-radius: 50%;
 }
 
-.skill-badge__skill {
+.card__skill {
   text-align: center;
   font-weight:bold;
 }
 
-.skill-badge__badge {
+.card__badge {
   position: relative;
   margin: 5px;
 }

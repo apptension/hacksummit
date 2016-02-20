@@ -9,6 +9,10 @@ export default ngInject(function UserService(API) {
     return usersAPI.get(id);
   };
 
+  this.getProfile = () => {
+    return usersAPI.customGET('me');
+  };
+
   this.getSuggestedEvaluation = () => {
     return usersAPI.customGET('evaluation');
   };

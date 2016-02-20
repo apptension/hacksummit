@@ -1,6 +1,10 @@
-export default ngInject(function DashboardController($mdSidenav, Stats, Evaluation) {
+export default ngInject(function DashboardController($mdSidenav, Stats, Evaluation, User) {
   Stats.getUserStats(1).then((stats) => {
     this.userStats = stats;
+  });
+
+  User.getProfile().then((profile) => {
+    this.userData = profile;
   });
 
   this.skillpointSelected = (skillName, date) => {

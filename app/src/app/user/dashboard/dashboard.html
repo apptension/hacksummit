@@ -8,6 +8,7 @@
                           skillpoint-selected="vm.skillpointSelected(skillName, date)"></user-stats-chart>
     </div>
 
+    <span user-badge data="vm.userData"></span>
     <span ng-repeat="skill in vm.userStats.skills" skill-badge data="skill" ng-if="vm.userStats"></span>
 
     <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">

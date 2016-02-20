@@ -1,0 +1,9 @@
+@import "./skillValueBadge/skillBadge";
+@import "./userBadge/userBadge";
+
+.card {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 400px;
+}
