@@ -17,6 +17,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        models.project.belongsToMany(models.user, { through: models.userProject });
+        models.project.hasMany(models.evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
     }
   });
