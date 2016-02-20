@@ -1,0 +1,125 @@
+@import 'projects/projects';
+
+$content-padding: 20px;
+$entity-padding: 20px;
+$entity-height: 85px;
+
+.adminSettings {
+  &__sideMenu {
+    border-right: 1px solid black;
+  }
+
+  &__sideMenuItem {
+    border-left: 4px solid transparent;
+  }
+
+
+  &__sideMenuItem--active {
+    border-left: 4px solid rgb(63,81,181);
+  }
+
+  &__sideMenuItemLink {
+    width: 100%;
+    text-align: left;
+  }
+
+  &__componentContainer {
+    width: 800px;
+  }
+}
+
+.adminTabItem {
+  &__mainContainer {
+    align-content: center;
+    min-height: $entity-height;
+    width: (800px - $content-padding * 2);
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+
+  &__labelContainer {
+    height: $entity-height;
+    padding: 0px ($entity-padding - 16px);
+    align-content: center;
+    outline: none;
+  }
+
+  &__name {
+    display: block;
+    font-size: 16px;
+  }
+
+  &__desc {
+    display: block;
+    font-size: 14px;
+  }
+
+  &__date {
+    height: ($entity-height - $entity-padding * 2);
+    color: #757575;
+    text-transform: uppercase;
+  }
+
+  &__editContainer {
+    transition: height 0.5s ease-in-out;
+    background: #fafafa;
+    border-top: 1px solid #dcdcdc;
+    overflow: hidden;
+    height: 245px;
+    box-sizing: border-box;
+    &.ng-hide {
+      height: 0px;
+    }
+  }
+
+  &__submitButtons {
+    position: relative;
+    right: -8px;
+  }
+
+  &__removeIcon {
+    position: relative;
+    left: -14px;
+  }
+
+  &__editForm {
+    margin: $entity-padding;
+  }
+}
+
+.adminTabContent {
+  &__header {
+    align-self: flex-start;
+    background: #fafafa;
+    border-bottom: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    margin-bottom: $content-padding;
+  }
+
+  &__sortControls {
+    padding-left: $content-padding;
+    font-size: 12px;
+    letter-spacing: 0.007em;
+    line-height: 13px;
+    color: rgba(33, 33, 33, 0.38);
+    border-top: 1px solid #dcdcdc;
+  }
+
+  &__sortDropdown {
+    outline: none;
+    cursor: pointer;
+    width: 186px;
+  }
+
+  &__tabTitle {
+    padding: 8px $content-padding;
+  }
+
+  &__tabDesc {
+    color: rgba(0, 0, 0, 0.54);
+    padding: 8px $content-padding;
+    font-size: 14px;
+    border-top: 1px solid #dcdcdc;
+  }
+}

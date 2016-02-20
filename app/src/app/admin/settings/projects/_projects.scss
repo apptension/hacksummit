@@ -1,0 +1,15 @@
+.projectItem {
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    margin: 8px 15px 8px 0px;
+    background-color: #757575;
+    text-align: center;
+    md-icon {
+      color: #fff;
+    }
+  }
+
+}

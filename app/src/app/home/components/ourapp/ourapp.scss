@@ -1,0 +1,60 @@
+.homeOurapp{
+  width:100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 3%;
+}
+
+.homeOurapp__heading{
+  width: 100%;
+  text-align: center;
+}
+
+.homeOurapp__appImage{
+  width:59.5%;
+  height: 300px;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 5% 5% 5% 5%;
+}
+
+.homeOurapp__appFeatures{
+  width:39.5%;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 2% 2% 2% 2%;
+}
+
+
+.homeOurapp__feature{
+  width:100%;
+}
+
+.homeOurapp__imageWrapper{
+  width:10%;
+  vertical-align: top;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 4% 1% 1% 1%;
+}
+
+.homeOurapp__description{
+  width:89%;
+  display: inline-block;
+  text-align: left;
+}
+
+.homeOurapp_blue{
+  width:100%;
+  height: 100%;
+  background-color: blue;
+}
+
+.homeOurapp__image{
+  display: inline-block;
+  width: 100%;
+  height: 30px;
+  background-color: green;
+}
+
+

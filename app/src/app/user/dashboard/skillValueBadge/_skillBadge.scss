@@ -1,0 +1,19 @@
+.skill-badge {
+  display: inline-block;
+  position: relative;
+}
+
+.skill-badge__image {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.skill-badge__skill {
+  text-align: center;
+}

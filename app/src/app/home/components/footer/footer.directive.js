@@ -1,4 +1,4 @@
-import template from './ourapp.html';
+import template from './footer.html';
 
 export default ngInject(() => {
   return {
