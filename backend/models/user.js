@@ -1,8 +1,14 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define('user', {
-    username: DataTypes.STRING,
-    isAdmin: DataTypes.BOOLEAN
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    }
   }, {
     classMethods: {
       associate: function(models) {

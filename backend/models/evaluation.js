@@ -1,10 +1,22 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var evaluation = sequelize.define('evaluation', {
-    starred: DataTypes.BOOL,
-    date: DataTypes.DATE,
-    state: DataTypes.INTEGER,
-    comment: DataTypes.TEXT
+    starred: {
+      type: DataTypes.BOOL,
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    state: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    comment: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    }
   }, {
     classMethods: {
       associate: function(models) {

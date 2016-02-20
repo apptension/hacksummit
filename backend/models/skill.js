@@ -1,8 +1,14 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var skill = sequelize.define('skill', {
-    name: DataTypes.STRING,
-    isSoft: DataTypes.BOOLEAN
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    isSoft: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    }
   }, {
     classMethods: {
       associate: function(models) {

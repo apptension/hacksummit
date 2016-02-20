@@ -1,9 +1,18 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var project = sequelize.define('project', {
-    name: DataTypes.STRING,
-    startDate: DataTypes.DATE,
-    endDate: DataTypes.DATE
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    startDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    endDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    }
   }, {
     classMethods: {
       associate: function(models) {
