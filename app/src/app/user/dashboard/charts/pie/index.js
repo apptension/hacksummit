@@ -34,7 +34,7 @@ export default function PieChart(_config) {
     arc = d3.svg.arc()
       .innerRadius(radius - thickness)
       .outerRadius(radius)
-      .startAngle(() => mapValueToAngle(0))
+      .startAngle(0)
       .endAngle(mapValueToAngle);
 
     chart.call(renderPie);
@@ -47,10 +47,17 @@ export default function PieChart(_config) {
     series.enter()
       .append('path')
       .style('fill', '#7b6888')
-      .classed('pie-chart-series', true);
-
-    series
-      .attr('d', (d) => arc(d));
+      .classed('pie-chart-series', true)
+      .attr('d', arc(0))
+      .transition()
+      .duration(1000)
+      .attrTween('d', function (d) {
+        var interpolate = d3.interpolate(0, d);
+        return function (t) {
+          d = interpolate(t);
+          return arc(d);
+        };
+      });
 
     series.exit().remove();
   }

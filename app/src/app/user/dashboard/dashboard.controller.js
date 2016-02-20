@@ -32,9 +32,10 @@ export default ngInject(function DashboardController($scope, $mdSidenav, Stats, 
   function fetchData() {
 
   }
+
   Notification.scheduleNotfication();
 
   $scope.$on('$destroy', () => {
     Notification.cancelScheduled();
-  })
+  });
 });
