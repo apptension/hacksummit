@@ -1,6 +1,23 @@
 <div class="user-dashboard">
-    <md-button class="md-raised" notify-button>I WANT TO RATE SOMEONE NOW!!</md-button>
+    <div>
+        <div layout="row">
+            <div flex="33">
+                <filter-list filter-collection="vm.projects" filter-model="vm.filters.projects" filter-name-attributes="['name']" placeholder="All Projects"></filter-list>
+            </div>
 
+            <div flex="33">
+                <filter-list filter-collection="vm.skills" filter-model="vm.filters.skills" filter-name-attributes="['name']" placeholder="All Skills"></filter-list>
+            </div>
+
+            <div flex="33">
+                <md-datepicker ng-model="filters.dateFrom" md-placeholder="Enter date"></md-datepicker>
+                <md-datepicker ng-model="filters.dateTo" md-placeholder="Enter date"></md-datepicker>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <md-button class="md-raised" notify-button>I WANT TO RATE SOMEONE NOW!!</md-button>
     <div>
         <span user-badge data="vm.userData"></span>
         <span ng-repeat="skill in vm.userStats.skills" skill-badge data="skill" ng-if="vm.userStats"></span>
