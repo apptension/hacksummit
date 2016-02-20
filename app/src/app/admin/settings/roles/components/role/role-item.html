@@ -1,0 +1,32 @@
+<div layout="column" ng-cloak class="md-inline-form">
+    <md-content layout-padding>
+        <form name="userForm">
+            <div layout-gt-xs="row">
+                <md-input-container>
+                    <label>Role</label>
+                    <input ng-model="role.name">
+                </md-input-container>
+            </div>
+
+
+
+            <div layout-gt-xs="row">
+                <md-chips ng-model="roleSkills" md-autocomplete-snap md-transform-chip="transformChip($chip)">
+                    <md-autocomplete
+                            md-selected-item="selectedItem"
+                            md-search-text="searchText"
+                            md-items="item in querySearch(searchText)"
+                            md-item-text="item.name"
+                            placeholder="Search skills">
+                        <span md-highlight-text="searchText">{{item.name}}</span>
+                    </md-autocomplete>
+                    <md-chip-template>
+                        <span>
+                          <strong>{{$chip.name}}</strong>
+                        </span>
+                    </md-chip-template>
+                </md-chips>
+            </div>
+        </form>
+    </md-content>
+</div>
