@@ -59,7 +59,7 @@ epilogue.initialize({
 // Create REST resources
 var usersResource = epilogue.resource({
   model: models.User,
-  endpoints: ['/api/users']
+  endpoints: ['/api/users', '/api/users/:id']
 });
 
 var projectsResource = epilogue.resource({
@@ -80,25 +80,6 @@ var skillsetsResource = epilogue.resource({
 var rolesResource = epilogue.resource({
   model: models.Role,
   endpoints: ['/api/roles', '/api/roles/:id']
-});
-
-var ForbiddenError = epilogue.Errors.ForbiddenError;
-
-[usersResource, projectsResource, skillsResource, skillsetsResource, rolesResource].map(function(res) {
-  res.list.fetch.before(function(req, res, context) {
-    return passport.authenticate('token', function(err, user, info) {
-      if (err) {
-        res.status(500);
-        return context.stop();
-      }
-    
-      if (user) {
-        context.continue();
-      } else {
-        context.error(new ForbiddenError());
-      }
-    })(req, res, context);
-  });
 });
 
 // catch 404 and forward to error handler
