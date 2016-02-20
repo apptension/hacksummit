@@ -8,6 +8,7 @@ import Project from './project.service';
 import Skill from './skill.service';
 import Evaluation from './evaluation.service';
 import Stats from './stats.service';
+import Role from './role.service';
 
 export default angular.module('api', [
   'restangular'
@@ -18,4 +19,5 @@ export default angular.module('api', [
   .service('Skill', Skill)
   .service('Evaluation', Evaluation)
   .service('Stats', Stats)
+  .service('Role', Role)
   .name;

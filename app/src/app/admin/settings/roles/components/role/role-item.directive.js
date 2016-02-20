@@ -39,7 +39,7 @@ export default ngInject(() => {
 
       $scope.roleSkills = [
         {
-          name: "HTML5"
+          name: 'HTML5'
         }
       ];
 
@@ -49,13 +49,11 @@ export default ngInject(() => {
 
 
       function querySearch(query) {
-
         var results = query ? $scope.skills.filter(createFilterFor(query)) : [];
         return results;
       }
 
       function createFilterFor(query) {
-
         var lowercaseQuery = angular.lowercase(query);
         return function filterFn(skill) {
           return (angular.lowercase(skill.name).indexOf(lowercaseQuery) === 0);
