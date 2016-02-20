@@ -1,5 +1,19 @@
+@import "components/components";
+
 .adminHome__layout {
   padding: 2em;
+}
+
+.adminHome__filters {
+  margin-bottom: 2em;
+}
+
+.adminHome__filterItem {
+  padding-right: 2em;
+}
+
+.adminHome__filterText .highlight{
+  font-weight: bold;
 }
 
 .adminHome__usersListItem {
