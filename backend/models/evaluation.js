@@ -24,6 +24,10 @@ module.exports = function(sequelize, DataTypes) {
         models.evaluation.belongsTo(models.project, { onDelete: 'CASCADE', foreignKey: { allowNull: false } });
         models.evaluation.belongsTo(models.user, { as: 'EvaluatedUser', onDelete: 'CASCADE', foreignKey: { allowNull: false } });
         models.evaluation.belongsTo(models.user, { onDelete: 'CASCADE', foreignKey: { allowNull: false } });
+        models.evaluation.belongsTo(models.skill, {
+          onDelete: 'CASCADE',
+          foreignKey: { allowNull: false }
+        })
       }
     }
   });

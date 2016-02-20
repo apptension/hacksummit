@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         models.skillset.belongsToMany(models.skill, { through: models.skillSkillset });
+        models.skillset.belongsTo(models.project, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
     }
   });

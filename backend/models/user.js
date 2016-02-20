@@ -14,12 +14,12 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         models.user.belongsToMany(models.project, { through: models.userProject });
-        user.belongsTo(models.evaluation, {
+        user.hasMany(models.evaluation, {
           foreignKey: {
             allowNull: false
           }
         });
-        user.belongsTo(models.evaluation, {
+        user.hasMany(models.evaluation, {
           foreignKey: {
             allowNull: false
           },
