@@ -5,5 +5,5 @@
 
     <user-stats-chart data="vm.userStats"></user-stats-chart>
 
-    <span ng-repeat="skill in vm.userStats.skills" pie-chart data="skill.ratio" ng-if="vm.userStats"></span>
+    <span ng-repeat="skill in vm.userStats.skills" skill-badge data="skill" ng-if="vm.userStats"></span>
 </div>
