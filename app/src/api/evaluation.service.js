@@ -1,3 +1,2 @@
-export default ngInject(function ApiService($state) {
-    
+export default ngInject(function EvaluationService($state) {
 });

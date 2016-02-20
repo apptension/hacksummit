@@ -11,12 +11,9 @@ export default ngInject(function ($stateProvider, $urlRouterProvider, $locationP
   $stateProvider
     .state('app', {
       abstract: true,
-      url: `/{lang:(?:${availableLanguages.join('|')})}`,
+      url: '',
       template: appTemplate,
       controller: 'AppController',
-      controllerAs: 'app',
-      params: {
-        lang: {squash: true, value: null}
-      }
+      controllerAs: 'app'
     });
 });

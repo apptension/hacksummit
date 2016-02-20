@@ -17,7 +17,8 @@ import admin from './admin';
  * Local imports
  */
 import AppController from './app.controller';
-
+import UserController from './user/user.controller';
+import UserRateController from './user/rate/userRate.controller';
 
 
 export default angular.module('app', [
@@ -32,4 +33,6 @@ export default angular.module('app', [
 ])
   .config(routing)
   .controller('AppController', AppController)
+  .controller('UserController', UserController)
+  .controller('UserRateController', UserRateController)
   .name;
