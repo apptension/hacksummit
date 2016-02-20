@@ -1,6 +1,6 @@
 export default ngInject(function RateController(Evaluation, $state) {
   Evaluation.getTargetSuggestion().then((evaluation) => {
-    let data = evaluation.plain()[0];
+    let data = evaluation.plain();
     this.user = data.user;
     this.skill = data.skill;
   });
