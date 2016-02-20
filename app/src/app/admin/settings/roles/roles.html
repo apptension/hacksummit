@@ -1,11 +1,57 @@
-<div class="adminRoles">
-    <section class="md-whiteframe-z1" ng-repeat="role in roles">
-        <h1>role.name</h1>
-        <p>role.id</p>
-    </section>
-    <section class="md-whiteframe-z1">
-        <md-button class="md-fab md-primary md-raised" ng-click="showAdvanced($event)"  aria-label="Add Role">
-            <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
-        </md-button>
-    </section>
+<div layout="column" class="adminTabContent__layout">
+    <div flex layout="column" layout-fill class="adminTabContent__header">
+        <h1 class="md-title adminTabContent__tabTitle">Manage Roles</h1>
+        <div class="adminTabContent__tabDesc">
+            Lorem ipsum...
+        </div>
+        <div flex layout="row" class="adminTabContent__sortControls" layout-align="start center">
+            <md-menu>
+                <div class="adminTabContent__sortDropdown" ng-click="$mdOpenMenu($event)" layout="row" layout-align="space-between center">
+                    <span flex="grow">sorting 1</span>
+                    <md-icon flex="nogrow">arrow_drop_down</md-icon>
+                </div>
+                <md-menu-content width="3">
+                    <md-menu-item>
+                        <md-button>sorting 1</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button>sorting 2</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </div>
+
+    <div layout flex="none" layout-align="center center" ng-show="pending">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <div flex layout="column" layout-align="center center">
+        <div flex="none" class="adminTabItem__mainContainer" ng-repeat="role in roleList">
+            <div layout class="adminTabItem__labelContainer" ng-click="toggleItem(role)">
+                <md-list-item>
+                    <div class="projectItem__icon" layout layout-align="center center">
+                        <md-icon flex>markunread_mailbox</md-icon>
+                    </div>
+                    <div class="md-list-item-text">
+                        <span class="adminTabItem__name">{{ role.name }}</span>
+                        <span class="adminTabItem__desc">...</span>
+                    </div>
+                </md-list-item>
+            </div>
+            <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="role.edit">
+                <div layout="column" class="adminTabItem__editForm">
+                    <role-item-directive></role-item-directive>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<section class="md-whiteframe-z1">
+    <md-button class="md-fab md-primary md-raised" ng-click="showAdvanced($event)"  aria-label="Add Role">
+        <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+    </md-button>
+</section>
+
+

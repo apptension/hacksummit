@@ -6,6 +6,6 @@ export default ngInject(function ($stateProvider) {
       url: '/roles',
       template: rolesTemplate,
       controller: 'RolesController',
-      controllerAs: 'roles'
+      controllerAs: 'rolesCtrl'
     });
 });

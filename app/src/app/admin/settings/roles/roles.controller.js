@@ -1,8 +1,10 @@
 import template from './dialogs/addDialog.html';
 import DialogController from './dialogs/addDialog.controller';
 
-export default ngInject(function RolesController($scope,$mdDialog, $mdMedia) {
-  $scope.showAdvanced = function (ev) {
+export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Role) {
+  $scope.roleList = Role.getList();
+
+  $scope.showAdvanced = (ev) => {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     $mdDialog.show({
       controller: DialogController,
@@ -17,5 +19,23 @@ export default ngInject(function RolesController($scope,$mdDialog, $mdMedia) {
       }, function () {
         $scope.status = 'You cancelled the dialog.';
       });
+  };
+
+
+  $scope.roleList.forEach((role) => {
+    role.edite = false;
+  });
+
+  $scope.toggleItem = (selected) => {
+    if (selected.edit) {
+      selected.edit = false;
+      return;
+    }
+
+    $scope.roleList.forEach((role) => {
+      role.edit = false;
+    });
+
+    selected.edit = true;
   };
 });
