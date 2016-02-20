@@ -13,6 +13,9 @@ svg {
 
 .line-chart-series {
   fill: none;
-  stroke: #00ff00;
   stroke-width: 2;
+}
+
+.line-chart-series-dot {
+  cursor: pointer;
 }
