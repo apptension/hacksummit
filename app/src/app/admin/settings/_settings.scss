@@ -62,14 +62,21 @@ $entity-height: 85px;
   }
 
   &__editContainer {
-    transition: height 0.5s ease-in-out;
+    transition: height 0.4s ease-in-out;
     background: #fafafa;
     border-top: 1px solid #dcdcdc;
     overflow: hidden;
-    height: 245px;
     box-sizing: border-box;
+    height: 280px;
+    .adminTabItem__editForm {
+      transition: opacity 0.4s ease-in-out;
+      opacity: 1;
+    }
     &.ng-hide {
       height: 0px;
+      .adminTabItem__editForm {
+        opacity: 0;
+      }
     }
   }
 
@@ -84,7 +91,11 @@ $entity-height: 85px;
   }
 
   &__editForm {
-    margin: $entity-padding;
+    margin: $entity-padding $entity-padding 10px $entity-padding;
+  }
+
+  &__bottomControls {
+    margin-top: 20px;
   }
 }
 

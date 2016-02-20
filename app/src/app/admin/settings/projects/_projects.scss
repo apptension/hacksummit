@@ -1,5 +1,4 @@
 .projectItem {
-
   &__icon {
     width: 40px;
     height: 40px;
@@ -12,4 +11,17 @@
     }
   }
 
+  &__dateDivider {
+    margin: 0 20px;
+  }
+
+  &__editContainer {
+    height: 280px;
+  }
+}
+
+/* RESET */
+md-datepicker {
+  background: transparent;
+  margin-left: -14px;
 }

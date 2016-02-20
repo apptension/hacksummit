@@ -42,10 +42,30 @@
           </div>
         </md-list-item>
       </div>
-      <div class="adminTabItem__editContainer" ng-show="active">
+      <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="active">
         <div layout="column" class="adminTabItem__editForm">
-          
-          <div layout="row" layout-align="space-between center">
+          <md-input-container>
+            <label>Project Name</label>
+            <input type="text" name="name" />
+          </md-input-container>
+          <div layout="row" layout-align="start center">
+            <md-datepicker flex="nogrow" ng-model="startDate" md-placeholder="Start date"></md-datepicker>
+            <md-icon flex="nogrow" class="projectItem__dateDivider">remove</md-icon>
+            <md-datepicker flex="nogrow" ng-model="endDate" md-placeholder="End date"></md-datepicker>
+            <div flex></div>
+          </div>
+          <md-contact-chips
+            ng-model="ctrl.contacts"
+            md-contacts="ctrl.querySearch($query)"
+            md-contact-name="name"
+            md-contact-image="image"
+            md-contact-email="email"
+            md-require-match="true"
+            md-highlight-flags="i"
+            filter-selected="ctrl.filterSelected"
+            placeholder="Team members">
+          </md-contact-chips>
+          <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls">
             <md-button class="md-icon-button adminTabItem__removeIcon" flex="none">
               <md-icon>delete</md-icon>
             </md-button>
