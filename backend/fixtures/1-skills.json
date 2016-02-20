@@ -182,5 +182,141 @@
       "name": "PhoneGap",
       "isSoft": false
     }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 24,
+      "name": "PHP",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 25,
+      "name": "Wordpress",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 26,
+      "name": "Wordpress plugins development",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 27,
+      "name": "Text writing",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 28,
+      "name": "Information research",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 29,
+      "name": "Creativity",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 30,
+      "name": "PHP basis",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 31,
+      "name": "JS basis",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 32,
+      "name": "Yii2",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 33,
+      "name": "AngularJS",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 34,
+      "name": "PostgreSQL",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 35,
+      "name": "Material Design",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 36,
+      "name": "Open-minded",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 37,
+      "name": "Full-time availability",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 38,
+      "name": "Information research",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 39,
+      "name": "Multitasking",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "data": {
+      "id": 40,
+      "name": "Advanced Spanish",
+      "isSoft": true
+    }
   }
 ]
