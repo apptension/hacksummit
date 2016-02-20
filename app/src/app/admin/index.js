@@ -5,16 +5,18 @@ import routing from './admin.routes';
 
 import adminController from './admin.controller';
 
-import projectsComponent from './components/projects/projects.directive';
-import rolesComponent from './components/roles/roles.directive';
-import usersComponent from './components/users/users.directive';
+import home from './home';
+import roles from './roles';
+import users from './users';
+import projects from './projects';
 
 export default angular.module('app.admin', [
-  uirouter
+  uirouter,
+  home,
+  roles,
+  users,
+  projects
 ])
-  .directive('projects', projectsComponent)
-  .directive('users', usersComponent)
-  .directive('roles', rolesComponent)
   .controller('AdminController', adminController)
   .config(routing)
   .name;
