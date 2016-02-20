@@ -5,6 +5,9 @@ import routing from './admin.routes';
 
 import adminController from './admin.controller';
 
+import api from '../../api';
+
+
 import home from './home';
 import settings from './settings';
 
@@ -12,6 +15,7 @@ import settings from './settings';
 export default angular.module('app.admin', [
   uirouter,
   home,
+  api,
   settings
 ])
   .controller('AdminController', adminController)

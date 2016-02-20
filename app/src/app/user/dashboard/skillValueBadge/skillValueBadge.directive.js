@@ -1,4 +1,5 @@
 import template from './skillValueBadge.html';
+import {badgeConfig as config} from './badgeConfig';
 
 export default ngInject(() => {
   return {
@@ -8,14 +9,21 @@ export default ngInject(() => {
       data: '='
     },
     link: (scope) => {
-      function determineBackground(ratio) {
-        if (ratio > 70) { return 'lightgreen'; }
-        if (ratio > 40) { return 'yellow'; }
-        return 'red';
+      function determineLevel(ratio) {
+        if (ratio > 70) { return 'high'; }
+        if (ratio > 40) { return 'medium'; }
+        return 'low';
       }
 
       scope.ratioAwareBackground = (ratio) => {
-        return {backgroundColor: determineBackground(ratio)};
+        let lvl = determineLevel(ratio);
+        let background = config[lvl].background;
+        return {backgroundColor: background};
+      };
+
+      scope.ratioAwareCopy = (ratio) => {
+        let lvl = determineLevel(ratio);
+        return config[lvl].copy;
       };
     }
   };

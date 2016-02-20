@@ -1,0 +1,19 @@
+<md-chips ng-model="filterModel" md-autocomplete-snap
+          md-require-match="true"
+          class="filterList">
+    <md-autocomplete
+            md-selected-item="filters.project.searchModel"
+            md-search-text="searchModel"
+            md-items="item in search(filterCollection, filterModel, nameAttributes, searchModel)"
+            md-item-text="getName(item)"
+            md-min-length="0"
+            md-no-cache="true"
+            placeholder="{{ placeholder }}">
+        <span md-highlight-text="searchModel" md-highlight-flags="i" class="filterList__searchText">{{ getName(item) }}</span>
+    </md-autocomplete>
+    <md-chip-template>
+            <span>
+              <strong>{{getName($chip)}}</strong>
+            </span>
+    </md-chip-template>
+</md-chips>
