@@ -18,7 +18,8 @@ import api from '../api';
  * Local imports
  */
 import AppController from './app.controller';
-
+import UserController from './user/user.controller';
+import UserRateController from './user/rate/userRate.controller';
 
 export default angular.module('app', [
   ngCookies,
@@ -32,4 +33,6 @@ export default angular.module('app', [
   user
 ]).config(routing)
   .controller('AppController', AppController)
+  .controller('UserController', UserController)
+  .controller('UserRateController', UserRateController)
   .name;
