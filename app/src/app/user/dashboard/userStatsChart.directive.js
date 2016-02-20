@@ -5,7 +5,8 @@ export default ngInject(() => {
   return {
     restrict: 'E',
     scope: {
-      data: '='
+      data: '=',
+      skillpointSelected: '&'
     },
     link: (scope, element) => {
       let width = 600;
@@ -20,8 +21,12 @@ export default ngInject(() => {
       });
 
       function dispatchSelectedValue(d) {
-        let skill = _.find(scope.data.skills, {name: d.seriesName});
-        console.log(d, skill);
+        scope.$apply(() => {
+          scope.skillpointSelected({
+            skillName: d.seriesName,
+            date: d.x
+          });
+        });
       }
 
       function render(data) {
