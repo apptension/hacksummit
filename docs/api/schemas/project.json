@@ -2,5 +2,12 @@
   "id": 1,
   "name": "Sample projet name",
   "startDate": "2016-02-20",
-  "endDate": "2016-03-20"
+  "endDate": "2016-03-20",
+  "Skillsets": [{
+    "id": 1,
+    "name": "skillset name"
+  }, {
+    "id": 2,
+    "name": "skillset name"
+  }]
 }
