@@ -1,0 +1,7 @@
+[{
+  "username": "sample_username",
+  "isAdmin": true
+}, {
+  "username": "second_sample_username",
+  "isAdmin": false
+}]

@@ -1,0 +1,27 @@
+#%RAML 0.8
+title: HacksummitAPI
+version: v1
+baseUri: http://hacksummit.apptension.com
+mediaType:  application/json
+schemas:
+  - User: !include schemas/user.json
+/user:
+  get:
+    description: Returns current logged user
+    responses:
+      200:
+        body:
+          application/json:
+            schema: User
+  /login:
+    /{id}:
+      post:
+        description: Loggin user with a given id
+/users:
+  get:
+    description: Return the list of the users
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include schemas/users.json
