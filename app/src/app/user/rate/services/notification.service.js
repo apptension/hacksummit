@@ -18,6 +18,7 @@ export default ngInject(function NotificationService() {
     let notification = new Notification('Hello,', config);
     notification.addEventListener('click', () => {
       window.open('http://localhost:3000/user/rate', '_self');
+      notification.close();
     });
   };
 
