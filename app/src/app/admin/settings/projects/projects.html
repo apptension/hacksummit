@@ -28,7 +28,7 @@
 
   <div flex layout layout-align="center center">
     <div flex="none" class="adminTabItem__mainContainer">
-      <div layout class="adminTabItem__labelContainer">
+      <div layout class="adminTabItem__labelContainer" ng-click="active=!active">
         <md-list-item>
           <div class="projectItem__icon" layout layout-align="center center">
             <md-icon flex>markunread_mailbox</md-icon>
@@ -42,7 +42,7 @@
           </div>
         </md-list-item>
       </div>
-      <div class="adminTabItem__editContainer">
+      <div class="adminTabItem__editContainer" ng-show="active">
         <div layout="column" class="adminTabItem__editForm">
           aaa
         </div>
