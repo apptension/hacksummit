@@ -62,18 +62,18 @@ $entity-height: 85px;
   }
 
   &__editContainer {
-    transition: height 0.4s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
     background: #fafafa;
     border-top: 1px solid #dcdcdc;
     overflow: hidden;
     box-sizing: border-box;
-    height: 280px;
+    max-height: 350px;
     .adminTabItem__editForm {
       transition: opacity 0.4s ease-in-out;
       opacity: 1;
     }
     &.ng-hide {
-      height: 0px;
+      max-height: 0px;
       .adminTabItem__editForm {
         opacity: 0;
       }

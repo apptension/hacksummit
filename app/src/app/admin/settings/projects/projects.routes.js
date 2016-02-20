@@ -6,6 +6,6 @@ export default ngInject(function ($stateProvider) {
       url: '/projects',
       template: projectsTemplate,
       controller: 'ProjectsController',
-      controllerAs: 'projects'
+      controllerAs: 'projectsCtrl'
     });
 });

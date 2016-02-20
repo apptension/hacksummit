@@ -1,8 +1,10 @@
 [
   {
-    "name": "Project One"
+    "name": "Project One",
+    "members": [1]
   },
   {
-    "name": "Project Two"
+    "name": "Project Two",
+    "members": [1,2]
   }
 ]

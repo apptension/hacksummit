@@ -1,8 +1,14 @@
 [
   {
-    "name": "User 1"
+  	"id": 1,
+    "name": "User 1",
+    "email": "aaa@bbb.com",
+    "avatar": "http://lorempixel.com/50/50/people?1"
   },
   {
-    "name": "User 2"
+  	"id": 2,
+    "name": "User 2",
+    "email": "aaa@ccc.com",
+    "avatar": "http://lorempixel.com/50/50/people?1"
   }
 ]

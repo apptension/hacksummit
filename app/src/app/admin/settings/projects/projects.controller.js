@@ -1,11 +1,49 @@
-export default ngInject(function ProjectsController($scope, Project) {
-  $scope.projects = [];
+export default ngInject(function ProjectsController(Project, User) {
+  this.projects = [];
+  this.users = [];
 
-  let loadData = () => {
+  let loadProjects = () => {
     Project.getList().then((data) => {
-      $scope.projects = data;
+      this.projects = data.map((project) => {
+        project.edit = false;
+        project.members = project.members.map((memberId) => {
+          return _.find(this.users, {id: memberId});
+        });
+        return project;
+      });
     });
   };
 
-  loadData();
+  let loadUsers = () => {
+    return User.getList().then((data) => {
+      this.users = data;
+    });
+  };
+
+  let init = () => {
+    loadUsers().then(() => {
+      loadProjects();
+    });
+  };
+
+  this.toggleItem = (selected) => {
+    if (selected.edit) {
+      selected.edit = false;
+      return;
+    }
+
+    this.projects.forEach((project) => {
+      project.edit = false;
+    });
+
+    selected.edit = true;
+  };
+
+  this.searchUser = (input) => {
+    return this.users.filter((user) => {
+      return user.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0;
+    }) || [];
+  };
+
+  init();
 });
