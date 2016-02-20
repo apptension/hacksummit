@@ -35,7 +35,8 @@ export default function LineChart(_config) {
     yAxis = d3.svg.axis().scale(y).orient('left').ticks(5).tickSize(-config.width);
     line = d3.svg.line()
       .x((d) => x(d.x))
-      .y((d) => y(d.y));
+      .y((d) => y(d.y))
+      .interpolate('cardinal');
 
     chart.call(renderXAxis);
     chart.call(renderYAxis);

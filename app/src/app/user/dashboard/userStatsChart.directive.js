@@ -8,32 +8,40 @@ export default ngInject(() => {
       data: '='
     },
     link: (scope, element) => {
-      let width = 300;
-      let height = 200;
+      let width = 600;
+      let height = 400;
 
       let lineChart = LineChart({width, height}); // eslint-disable-line new-cap
 
-      let svg = d3.select(element[0]).selectAll('svg')
-        .data([{
-          series: _.map(scope.data.skills, (skill) => {
-            return {
-              name: skill.name,
-              values: _.map(skill.scores, (score) => {
-                return {x: score.date.toDate(), y: score.value};
-              })
-            };
-          })
-        }]);
+      function render() {
+        if (!scope.data) {
+          return;
+        }
 
-      svg.enter()
-        .append('svg')
-        .attr({
-          width: width,
-          height: height,
-          viewBox: `0 0 ${width} ${height}`
-        });
-      svg.call(lineChart);
-      svg.exit().remove();
+        let svg = d3.select(element[0]).selectAll('svg')
+          .data([{
+            series: _.map(scope.data.skills, (skill) => {
+              return {
+                name: skill.name,
+                values: _.map(skill.scores, (score) => {
+                  return {x: score.date.toDate(), y: score.value};
+                })
+              };
+            })
+          }]);
+
+        svg.enter()
+          .append('svg')
+          .attr({
+            width: width,
+            height: height,
+            viewBox: `0 0 ${width} ${height}`
+          });
+        svg.call(lineChart);
+        svg.exit().remove();
+      }
+
+      scope.$watch('data', render, true);
     }
   };
 });
