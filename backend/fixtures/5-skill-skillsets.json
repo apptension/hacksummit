@@ -1,0 +1,135 @@
+[
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 1,
+      "skillsetId": 4
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 2,
+      "skillsetId": 2
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 3,
+      "skillsetId": 1
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 4,
+      "skillsetId": 2
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 5,
+      "skillsetId": 1
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 6,
+      "skillsetId": 5
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 7,
+      "skillsetId": 1
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 8,
+      "skillsetId": 4
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 9,
+      "skillsetId": 3
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 10,
+      "skillsetId": 5
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 11,
+      "skillsetId": 3
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 12,
+      "skillsetId": 4
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 13,
+      "skillsetId": 1
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 14,
+      "skillsetId": 5
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 15,
+      "skillsetId": 1
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 16,
+      "skillsetId": 6
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 17,
+      "skillsetId": 7
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 18,
+      "skillsetId": 7
+    }
+  },
+  {
+    "model": "skillSkillset",
+    "data": {
+      "skillId": 19,
+      "skillsetId": 6
+    }
+  }
+]
