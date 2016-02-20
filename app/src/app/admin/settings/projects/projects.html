@@ -1,6 +1,6 @@
 <div layout="column" class="adminProjects__layout">
   <div layout="column" layout-fill class="adminProjects__header">
-    <div flex class="adminProjects__header" layout="column" layout-fill>
+    <div flex layout="column" layout-fill class="adminProjects__header">
       <h1 class="md-title">Manage Projects</h1>
       <div class="adminProjects__desc">
         Lorem ipsum...
@@ -21,9 +21,36 @@
     </div>
   </div>
 
+  <div layout flex="none" layout-align="center center" ng-show="pending">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
 
+  <md-content flex class="adminProjects__projectsList">
+    <div flex class="projectBlock__mainContainer">
+      <div layout class="projectBlock__labelContainer">
+        <md-list-item>
+          <div class="projectBlock__projectIcon" layout layout-align="center center">
+            <md-icon flex>markunread_mailbox</md-icon>
+          </div>
+          <div class="md-list-item-text">
+            <h3 class="md-body-2">nazwa projektu</h3>
+            <h4 class="md-caption">jakiś opis</h4>
+          </div>
+          <div class="md-secondary projectBlock__date">
+            2 III 2016
+          </div>
+        </md-list-item>
+      </div>
+      <div class="projectBlock__editContainer">
+        <div layout="column" class="projectBlock__editForm">
+          aaa
+        </div>
+      </div>
+    </div>
+  </md-content>
+</div>
 
-  <div flex>
+<!--   <div flex>
     <form name="projectForm">
       <md-input-container>
         <input type="text" name="name" placeholder="Name" required>
@@ -32,9 +59,10 @@
         </ng-messages>
       </md-input-container>
       <md-button>Create</md-button>
-  </form>
-  </div>
-  <md-content flex>
+    </form>
+  </div> -->
+
+<!--   <md-content flex>
     <md-list ng-cloak>
       <div class="md-list-item-text" layout="column">
       <md-list-item ng-repeat="project in projects" class="md-2-line">
@@ -47,5 +75,4 @@
       </md-list-item>
     </md-list>
   </md-content>
-  <md-button ui-sref="app.admin.home">Back</md-button>
-</div>
+  <md-button ui-sref="app.admin.home">Back</md-button> -->
