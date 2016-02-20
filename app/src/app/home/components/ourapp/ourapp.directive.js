@@ -1,4 +1,4 @@
-import template from './start.html';
+import template from './ourapp.html';
 
 export default ngInject(() => {
   return {
