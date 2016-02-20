@@ -1,13 +1,13 @@
-export default ngInject(function ProjectService(API) {
-  const projectsAPI = API.all('project');
+export default ngInject(function ProjectService(MockAPI) {
+  const projectsMockAPI = MockAPI.all('project');
 
   this.getList = () => {
-    return projectsAPI.getList().then((projects) => {
+    return projectsMockAPI.getList().then((projects) => {
       return projects.plain();
     });
   };
 
   this.get = (id) => {
-    return projectsAPI.get(id);
+    return projectsMockAPI.get(id);
   };
 });

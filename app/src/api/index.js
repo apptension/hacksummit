@@ -1,6 +1,7 @@
 import angular from 'angular';
 import 'restangular';
 
+import MockAPI from './mockApi.service';
 import API from './api.service';
 import User from './user.service';
 import Project from './project.service';
@@ -10,7 +11,8 @@ import Stats from './stats.service';
 
 export default angular.module('api', [
   'restangular'
-]).service('API', API)
+]).service('MockAPI', MockAPI)
+  .service('API', API)
   .service('User', User)
   .service('Project', Project)
   .service('Skill', Skill)

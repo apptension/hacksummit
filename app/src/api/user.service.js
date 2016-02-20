@@ -1,19 +1,19 @@
 export default ngInject(function UserService(API) {
-  const usersAPI = API.all('user');
+  const userAPI = API.all('user');
 
   this.getList = () => {
-    return usersAPI.getList();
+    return userAPI.getList();
   };
 
   this.get = (id) => {
-    return usersAPI.get(id);
+    return userAPI.get(id);
   };
 
   this.getProfile = () => {
-    return usersAPI.customGET('me');
+    return userAPI.customGET('me');
   };
 
   this.getSuggestedEvaluation = () => {
-    return usersAPI.customGET('evaluation');
+    return userAPI.customGET('evaluation');
   };
 });

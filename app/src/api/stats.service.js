@@ -1,11 +1,11 @@
 import moment from 'moment';
 
 
-export default ngInject(function StatsService(API) {
-  const statsAPI = API.all('stats');
+export default ngInject(function StatsService(MockAPI) {
+  const statsMockAPI = MockAPI.all('stats');
 
   this.getUserStats = (userId) => {
-    return statsAPI.get(userId).then(parseUserStats);
+    return statsMockAPI.get(userId).then(parseUserStats);
   };
 
   function parseUserStats(data) {

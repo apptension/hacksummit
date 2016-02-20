@@ -1,7 +1,7 @@
-export default ngInject(function StatsService(API) {
-  const statsAPI = API.all('skill');
+export default ngInject(function StatsService(MockAPI) {
+  const statsMockAPI = MockAPI.all('skill');
 
   this.getList = () => {
-    return statsAPI.getList();
+    return statsMockAPI.getList();
   };
 });

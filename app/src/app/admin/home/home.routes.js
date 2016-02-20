@@ -5,7 +5,7 @@ export default ngInject(function ($stateProvider) {
     .state('app.admin.home', {
       url: '',
       template: homeTemplate,
-      controller: 'HomeController',
+      controller: 'AdminHomeController',
       controllerAs: 'home'
     });
 });

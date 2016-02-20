@@ -12,6 +12,6 @@ export default angular.module('app.admin.home', [
   uirouter,
   components
 ])
-  .controller('HomeController', homeController)
+  .controller('AdminHomeController', homeController)
   .config(routing)
   .name;

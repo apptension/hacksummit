@@ -6,12 +6,14 @@ import startDirective from './components/start/start.directive';
 import ourappDirective from './components/ourapp/ourapp.directive';
 import teamDirective from './components/team/team.directive';
 import footerDirective from './components/footer/footer.directive';
+import HomeController from './home.controller';
 
 import routing from './home.routes';
 
 export default angular.module('app.home', [
   uirouter
-]).directive('headerDirective', headerDirective)
+]).controller('HomeController', HomeController)
+  .directive('headerDirective', headerDirective)
   .directive('startDirective', startDirective)
   .directive('ourappDirective', ourappDirective)
   .directive('teamDirective', teamDirective)
