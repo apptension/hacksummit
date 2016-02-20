@@ -12,12 +12,12 @@ import error404 from './error404';
 import home from './home';
 import user from './user';
 import admin from './admin';
+import api from '../api';
 
 /**
  * Local imports
  */
 import AppController from './app.controller';
-
 
 
 export default angular.module('app', [
@@ -28,8 +28,8 @@ export default angular.module('app', [
   error404,
   home,
   admin,
+  api,
   user
-])
-  .config(routing)
+]).config(routing)
   .controller('AppController', AppController)
   .name;
