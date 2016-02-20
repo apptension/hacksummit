@@ -103,14 +103,20 @@ export default function LineChart(_config) {
 
   function renderPaths(selection) {
     let paths = selection.selectAll('.line-chart-series-path').data((data) => [data]);
-    paths.enter().append('path').classed('line-chart-series-path', true);
-    paths.attr('d', (d) => line(d.values)).attr('stroke', (d) => colorScale(d.index));
+    paths.enter().append('path').classed('line-chart-series-path', true)
+      .attr('d', (d) => line(mapPointsToStraightLine(d.values)))
+      .attr('stroke', (d) => colorScale(d.index));
+
+    paths
+      .transition()
+      .duration(1000)
+      .attr('d', (d) => line(d.values));
     paths.exit().remove();
   }
 
   function renderDots(selection) {
     let dots = selection.selectAll('.line-chart-series-dot').data((data) => data.values);
-    dots.enter().append('circle').classed('line-chart-series-dot', true);
+    dots.enter().append('circle').classed('line-chart-series-dot', true).attr('opacity', 0);
     dots.attr({
       cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
       cy: (d) => yScale(d.y),
@@ -119,7 +125,23 @@ export default function LineChart(_config) {
     }).on('click', (d) => {
       dispatch.valueSelected(d);
     });
+
+    dots.transition().duration(500).delay(1000)
+      .attr('opacity', 1);
+
     dots.exit().remove();
+  }
+  
+  function mapPointsToStraightLine(points) {
+    let a = (_.first(points).y - _.last(points).y) / (_.first(points).x - _.last(points).x);
+    let b = _.first(points).y - a * _.first(points).x;
+
+    return _.map(points, (point) => {
+      return _.extend({}, point, {
+        x: point.x,
+        y: a * point.x + b
+      });
+    });
   }
 
   d3.rebind(chart, dispatch, 'on');
