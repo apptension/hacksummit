@@ -49,7 +49,8 @@ module.exports = {
               },
               onUpdate: 'CASCADE',
               onDelete: 'CASCADE',
-              allowNull: false
+              allowNull: false,
+              primaryKey: true
             },
             skillsetId: {
               type: Sequelize.INTEGER,
@@ -59,7 +60,8 @@ module.exports = {
               },
               onUpdate: 'CASCADE',
               onDelete: 'CASCADE',
-              allowNull: false
+              allowNull: false,
+              primaryKey: true
             }
           }).then(() => {
             return queryInterface.createTable('userProjects', {
@@ -71,7 +73,8 @@ module.exports = {
                 },
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE',
-                allowNull: false
+                allowNull: false,
+                primaryKey: true
               },
               projectId: {
                 type: Sequelize.INTEGER,
@@ -81,7 +84,8 @@ module.exports = {
                 },
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE',
-                allowNull: false
+                allowNull: false,
+                primaryKey: true
               }
             });
           });
