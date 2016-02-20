@@ -4,10 +4,31 @@
 }
 
 .homeStart__user, .homeStart__admin{
-  margin-top: 20px;
+  margin-top: 10%;
   width: 49%;
   display:inline-block;
   text-align: center;
   text-transform: uppercase;
 }
 
+.homeStart__photo{
+  border-radius: 50%;
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  background-color: blue;
+}
+
+.homeStart__description{
+  display: inline-block;
+}
+
+.homeStart__btnStart{
+  width: 150px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.homeStart__btnStart p{
+  vertical-align: middle;
+}
