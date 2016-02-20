@@ -32,14 +32,12 @@ export default function LineChart(_config) {
       return series;
     });
 
-    console.log(data);
-
     let xValues = _(data.series).map('values').flatten().map('x').value();
     let yValues = _(data.series).map('values').flatten().map('y').value();
 
     xOrdinalScale = d3.scale.ordinal().domain(xValues).rangeBands([0, config.width]);
     xTimeScale = d3.time.scale().domain(d3.extent(xValues)).nice().range([0, config.width]);
-    yScale = d3.scale.linear().domain(d3.extent(yValues)).range([config.height, 0]);
+    yScale = d3.scale.linear().domain(d3.extent(yValues)).nice().range([config.height, 0]);
     //colorScale.domain(d3.range(data.series.length));
 
     xAxis = d3.svg.axis().scale(xTimeScale).orient('bottom').tickSize(-config.height);

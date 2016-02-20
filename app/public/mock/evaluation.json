@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "stared": false,
+    "date": "2016-02-20",
+    "state": 0,
+    "comment": "Some comment sent by user",
+    "userId": 1,
+    "projectId": 1,
+    "skillId": 1
+  },
+  {
+    "id": 2,
+    "stared": false,
+    "date": "2016-02-20",
+    "state": 0,
+    "comment": "",
+    "userId": 1,
+    "projectId": 1,
+    "skillId": 1
+  },
+  {
+    "id": 3,
+    "stared": false,
+    "date": "2016-02-20",
+    "state": 0,
+    "comment": "Some comment sent by user",
+    "userId": 1,
+    "projectId": 1,
+    "skillId": 1
+  }
+]

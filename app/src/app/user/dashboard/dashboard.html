@@ -1,9 +1,23 @@
 <div class="user-dashboard">
-    <p>dashboard</p>
+    <div>
+        <md-button class="md-raised" notify-button>I WANT TO RATE SOMEONE NOW!!</md-button>
+    </div>
 
-    <md-button class="md-raised" notify-button>I WANT TO RATE SOMEONE NOW!!</md-button>
-
-    <user-stats-chart data="vm.userStats"></user-stats-chart>
+    <div>
+        <user-stats-chart data="vm.userStats"
+                          skillpoint-selected="vm.skillpointSelected(skillName, date)"></user-stats-chart>
+    </div>
 
     <span ng-repeat="skill in vm.userStats.skills" skill-badge data="skill" ng-if="vm.userStats"></span>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">
+        <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">Comments</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+            <div ng-repeat="evaluation in vm.evaluations" ng-if="::evaluation.comment">
+                <p>{{::evaluation.comment }}</p>
+            </div>
+        </md-content>
+    </md-sidenav>
 </div>
