@@ -19,6 +19,7 @@ import admin from './admin';
 import AppController from './app.controller';
 
 
+
 export default angular.module('app', [
   ngCookies,
   ngSanitize,
