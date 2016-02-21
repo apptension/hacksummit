@@ -23,9 +23,18 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
           return skill;
         });
 
-        this.softSkillStats = stats.global.filter(s => skillsById[s.skillId].isSoft);
-        this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
+        this.softSkillStats = stats.global
+          .map(s => {
+            let skill = this.skills.find(sk => sk.id === s.skillId);
+            return {
+              score: s.score,
+              isSoft: skill.isSoft,
+              name: skill.name
+            }
+          })
+          .filter(s => s.isSoft);
 
+        this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
         this.hardSkillStats = _.map(this.hardSkillStats, (skill, i) => {
           skill.color = ColorSet[i % ColorSet.length];
           return skill;
@@ -42,10 +51,10 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
   Stats.getContributors().then((contributors) => {
     this.contributorsList = {
       list: contributors
-        .sort(c => -c.score)
-        .map(c => {
-          return c.User;
-        })
+      .sort(c => -c.score)
+      .map(c => {
+        return c.User;
+      })
     };
   });
 
