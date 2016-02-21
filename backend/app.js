@@ -14,6 +14,7 @@ var models = require('./models'),
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
 var user = require('./routes/user');
 var evaluation = require('./routes/evaluation');
 
@@ -52,6 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/users', users);
 app.use('/api/user/me', user);
 app.use('/api/user/login', login);
+app.use('/api/user/logout', logout);
 
 // Initialize epilogue
 epilogue.initialize({

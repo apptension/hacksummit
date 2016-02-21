@@ -14,11 +14,4 @@ router.get('/', (req, res, next) => {
   }
 });
 
-router.post('/logout', (req, res, next) => {
-  req.logout();
-  res.json({
-    success: true
-  });
-});
-
 module.exports = router;
