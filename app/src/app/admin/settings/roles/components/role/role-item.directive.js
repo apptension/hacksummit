@@ -1,7 +1,7 @@
 import template from './role-item.html';
 
 
-export default ngInject(() => {
+export default ngInject((Skill, moment) => {
   return {
     restrict: 'AE',
     template: template,
@@ -12,36 +12,18 @@ export default ngInject(() => {
       $scope.selectedItem = null;
       $scope.searchText = null;
       $scope.transformChip = transformChip;
-      $scope.skills = [
-        {
-          name: 'Angular 1'
-        },
-        {
-          name: 'Angular 2'
-        },
-        {
-          name: 'ReactJS'
-        },
-        {
-          name: 'TypeScript'
-        },
-        {
-          name: 'CoffeeScript'
-        },
-        {
-          name: 'CSS'
-        },
-        {
-          name: 'WebGL'
-        }
-      ];
+      $scope.skills = [];
+      //Skill.getList()
+      //Skill.getList()
 
+      //roleList.Skills.then((data) => {
+      //  $scope.roleSkills = data.map((skill) => {
+      //    skill.updatedAt = moment.utc(skill.updatedAt).format("lll");
+      //    return skill;
+      //  });
+      //  console.log($scope.roleSkills);
+      //});
 
-      $scope.roleSkills = [
-        {
-          name: 'HTML5'
-        }
-      ];
 
       $scope.querySearch = querySearch;
       $scope.transformChip = transformChip;
@@ -61,7 +43,6 @@ export default ngInject(() => {
       }
 
       function transformChip(chip) {
-        console.log(chip);
         // If it is an object, it's already a known chip
         if (angular.isObject(chip)) {
           return chip;
@@ -72,5 +53,4 @@ export default ngInject(() => {
       }
     }
   };
-
 });
