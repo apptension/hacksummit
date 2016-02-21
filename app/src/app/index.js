@@ -25,6 +25,7 @@ import AppController from './app.controller';
 import UserController from './user/user.controller';
 import statsFilters from './directives/statsFilters/statsFilters.directive';
 import filterList from './directives/filterList/filterList.directive';
+import ColorSet from './colorSet.constant';
 
 export default angular.module('app', [
   ngCookies,
@@ -42,4 +43,5 @@ export default angular.module('app', [
   .controller('UserController', UserController)
   .directive('filterList', filterList)
   .directive('statsFilters', statsFilters)
+  .constant('ColorSet', ColorSet)
   .name;

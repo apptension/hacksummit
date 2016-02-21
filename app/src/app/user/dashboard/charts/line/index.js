@@ -26,10 +26,8 @@ export default function LineChart(_config) {
 
     data = _.cloneDeep(data);
     data.series = _.map(data.series, (series, seriesIndex) => {
-      series.index = seriesIndex;
       series.values = _.map(series.values, (value) => {
         value.seriesName = series.name;
-        value.seriesIndex = seriesIndex;
         return value;
       });
       return series;
@@ -173,7 +171,7 @@ export default function LineChart(_config) {
     let paths = selection.selectAll('.line-chart-series-path').data((data) => [data]);
     paths.enter().append('path').classed('line-chart-series-path', true)
       .attr('d', (d) => line(mapPointsToStraightLine(d.values)))
-      .attr('stroke', (d) => colorScale(d.index));
+      .attr('stroke', (d) => d.color);
 
     paths
       .transition()
@@ -191,8 +189,8 @@ export default function LineChart(_config) {
       .attr({
         cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
         cy: (d) => yScale(d.y),
-        fill: (d, i) => i === me.hoveredBandIndex ? '#ffffff' : colorScale(d.seriesIndex),
-        stroke: (d) => colorScale(d.seriesIndex),
+        fill: (d, i) => i === me.hoveredBandIndex ? '#ffffff' : d.color,
+        stroke: (d) => d.color,
         strokeWidth: (d, i) => i === me.hoveredBandIndex ? 2 : 0,
         r: (d, i) => i === me.hoveredBandIndex ? 4 : 3
       });

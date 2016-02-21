@@ -43,19 +43,20 @@ export default ngInject(($window, $timeout) => {
           }
 
           let svg = d3.select(element[0]).selectAll('svg')
-          .data([{
-            series: _.map(data, (skill) => {
-              return {
-                name: skill.name,
-                values: _.map(skill.scores, (score) => {
-                  return {x: score.date, y: score.value};
-                })
-              };
-            })
-          }]);
+            .data([{
+              series: _.map(data, (skill) => {
+                return {
+                  name: skill.name,
+                  color: skill.color,
+                  values: _.map(skill.scores, (score) => {
+                    return {x: score.date, y: score.value, color: skill.color};
+                  })
+                };
+              })
+            }]);
 
           svg.enter()
-          .append('svg');
+            .append('svg');
 
           svg.attr({
             width: width,

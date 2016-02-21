@@ -7,42 +7,41 @@
             available-skills="vm.skills"
             available-projects="vm.projects"/>
 
-        <md-button class="md-raised" ui-sref="app.user.rate">I WANT TO RATE SOMEONE NOW!!</md-button>
-    </div>
+    <md-button class="md-raised" ui-sref="app.user.rate">I WANT TO RATE SOMEONE NOW!!</md-button>
+</div>
 
-    <div class="user-dashboard__col-wrapper">
-        <div class="user-dashboard__main-col">
-            <div>
-                <h3>Your team skills</h3>
-                <div class="user-dashboard__team-skills">
+<div class="user-dashboard__col-wrapper">
+    <div class="user-dashboard__main-col">
+        <div>
+            <h3>Your team skills</h3>
+            <div class="user-dashboard__team-skills">
                     <span ng-repeat="skill in vm.softSkillStats" skill-badge data="skill"
                           ng-if="vm.softSkillStats"></span>
-                </div>
             </div>
-
-            <div>
-                <h3>Your technical skills</h3>
-                <user-stats-chart class="user-stats-chart" data="[skill]"
-                                  skillpoint-selected="vm.skillpointSelected(date)"
-                                  ng-repeat="skill in vm.hardSkillStats"></user-stats-chart>
-            </div>
-
-            <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">
-                <md-toolbar class="md-theme-light">
-                    <h1 class="md-toolbar-tools">Comments</h1>
-                </md-toolbar>
-                <md-content layout-padding>
-                    <div ng-repeat="evaluation in vm.evaluations" ng-if="::evaluation.comment">
-                        <p>{{::evaluation.comment }}</p>
-                    </div>
-                </md-content>
-            </md-sidenav>
         </div>
-        <div class="user-dashboard__side-col">
-            <div>
-                <h3>Contributors this week</h3>
-                <div users-top-list data="vm.contributorsList"></div>
-            </div>
+
+        <div ng-repeat="skill in vm.hardSkillStats">
+            <h3>Your {{skill.name}} skills</h3>
+            <user-stats-chart class="user-stats-chart" data="[skill]"
+                              skillpoint-selected="vm.skillpointSelected(date)"></user-stats-chart>
+        </div>
+
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">Comments</h1>
+            </md-toolbar>
+            <md-content layout-padding>
+                <div ng-repeat="evaluation in vm.evaluations" ng-if="::evaluation.comment">
+                    <p>{{::evaluation.comment }}</p>
+                </div>
+            </md-content>
+        </md-sidenav>
+    </div>
+    <div class="user-dashboard__side-col">
+        <div>
+            <h3>Contributors this week</h3>
+            <div users-top-list data="vm.contributorsList"></div>
         </div>
     </div>
+</div>
 </div>

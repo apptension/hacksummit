@@ -1,4 +1,4 @@
-export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
+export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, ColorSet, Stats, Evaluation, Project, Skill, User, Notification) {
   $scope.filters = {
     project: [],
     skill: [],
@@ -12,8 +12,10 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
 
     Stats.getList(filters).then((_stats) => {
       let stats = _stats.plain();
-      stats.skills = _.map(stats.skills, (skill) => {
+      stats.skills = _.map(stats.skills, (skill, i) => {
         skill.scores = skill.scores[0].scores;
+        skill.color = ColorSet[i % ColorSet.length];
+        skill.name = _.find(this.skills, {id: skill.skillId}).name;
         return skill;
       });
 
