@@ -69,7 +69,8 @@ router.put('/:id/evaluation', (req, res, next) => {
                 return models.Evaluation.update({
                   starred: starred,
                   date: (new Date()).getTime(),
-                  state: state
+                  state: state,
+                  comment: req.body.comment
                 }, {
                   where: {
                     id: evaluation.id

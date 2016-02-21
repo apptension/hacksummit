@@ -33,5 +33,5 @@ module.exports = (options) => {
     update: {
       write: process
     }
-  }
+  };
 };
