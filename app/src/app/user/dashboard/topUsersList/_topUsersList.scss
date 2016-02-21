@@ -1,9 +1,11 @@
 .top-list {
 	display: inline-block;
+	text-align: left;
 }
 
 .top-list__item {
-	margin-bottom: 20px;
+	margin: 10px 0;
+	display: flex;
 }
 
 .top-list__rank {
@@ -16,13 +18,14 @@
 	text-align: center;
 	line-height: 15px;
 	font-size: 10px;
+	align-self: center;
 }
 
 .top-list__divider {
 	border-top: 1px solid #f6f6f6;
 	margin-left: 25px;
 	margin-top: 5px;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	width: 100%;
 	display: inline-block;
 }
