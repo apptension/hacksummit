@@ -44,7 +44,7 @@ export default function LineChart(_config) {
     xOrdinalScale = d3.scale.ordinal().domain(xValues).rangeBands([0, config.width]);
     xTimeScale = d3.time.scale().domain(d3.extent(xValues)).nice().range([0, config.width]);
     yScale = d3.scale.linear().domain([0, 100]).nice().range([config.height, 0]);
-    emotesScale = d3.scale.ordinal().domain(d3.range(5)).rangeBands([config.height, 0]);
+    emotesScale = d3.scale.ordinal().domain(d3.range(5)).rangeBands([0, config.height]);
 
     xAxis = d3.svg.axis().scale(xTimeScale).orient('bottom').tickSize(13);
     yAxis = d3.svg.axis().scale(yScale).orient('left').ticks(5).tickSize(-config.width, 0);
