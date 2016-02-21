@@ -92,6 +92,10 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
     });
   };
 
+  this.commentsClose = () => {
+    $mdSidenav('commentSidebar').close();
+  };
+
   Notification.scheduleNotfication();
 
   $scope.$watch('filters', fetchStats, true);

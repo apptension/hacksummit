@@ -58,3 +58,77 @@ md-sidenav, md-backdrop {
 	align-items: center;
 	justify-content: space-around;
 }
+
+.dashboard-sidenav__title {
+	text-align: center;
+	margin: 0px;
+	font-size: 24px;
+	line-height: 24px;
+	font-weight: normal;
+	text-transform: uppercase;
+	display: inline-block;
+	color: #515050;
+}
+
+.dashboard-sidenav__header {
+	width: 346px;
+	margin: 110px 57px 12px 57px;
+}
+
+.dashboard-sidenav__date-range {
+	margin-top: 15px;
+	font-size: 14px;
+}
+
+.dashboard-sidenav__close-icon {
+	@include retina-sprite($close-group);
+}
+
+.dashboard-sidenav__close-button {
+	position: relative;
+	right: -14px;
+}
+
+.dashboard-sidenav__comment-content {
+	font-size: 14px;
+	border-bottom: 2px solid #e6e6e6;
+}
+
+.dashboard-sidenav__comment-icon {
+	width: 57px;
+	height: 96px;
+
+}
+
+.dashboard-sidenav__comment-time {
+	margin-top: 26px;
+	font-size: 12px;
+	text-transform: uppercase;
+	color: rgba(0, 0, 0, 0.54);
+	display: block;
+}
+
+.dashboard-sidenav__comment-text {
+	margin-top: 8px;
+	margin-bottom: 16px;
+	font-size: 14px;
+	width: 346px;
+	display: block;
+	color: #737373;
+}
+
+.dashboard-sidenav__thumb-up-icon {
+	margin-top: 53px;
+	@include retina-sprite($thumb-up-group);
+}
+
+.dashboard-sidenav__thumb-down-icon {
+	margin-top: 53px;
+	@include retina-sprite($thumb-down-group);
+}
+
+.user-dashboard__sidenav {
+	width: 460px;
+	max-width: 460px;
+}
+
