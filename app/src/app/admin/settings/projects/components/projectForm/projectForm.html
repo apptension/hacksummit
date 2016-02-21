@@ -1,8 +1,8 @@
-<div layout="column" class="adminTabItem__editForm">
+<form name="projectForm" layout="column" class="adminTabItem__editForm">
     <div class="form__inputGroup" layout="row">
         <label flex="none" class="form__inputLabel projectItem__nameLabel">Project Name: </label>
         <md-input-container flex md-no-float class="form__inputControl projectItem__projectNameControl">
-            <input class="form__input" ng-model="getFormModel().name" aria-label="formModelName" placeholder="Enter Project name"/>
+            <input class="form__input" ng-model="getFormModel().name" aria-label="formModelName" required name="name" placeholder="Enter Project name"/>
         </md-input-container>
     </div>
 
@@ -13,13 +13,13 @@
         <div flex="grow">
             <div layout="row">
                 <div class="form__inputGroup form__inputGroup--datepicker projectItem__datepicker" layout="row">
-                    <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="getFormModel().startDate" md-placeholder="Start date"></md-datepicker>
+                    <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="getFormModel().startDate" required name="startDate" md-placeholder="Start date"></md-datepicker>
                 </div>
 
                 <md-icon class="projectItem__datepickersSpacer">remove</md-icon>
 
                 <div class="form__inputGroup form__inputGroup--datepicker projectItem__datepicker" layout="row">
-                    <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="getFormModel().endDate" md-placeholder="Start date"></md-datepicker>
+                    <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="getFormModel().endDate" required name="startDate" md-placeholder="Start date"></md-datepicker>
                 </div>
             </div>
         </div>
@@ -37,4 +37,4 @@
                 md-require-match="true">
         </md-contact-chips>
     </div>
-</div>
+</form>

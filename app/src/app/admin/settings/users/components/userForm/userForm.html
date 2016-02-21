@@ -1,9 +1,9 @@
-<div layout="column" class="adminTabItem__editForm">
+<form name="userForm" layout="column" class="adminTabItem__editForm">
 
     <div class="form__inputGroup" layout="row">
         <label flex="none" class="form__inputLabel userItem__nameLabel">Name: </label>
         <md-input-container flex md-no-float class="form__inputControl">
-            <input class="form__input" ng-model="getFormModel().name" aria-label="formModelName" placeholder="Enter User name"/>
+            <input class="form__input" ng-model="getFormModel().name" aria-label="formModelName" required name="name" placeholder="Enter User name"/>
         </md-input-container>
     </div>
 
@@ -32,4 +32,4 @@
         <md-switch flex="10" ng-model="getFormModel().isAdmin" aria-label="Admin Switch"></md-switch>
     </div>
 
-</div>
+</form>
