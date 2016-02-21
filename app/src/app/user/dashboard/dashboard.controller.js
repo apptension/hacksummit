@@ -54,8 +54,6 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
             })
             .filter(s => s.isSoft)
             .filter(s => s.userId === u.id);
-
-          debugger;
         });
 
         this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);

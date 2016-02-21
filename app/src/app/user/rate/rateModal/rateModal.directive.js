@@ -75,10 +75,6 @@ export default ngInject(($state, User, Question, Project) => {
           $state.go('app.user.dashboard');
         });
       };
-
-      scope.activateForm = () => {
-
-      }
     }
   };
 });
