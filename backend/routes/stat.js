@@ -40,18 +40,20 @@ router.get('/', (req, res, next) => {
       [sequelize.fn('year', sequelize.col('date')), 'year'],
       [sequelize.fn('weekofyear', sequelize.col('date')), 'week'],
       [sequelize.fn('avg', sequelize.col('starred')), 'value'],
-      'skillId'
+      'skillId',
+      'userId'
     ],
     group: [
       sequelize.fn('year', sequelize.col('date')),
       sequelize.fn('weekofyear', sequelize.col('date')),
-      'skillId'
+      'skillId',
+      'userId'
       ]
     };
 
   if (users && users.length) {
-    query.attributes.push('userId');
-    query.group.push('userId');
+    //query.attributes.push('userId');
+    //query.group.push('userId');
     where.userId = users;
   }
 
@@ -62,40 +64,32 @@ router.get('/', (req, res, next) => {
 
     var mapped = result.map((el) => {
       return {
-        //userId: el.getDataValue('userId'),
+        userId: el.getDataValue('userId'),
         skillId: el.getDataValue('skillId'),
         value: el.getDataValue('value'),
         date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')) - 1, 'weeks').format('X')
       };
     });
-    var grouped = _.values(_.groupBy(mapped, 'skillId')).map((skillStats) => {
+
+    let grouped = _.values(_.groupBy(mapped, 'skillId')).map((skillStats) => {
       return {
         skillId: skillStats[0].skillId,
-        scores: skillStats.map((el) => {
-          return _.pick(el, ['value', 'date']);
+        scores: _.values(_.groupBy(skillStats, 'userId')).map((userStats) => {
+          return {
+            userId: userStats[0].userId,
+            scores: userStats.map((s) => {
+              return _.pick(s, ['date', 'value']);
+            })
+          }
         })
       }
     });
+
     res.json({
       skills: grouped
     });
   });
 
-  //models.sequelize.query('SELECT \
-  //  year(date) as year, \
-  //  weekofyear(date) as week, \
-  //  avg(starred) * 100 as value \
-  //FROM hacksummit.evaluations \
-  //group by \
-  //  year(date), \
-  //  weekofyear(date)'
-  //).then(function(data) {
-  //  res.json(data[0].map((el) => {
-  //    return {
-  //      value: el.value
-  //    };
-  //  }));
-  //});
 });
 
 module.exports = router;
