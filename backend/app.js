@@ -16,6 +16,7 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var user = require('./routes/user');
+var userEvaluation = require('./routes/userEvaluation');
 var evaluation = require('./routes/evaluation');
 
 var assoMiddleware = require('./middleware/associationFactory');
@@ -109,7 +110,14 @@ rolesResource.use(assoMiddleware({
   setMethod: 'setSkills'
 }));
 
-app.use('/api/user', evaluation);
+var evaluationsResource = epilogue.resource({
+  model: models.Evaluation,
+  endpoints: ['/api/evaluation'],
+  actions: ['list']
+});
+
+app.use('/api/user', userEvaluation);
+app.use('/api/evaluation', evaluation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
