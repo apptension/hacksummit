@@ -3,6 +3,7 @@ import ngSanitize from 'angular-sanitize';
 import ngCookies from 'angular-cookies';
 import uirouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
+import ngAnimate from 'angular-animate';
 
 //manually import styles
 import 'angular-material/angular-material.css';
@@ -36,7 +37,8 @@ export default angular.module('app', [
   admin,
   api,
   user,
-  ngMaterial
+  ngMaterial,
+  ngAnimate
 ]).config(routing)
   .config(material)
   .controller('AppController', AppController)
