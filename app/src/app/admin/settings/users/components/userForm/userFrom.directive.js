@@ -34,9 +34,9 @@ export default ngInject(() => {
         return modelObject;
       };
 
-      $scope.searchUser = (input, excluded) => {
-        return $scope.getRolesCollection().filter((user) => {
-            return user.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0 && excluded.indexOf(user) === -1;
+      $scope.searchRole = (input, excluded) => {
+        return $scope.getRolesCollection().filter((role) => {
+            return role.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0 && !excluded.find((f) => {return f.id === role.id});
           }) || [];
       };
     }

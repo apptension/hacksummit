@@ -1,19 +1,23 @@
 import addRoleDialogTemplate from './components/addRoleDialog/addRoleDialog.html';
 import addRoleDialogController from './components/addRoleDialog/addRoleDialog.controller';
+import _ from 'lodash';
 
-export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Role, Skill, moment) {
+export default ngInject(function RolesController($scope, $mdDialog, $mdMedia, $timeout, Role, Skill, moment) {
   this.roles = [];
   this.skills = [];
   this.filters = {
     searchText: ''
   };
 
+  let createRole = (role) => {
+    role.edit = false;
+    role.updatedAt = moment.utc(role.updatedAt).format('lll');
+    role.formModel = angular.copy(role);
+  };
+
   Role.getList().then((data) => {
     this.roles = data.map((role) => {
-      role.edit = false;
-      role.Skills = data.Skills ? data.Skills : [];
-      role.updatedAt = moment.utc(role.updatedAt).format('lll');
-      role.formModel = angular.copy(role);
+      createRole(role);
       return role;
     });
   });
@@ -33,12 +37,18 @@ export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Rol
         skills: this.skills
       }
     }).then((newRole) => {
-      console.log(newRole)
+      Role.post(newRole).then((created) => {
+        newRole.id = created.id;
+        createRole(newRole);
+        this.roles.push(newRole)
+      });
     });
   };
 
   this.submitRole = (role) => {
     let roleIndex = this.roles.indexOf(role);
+
+    Role.put(role.formModel);
 
     role = role.formModel;
     role.edit = true;
@@ -46,6 +56,10 @@ export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Rol
     role.formModel = angular.copy(role);
 
     this.roles[roleIndex] = role;
+
+    $timeout(() => {
+      role.edit = false;
+    })
   };
 
   this.toggleItem = (selected) => {
@@ -68,7 +82,9 @@ export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Rol
       .ok('OK')
       .cancel('Cancel')
     ).then(() => {
-      console.log('delete')
+      Role.delete(role).then(() => {
+        this.roles = _.without(this.roles, role);
+      })
     });
   };
 

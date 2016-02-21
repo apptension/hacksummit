@@ -1,4 +1,5 @@
 'use strict';
+var moment = require('moment');
 module.exports = function(sequelize, DataTypes) {
   var Project = sequelize.define('Project', {
     name: {
