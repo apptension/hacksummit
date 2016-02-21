@@ -1,12 +1,15 @@
 <div class="user-dashboard">
-    <stats-filters
-        projects="projects"
-        skills="skills"
-        users="users"
-        stats="stats"
-        user-id="userId" />
+    <div class="user-dashboard__top-bar">
+        <stats-filters
+                class="user-dashboard__filters"
+                projects="projects"
+                skills="skills"
+                users="users"
+                stats="stats"
+                user-id="userId" />
 
-    <md-button class="md-raised" ui-sref="app.user.rate">I WANT TO RATE SOMEONE NOW!!</md-button>
+        <md-button class="md-raised" ui-sref="app.user.rate">I WANT TO RATE SOMEONE NOW!!</md-button>
+    </div>
 
     <div class="user-dashboard__col-wrapper">
         <div class="user-dashboard__main-col">

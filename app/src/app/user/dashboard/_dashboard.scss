@@ -7,6 +7,24 @@ md-sidenav, md-backdrop {
 	position: fixed;
 }
 
+.user-dashboard {
+	padding: 0 20px;
+
+	@media(min-width: 900px) {
+		padding: 0 80px;
+	}
+}
+
+.user-dashboard__top-bar {
+	display: flex;
+	align-items: center;
+}
+
+.user-dashboard__filters {
+	display: inline-block;
+	flex-grow: 1;
+}
+
 .user-dashboard h3 {
 	font-weight: normal;
 }
