@@ -6,8 +6,8 @@ md-dialog {
 	overflow: hidden;
 }
 
-md-input-container {
-	padding: 0 20px;
+.feedback {
+	padding: 20px 30px;
 }
 
 .rate {
@@ -138,8 +138,23 @@ md-input-container {
 	}
 }
 
-md-input-container .feedback__text {
+.feedback__text {
+	width: 100%;
+}
+
+.feedback__text-label {
 	color: white;
+	min-height: 0;
+}
+
+.feedback__text .feedback__text-input {
+	border-color: rgba(255,255,255,.5);
+	transition: all .5s ease-in;
+
+	&:active {
+		min-height: 200px;
+		background-color: white;
+	}
 }
 
 .feedback-btns {

@@ -31,10 +31,11 @@
     <md-button class="dismiss-btn" ng-click="submit(-1)">I'm not able to tell</md-button>
 
     <div class="feedback" ng-show="activeStep">
-        <md-input-container>
-            <h3 class="feedback__title">{{ feedback.title }}</h3>
-            <p class="feedback__description">{{ feedback.description }}</p>
-            <textarea class="feedback__text" ng-model="feedbackText"></textarea>
+        <h3 class="feedback__title">{{ feedback.title }}</h3>
+        <p class="feedback__description">{{ feedback.description }}</p>
+        <md-input-container class="feedback__text">
+            <label class="feedback__text-label">Comment</label>
+            <textarea class="feedback__text-input" ng-model="feedbackText"></textarea>
         </md-input-container>
 
         <div class="feedback-btns">
