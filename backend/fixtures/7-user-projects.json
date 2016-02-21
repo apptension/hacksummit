@@ -1,0 +1,74 @@
+[
+  {
+    "model": "UserProject",
+    "keys": ["UserId", "ProjectId"],
+    "data": {
+      "UserId": 1,
+      "ProjectId": 1
+    }
+  },
+  {
+    "model": "UserProject",
+    "keys": ["UserId", "ProjectId"],
+    "data": {
+      "UserId": 2,
+      "ProjectId": 1
+    }
+  },
+  {
+    "model": "UserProject",
+    "keys": ["UserId", "ProjectId"],
+    "data": {
+      "UserId": 3,
+      "ProjectId": 1
+    }
+  },
+  {
+    "model": "UserProject",
+    "keys": ["UserId", "ProjectId"],
+    "data": {
+      "UserId": 4,
+      "ProjectId": 1
+    }
+  },
+  {
+    "model": "UserProject",
+    "keys": ["UserId", "ProjectId"],
+    "data": {
+      "UserId": 5,
+      "ProjectId": 1
+    }
+  },
+  {
+    "model": "UserProject",
+    "keys": ["UserId", "ProjectId"],
+    "data": {
+      "UserId": 1,
+      "ProjectId": 2
+    }
+  },
+  {
+    "model": "UserProject",
+    "keys": ["UserId", "ProjectId"],
+    "data": {
+      "UserId": 2,
+      "ProjectId": 2
+    }
+  },
+  {
+    "model": "UserProject",
+    "keys": ["UserId", "ProjectId"],
+    "data": {
+      "UserId": 1,
+      "ProjectId": 3
+    }
+  },
+  {
+    "model": "UserProject",
+    "keys": ["UserId", "ProjectId"],
+    "data": {
+      "UserId": 4,
+      "ProjectId": 3
+    }
+  }
+]
