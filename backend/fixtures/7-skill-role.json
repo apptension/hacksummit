@@ -1,0 +1,362 @@
+[
+  {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 1,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 2,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 3,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 4,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 5,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 6,
+      "RoleId": 2
+    }
+  },  
+   {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 7,
+      "RoleId": 1
+    }
+  },
+   {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 7,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 7,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 8,
+      "RoleId": 3
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 9,
+      "RoleId": 3
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 10,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 11,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 12,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 13,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 14,
+      "RoleId": 1
+    }
+  },
+   {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 15,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 16,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 17,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 18,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 19,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 20,
+      "RoleId": 2
+    }
+  },  
+  {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 20,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 21,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 22,
+      "RoleId": 2
+    }
+  },  
+   {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 23,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 23,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 24,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 25,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 26,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 27,
+      "RoleId": 1
+    }
+  },
+   {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 27,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 27,
+      "RoleId": 3
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 28,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 28,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 28,
+      "RoleId": 3
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 29,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 29,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 29,
+      "RoleId": 3
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 30,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 30,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 30,
+      "RoleId": 3
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 31,
+      "RoleId": 1
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 31,
+      "RoleId": 2
+    }
+  },
+    {
+    "model": "SkillRole",
+    "keys": ["RoleId", "SkillId"],
+    "data": {
+      "SkillId": 31,
+      "RoleId": 3
+    }
+  }
+]
