@@ -143,8 +143,9 @@ md-dialog {
 }
 
 .feedback__text-label {
-	color: white;
+	color: white !important;
 	min-height: 0;
+	margin-bottom: 5px;
 }
 
 .feedback__text .feedback__text-input {
@@ -168,10 +169,6 @@ md-dialog {
 		border: none;
 		border-radius: 3px;
 		padding: 10px;
-	}
-
-	.feedback__text-label {
-		color: white !important;
 	}
 }
 

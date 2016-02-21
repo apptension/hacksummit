@@ -28,7 +28,7 @@ export default ngInject(function UserService(API, MockAPI) {
 
   this.prepareSubmitData = (data) => {
     return {
-      id: data.id,
+      evaluationId: data.id,
       comment: data.comment,
       state: data.value !== -1 ? 1 : 2,
       starred: data.value === 1 ? 1 : 0
