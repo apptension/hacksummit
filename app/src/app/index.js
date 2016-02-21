@@ -17,6 +17,7 @@ import user from './user';
 import admin from './admin';
 import api from '../api';
 
+import material from './material.config';
 /**
  * Local imports
  */
@@ -34,6 +35,7 @@ export default angular.module('app', [
   user,
   ngMaterial
 ]).config(routing)
+  .config(material)
   .controller('AppController', AppController)
   .controller('UserController', UserController)
   .name;
