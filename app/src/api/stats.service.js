@@ -3,19 +3,27 @@ import moment from 'moment';
 export default ngInject(function StatsService(MockAPI, $httpParamSerializerJQLike) {
   const statsMockAPI = MockAPI.all('stats');
 
+  let parseParams = () => {
+    let paramsParsed = '';
+
+    if (params !== null) {
+      paramsParsed = $httpParamSerializerJQLike(params);
+    }
+    
+    return paramsParsed;
+  };
+
   this.getContributors = () => {
     return statsMockAPI.customGET('contributors');
   };
 
-  this.getUserStats = (userId, params = null) => {
-    let paramsParsed = '';
-    
-    if (params !== null) {
-      paramsParsed = $httpParamSerializerJQLike(params);
-    }
+  this.getList = (params = null) => {
+    statsMockAPI.getList(parseParams(params));
+  };
 
+  this.getUserStats = (userId, params = null) => {
     return statsMockAPI
-      .get(userId + paramsParsed)
+      .get(userId + parseParams(params))
       .then(parseUserStats);
   };
 

@@ -31,13 +31,9 @@ export default ngInject(function DashboardController($state, $scope, $mdSidenav,
     });
   };
 
-  $scope.$watch('vm.filters', applyFilters, true);
-
   Notification.scheduleNotfication();
 
   $scope.$on('$destroy', () => {
     Notification.cancelScheduled();
   });
-
-  init();
 });

@@ -1,33 +1,27 @@
 import statsFilters from './statsFilters.html';
 
-export default ngInject((Project, Skill, User) => {
+export default ngInject(($q, Project, Skill, User) => {
   return {
     scope: {
       projects: '=',
       skills: '=',
       users: '=',
-      stats: '='
+      stats: '=',
+      userData: '='
     },
 
     link: (scope) => {
-      let loadProjects = () => {
-        Project.getList().then((result) => {
-          scope.projects = result;
-        });
-      };
-      let init = () => {
-        Project.getList().then((result) => {
-          scope.projects = result;
-        });
-
-        Skill.getList().then((result) => {
-          scope.skills = result;
-        });
-
-        User.getList().then((result) => {
-          scope.users = result;
-        });
-      };
+      let loadStats = () => {
+          Stats.getList()
+        },
+        initialLoad = () => {
+          $q.all([User.getList(), Skill.getList(), Project.getList()]).then((data) => {
+            let [users, skills, projects] = data;
+            scope.users = users;
+            scope.skills = skills;
+            scope.projects = projects;
+          });
+        };
 
       scope.filters = {
         projects: [],
@@ -37,7 +31,7 @@ export default ngInject((Project, Skill, User) => {
         dateTo: null
       };
 
-      init();
+      initialLoad();
     },
 
     template: statsFilters
