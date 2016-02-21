@@ -28,13 +28,13 @@ router.get('/', (req, res, next) => {
 
   if (startDate) {
     where.date = {
-      $gte: moment(new Date(parseInt(startDate) * 1000)).format('YYYY-MM-DD HH:mm:ss')
+      $gte: moment(startDate, 'X').format('YYYY-MM-DD HH:mm:ss')
     };
   }
 
   if (endDate) {
     where.date = where.date || {};
-    where.date.$lte = moment(new Date(parseInt(endDate) * 1000)).format('YYYY-MM-DD HH:mm:ss');
+    where.date.$lte = moment(endDate, 'X').format('YYYY-MM-DD HH:mm:ss');
   }
 
   let query = {
@@ -135,7 +135,6 @@ router.get('/', (req, res, next) => {
     models.Evaluation.findAll(commentsQuery),
     models.Evaluation.findAll(averageQuery)
   ]).then((values) => {
-
     let result = values[0],
       globalStats = values[1],
       commentsData = values[2],
@@ -146,7 +145,7 @@ router.get('/', (req, res, next) => {
         userId: el.getDataValue('userId'),
         skillId: el.getDataValue('skillId'),
         value: el.getDataValue('value'),
-        date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')) - 1, 'weeks').format('X')
+        date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week'), 10), 'weeks').format('X')
       };
     });
 
@@ -159,9 +158,9 @@ router.get('/', (req, res, next) => {
             scores: userStats.map((s) => {
               return _.pick(s, ['date', 'value']);
             })
-          }
+          };
         })
-      }
+      };
     });
 
     let commentsMapped = commentsData.map((el) => {
@@ -169,7 +168,7 @@ router.get('/', (req, res, next) => {
         userId: el.getDataValue('userId'),
         skillId: el.getDataValue('skillId'),
         comment: el.getDataValue('comment'),
-        date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')) - 1, 'weeks').format('X')
+        date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')), 'weeks').format('X')
       };
     });
 
@@ -191,7 +190,7 @@ router.get('/', (req, res, next) => {
       return {
         skillId: el.getDataValue('skillId'),
         value: el.getDataValue('value'),
-        date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')) - 1, 'weeks').format('X')
+        date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')), 'weeks').format('X')
       };
     });
 

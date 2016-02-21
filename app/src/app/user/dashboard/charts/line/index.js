@@ -79,7 +79,7 @@ export default function LineChart(_config) {
     let bandBackgrounds = selection.selectAll('.line-chart-band-bg')
       .data(xOrdinalScale.domain());
 
-    bandBackgrounds.enter().append('rect').classed('line-chart-band-bg', true);
+    bandBackgrounds.enter().insert('rect', ':first-child').classed('line-chart-band-bg', true);
     bandBackgrounds.attr({
       x: (d) => xOrdinalScale(d),
       y: yScale.range()[1],
