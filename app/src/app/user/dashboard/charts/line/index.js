@@ -192,7 +192,7 @@ export default function LineChart(_config) {
         fill: (d, i) => i === me.hoveredBandIndex ? '#ffffff' : colorScale(d.seriesIndex),
         stroke: (d) => colorScale(d.seriesIndex),
         strokeWidth: (d, i) => i === me.hoveredBandIndex ? 2 : 0,
-        r: (d, i) => i === me.hoveredBandIndex ? 5 : 3
+        r: (d, i) => i === me.hoveredBandIndex ? 4 : 3
       });
 
     dots.transition().duration(500).delay(1000)
