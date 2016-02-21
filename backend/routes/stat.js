@@ -118,8 +118,8 @@ router.get('/', (req, res, next) => {
   ]).then((values) => {
 
     let result = values[0],
-      commentsData = values[1],
-      globalStats = values[2],
+      globalStats = values[1],
+      commentsData = values[2],
       averageData = values[3];
 
     let mapped = result.map((el) => {
@@ -168,7 +168,7 @@ router.get('/', (req, res, next) => {
       }
     });
 
-    let averageMapped = result.map((el) => {
+    let averageMapped = averageData.map((el) => {
       return {
         skillId: el.getDataValue('skillId'),
         value: el.getDataValue('value'),
