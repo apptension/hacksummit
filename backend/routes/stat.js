@@ -12,6 +12,9 @@ router.get('/', (req, res, next) => {
     where = {
       state: 1 // ANSWERED only
     },
+    qualityWhere = {
+      state: 1
+    },
     projects = req.query.project,
     startDate = req.query.startDate,
     endDate = req.query.endDate,
@@ -20,6 +23,7 @@ router.get('/', (req, res, next) => {
 
   if (projects && projects.length > 0) {
     where.projectId = projects;
+    qualityWhere.projectId = projects;
   }
 
   if (skills && skills.length > 0) {
@@ -30,11 +34,17 @@ router.get('/', (req, res, next) => {
     where.date = {
       $gte: moment(startDate, 'X').format('YYYY-MM-DD HH:mm:ss')
     };
+    qualityWhere.date = {
+      $gte: moment(startDate, 'X').format('YYYY-MM-DD HH:mm:ss')
+    }
   }
 
   if (endDate) {
     where.date = where.date || {};
     where.date.$lte = moment(endDate, 'X').format('YYYY-MM-DD HH:mm:ss');
+
+    qualityWhere.date = where.date || {};
+    qualityWhere.date.$lte = moment(endDate, 'X').format('YYYY-MM-DD HH:mm:ss');
   }
 
   let query = {
@@ -93,6 +103,20 @@ router.get('/', (req, res, next) => {
       order: [
         sequelize.col('date')
       ]
+    },
+
+    // SELECT avg(e.starred), s.isSoft FROM evaluations e LEFT JOIN skills s on e.skillId = s.id group by s.isSoft
+    qualityQuery = {
+      include: [{
+        model: models.Skill
+      }],
+      attributes: [
+        [sequelize.fn('avg', sequelize.col('starred')), 'value']
+      ],
+      group: [
+        'isSoft'
+      ],
+      where: qualityWhere
     };
 
 
@@ -133,12 +157,14 @@ router.get('/', (req, res, next) => {
     models.Evaluation.findAll(query),
     models.Evaluation.findAll(globalQuery),
     models.Evaluation.findAll(commentsQuery),
-    models.Evaluation.findAll(averageQuery)
+    models.Evaluation.findAll(averageQuery),
+    models.Evaluation.findAll(qualityQuery)
   ]).then((values) => {
     let result = values[0],
       globalStats = values[1],
       commentsData = values[2],
-      averageData = values[3];
+      averageData = values[3],
+      qualityData = values[4];
 
     let mapped = result.map((el) => {
       return {
@@ -213,7 +239,13 @@ router.get('/', (req, res, next) => {
         };
       }),
       comments: commentsGrouped,
-      average: averageGrouped
+      average: averageGrouped,
+      quality: qualityData.map((el) => {
+        return {
+          isSoft: el.getDataValue('Skill').isSoft,
+          value: el.getDataValue('value')
+        };
+      })
     });
 
   });

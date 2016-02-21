@@ -1,56 +1,61 @@
 <div layout="column" class="adminTabContent__layout">
-  <div flex="nogrow" layout="column" class="adminTabContent__header">
-    <h1 class="md-title adminTabContent__tabTitle">Manage Projects</h1>
-    <div class="adminTabContent__tabDesc">
-      Use this space to set up new projects and manage the existing ones. You can change projects’ settings and edit the lineups here.
-    </div>
-    <div flex="nogrow" layout="row" class="adminTabContent__filterControls" layout-align="start center">
-      <div class="form__inputGroup">
-        <label class="form__inputLabel">Project Name: </label>
-        <md-input-container md-no-float class="form__inputControl adminTabContent__filterControl">
-          <input class="form__input" placeholder="Search" ng-model="projectsCtrl.filtrers.searchText"/>
-        </md-input-container>
-      </div>
-    </div>
-  </div>
-
-  <div layout flex="none" layout-align="center center" ng-show="pending">
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-  </div>
-
-  <div flex layout="column" class="adminTabContent__tabList">
-    <div flex="none" class="adminTabItem__mainContainer" ng-repeat="project in projectsCtrl.getProjects()">
-      <div layout class="adminTabItem__labelContainer" ng-click="projectsCtrl.toggleItem(project)">
-        <md-list-item>
-          <div class="adminTabItem__icon" layout layout-align="center center">
-            <md-icon>work</md-icon>
-          </div>
-          <div class="md-list-item-text">
-            <span class="adminTabItem__name">{{ project.name }}</span>
-          </div>
-          <div class="adminTabItem__date">
-            {{ projectsCtrl.formatDate(project.startDate) }}
-          </div>
-        </md-list-item>
-      </div>
-      <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="project.edit">
-
-        <project-form project-form-model="project.formModel" project-form-users="projectsCtrl.users"></project-form>
-
-        <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls">
-          <md-button class="md-icon-button adminTabItem__removeIcon" flex="none" ng-click="projectsCtrl.deleteProject(project)">
-            <md-icon>delete</md-icon>
-          </md-button>
-          <div flex="none" class="adminTabItem__submitButtons">
-            <md-button class="md-primary" ng-click="projectsCtrl.cancelEdit(project)">cancel</md-button>
-            <md-button class="md-primary md-raised" ng-click="projectsCtrl.submitProject(project)">save</md-button>
-          </div>
+    <div flex="nogrow" layout="column" class="adminTabContent__header">
+        <h1 class="md-title adminTabContent__tabTitle">Manage Projects</h1>
+        <div class="adminTabContent__tabDesc">
+            Use this space to set up new projects and manage the existing ones. You can change projects’ settings and
+            edit the lineups here.
         </div>
-      </div>
+        <div flex="nogrow" layout="row" class="adminTabContent__filterControls" layout-align="start center">
+            <div class="form__inputGroup">
+                <label class="form__inputLabel">Project Name: </label>
+                <md-input-container md-no-float class="form__inputControl adminTabContent__filterControl">
+                    <input class="form__input" placeholder="Search" ng-model="projectsCtrl.filtrers.searchText"/>
+                </md-input-container>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <md-button class="md-fab md-primary adminTabContent__addButton" ng-click="projectsCtrl.addProject()">
-    <md-icon>add</md-icon>
-  </md-button>
+    <div layout flex="none" layout-align="center center" ng-show="pending">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <div flex layout="column" class="adminTabContent__tabList">
+        <div flex="none" class="adminTabItem__mainContainer"
+             ng-repeat="project in projectsCtrl.getProjects() track by project.id">
+            <div layout class="adminTabItem__labelContainer" ng-click="projectsCtrl.toggleItem(project)">
+                <md-list-item>
+                    <div class="adminTabItem__icon" layout layout-align="center center">
+                        <md-icon>work</md-icon>
+                    </div>
+                    <div class="md-list-item-text">
+                        <span class="adminTabItem__name">{{ project.name }}</span>
+                    </div>
+                    <div class="adminTabItem__date">
+                        {{ projectsCtrl.formatDate(project.startDate) }}
+                    </div>
+                </md-list-item>
+            </div>
+            <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="project.edit">
+
+                <project-form project-form-model="project.formModel"
+                              project-form-users="projectsCtrl.users"></project-form>
+
+                <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls">
+                    <md-button class="md-icon-button adminTabItem__removeIcon" flex="none"
+                               ng-click="projectsCtrl.deleteProject(project)">
+                        <md-icon>delete</md-icon>
+                    </md-button>
+                    <div flex="none" class="adminTabItem__submitButtons">
+                        <md-button class="md-primary" ng-click="projectsCtrl.cancelEdit(project)">cancel</md-button>
+                        <md-button class="md-primary md-raised" ng-click="projectsCtrl.submitProject(project)">save
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <md-button class="md-fab md-primary adminTabContent__addButton" ng-click="projectsCtrl.addProject()">
+        <md-icon>add</md-icon>
+    </md-button>
 </div>
