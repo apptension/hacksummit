@@ -6,7 +6,7 @@
       "id": 1,
       "isAdmin": true,
       "name": "Agnieszka Wozniak",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/agaw.jpg"
     }
   },
   {
@@ -16,7 +16,7 @@
       "id": 2,
       "isAdmin": false,
       "name": "Michal Kleszcz",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/michalk.jpg"
     }
   },
   {
@@ -26,7 +26,7 @@
       "id": 3,
       "isAdmin": false,
       "name": "Tymek Bleja",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/tymekbleja.jpg"
     }
   },
   {
@@ -36,7 +36,7 @@
       "id": 4,
       "isAdmin": false,
       "name": "Ania Kitowska",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/aniak.jpg"
     }
   },
   {
@@ -46,7 +46,7 @@
       "id": 5,
       "isAdmin": false,
       "name": "Wojtek Panek",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/wojtek.png"
     }
   },
 {
@@ -56,7 +56,7 @@
       "id": 6,
       "isAdmin": false,
       "name": "Zbigniew Czarnecki",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/zbyszektymczas.jpg"
     }
   },
 {
@@ -66,7 +66,7 @@
       "id": 7,
       "isAdmin": false,
       "name": "Daniel Capeletti",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/daniel.jpg"
     }
   },
 {
@@ -76,7 +76,7 @@
       "id": 8,
       "isAdmin": false,
       "name": "Michal Przyszczypkowski",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/michalp.png"
     }
   },
 {
@@ -86,7 +86,7 @@
       "id": 9,
       "isAdmin": false,
       "name": "Patryk Ziemkowski",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/patryk.png"
     }
   },
 {
@@ -96,7 +96,7 @@
       "id": 10,
       "isAdmin": false,
       "name": "Agnieszka Goronska",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/agag.jpg"
     }
   },
 {
@@ -106,7 +106,7 @@
       "id": 11,
       "isAdmin": false,
       "name": "Andrzej Aleksiejuk",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/andrzej.png"
     }
   },
 {
@@ -116,7 +116,7 @@
       "id": 12,
       "isAdmin": false,
       "name": "Kuba Paniaczyk",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "avatar": "/public/images/people/kubapaniaczyk.jpg"
     }
   }
 ]
