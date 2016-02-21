@@ -28,22 +28,24 @@
         <div>
             <h3>Contributors this week</h3>
             <div users-top-list data="vm.contributorsList">
-        </div>
+            </div>
 
-        <div>
-            <h3>Your technical skills</h3>
-            <user-stats-chart class="user-stats-chart" data="vm.hardSkillStats"
-                              skillpoint-selected="vm.skillpointSelected(date)"></user-stats-chart>
-        </div>
+            <div>
+                <h3>Your technical skills</h3>
+                <user-stats-chart class="user-stats-chart" data="vm.hardSkillStats"
+                                  skillpoint-selected="vm.skillpointSelected(date)"></user-stats-chart>
+            </div>
 
-        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">
-            <md-toolbar class="md-theme-light">
-                <h1 class="md-toolbar-tools">Comments</h1>
-            </md-toolbar>
-            <md-content layout-padding>
-                <div ng-repeat="evaluation in vm.evaluations" ng-if="::evaluation.comment">
-                    <p>{{::evaluation.comment }}</p>
-                </div>
-            </md-content>
-        </md-sidenav>
+            <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">
+                <md-toolbar class="md-theme-light">
+                    <h1 class="md-toolbar-tools">Comments</h1>
+                </md-toolbar>
+                <md-content layout-padding>
+                    <div ng-repeat="evaluation in vm.evaluations" ng-if="::evaluation.comment">
+                        <p>{{::evaluation.comment }}</p>
+                    </div>
+                </md-content>
+            </md-sidenav>
+        </div>
     </div>
+</div>

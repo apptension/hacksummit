@@ -2,3 +2,7 @@
 @import 'skillBadge/skillBadge';
 @import 'profile/profile';
 @import 'topUsersList/topUsersList';
+
+md-sidenav, md-backdrop {
+	position: fixed;
+}
