@@ -1,5 +1,6 @@
 export default ngInject(function DashboardController($state, $scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
   let loadStats = () => {
+      this.userData.id = 1;
       Stats.getUserStats(this.userData.id).then((stats) => {
         this.userStats = stats;
       });
@@ -14,7 +15,7 @@ export default ngInject(function DashboardController($state, $scope, $mdSidenav,
         this.userData = profile;
       }, () => {
         $state.go('app.home');
-      });
+      }).then(loadStats);
     };
 
   Project.getList().then((projects) => {

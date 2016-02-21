@@ -5,7 +5,6 @@ import routing from './home.routes';
 
 import homeController from './home.controller';
 
-
 export default angular.module('app.admin.home', [
   uirouter
 ])

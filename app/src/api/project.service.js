@@ -3,7 +3,7 @@ export default ngInject(function ProjectService(MockAPI) {
 
   this.getList = () => {
     return projectsMockAPI.getList().then((projects) => {
-      return projects.plain();
+      return projects;
     });
   };
 
