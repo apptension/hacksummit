@@ -103,12 +103,28 @@ router.get('/', (req, res, next) => {
   }
 
   query.where = where;
-  globalQuery.where = where;
+  globalQuery.where = _.clone(where);
   commentsQuery.where = _.clone(where);
   commentsQuery.where.comment = {
     $ne: null
   };
   averageQuery.where = where;
+
+  if (globalQuery.where.skillId) {
+    globalQuery.include = [{
+      model: models.Skill,
+      where: {
+        $and: {
+          $or: [{
+            id: globalQuery.where.skillId
+          }, {
+            isSoft: true
+          }]
+        }
+      }
+    }];
+    delete globalQuery.where.skillId;
+  }
 
   Promise.all([
     models.Evaluation.findAll(query),
