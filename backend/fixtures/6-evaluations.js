@@ -14,7 +14,7 @@ _.times(3000, (id) => {
       id: id,
       starred: Math.random() >= 0.5 ? 1 : 0,
       state: _.random(0, 2),
-      comment: Math.random() >= 0.5 ? faker.lorem.sentence() : '',
+      comment: Math.random() >= 0.5 ? faker.lorem.sentence() : null,
       date: dateFrom + Math.random() * (dateTo - dateFrom),
       ProjectId: _.random(1, 5),
       EvaluatedUserId: _.random(1, 2),
