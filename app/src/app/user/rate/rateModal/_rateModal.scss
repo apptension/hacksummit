@@ -1,4 +1,4 @@
-$color-greed: #09ca59;
+$color-green: #09ca59;
 $color-red: #f9615b;
 
 md-dialog {
@@ -63,7 +63,7 @@ md-dialog {
 	transform: translate(-180%, -100%);
 
 	.ripple-effect {
-		background-color: $color-greed;
+		background-color: $color-green;
 	}
 }
 
@@ -150,10 +150,28 @@ md-dialog {
 .feedback__text .feedback__text-input {
 	border-color: rgba(255,255,255,.5);
 	transition: all .5s ease-in;
+	height: auto !important;
 
-	&:active {
+	.feedback--positive & {
+		color: $color-green;
+	}
+
+	.feedback--negative & {
+		color: $color-red;
+	}
+}
+
+.md-input-focused {
+	.feedback__text-input {
 		min-height: 200px;
 		background-color: white;
+		border: none;
+		border-radius: 3px;
+		padding: 10px;
+	}
+
+	.feedback__text-label {
+		color: white !important;
 	}
 }
 
