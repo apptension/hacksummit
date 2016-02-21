@@ -4,7 +4,6 @@
     "keys": ["id"],
     "data": {
       "id": 1,
-      "username": "AdminUser",
       "isAdmin": true,
       "name": "Tomasz Nowak",
       "avatar": "http://lorempixel.com/300/300/people/"
@@ -15,7 +14,6 @@
     "keys": ["id"],
     "data": {
       "id": 2,
-      "username": "User",
       "isAdmin": false,
       "name": "Adam Kowalski",
       "avatar": "http://lorempixel.com/300/300/people/"
@@ -26,7 +24,6 @@
     "keys": ["id"],
     "data": {
       "id": 3,
-      "username": "Hanna Wójtowicz",
       "isAdmin": false,
       "name": "",
       "avatar": "http://lorempixel.com/300/300/people/"
@@ -37,7 +34,6 @@
     "keys": ["id"],
     "data": {
       "id": 4,
-      "username": "User",
       "isAdmin": false,
       "name": "Filip Jaworski",
       "avatar": "http://lorempixel.com/300/300/people/"
@@ -48,7 +44,6 @@
     "keys": ["id"],
     "data": {
       "id": 5,
-      "username": "User",
       "isAdmin": false,
       "name": "Mateusz Kaczmarek",
       "avatar": "http://lorempixel.com/300/300/people/"

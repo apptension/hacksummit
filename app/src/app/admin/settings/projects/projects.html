@@ -1,10 +1,10 @@
 <div layout="column" class="adminTabContent__layout">
-  <div flex layout="column" layout-fill class="adminTabContent__header">
+  <div flex="nogrow" layout="column" class="adminTabContent__header">
     <h1 class="md-title adminTabContent__tabTitle">Manage Projects</h1>
     <div class="adminTabContent__tabDesc">
       Use this space to set up new projects and manage the existing ones. You can change projects’ settings and edit the lineups here.
     </div>
-    <div flex layout="row" class="adminTabContent__filterControls" layout-align="start center">
+    <div flex="nogrow" layout="row" class="adminTabContent__filterControls" layout-align="start center">
       <div class="form__inputGroup">
         <label class="form__inputLabel">Project Name: </label>
         <md-input-container md-no-float class="form__inputControl adminTabContent__filterControl">
@@ -22,8 +22,8 @@
     <div flex="none" class="adminTabItem__mainContainer" ng-repeat="project in projectsCtrl.getProjects()">
       <div layout class="adminTabItem__labelContainer" ng-click="projectsCtrl.toggleItem(project)">
         <md-list-item>
-          <div class="projectItem__icon" layout layout-align="center center">
-            <md-icon flex>work</md-icon>
+          <div class="adminTabItem__icon" layout layout-align="center center">
+            <md-icon>work</md-icon>
           </div>
           <div class="md-list-item-text">
             <span class="adminTabItem__name">{{ project.name }}</span>

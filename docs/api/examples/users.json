@@ -1,6 +1,5 @@
 [{
   "id": 1,
-  "username": "sample_username",
   "isAdmin": true,
   "name": "Zbigniew Czarnecki",
   "avatar": "http://lorempixel.com/300/300/people/",
@@ -10,7 +9,6 @@
   }]
 }, {
   "id": 2,
-  "username": "second_sample_username",
   "isAdmin": false,
   "name": "Artur Gutkowski",
   "avatar": "http://lorempixel.com/300/300/people/",

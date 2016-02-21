@@ -1,0 +1,28 @@
+<div layout="column" class="adminTabItem__editForm">
+    <div class="form__inputGroup" layout="row">
+        <label flex="none" class="form__inputLabel roleItem__nameLabel">Name: </label>
+        <md-input-container flex md-no-float class="form__inputControl">
+            <input class="form__input" ng-model="getFormModel().name" aria-label="formModelName" placeholder="Enter Role name"/>
+        </md-input-container>
+    </div>
+
+    <div class="form__inputGroup" layout="row">
+        <label flex="none" class="form__inputLabel roleItem__skillsLabel">Skills: </label>
+        <md-chips flex ng-model="getFormModel().Skills" md-on-add="addSkill($chip)" md-autocomplete-snap>
+            <md-autocomplete
+                    md-search-text="searchModel"
+                    md-items="roles in searchSkill(searchModel, getFormModel().Skills)"
+                    md-item-text="getFormModel().name"
+                    md-min-length="1"
+                    md-no-cache="true"
+                    placeholder="Choose Role skills">
+                <span md-highlight-text="searchModel" md-highlight-flags="i" class="filterList__searchText">{{ roles.name }}</span>
+            </md-autocomplete>
+            <md-chip-template>
+                <span>
+                  <span>{{$chip.name}}</span>
+                </span>
+            </md-chip-template>
+        </md-chips>
+    </div>
+</div>

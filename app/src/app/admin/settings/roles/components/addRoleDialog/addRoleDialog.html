@@ -2,7 +2,7 @@
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools addProjectDialog__toolbar">
-                <h2 class="addProjectDialog__header">Add Project</h2>
+                <h2 class="addProjectDialog__header">Add Role</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="close()">
                     <md-icon maria-label="Close dialog">close</md-icon>
@@ -10,7 +10,7 @@
             </div>
         </md-toolbar>
         <md-dialog-content>
-            <project-form project-form-model="newProject" project-form-users="users"></project-form>
+            <role-form role-form-model="newRole" role-form-skills="skills"></role-form>
         </md-dialog-content>
         <md-dialog-actions layout="row" class="addProjectDialog__footer">
             <md-button class="md-primary" ng-click="close()">cancel</md-button>

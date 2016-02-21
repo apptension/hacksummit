@@ -24,7 +24,7 @@ export default ngInject(function NotificationService($state) {
   };
 
   this.proceed = () => {
-    $state.go('app.user.rate');
+    $state.go('app.user.dashboard.rate');
   };
 
   this.showNotification = () => {
