@@ -38,23 +38,21 @@ router.get('/', (req, res, next) => {
   }
 
   let query = {
-    attributes: [
-      [sequelize.fn('year', sequelize.col('date')), 'year'],
-      [sequelize.fn('weekofyear', sequelize.col('date')), 'week'],
-      [sequelize.fn('avg', sequelize.col('starred')), 'value'],
-      'skillId',
-      'userId'
-    ],
-    group: [
-      sequelize.fn('year', sequelize.col('date')),
-      sequelize.fn('weekofyear', sequelize.col('date')),
-      'skillId',
-      'userId'
-    ],
-    order: [
-      sequelize.col('date')
-    ]
-  };
+      attributes: [
+        [sequelize.fn('year', sequelize.col('date')), 'year'],
+        [sequelize.fn('weekofyear', sequelize.col('date')), 'week'],
+        [sequelize.fn('avg', sequelize.col('starred')), 'value'],
+        'skillId',
+        'userId'
+      ],
+      group: [
+        sequelize.fn('year', sequelize.col('date')),
+        sequelize.fn('weekofyear', sequelize.col('date')),
+        'skillId',
+        'userId'
+      ],
+      order: [
+        sequelize.col('date')
       ]
     },
 
