@@ -18,19 +18,21 @@ export default ngInject(function StatsService(MockAPI, $httpParamSerializerJQLik
   };
 
   this.getList = (params = null) => {
-    statsMockAPI.getList(parseParams(params));
+    return statsMockAPI
+      .customGET(parseParams(params))
+      .then((data) => {
+        return data.map(parseUserStats);
+      });
   };
 
   this.getUserStats = (userId, params = null) => {
     return statsMockAPI
-      .get(userId + parseParams(params))
+      .customGET(userId + parseParams(params))
       .then(parseUserStats);
   };
 
   function parseUserStats(data) {
-    let stats = data.plain();
-
-    stats.skills = _.map(stats.skills, (skill) => {
+    data.skills = _.map(data.skills, (skill) => {
       skill.scores = _.map(skill.scores, (score) => {
         score.date = moment.utc(score.date);
         return score;
@@ -38,6 +40,6 @@ export default ngInject(function StatsService(MockAPI, $httpParamSerializerJQLik
       return skill;
     });
 
-    return stats;
+    return data;
   }
 });
