@@ -15,6 +15,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
       let stats = _stats.plain();
       let skillsById = _.keyBy(this.skills, 'id');
 
+      this.stats = stats;
 
       skillsPromise.then(() => {
         stats.comments = _.map(stats.comments, (skill) => {
@@ -85,11 +86,14 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
     $scope.filters.skill = _.take(skills, 3);
   });
 
-  this.skillpointSelected = (date) => {
-    Evaluation.getList(date.format('x')).then((evaluations) => {
-      this.evaluations = evaluations;
-      $mdSidenav('commentSidebar').toggle();
-    });
+  this.skillpointSelected = (skill, date) => {
+    let comments = _.find(this.stats.comments, {skillId: skill.skillId});
+    if (comments.comments) {
+      this.comments = _.filter(comments.comments, (comment) => comment.date.isSame(date));
+      if (this.comments.length) {
+        $mdSidenav('commentSidebar').toggle();
+      }
+    }
   };
 
   Notification.scheduleNotfication();
