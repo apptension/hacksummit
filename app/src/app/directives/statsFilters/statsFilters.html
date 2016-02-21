@@ -1,36 +1,26 @@
 <div layout="row">
-  <form name="statsFiltersForm">
-    <div flex="nogrow" class="statsFilters__inputGroup form__inputGroup" layout="row" layout-align="start start">
-      <label flex="none" class="statsFilters__chipsLabel">Project name</label>
-      <filter-list flex="none" class="statsFilters__chips" filter-collection="availableProjects" filter-model="filterProjects" filter-name-attributes="['name']" secondary-placeholder="Another project name"></filter-list>
+  <div flex="nogrow" class="statsFilters__inputGroup form__inputGroup" layout="row" layout-align="start start">
+    <label flex="none" class="statsFilters__chipsLabel">Project name</label>
+    <filter-list flex="none" class="statsFilters__chips" filter-collection="availableProjects" filter-model="filterProjects" filter-name-attributes="['name']" secondary-placeholder="Another project name"></filter-list>
+  </div>
+  <div flex="nogrow" class="statsFilters__inputGroup form__inputGroup" layout="row" layout-align="start start">
+    <label flex="none" class="statsFilters__chipsLabel">Choose skills</label>
+    <filter-list flex="none" class="statsFilters__chips" filter-collection="availableSkills" filter-model="filterSkills" filter-name-attributes="['name']" secondary-placeholder="Another skill"></filter-list>
+  </div>
+  <div flex="nogrow" class="statsFilters__inputGroup form__inputGroup" layout="row" layout-align="start start" ng-if="availableUsers">
+    <label flex="none" class="statsFilters__chipsLabel">User</label>
+    <filter-list flex="none" class="statsFilters__chips" filter-collection="availableUsers" filter-model="filterUsers" filter-name-attributes="['name']" secondary-placeholder="Another user name"></filter-list>
+  </div>
+  <div flex="none" layout="row" layout-align="start start">
+    <label flex="none" class="statsFilters__chipsLabel">Date range</label>
+    <div layout="row" class="statsFilters__datepickerContainer" layout-align="center center">
+        <div class="form__inputGroup form__inputGroup--datepicker" layout="row">
+          <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="filterDateFrom" name="filterDateFrom" md-max-date="filterDateTo" md-placeholder="Start date"></md-datepicker>
+        </div>
+        <md-icon class="statsFilters__datepickersSpacer">remove</md-icon>
+        <div class="form__inputGroup form__inputGroup--datepicker" layout="row">
+          <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="filterDateTo" name="filterDateTo" md-min-date="filterDateFrom" md-placeholder="End date"></md-datepicker>
+        </div>
     </div>
-    <div flex="nogrow" class="statsFilters__inputGroup form__inputGroup" layout="row" layout-align="start start">
-      <label flex="none" class="statsFilters__chipsLabel">Choose skills</label>
-      <filter-list flex="none" class="statsFilters__chips" filter-collection="availableSkills" filter-model="filterSkills" filter-name-attributes="['name']" secondary-placeholder="Another skill"></filter-list>
-    </div>
-    <div flex="nogrow" class="statsFilters__inputGroup form__inputGroup" layout="row" layout-align="start start" ng-if="availableUsers">
-      <label flex="none" class="statsFilters__chipsLabel">User</label>
-      <filter-list flex="none" class="statsFilters__chips" filter-collection="availableUsers" filter-model="filterUsers" filter-name-attributes="['name']" secondary-placeholder="Another user name"></filter-list>
-    </div>
-    <div flex="none" layout="row" layout-align="start start">
-      <label flex="none" class="statsFilters__chipsLabel">Date range</label>
-      <div layout="row" class="statsFilters__datepickerContainer" layout-align="center center">
-          <div class="form__inputGroup form__inputGroup--datepicker" layout="row">
-            <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="filterDateFrom" name="filterDateFrom" md-max-date="filterDateTo" md-placeholder="Start date"></md-datepicker>
-            <div ng-messages="statsFiltersForm.filterDateFrom.$error">
-              <div ng-message="valid">Given date is not valid</div>
-              <div ng-message="maxdate">Start date must lower than end date</div>
-            </div>
-          </div>
-          <md-icon class="statsFilters__datepickersSpacer">remove</md-icon>
-          <div class="form__inputGroup form__inputGroup--datepicker" layout="row">
-            <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="filterDateTo" name="filterDateTo" md-min-date="filterDateFrom" md-placeholder="End date"></md-datepicker>
-            <div ng-messages="statsFiltersForm.filterDateFrom.$error">
-              <div ng-message="valid">Given date is not valid</div>
-              <div ng-message="mindate">End date must greater than end date</div>
-            </div>
-          </div>
-      </div>
-    </div>
-  </form>
+  </div>
 </div>
