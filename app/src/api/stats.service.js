@@ -50,6 +50,17 @@ export default ngInject(function StatsService(API, $httpParamSerializerJQLike) {
       return skill;
     });
 
+    data.comments = _.map(data.comments, (comment) => {
+      comment.comments = _.map(comment.comments, (userComment) => {
+        userComment.comments = _.map(userComment.comments, (userScore) => {
+          userScore.date = moment.utc(parseInt(userScore.date, 10) * 1000);
+          return userScore;
+        });
+        return userComment;
+      });
+      return comment;
+    });
+
     return data;
   }
 });

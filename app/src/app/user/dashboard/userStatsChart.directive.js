@@ -49,7 +49,14 @@ export default ngInject(($window, $timeout) => {
                   name: skill.name,
                   color: skill.color,
                   values: _.map(skill.scores, (score) => {
-                    return {x: score.date, y: score.value, color: skill.color};
+                    return {
+                      x: score.date,
+                      y: score.value,
+                      color: skill.color,
+                      commentsCount: _.reduce(skill.comments, (sum, comment) => {
+                        return sum + (comment.date.isSame(score.date) ? 1 : 0);
+                      }, 0)
+                    };
                   })
                 };
               })

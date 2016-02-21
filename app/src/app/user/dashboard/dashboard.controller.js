@@ -15,11 +15,20 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
       let stats = _stats.plain();
       let skillsById = _.keyBy(this.skills, 'id');
 
+
       skillsPromise.then(() => {
+        stats.comments = _.map(stats.comments, (skill) => {
+          skill.comments = skill.comments[0].comments;
+          return skill;
+        });
+
+        let commentsBySkillId = _.keyBy(stats.comments, 'skillId');
+
         stats.skills = _.map(stats.skills, (skill, i) => {
           skill.scores = skill.scores[0].scores;
           skill.color = ColorSet[i % ColorSet.length];
           skill.name = skillsById[skill.skillId].name;
+          skill.comments = commentsBySkillId[skill.skillId].comments || [];
           return skill;
         });
 
@@ -31,7 +40,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
               score: s.score,
               isSoft: skill.isSoft,
               name: skill.name
-            }
+            };
           })
           .filter(s => s.isSoft);
 
@@ -52,10 +61,10 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
   Stats.getContributors().then((contributors) => {
     this.contributorsList = {
       list: contributors
-      .sort(c => -c.score)
-      .map(c => {
-        return c.User;
-      })
+        .sort(c => -c.score)
+        .map(c => {
+          return c.User;
+        })
     };
   });
 
