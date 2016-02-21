@@ -9,7 +9,7 @@
                 filter-date-to="filters.endDate"
                 available-skills="vm.hardSkills"
                 available-projects="vm.projects"/>
-        <md-button class="md-raised" ui-sref="app.user.dashboard.rate" style="margin-top: 80px;">I WANT TO RATE SOMEONE NOW!!</md-button>
+        <!-- <md-button class="md-raised" ui-sref="app.user.dashboard.rate" style="margin-top: 80px;">I WANT TO RATE SOMEONE NOW!!</md-button> -->
     </div>
 
     <div class="user-dashboard__col-wrapper">
@@ -28,12 +28,29 @@
                                   skillpoint-selected="vm.skillpointSelected(skill, date)"></user-stats-chart>
             </div>
 
-            <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">
-                <md-content layout-padding>
-                    <div ng-repeat="comment in vm.comments">
-                        <p>{{::comment.comment }}</p>
+            <md-sidenav class="md-sidenav-right md-whiteframe-z2 user-dashboard__sidenav" md-component-id="commentSidebar" ng-cloak>
+                <div class="dashboard-sidenav__header" layout="column">
+                    <div layout="row" layout-align="space-between center">
+                        <h1 class="dashboard-sidenav__title">Tips from your mates</h1>
+                        <md-button ng-click="vm.commentsClose()" class="md-icon-button dashboard-sidenav__close-button">
+                            <md-icon class="dashboard-sidenav__close-icon"></md-icon>
+                        </md-button>
                     </div>
-                </md-content>
+                    <div class="dashboard-sidenav__date-range">
+                        <span>{{ vm.evaluationsDateRange }}</span>
+                    </div>
+                </div>
+                <div layout="column">
+                    <div ng-repeat="comment in vm.comments" layout="row">
+                        <div flex="none" class="dashboard-sidenav__comment-icon" layout layout-align="start center">
+                            <md-icon ng-class="{'dashboard-sidenav__thumb-up-icon': evaluation.starred, 'dashboard-sidenav__thumb-down-icon': !evaluation.starred}"></md-icon>
+                        </div>
+                        <div flex class="dashboard-sidenav__comment-content">
+                            <span class="dashboard-sidenav__comment-time">{{::comment.date.toNow() }}</span>
+                            <span class="dashboard-sidenav__comment-text">{{::comment.comment }}</span>
+                        </div>
+                    </div>
+                </div>
             </md-sidenav>
         </div>
         <div class="user-dashboard__side-col">

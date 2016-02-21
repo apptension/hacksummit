@@ -1,56 +1,54 @@
 <div layout="column" class="adminTabContent__layout">
-    <div flex="nogrow" layout="column" class="adminTabContent__header">
-        <h1 class="md-title adminTabContent__tabTitle">Manage Users</h1>
-        <div class="adminTabContent__tabDesc">
-            Here you can see a list of all users available to team up for the projects. Everytime there’s a new person
-            in your company, they should be added to the list.
-        </div>
-        <div flex="nogrow" layout="row" class="adminTabContent__filterControls" layout-align="start center">
-            <div class="form__inputGroup">
-                <label class="form__inputLabel">User Name: </label>
-                <md-input-container md-no-float class="form__inputControl adminTabContent__filterControl">
-                    <input class="form__input" placeholder="Search" ng-model="usersCtrl.filters.searchText"/>
-                </md-input-container>
-            </div>
-        </div>
+  <div flex="nogrow" layout="column" class="adminTabContent__header">
+    <h1 class="md-title adminTabContent__tabTitle">Manage Users</h1>
+    <div class="adminTabContent__tabDesc">
+      Here you can see a list of all users available to team up for the projects. Everytime there’s a new person in your company, they should be added to the list.
     </div>
-
-    <div layout flex="none" layout-align="center center" ng-show="pending">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    <div flex="nogrow" layout="row" class="adminTabContent__filterControls" layout-align="start center">
+      <div class="form__inputGroup">
+        <label class="form__inputLabel">User Name: </label>
+        <md-input-container md-no-float class="form__inputControl adminTabContent__filterControl">
+          <input class="form__input" placeholder="Search" ng-model="usersCtrl.filters.searchText"/>
+        </md-input-container>
+      </div>
     </div>
+  </div>
 
-    <div flex layout="column" class="adminTabContent__tabList">
-        <div flex="none" class="adminTabItem__mainContainer" ng-repeat="user in usersCtrl.getUsers() track by user.id">
-            <div layout class="adminTabItem__labelContainer" ng-click="usersCtrl.toggleItem(user)">
-                <md-list-item>
-                    <div class="adminTabItem__icon" layout layout-align="center center">
-                        <md-icon flex>person</md-icon>
-                    </div>
-                    <div class="md-list-item-text">
-                        <span class="adminTabItem__name">{{user.name}}</span>
-                    </div>
+  <div layout flex="none" layout-align="center center" ng-show="pending">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
 
-                </md-list-item>
-            </div>
-            <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="user.edit">
-                <user-form user-form-model="user.formModel" user-form-roles="usersCtrl.roles"></user-form>
+  <div flex layout="column" class="adminTabContent__tabList">
+    <div flex="none" class="adminTabItem__mainContainer" ng-repeat="user in usersCtrl.getUsers()">
+      <div layout class="adminTabItem__labelContainer" ng-click="usersCtrl.toggleItem(user)">
+        <md-list-item>
+          <div class="adminTabItem__icon" layout layout-align="center center">
+            <md-icon flex>person</md-icon>
+          </div>
+          <div class="md-list-item-text">
+            <span class="adminTabItem__name">{{user.name}}</span>
+          </div>
+
+        </md-list-item>
+      </div>
+      <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="user.edit">
+        <user-form user-form-model="user.formModel" user-form-roles="usersCtrl.roles"></user-form>
 
 
-                <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls">
-                    <md-button class="md-icon-button adminTabItem__removeIcon" flex="none"
-                               ng-click="usersCtrl.deleteUser(user)">
-                        <md-icon>delete</md-icon>
-                    </md-button>
-                    <div flex="none" class="adminTabItem__submitButtons">
-                        <md-button class="md-primary" ng-click="usersCtrl.cancelEdit(user)">cancel</md-button>
-                        <md-button class="md-primary md-raised" ng-click="usersCtrl.submitUser(user)">save</md-button>
-                    </div>
-                </div>
-            </div>
+        <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls">
+          <md-button class="md-icon-button adminTabItem__removeIcon" flex="none" ng-click="usersCtrl.deleteUser(user)">
+            <md-icon>delete</md-icon>
+          </md-button>
+          <div flex="none" class="adminTabItem__submitButtons">
+            <md-button class="md-primary" ng-click="usersCtrl.cancelEdit(user)">cancel</md-button>
+            <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="usersCtrl.submitUser(user)">save</md-button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <md-button class="md-fab md-primary adminTabContent__addButton" ng-click="usersCtrl.addUser()">
-        <md-icon>add</md-icon>
-    </md-button>
+  <md-button class="md-fab md-primary adminTabContent__addButton" ng-click="usersCtrl.addUser()">
+    <md-icon>add</md-icon>
+  </md-button>
 </div>

@@ -1,5 +1,6 @@
-export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, ColorSet, Stats,
-                                                     Evaluation, Project, Skill, User, Notification, $mdToast) {
+import moment from 'moment';
+
+export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, ColorSet, Stats, Evaluation, Project, Skill, User, Notification, $mdToast) {
   $scope.filters = {
     project: [],
     skill: [],
@@ -42,7 +43,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
         });
 
         User.getProfile().then(u => {
-          this.softSkillStats = stats.global
+          let fetchedSoftSkills = stats.global
             .map(s => {
               let skill = this.skills.find(sk => sk.id === s.skillId);
               return {
@@ -55,6 +56,8 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
             })
             .filter(s => s.isSoft)
             .filter(s => s.userId === u.id);
+
+          if(!this.softSkillStats) this.softSkillStats = fetchedSoftSkills;
         });
 
         this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
@@ -70,6 +73,12 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
     this.activeUser = res.plain();
     return this.activeUser;
   });
+
+  let formatDateRange = (date) => {
+    let dateStart = moment(date).format('YYYY.MM.DD'),
+      dateEnd = moment(date).add(6, 'days').format('YYYY.MM.DD');
+    return dateStart + ' - ' + dateEnd;
+  };
 
   Stats.getContributors().then((contributors) => {
     this.contributorsList = {
@@ -101,12 +110,17 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
 
   this.skillpointSelected = (skill, date) => {
     let comments = _.find(this.stats.comments, {skillId: skill.skillId});
+    this.evaluationsDateRange = formatDateRange(date);
     if (comments.comments) {
       this.comments = _.filter(comments.comments, (comment) => comment.date.isSame(date));
       if (this.comments.length) {
         $mdSidenav('commentSidebar').toggle();
       }
     }
+  };
+
+  this.commentsClose = () => {
+    $mdSidenav('commentSidebar').close();
   };
 
   Notification.scheduleNotfication();
