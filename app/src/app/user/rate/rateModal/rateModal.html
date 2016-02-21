@@ -1,15 +1,48 @@
 <div class="rate">
-    <h1 class="rate__question">{{ vm.question }}</h1>
-    <p class="rate__subtitle"> Rate me, pls. </p>
+    <md-toolbar class="rate__bar">
+        <h2 class="rate__title">Give some props!</h2>
+    </md-toolbar>
 
-    <div class="rate__options">
-        <md-button class="md-raised md-warn" ng-click="vm.submit(0)">ZERO</md-button>
-        <md-button class="md-raised md-accent" ng-click="vm.submit(-1)">DISMISS</md-button>
-        <md-button class="md-raised md-primary" ng-click="vm.submit(1)">PLUS ONE</md-button>
+    <div class="rate__user-data">
+        <span class="rate__image" ng-if="user" ng-style="getUserImage(user)"></span>
+        <h3 class="rate__user" ng-if="user">{{ user.name }}</h3>
+        <p class="rate__intro" ng-if="user" ng-bind-html="intro()"></p>
+        <p class="rate__question">{{ question }}</p>
     </div>
 
-    <md-input-container class="feedback">
-        <h3 class="feedback__title">Want to add some feedback?</h3>
-        <textarea class="feedback__text" ng-model="vm.feedbackText"></textarea>
-    </md-input-container>
+    <div class="circle-button circle-button--left"
+         ng-class="{'circle-button--active':activeStep === 'positive'}">
+        <span class="ripple ripple--left" ng-click="showFeedback('positive')">
+            <span class="ripple-effect" ng-class="{'ripple-effect--active':activeStep === 'positive',
+                            'ripple-effect--inactive':activeStep === 'negative'}"></span>
+        </span>
+        <span ng-show="!activeStep" class="circle-button__label">YES</span>
+    </div>
+
+    <div class="circle-button circle-button--right"
+         ng-class="{'circle-button--active':activeStep === 'negative'}">
+        <span class="ripple ripple--right" ng-click="showFeedback('negative')">
+            <span class="ripple-effect" ng-class="{'ripple-effect--active':activeStep === 'negative',
+                            'ripple-effect--inactive':activeStep === 'positive'}"></span>
+        </span>
+        <span ng-show="!activeStep" class="circle-button__label circle-button__label--right">NO</span>
+    </div>
+
+    <md-button class="dismiss-btn" ng-click="submit(-1)">I'm not able to tell</md-button>
+
+    <div class="feedback" ng-show="activeStep" ng-class="'feedback--' + activeStep">
+        <h3 class="feedback__title">{{ feedback.title }}</h3>
+        <p class="feedback__description">{{ feedback.description }}</p>
+        <md-input-container class="feedback__text">
+            <label class="feedback__text-label">Comment</label>
+            <textarea class="feedback__text-input"
+                      ng-model="feedbackText"
+            ></textarea>
+        </md-input-container>
+
+        <div class="feedback-btns">
+            <md-button class="submit-btn" ng-click="submit()">Send</md-button>
+            <md-button class="cancel-btn" ng-click="cancel()">Cancel</md-button>
+        </div>
+    </div>
 </div>

@@ -22,3 +22,4 @@ require('angular');
  */
 require('./app');
 
+window.moment = require('moment')

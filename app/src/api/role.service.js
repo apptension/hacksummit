@@ -10,16 +10,15 @@ export default ngInject(function RoleService(API) {
   };
 
   this.put = (role) => {
-    role.put();
+    return roleApi.customPUT(role, role.id);
   };
 
   this.post = (role) => {
-    roleApi.post(role);
+    return roleApi.post(role);
   };
 
   this.delete = (role) => {
-    console.log(role);
-    role.remove();
+    return roleApi.customDELETE(role.id);
   };
 
   function parseRoles(data) {

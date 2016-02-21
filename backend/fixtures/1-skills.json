@@ -4,8 +4,8 @@
     "keys": ["id"],
     "data": {
       "id": 1,
-      "name": "Creativity",
-      "isSoft": true
+      "name": "HTML5",
+      "isSoft": false
     }
   },
   {
@@ -13,123 +13,6 @@
     "keys": ["id"],
     "data": {
       "id": 2,
-      "name": "PHP basis",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 3,
-      "name": "JS basis",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 4,
-      "name": "Symfony2",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 5,
-      "name": "Angular 2",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 6,
-      "name": "Android",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 7,
-      "name": "Designing",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 8,
-      "name": "Open-minded",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 9,
-      "name": "Full-time availability",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 10,
-      "name": "iOS",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 11,
-      "name": "Multitasking",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 12,
-      "name": "Advanced English",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 13,
-      "name": "WebGL",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 14,
-      "name": "Java basis",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 15,
       "name": "CSS3",
       "isSoft": false
     }
@@ -138,8 +21,8 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 16,
-      "name": "AngularJS",
+      "id": 3,
+      "name": "JavaScript",
       "isSoft": false
     }
   },
@@ -147,70 +30,7 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 17,
-      "name": "Yii2",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 18,
-      "name": "MariaDB",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 19,
-      "name": "React",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 20,
-      "name": "Full-time availability",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 21,
-      "name": "Android",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 22,
-      "name": "iOS",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 23,
-      "name": "PhoneGap",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 24,
+      "id": 4,
       "name": "PHP",
       "isSoft": false
     }
@@ -219,8 +39,8 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 25,
-      "name": "Wordpress",
+      "id": 5,
+      "name": "SQL",
       "isSoft": false
     }
   },
@@ -228,8 +48,8 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 26,
-      "name": "Wordpress plugins development",
+      "id": 6,
+      "name": "Python",
       "isSoft": false
     }
   },
@@ -237,53 +57,8 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 27,
-      "name": "Text writing",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 28,
-      "name": "Information research",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 29,
-      "name": "Creativity",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 30,
-      "name": "Multitasking",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 31,
-      "name": "Advanced Spanish",
-      "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 32,
-      "name": "Yii2",
+      "id": 7,
+      "name": "Git",
       "isSoft": false
     }
   },
@@ -291,7 +66,61 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 33,
+      "id": 8,
+      "name": "Design",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 9,
+      "name": "Adobe Photoshop",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 10,
+      "name": "WebGL",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 11,
+      "name": "Canvas 2D",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 12,
+      "name": "React",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 13,
+      "name": "NodeJS",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 14,
       "name": "AngularJS",
       "isSoft": false
     }
@@ -300,8 +129,8 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 34,
-      "name": "PostgreSQL",
+      "id": 15,
+      "name": "BackboneJS",
       "isSoft": false
     }
   },
@@ -309,8 +138,179 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
+      "id": 16,
+      "name": "MySQL",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 17,
+      "name": "MeteorJS",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 18,
+      "name": "Yii",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 19,
+      "name": "Docker",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 20,
+      "name": "Wordpress",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 21,
+      "name": "Vagrant",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 22,
+      "name": "Google API",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 23,
+      "name": "Websockets",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 24,
+      "name": "Ruby on Rails",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 25,
+      "name": "C#",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 26,
+      "name": "Google Docs",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 27,
+      "name": "Amazon Web Services",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 28,
+      "name": "Gantt",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 29,
+      "name": "Podio",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 30,
+      "name": "Android",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 31,
+      "name": "SEO",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 32,
+      "name": "Big Data analysis",
+      "isSoft": false
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 33,
+      "name": "Creativity",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
+      "id": 34,
+      "name": "Planning",
+      "isSoft": true
+    }
+  },
+  {
+    "model": "Skill",
+    "keys": ["id"],
+    "data": {
       "id": 35,
-      "name": "Material Design",
+      "name": "Communication",
       "isSoft": true
     }
   },
@@ -319,7 +319,7 @@
     "keys": ["id"],
     "data": {
       "id": 36,
-      "name": "Open-minded",
+      "name": "Team work",
       "isSoft": true
     }
   },
@@ -328,17 +328,8 @@
     "keys": ["id"],
     "data": {
       "id": 37,
-      "name": "Full-time availability",
+      "name": "Confidence",
       "isSoft": true
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 38,
-      "name": "Information research",
-      "isSoft": false
     }
   }
 ]

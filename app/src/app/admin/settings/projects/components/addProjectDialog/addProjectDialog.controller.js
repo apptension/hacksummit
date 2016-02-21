@@ -1,7 +1,7 @@
 export default ngInject(function DialogController($scope, $mdDialog, users) {
   $scope.newProject = {
     name: '',
-    members: [],
+    Users: [],
     startDate: new Date(),
     endDate: new Date()
   };

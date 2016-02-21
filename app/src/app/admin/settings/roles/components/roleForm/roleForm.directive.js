@@ -37,15 +37,20 @@ export default ngInject((Skill, moment, Role) => {
       $scope.addSkill = (newSkill) => {
         if (_.isString(newSkill)) {
           let newSkillIndex = $scope.getFormModel().Skills.indexOf(newSkill);
-          $scope.getFormModel().Skills[newSkillIndex] = {
-            name: newSkill
-          }
+          let newSkillObject = {
+            name: newSkill,
+            isSoft: false
+          };
+          $scope.getFormModel().Skills[newSkillIndex] = newSkillObject;
+          Skill.post(newSkillObject).then((updated) => {
+            newSkillObject.id = updated.id;
+          })
         }
       };
 
       $scope.searchSkill = (input, excluded) => {
         return $scope.getSkillsCollection().filter((skill) => {
-            return skill.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0 && excluded.indexOf(skill) === -1;
+            return skill.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0 && !excluded.find((f) => {return f.id === skill.id});
           }) || [];
       };
     }

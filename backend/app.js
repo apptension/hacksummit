@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require("passport");
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var epilogue = require('epilogue');
 
 var models = require('./models'),
@@ -42,11 +43,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
+var sessionOptions = {
   secret: config.get('sessionSecret'),
   resave: false,
   saveUninitialized: false
-}));
+};
+if (app.get('env') === 'production') {
+  sessionOptions.store = new RedisStore(config.get('redis'));
+}
+app.use(session(sessionOptions));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -72,14 +77,16 @@ var usersResource = epilogue.resource({
 });
 
 usersResource.use(assoMiddleware({
-  associatedModel: models.Role,
-  attribute: 'Roles',
-  setMethod: 'setRoles'
+  associations: [{
+    associatedModel: models.Role,
+    attribute: 'Roles',
+    setMethod: 'setRoles'
+  }]
 }));
 
 var projectsResource = epilogue.resource({
   model: models.Project,
-  include     : [models.Skillset, models.User],
+  include     : [models.User],
   endpoints: ['/api/project', '/api/project/:id']
 });
 
@@ -95,20 +102,6 @@ var skillsResource = epilogue.resource({
   model: models.Skill,
   endpoints: ['/api/skill', '/api/skill/:id']
 });
-
-var skillsetsResource = epilogue.resource({
-  model: models.Skillset,
-  include     : [models.Skill],
-  endpoints: ['/api/skillset', '/api/skillset/:id']
-});
-
-skillsetsResource.use(assoMiddleware({
-  associations: [{
-    associatedModel: models.Skill,
-    attribute: 'Skills',
-    setMethod: 'setSkills'
-  }]
-}));
 
 var rolesResource = epilogue.resource({
   model: models.Role,

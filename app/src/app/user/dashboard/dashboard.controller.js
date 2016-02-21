@@ -17,6 +17,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
       let stats = _stats.plain();
       let skillsById = _.keyBy(this.skills, 'id');
 
+      this.stats = stats;
 
       skillsPromise.then(() => {
         stats.comments = _.map(stats.comments, (skill) => {
@@ -27,24 +28,35 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
         let commentsBySkillId = _.keyBy(stats.comments, 'skillId');
 
         stats.skills = _.map(stats.skills, (skill, i) => {
+          let comments = commentsBySkillId[skill.skillId];
+
           skill.scores = skill.scores[0].scores;
           skill.color = ColorSet[i % ColorSet.length];
           skill.name = skillsById[skill.skillId].name;
-          skill.comments = commentsBySkillId[skill.skillId].comments || [];
+          skill.comments = comments ? comments.comments : [];
+          skill.average = _.find(stats.average, {skillId: skill.skillId});
+          if (skill.average) {
+            skill.average.color = skill.color;
+            skill.average.isDashed = true;
+          }
           return skill;
         });
 
-        this.softSkillStats = stats.global
-          .map(s => {
-            let skill = this.skills.find(sk => sk.id === s.skillId);
-            return {
-              skillId: s.skillId,
-              score: s.score,
-              isSoft: skill.isSoft,
-              name: skill.name
-            };
-          })
-          .filter(s => s.isSoft);
+        User.getProfile().then(u => {
+          this.softSkillStats = stats.global
+            .map(s => {
+              let skill = this.skills.find(sk => sk.id === s.skillId);
+              return {
+                userId: s.userId,
+                skillId: s.skillId,
+                score: s.score,
+                isSoft: skill.isSoft,
+                name: skill.name
+              };
+            })
+            .filter(s => s.isSoft)
+            .filter(s => s.userId === u.id);
+        });
 
         this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
         this.hardSkillStats = _.map(this.hardSkillStats, (skill, i) => {
@@ -82,6 +94,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
 
   skillsPromise = Skill.getList().then((skills) => {
     this.skills = skills.plain();
+    this.hardSkills = _.filter(this.skills, ({isSoft}) => !isSoft);
     return this.skills;
   });
 
@@ -90,15 +103,18 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
     skillsPromise
   ]).then(([activeUser, skills]) => {
     $scope.filters.user = [activeUser.id];
-    $scope.filters.skill = _.take(skills, 3);
+    $scope.filters.skill = _(skills).filter(({isSoft}) => !isSoft).take(3).value();
   });
 
-  this.skillpointSelected = (date) => {
+  this.skillpointSelected = (skill, date) => {
+    let comments = _.find(this.stats.comments, {skillId: skill.skillId});
     this.evaluationsDateRange = formatDateRange(date);
-    Evaluation.getList(date.format('x')).then((evaluations) => {
-      this.evaluations = evaluations;
-      $mdSidenav('commentSidebar').toggle();
-    });
+    if (comments.comments) {
+      this.comments = _.filter(comments.comments, (comment) => comment.date.isSame(date));
+      if (this.comments.length) {
+        $mdSidenav('commentSidebar').toggle();
+      }
+    }
   };
 
   this.commentsClose = () => {

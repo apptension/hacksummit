@@ -79,7 +79,7 @@ export default function LineChart(_config) {
     let bandBackgrounds = selection.selectAll('.line-chart-band-bg')
       .data(xOrdinalScale.domain());
 
-    bandBackgrounds.enter().append('rect').classed('line-chart-band-bg', true);
+    bandBackgrounds.enter().insert('rect', ':first-child').classed('line-chart-band-bg', true);
     bandBackgrounds.attr({
       x: (d) => xOrdinalScale(d),
       y: yScale.range()[1],
@@ -202,24 +202,43 @@ export default function LineChart(_config) {
       }];
     });
     paths.enter().append('path').classed('line-chart-series-path', true)
+      .classed('is-dashed', (d) => d.data.isDashed)
       .attr({
         stroke: (d) => d.data.color,
-        'stroke-dasharray': (d) => `${[0, d.pathLength]}`
+        'stroke-dasharray': (d) => {
+          if (d.data.isDashed) {
+            return [3, 3];
+          }
+          return [0, d.pathLength];
+        },
+        opacity: (d) => d.data.isDashed ? 0 : 1,
+        d: (d) => line(d.data.values)
       });
 
     paths
-      .attr('d', (d) => line(d.data.values))
       .transition()
       .duration(1000)
+      .delay((d) => d.data.isDashed ? 1000 : 0)
       .ease(d3Ease.easeLinear)
       .attr({
-        'stroke-dasharray': (d) => `${[d.pathLength, d.pathLength]}`
+        'stroke-dasharray': (d) => {
+          if (d.data.isDashed) {
+            return [3, 3];
+          }
+          return [d.pathLength, d.pathLength];
+        },
+        opacity: (d) => d.data.isDashed ? 0.5 : 1,
+        d: (d) => line(d.data.values)
       });
     paths.exit().remove();
   }
 
   function renderDots(selection) {
     let dots = selection.selectAll('.line-chart-series-dot').data((data) => {
+      if (data.isDashed) {
+        return [];
+      }
+
       let values = _.cloneDeep(data.values);
       let pathLength = 0;
       for (let i = 0; i < values.length - 1; i++) {
@@ -267,7 +286,7 @@ export default function LineChart(_config) {
     });
 
     commentIndicator.enter()
-      .insert('g', '.line-chart-comment-indicator')
+      .insert('g', '.line-chart-band-hitarea')
       .classed('line-chart-comment-indicator', true)
       .attr({
         opacity: 0,
@@ -293,8 +312,8 @@ export default function LineChart(_config) {
       .transition().duration(500).ease(d3Ease.easeElasticOut)
       .attr({
         cx: 0,
-        cy: (d) => d.x.isSame(me.hoveredBandValue) ? -12 : -10,
-        r: (d) => d.x.isSame(me.hoveredBandValue) ? 6 : 4,
+        cy: (d) => d.x.isSame(me.hoveredBandValue) ? -14 : -10,
+        r: (d) => d.x.isSame(me.hoveredBandValue) ? 8 : 4,
         stroke: (d) => d.color,
         'stroke-width': 2
       });
@@ -316,7 +335,7 @@ export default function LineChart(_config) {
     let text = commentIndicator.selectAll('text').data((d) => [d]);
     text.enter().append('text').attr({
       opacity: 0,
-      y: -8
+      y: -10
     });
     text.text((d) => d.commentsCount)
       .transition().duration(500).ease(d3Ease.easeElasticOut)

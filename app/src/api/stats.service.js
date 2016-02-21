@@ -23,6 +23,12 @@ export default ngInject(function StatsService(API, $httpParamSerializerJQLike) {
 
     params.skill = _.map(params.skill, 'id');
     params.project = _.map(params.project, 'id');
+    if (params.startDate) {
+      params.startDate = moment(params.startDate).utc().format('X');
+    }
+    if (params.endDate) {
+      params.endDate = moment(params.endDate).utc().format('X');
+    }
 
     return statsAPI
       .customGET(parseParams(params))
@@ -59,6 +65,15 @@ export default ngInject(function StatsService(API, $httpParamSerializerJQLike) {
         return userComment;
       });
       return comment;
+    });
+
+    data.average = _.map(data.average, (skill) => {
+      skill.scores = _.map(skill.scores, (score) => {
+        score.date = moment.utc(parseInt(score.date, 10) * 1000);
+        score.value *= 100;
+        return score;
+      });
+      return skill;
     });
 
     return data;

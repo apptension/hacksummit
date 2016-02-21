@@ -14,21 +14,28 @@ router.get('/:id/evaluation', (req, res, next) => {
         }
       }).then(function(lastEvaluation) {
         if (!lastEvaluation) {
-          return models.sequelize.query('select skills.id, userprojects.ProjectId, evaluations.id evaluate, (select users.id from users where isAdmin=1 order by rand() limit 1) userId from (skills, skillskillsets, skillsets, userprojects) left join evaluations on (evaluations.SkillId=skills.id and evaluations.EvaluatedUserId=? and (evaluations.date is null or evaluations.date>=date_sub(now(), interval 7 day))) where skills.id=skillskillsets.SkillId and skillskillsets.SkillsetId=skillsets.id and skillsets.ProjectId=userprojects.ProjectId and userprojects.UserId=? having evaluate is null order by rand() limit 1', {replacements: [req.params.id, req.params.id], type: models.sequelize.QueryTypes.SELECT}).then(function(skill) {
-            if (skill.length) {
-              return models.Evaluation.upsert({
-                ProjectId: skill[0].ProjectId,
-                EvaluatedUserId: req.params.id,
-                UserId: skill[0].userId,
-                SkillId: skill[0].id
-              }).then(function() {
-                return models.Evaluation.findOne({
-                  where: {
-                    EvaluatedUserId: req.params.id,
-                    state: models.Evaluation.attributes.state.values.PENDING
-                  }
-                }).then(function(evaluation) {
-                  return res.json(evaluation);
+          return models.sequelize.query('select skills.id, evaluations.id evaluate from (skills, skillroles, userroles) left join evaluations on (evaluations.SkillId=skills.id and evaluations.EvaluatedUserId=? and (evaluations.date is null or evaluations.date>=date_sub(now(), interval 7 day))) where skills.id=skillroles.SkillId and skillroles.RoleId=userroles.RoleId and userroles.UserId=? having evaluate is null', {replacements: [req.params.id, req.params.id], type: models.sequelize.QueryTypes.SELECT}).then(function(skills) {
+            if (skills.length) {
+              var skill = skills[Math.floor(Math.random() * (skills.length - 1))];
+              return models.User.findAll({
+                where: {
+                  isAdmin: 1
+                }
+              }).then(function(users) {
+                var user = users[Math.floor(Math.random() * (users.length - 1))];
+                return models.Evaluation.upsert({
+                  EvaluatedUserId: req.params.id,
+                  UserId: user.id,
+                  SkillId: skill.id
+                }).then(function() {
+                  return models.Evaluation.findOne({
+                    where: {
+                      EvaluatedUserId: req.params.id,
+                      state: models.Evaluation.attributes.state.values.PENDING
+                    }
+                  }).then(function(evaluation) {
+                    return res.json(evaluation);
+                  });
                 });
               });
             } else {
