@@ -44,7 +44,6 @@ export default ngInject(() => {
         let result = [];
         collection.forEach((item) => {
           attributes.forEach((attribute) => {
-            console.log(item, item[attribute]);
             if (item[attribute].toLowerCase().indexOf(query.toLowerCase()) !== -1 && (!excluded || excluded.indexOf(item) === -1)) {
               result.push(item);
             }
