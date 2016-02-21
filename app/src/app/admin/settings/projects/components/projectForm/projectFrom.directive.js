@@ -35,7 +35,7 @@ export default ngInject(() => {
 
       $scope.searchUser = (input, excluded) => {
         return $scope.getUsersCollection().filter((user) => {
-            return user.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0 && excluded.indexOf(user) === -1;
+            return user.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0 && !excluded.find((f) => {return f.id === user.id});
           }) || [];
       };
     }

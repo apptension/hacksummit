@@ -28,9 +28,9 @@
         <label flex="none" class="form__inputLabel projectItem__teamLabel">Team: </label>
         <md-contact-chips
                 flex="grow"
-                ng-model="getFormModel().members"
+                ng-model="getFormModel().Users"
                 ng-required="true"
-                md-contacts="searchUser($query, getFormModel().members)"
+                md-contacts="searchUser($query, getFormModel().Users)"
                 md-contact-name="name"
                 md-contact-image="avatar"
                 placeholder="Choose Project users"

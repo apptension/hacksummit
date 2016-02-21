@@ -10,6 +10,11 @@ export default ngInject(function StatsService(API) {
   };
 
   this.post = (obj) => {
-    return api.post(obj);
+    return api.post(obj).then(parseSkills);
   };
+
+  function parseSkills(data) {
+    let skills = data.plain();
+    return skills;
+  }
 });

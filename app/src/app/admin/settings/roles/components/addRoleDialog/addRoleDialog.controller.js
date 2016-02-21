@@ -1,7 +1,7 @@
 export default ngInject(function DialogController($scope, $mdDialog, skills) {
   $scope.newRole = {
     name: '',
-    skills: []
+    Skills: []
   };
 
   $scope.skills = skills;
