@@ -51,7 +51,20 @@ router.get('/', (req, res, next) => {
       'skillId',
       'userId'
       ]
+    },
+
+    globalQuery = {
+      attributes: [
+        [sequelize.fn('avg', sequelize.col('starred')), 'value'],
+        'skillId',
+        'userId'
+      ],
+      group: [
+        'skillId',
+        'userId'
+      ]
     };
+
 
   if (users && users.length) {
     //query.attributes.push('userId');
@@ -60,6 +73,9 @@ router.get('/', (req, res, next) => {
   }
 
   query.where = where;
+  globalQuery.where = where;
+
+  let global = models.Evaluation.findAll(globalQuery);
 
   models.Evaluation.findAll(query).then((result) => {
 
@@ -86,8 +102,17 @@ router.get('/', (req, res, next) => {
       }
     });
 
-    res.json({
-      skills: grouped
+    global.then((globalStats) => {
+      res.json({
+        skills: grouped,
+        global: globalStats.map((stat) => {
+          return {
+            score: stat.getDataValue('value'),
+            skillId: stat.getDataValue('skillId'),
+            userId: stat.getDataValue('userId')
+          };
+        })
+      });
     });
   });
 
