@@ -1,5 +1,5 @@
 import template from './projectForm.html';
-
+import moment from 'moment';
 
 export default ngInject(() => {
   return {
@@ -32,6 +32,14 @@ export default ngInject(() => {
         });
         return modelObject;
       };
+
+      $scope.$watch('getFormModel()', () => {
+        if (moment($scope.getFormModel().startDate).isAfter(moment($scope.getFormModel().endDate))) {
+          $scope.projectForm.$setValidity('dateRangeInvalid', false);
+        } else {
+          $scope.projectForm.$setValidity('dateRangeInvalid', true);
+        }
+      }, true);
 
       $scope.searchUser = (input, excluded) => {
         return $scope.getUsersCollection().filter((user) => {

@@ -13,13 +13,13 @@
         <div flex="grow">
             <div layout="row">
                 <div class="form__inputGroup form__inputGroup--datepicker projectItem__datepicker" layout="row">
-                    <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="getFormModel().startDate" required name="startDate" md-placeholder="Start date"></md-datepicker>
+                    <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="getFormModel().startDate" md-max-date="getFormModel().endDate" required name="startDate" md-placeholder="Start date"></md-datepicker>
                 </div>
 
                 <md-icon class="projectItem__datepickersSpacer">remove</md-icon>
 
                 <div class="form__inputGroup form__inputGroup--datepicker projectItem__datepicker" layout="row">
-                    <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="getFormModel().endDate" required name="startDate" md-placeholder="Start date"></md-datepicker>
+                    <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="getFormModel().endDate" md-min-date="getFormModel().startDate" required name="endDate" md-placeholder="Start date"></md-datepicker>
                 </div>
             </div>
         </div>
