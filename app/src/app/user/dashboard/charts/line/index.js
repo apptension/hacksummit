@@ -211,11 +211,11 @@ export default function LineChart(_config) {
           }
           return [0, d.pathLength];
         },
-        opacity: (d) => d.data.isDashed ? 0 : 1
+        opacity: (d) => d.data.isDashed ? 0 : 1,
+        d: (d) => line(d.data.values)
       });
 
     paths
-      .attr('d', (d) => line(d.data.values))
       .transition()
       .duration(1000)
       .delay((d) => d.data.isDashed ? 1000 : 0)
@@ -227,7 +227,8 @@ export default function LineChart(_config) {
           }
           return [d.pathLength, d.pathLength];
         },
-        opacity: (d) => d.data.isDashed ? 0.5 : 1
+        opacity: (d) => d.data.isDashed ? 0.5 : 1,
+        d: (d) => line(d.data.values)
       });
     paths.exit().remove();
   }
