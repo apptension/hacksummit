@@ -25,7 +25,7 @@ export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Rol
       clickOutsideToClose: true,
       fullscreen: useFullScreen,
       locals: {
-        role:[]
+        role: []
       }
     });
   };

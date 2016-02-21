@@ -7,7 +7,27 @@ export default ngInject(() => {
     scope: {
       data: '='
     },
-    link: (scope) => {
+    link: (scope, $el) => {
+      let step = 0;
+      const maxSteps = 50;
+      let ratioEl = $el.find('.card__value');
+
+      let interpolate = (val, step) => {
+        return Math.round(step / maxSteps * val);
+      };
+
+      let cancelWatch = scope.$watch('data', (d) => {
+        if(!d) return;
+
+        let interval = setInterval(() => {
+          let val = interpolate(d.ratio, step);
+          ratioEl.html(`${val}%`);
+          if(step++ > maxSteps) {
+            clearInterval(interval);
+          }
+        }, 20);
+        cancelWatch();
+      })
     }
   };
 });
