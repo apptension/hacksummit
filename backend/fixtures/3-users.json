@@ -5,7 +5,7 @@
     "data": {
       "id": 1,
       "isAdmin": true,
-      "name": "Tomasz Nowak",
+      "name": "Agnieszka Wozniak",
       "avatar": "http://lorempixel.com/300/300/people/"
     }
   },
@@ -15,7 +15,7 @@
     "data": {
       "id": 2,
       "isAdmin": false,
-      "name": "Adam Kowalski",
+      "name": "Michal Kleszcz",
       "avatar": "http://lorempixel.com/300/300/people/"
     }
   },
@@ -25,7 +25,7 @@
     "data": {
       "id": 3,
       "isAdmin": false,
-      "name": "Dennis McConaughey",
+      "name": "Tymek Bleja",
       "avatar": "http://lorempixel.com/300/300/people/"
     }
   },
@@ -35,7 +35,7 @@
     "data": {
       "id": 4,
       "isAdmin": false,
-      "name": "Filip Jaworski",
+      "name": "Ania Kitowska",
       "avatar": "http://lorempixel.com/300/300/people/"
     }
   },
@@ -45,7 +45,77 @@
     "data": {
       "id": 5,
       "isAdmin": false,
-      "name": "Mateusz Kaczmarek",
+      "name": "Wojtek Panek",
+      "avatar": "http://lorempixel.com/300/300/people/"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 6,
+      "isAdmin": false,
+      "name": "Zbigniew Czarnecki",
+      "avatar": "http://lorempixel.com/300/300/people/"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 7,
+      "isAdmin": false,
+      "name": "Daniel Capeletti",
+      "avatar": "http://lorempixel.com/300/300/people/"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 8,
+      "isAdmin": false,
+      "name": "Michal Przyszczypkowski",
+      "avatar": "http://lorempixel.com/300/300/people/"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 9,
+      "isAdmin": false,
+      "name": "Patryk Ziemkowski",
+      "avatar": "http://lorempixel.com/300/300/people/"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 10,
+      "isAdmin": false,
+      "name": "Agnieszka Goronska",
+      "avatar": "http://lorempixel.com/300/300/people/"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 11,
+      "isAdmin": false,
+      "name": "Andrzej Aleksiejuk",
+      "avatar": "http://lorempixel.com/300/300/people/"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 12,
+      "isAdmin": false,
+      "name": "Kuba Paniaczyk",
       "avatar": "http://lorempixel.com/300/300/people/"
     }
   }

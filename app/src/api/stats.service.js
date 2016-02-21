@@ -47,7 +47,7 @@ export default ngInject(function StatsService(API, $httpParamSerializerJQLike) {
     data.skills = _.map(data.skills, (skill) => {
       skill.scores = _.map(skill.scores, (skillsScore) => {
         skillsScore.scores = _.map(skillsScore.scores, (userScore) => {
-          userScore.date = moment.utc(parseInt(userScore.date, 10) * 1000);
+          userScore.date = moment(userScore.date, 'X');
           userScore.value *= 100;
           return userScore;
         });
@@ -59,7 +59,7 @@ export default ngInject(function StatsService(API, $httpParamSerializerJQLike) {
     data.comments = _.map(data.comments, (comment) => {
       comment.comments = _.map(comment.comments, (userComment) => {
         userComment.comments = _.map(userComment.comments, (userScore) => {
-          userScore.date = moment.utc(parseInt(userScore.date, 10) * 1000);
+          userScore.date = moment(userScore.date, 'X');
           return userScore;
         });
         return userComment;
@@ -69,7 +69,7 @@ export default ngInject(function StatsService(API, $httpParamSerializerJQLike) {
 
     data.average = _.map(data.average, (skill) => {
       skill.scores = _.map(skill.scores, (score) => {
-        score.date = moment.utc(parseInt(score.date, 10) * 1000);
+        score.date = moment(score.date, 'X');
         score.value *= 100;
         return score;
       });

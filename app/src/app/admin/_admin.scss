@@ -7,7 +7,7 @@ md-toolbar, .md-toolbar-tools {
 }
 
 .md-toolbar-tools {
-  padding: 0 30px;
+  padding: 0 10px 0 20px;
   font-size: 0;
 }
 
@@ -35,7 +35,51 @@ md-tabs .md-tab.md-active {
 }
 
 .admin__headerLogo {
-  width: 100px;
+  width: 146px;
   font-size: 16px;
   font-weight: bold;
+  height: 23px;
+  margin-top: 6px;
+}
+
+.admin__userMenuButton {
+  height: 60px;
+  text-transform: none;
+  margin-left: 0;
+}
+
+.admin__userMenuAvatar {
+  border-radius: 50%;
+  height: 34px;
+  width: 34px;
+  vertical-align: middle;
+  margin-left: 25px;
+}
+
+.admin__notificationMenuButton {
+  height: 60px;
+  min-width: 0;
+  padding: 0 20px;
+  margin-right: 0;
+}
+
+.admin__notificationMenuIconWrapper {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+
+.admin__notificationMenuIconWrapper--active {
+  background: #fff;
+
+  .admin__notificationMenuIcon {
+    color: #009cf3;
+  }
+}
+
+.admin__notificationMenuIcon {
+  vertical-align: top;
+  font-size: 18px;
+  margin-top: 3px;
 }

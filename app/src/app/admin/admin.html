@@ -1,7 +1,9 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
         <div flex="none" class="admin__headerLogo">
-            <h1>LINEAPP</h1>
+            <a ui-sref="app.admin.home">
+                <logo></logo>
+            </a>
         </div>
         <div flex>
             <md-button class="admin__headerItem" ng-class="{ 'admin__headerItem--active' : getSelectedTab() == HOME_TAB }" ui-sref="app.admin.home">
@@ -10,6 +12,29 @@
             <md-button class="admin__headerItem" ng-class="{ 'admin__headerItem--active' : getSelectedTab() == SETTINGS_TAB }" ui-sref="app.admin.settings.users">
                 Settings
             </md-button>
+        </div>
+        <div flex="none" class="admin__notificationMenu">
+            <md-button class="admin__notificationMenuButton">
+                <div class="admin__notificationMenuIconWrapper" ng-class="{ 'admin__notificationMenuIconWrapper--active' : true }">
+                    <md-icon class="admin__notificationMenuIcon" ng-if="false">notifications</md-icon>
+                    <md-icon class="admin__notificationMenuIcon" ng-if="true">notifications_active</md-icon>
+                </div>
+            </md-button>
+        </div>
+        <div flex="none" class="admin__userMenu">
+            <md-menu md-position-mode="target-right target" md-offset="0 60">
+                <md-button md-menu-origin aria-label="Open user menu" class="admin__userMenuButton" ng-click="openMenu($mdOpenMenu, $event)">
+                    <span class="main__header-username">{{ currentUser.name }}</span>
+                    <img class="admin__userMenuAvatar" ng-src="{{ currentUser.avatar }}"/>
+                </md-button>
+                <md-menu-content width="4" class="md-block">
+                    <md-menu-item>
+                        <md-button ng-click="logout()" class="md-button" aria-label="Logout">
+                            <md-icon>exit_to_app</md-icon> Logout
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
         </div>
     </div>
 </md-toolbar>

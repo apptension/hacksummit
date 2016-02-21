@@ -4,12 +4,54 @@
   box-shadow: 0px 0px 184px -60px rgba(191,191,191,1);
 }
 
-.homeStart__message{
-  width: 100%;
-  height: 40vh;
-
-  font-style: italic;
+.avatar{
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
 }
+
+.homeStart__message{
+  width: 80%;
+  margin-left: 10%;
+  height: 40vh;
+  font-weight: 300;
+  font-style: italic;
+
+  h3{
+    font-weight: 400;
+  }
+}
+
+.homeStart__btnStartWrapper{
+  position: absolute;
+  width: 100%;
+}
+
+.homeStart__btnStart{
+  position: relative;
+  display: inline-block;
+  top: 40%;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.homeStart__btnStartTeam{
+  width: 285px;
+  height: 60px;
+  background: url('/public/images/btn_team_member.png') no-repeat;
+
+}
+
+.homeStart__btnStartManager{
+  width: 185px;
+  height: 60px;
+  background: url('/public/images/btn_manager.png') no-repeat;
+
+}
+
 
 
 

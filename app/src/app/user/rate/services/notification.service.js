@@ -29,7 +29,7 @@ export default ngInject(function NotificationService($state) {
 
   this.showNotification = () => {
     let config = this.prepareConfig();
-    let notification = new Notification('Hello,', config);
+    let notification = new Notification('Hi there,', config);
     notification.addEventListener('click', () => {
       this.proceed();
       notification.close();
@@ -38,7 +38,7 @@ export default ngInject(function NotificationService($state) {
 
   this.prepareConfig = () => {
     return {
-      body: 'Would you mind rating someone? :)',
+      body: 'Feel like answering a question?',
       icon: 'http://lorempixel.com/100/100/cats/'
     };
   };
