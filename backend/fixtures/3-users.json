@@ -5,8 +5,8 @@
     "data": {
       "id": 1,
       "isAdmin": true,
-      "name": "Tomasz Nowak",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "name": "Agnieszka Wozniak",
+      "avatar": "/public/images/people/agaw.jpg"
     }
   },
   {
@@ -15,8 +15,8 @@
     "data": {
       "id": 2,
       "isAdmin": false,
-      "name": "Adam Kowalski",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "name": "Michal Kleszcz",
+      "avatar": "/public/images/people/michalk.jpg"
     }
   },
   {
@@ -25,8 +25,8 @@
     "data": {
       "id": 3,
       "isAdmin": false,
-      "name": "Dennis McConaughey",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "name": "Tymek Bleja",
+      "avatar": "/public/images/people/tymekbleja.jpg"
     }
   },
   {
@@ -35,8 +35,8 @@
     "data": {
       "id": 4,
       "isAdmin": false,
-      "name": "Filip Jaworski",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "name": "Ania Kitowska",
+      "avatar": "/public/images/people/aniak.jpg"
     }
   },
   {
@@ -45,8 +45,78 @@
     "data": {
       "id": 5,
       "isAdmin": false,
-      "name": "Mateusz Kaczmarek",
-      "avatar": "http://lorempixel.com/300/300/people/"
+      "name": "Wojtek Panek",
+      "avatar": "/public/images/people/wojtek.png"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 6,
+      "isAdmin": false,
+      "name": "Zbigniew Czarnecki",
+      "avatar": "/public/images/people/zbyszektymczas.jpg"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 7,
+      "isAdmin": false,
+      "name": "Daniel Capeletti",
+      "avatar": "/public/images/people/daniel.jpg"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 8,
+      "isAdmin": false,
+      "name": "Michal Przyszczypkowski",
+      "avatar": "/public/images/people/michalp.png"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 9,
+      "isAdmin": false,
+      "name": "Patryk Ziemkowski",
+      "avatar": "/public/images/people/patryk.png"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 10,
+      "isAdmin": false,
+      "name": "Agnieszka Goronska",
+      "avatar": "/public/images/people/agag.jpg"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 11,
+      "isAdmin": false,
+      "name": "Andrzej Aleksiejuk",
+      "avatar": "/public/images/people/andrzej.png"
+    }
+  },
+{
+    "model": "User",
+    "keys": ["id"],
+    "data": {
+      "id": 12,
+      "isAdmin": false,
+      "name": "Kuba Paniaczyk",
+      "avatar": "/public/images/people/kubapaniaczyk.jpg"
     }
   }
 ]

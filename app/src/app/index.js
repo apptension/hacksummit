@@ -26,6 +26,7 @@ import AppController from './app.controller';
 import UserController from './user/user.controller';
 import statsFilters from './directives/statsFilters/statsFilters.directive';
 import filterList from './directives/filterList/filterList.directive';
+import logo from './directives/logo/logo.directive';
 import ColorSet from './colorSet.constant';
 
 export default angular.module('app', [
@@ -43,6 +44,7 @@ export default angular.module('app', [
   .config(material)
   .controller('AppController', AppController)
   .controller('UserController', UserController)
+  .directive('logo', logo)
   .directive('filterList', filterList)
   .directive('statsFilters', statsFilters)
   .constant('ColorSet', ColorSet)
