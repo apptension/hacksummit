@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, ColorSet, Stats, Evaluation, Project, Skill, User, Notification, $mdToast) {
+export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, ColorSet, Stats, Evaluation, Project, Skill, User, Notification, $mdToast, userProfile) {
   $scope.filters = {
     project: [],
     skill: [],
@@ -42,23 +42,21 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
           return skill;
         });
 
-        activeUserPromise.then(u => {
-          let fetchedSoftSkills = stats.global
-            .map(s => {
-              let skill = this.skills.find(sk => sk.id === s.skillId);
-              return {
-                userId: s.userId,
-                skillId: s.skillId,
-                score: s.score,
-                isSoft: skill.isSoft,
-                name: skill.name
-              };
-            })
-            .filter(s => s.isSoft)
-            .filter(s => s.userId === u.id);
+        let fetchedSoftSkills = stats.global
+          .map(s => {
+            let skill = this.skills.find(sk => sk.id === s.skillId);
+            return {
+              userId: s.userId,
+              skillId: s.skillId,
+              score: s.score,
+              isSoft: skill.isSoft,
+              name: skill.name
+            };
+          })
+          .filter(s => s.isSoft)
+          .filter(s => s.userId === userProfile.id);
 
           if(!this.softSkillStats) this.softSkillStats = fetchedSoftSkills;
-        });
 
         this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
         this.hardSkillStats = _.map(this.hardSkillStats, (skill, i) => {
@@ -68,13 +66,6 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
       });
     });
   };
-
-  let activeUserPromise = User.getProfile().then(res => {
-    this.activeUser = res.plain();
-    return this.activeUser;
-  }).catch((err) => {
-    $state.go('app.home');
-  });
 
   let formatDateRange = (date) => {
     let dateStart = moment(date).format('YYYY.MM.DD'),
@@ -103,10 +94,9 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
   });
 
   $q.all([
-    activeUserPromise,
     skillsPromise
-  ]).then(([activeUser, skills]) => {
-    $scope.filters.user = [activeUser.id];
+  ]).then(([skills]) => {
+    $scope.filters.user = [userProfile.id];
     $scope.filters.skill = _(skills).filter(({isSoft}) => !isSoft).take(3).value();
   });
 
