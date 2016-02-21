@@ -3,7 +3,7 @@
     <div class="form__inputGroup" layout="row">
         <label flex="none" class="form__inputLabel userItem__nameLabel">Name: </label>
         <md-input-container flex md-no-float class="form__inputControl">
-            <input class="form__input" ng-model="getFormModel().name" aria-label="formModelName" />
+            <input class="form__input" ng-model="getFormModel().name" aria-label="formModelName" placeholder="Enter User name"/>
         </md-input-container>
     </div>
 
@@ -16,7 +16,8 @@
                     md-items="roles in searchUser(searchModel, getFormModel().roles)"
                     md-item-text="getFormModel().name"
                     md-min-length="1"
-                    md-no-cache="true">
+                    md-no-cache="true"
+                    placeholder="Choose User roles">
                 <span md-highlight-text="searchModel" md-highlight-flags="i" class="filterList__searchText">{{ roles.name }}</span>
             </md-autocomplete>
             <md-chip-template>

@@ -19,7 +19,7 @@
   </div>
 
   <div flex layout="column" class="adminTabContent__tabList">
-    <div flex="none" class="adminTabItem__mainContainer" ng-repeat="user in usersCtrl.getUsersList()">
+    <div flex="none" class="adminTabItem__mainContainer" ng-repeat="user in usersCtrl.getUsers()">
       <div layout class="adminTabItem__labelContainer" ng-click="usersCtrl.toggleItem(user)">
         <md-list-item>
           <div class="adminTabItem__icon" layout layout-align="center center">

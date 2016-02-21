@@ -4,12 +4,12 @@ import uirouter from 'angular-ui-router';
 import routing from './roles.routes.js';
 
 import rolesController from './roles.controller.js';
-import roleItemDirective from './components/role/role-item.directive';
+import roleFormDirective from './components/roleForm/roleForm.directive';
 
 export default angular.module('app.admin.roles', [
   uirouter
 ])
   .controller('RolesController', rolesController)
-  .directive('roleItemDirective',roleItemDirective)
+  .directive('roleForm',roleFormDirective)
   .config(routing)
   .name;

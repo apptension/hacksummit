@@ -5,7 +5,7 @@ import routing from './projects.routes.js';
 
 import projectsController from './projects.controller.js';
 
-import projectFormDirective from './components/projectForm/projectFrom';
+import projectFormDirective from './components/projectForm/projectFrom.directive';
 
 export default angular.module('app.admin.projects', [
   uirouter

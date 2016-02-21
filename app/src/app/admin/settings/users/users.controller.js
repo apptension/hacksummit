@@ -74,7 +74,7 @@ export default ngInject(function UsersController($scope, $mdDialog, User, Role, 
     });
   };
 
-  this.getUsersList = () => {
+  this.getUsers = () => {
     return this.users.filter((user) => {
       return user.name.toLowerCase().indexOf(this.filters.searchText.toLowerCase()) !== -1;
     });

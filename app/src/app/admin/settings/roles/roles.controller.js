@@ -1,65 +1,81 @@
-import template from './dialogs/addDialog.html';
-import DialogController from './dialogs/addDialog.controller';
+import addRoleDialogTemplate from './components/addRoleDialog/addRoleDialog.html';
+import addRoleDialogController from './components/addRoleDialog/addRoleDialog.controller';
 
-export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Role, moment) {
-  $scope.roleList = [];
+export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Role, Skill, moment) {
+  this.roles = [];
+  this.skills = [];
+  this.filters = {
+    searchText: ''
+  };
 
-  loadRoles();
-  function loadRoles() {
-    Role.getList().then((data) => {
-      $scope.roleList = data.map((role) => {
-        role.edit = false;
-        role.updatedAt = moment.utc(role.updatedAt).format('lll');
-        return role;
-      });
+  Role.getList().then((data) => {
+    this.roles = data.map((role) => {
+      role.edit = false;
+      role.Skills = data.Skills ? data.Skills : [];
+      role.updatedAt = moment.utc(role.updatedAt).format('lll');
+      role.formModel = angular.copy(role);
+      return role;
     });
-  }
+  });
 
-  $scope.showAdvanced = (ev) => {
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+  Skill.getList().then((data) => {
+    this.skills = data;
+  });
+
+  this.addRole = (ev) => {
     $mdDialog.show({
-      controller: DialogController,
-      template: template,
+      controller: addRoleDialogController,
+      template: addRoleDialogTemplate,
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,
-      fullscreen: useFullScreen,
       locals: {
-        role: []
+        skills: this.skills
       }
+    }).then((newRole) => {
+      console.log(newRole)
     });
   };
 
+  this.submitRole = (role) => {
+    let roleIndex = this.roles.indexOf(role);
 
-  $scope.roleList.forEach((role) => {
-    role.edite = false;
-  });
+    role = role.formModel;
+    role.edit = true;
+    role.formModel = null;
+    role.formModel = angular.copy(role);
 
-  $scope.toggleItem = (selected) => {
+    this.roles[roleIndex] = role;
+  };
+
+  this.toggleItem = (selected) => {
     if (selected.edit) {
       selected.edit = false;
       return;
     }
 
-    $scope.roleList.forEach((role) => {
+    this.roles.forEach((role) => {
       role.edit = false;
     });
 
     selected.edit = true;
   };
 
+  this.deleteRole = (role) => {
+    $mdDialog.show($mdDialog.confirm()
+      .title('Delete Role')
+      .textContent('Are you sure you want to delete this role?')
+      .ok('OK')
+      .cancel('Cancel')
+    ).then(() => {
+      console.log('delete')
+    });
+  };
 
-  $scope.$on('newRoleAdded', function () {
-    console.log('here');
-    loadRoles();
-    $mdDialog.hide();
-  });
+  this.getRoles = () => {
+    return this.roles.filter((role) => {
+      return role.name.toLowerCase().indexOf(this.filters.searchText.toLowerCase()) !== -1;
+    });
+  };
 
-  $scope.$on('canceledRole', function () {
-    $mdDialog.hide();
-  });
-
-  $scope.$on('deletedRole', function () {
-    loadRoles();
-  });
 });
