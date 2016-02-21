@@ -1,7 +1,7 @@
 export default ngInject(function DialogController($scope, $mdDialog, roles) {
   $scope.newUser = {
     name: '',
-    roles: [],
+    Roles: [],
     isAdmin: false
   };
 
