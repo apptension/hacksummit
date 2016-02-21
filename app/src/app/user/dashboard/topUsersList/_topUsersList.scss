@@ -1,0 +1,31 @@
+.top-list {
+	display: inline-block;
+}
+
+.top-list__item {
+	margin-bottom: 20px;
+}
+
+.top-list__rank {
+	margin-right: 15px;
+	border: 1px solid #515050;
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	text-align: center;
+	line-height: 15px;
+	font-size: 10px;
+}
+
+.top-list__divider {
+	border-top: 1px solid #f6f6f6;
+	margin-left: 25px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	width: 100%;
+	display: inline-block;
+}
+
+.top-list__mine-stats {
+}

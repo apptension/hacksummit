@@ -11,6 +11,7 @@ import skillBadge from './skillBadge/skillBadge.directive';
 import softSkills from './softSkills.filter';
 import profileImage from './profile/profileImage/profileImage.directive';
 import profileRow from './profile/profileRow/profileRow.directive';
+import topUsers from './topUsersList/topUsersList.directive';
 
 
 export default angular.module('app.user.dashboard', [
@@ -23,5 +24,6 @@ export default angular.module('app.user.dashboard', [
   .directive('skillBadge', skillBadge)
   .directive('profileImage', profileImage)
   .directive('profileRow', profileRow)
+  .directive('usersTopList', topUsers)
   .filter('softSkills', softSkills)
   .name;
