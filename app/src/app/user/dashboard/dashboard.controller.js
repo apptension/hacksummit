@@ -22,8 +22,8 @@ export default ngInject(function DashboardController($state, $scope, $mdSidenav,
     skills: []
   };
 
-  this.skillpointSelected = (skillName, date) => {
-    Evaluation.getList(skillName, date.format('x')).then((evaluations) => {
+  this.skillpointSelected = (date) => {
+    Evaluation.getList(date.format('x')).then((evaluations) => {
       this.evaluations = evaluations;
       $mdSidenav('commentSidebar').toggle();
     });
