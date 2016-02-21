@@ -1,13 +1,15 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
-        <div flex="10">
-            <h1>Logo</h1>
+        <div flex="none" class="admin__headerLogo">
+            <h1>LINEAPP</h1>
         </div>
         <div flex>
-            <md-tabs md-no-pagination md-selected="getSelectedTab()">
-                <md-tab label="Statistics" ui-sref="app.admin.home"></md-tab>
-                <md-tab label="Settings" ui-sref="app.admin.settings.users"></md-tab>
-            </md-tabs>
+            <md-button class="admin__headerItem" ng-class="{ 'admin__headerItem--active' : getSelectedTab() == HOME_TAB }" ui-sref="app.admin.home">
+                Dashboard
+            </md-button>
+            <md-button class="admin__headerItem" ng-class="{ 'admin__headerItem--active' : getSelectedTab() == SETTINGS_TAB }" ui-sref="app.admin.settings.users">
+                Settings
+            </md-button>
         </div>
     </div>
 </md-toolbar>

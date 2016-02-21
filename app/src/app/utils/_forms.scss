@@ -1,0 +1,70 @@
+.form {
+  &__inputGroup {
+    font-size: 0;
+  }
+
+  &__inputLabel {
+    line-height: 30px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2px;
+    color: rgba(0,0,0,0.7);
+    font-size: 14px;
+    margin-right: 10px;
+  }
+
+  &__inputControl {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+md-input-container .form__input {
+  color: rgba(0,0,0,0.7);
+  font-size: 14px;
+  border-color: rgba(0,0,0,0.7);
+}
+
+md-datepicker.form__datepicker {
+  margin: 0;
+  padding: 0;
+
+  .md-datepicker-button {
+    display: none;
+  }
+
+  .md-datepicker-input-container {
+    padding-bottom: 0;
+    margin-top: 2px;
+    margin-bottom: 1px;
+    margin-left: 0;
+    border-color: rgba(0,0,0,0.7);
+    height: 31px;
+    width: 100%;
+
+    &.md-datepicker-focused {
+      margin-bottom: 0;
+      border-color: #009cf3;
+      height: 32px;
+    }
+  }
+
+  .md-datepicker-input {
+    height: 30px;
+    color: rgba(0,0,0,0.7);
+    font-size: 14px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .md-datepicker-triangle-button {
+    top: 6px;
+  }
+}
+
+
+
+
+
