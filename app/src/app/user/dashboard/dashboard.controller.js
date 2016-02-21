@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, ColorSet, Stats, Evaluation, Project, Skill, User, Notification) {
   $scope.filters = {
     project: [],
@@ -58,6 +60,12 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
     return this.activeUser;
   });
 
+  let formatDateRange = (date) => {
+    let dateStart = moment(date).format('YYYY.MM.DD'),
+      dateEnd = moment(date).add(6, 'days').format('YYYY.MM.DD');
+    return dateStart + ' - ' + dateEnd;
+  };
+
   Stats.getContributors().then((contributors) => {
     this.contributorsList = {
       list: contributors
@@ -86,6 +94,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
   });
 
   this.skillpointSelected = (date) => {
+    this.evaluationsDateRange = formatDateRange(date);
     Evaluation.getList(date.format('x')).then((evaluations) => {
       this.evaluations = evaluations;
       $mdSidenav('commentSidebar').toggle();
