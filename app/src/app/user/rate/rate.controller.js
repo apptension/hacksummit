@@ -1,4 +1,11 @@
-export default ngInject(function RateController(User, $state, Question) {
+import template from './rateModal/rateModal.html';
+
+export default ngInject(function RateController(User, $state, Question, $mdDialog, $scope) {
+  $mdDialog.show({
+    template
+  });
+  $scope.$on('$destroy', $mdDialog.hide);
+
   User.getSuggestedEvaluation().then((evaluation) => {
     this.evaluation = evaluation.plain();
     Question.randomizeQuestion(evaluation.skillId || 1, evaluation.userId || 1).then(q => {this.question = q;});
