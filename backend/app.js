@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require("passport");
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var epilogue = require('epilogue');
 
 var models = require('./models'),
@@ -42,11 +43,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
+var sessionOptions = {
   secret: config.get('sessionSecret'),
   resave: false,
   saveUninitialized: false
-}));
+};
+if (app.get('env') === 'production') {
+  sessionOptions.store = new RedisStore(config.get('redis'));
+}
+app.use(session(sessionOptions));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
