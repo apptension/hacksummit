@@ -20,7 +20,7 @@ export default function PieChart(_config) {
 
   let mapValueToAngle = d3.scale
     .linear()
-    .domain([0, 100])
+    .domain([0, 1])
     .range([0, 2 * Math.PI]);
 
   function render(data) {

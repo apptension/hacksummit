@@ -13,14 +13,14 @@ export default ngInject(() => {
       let ratioEl = $el.find('.card__value');
 
       let interpolate = (val, step) => {
-        return Math.round(step / maxSteps * val);
+        return Math.round(step / maxSteps * 100 * val);
       };
 
       let cancelWatch = scope.$watch('data', (d) => {
         if(!d) return;
 
         let interval = setInterval(() => {
-          let val = interpolate(d.ratio, step);
+          let val = interpolate(d.score, step);
           ratioEl.html(`${val}%`);
           if(step++ > maxSteps) {
             clearInterval(interval);
