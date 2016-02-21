@@ -1,0 +1,33 @@
+md-dialog {
+  min-width: 450px;
+
+  md-dialog-actions {
+    margin: 50px 30px 20px;
+  }
+}
+
+md-dialog {
+  h2 {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+  }
+}
+
+.md-toolbar-tools {
+  h2 {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+  }
+
+  &:not(.md-menu-toolbar) {
+    background: #fff;
+    padding-top: 12px;
+
+    md-icon {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+

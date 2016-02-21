@@ -1,4 +1,7 @@
-export default ngInject(function ProjectsController(Project, User) {
+import addProjectDialogController from './components/addProjectDialog/addProjectDialog.controller';
+import addProjectDialogTempalte from './components/addProjectDialog/addProjectDialog.html';
+
+export default ngInject(function ProjectsController(Project, User, $mdDialog) {
   this.projects = [];
   this.users = [];
   this.filtrers = {
@@ -9,13 +12,13 @@ export default ngInject(function ProjectsController(Project, User) {
     Project.getList().then((data) => {
       this.projects = data.map((project) => {
         project.edit = false;
-        project.formModel = angular.copy(project);
-        project.formModel.startDate = project.formModel.startDate.toDate();
-        project.formModel.endDate = project.formModel.endDate.toDate();
         project.members = [];
         project.members = project.members.map((memberId) => {
           return _.find(this.users, {id: memberId});
         });
+        project.formModel = angular.copy(project);
+        project.formModel.startDate = project.formModel.startDate.toDate();
+        project.formModel.endDate = project.formModel.endDate.toDate();
         return project;
       });
     });
@@ -56,17 +59,39 @@ export default ngInject(function ProjectsController(Project, User) {
     this.projects[projectIndex] = project;
   };
 
+  this.addProject = (ev) => {
+    $mdDialog.show({
+      controller: addProjectDialogController,
+      template: addProjectDialogTempalte,
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      locals: {
+        users: this.users
+      }
+    }).then((newProject) => {
+      console.log(newProject);
+    });
+  };
+
+  this.deleteProject = (project) => {
+    $mdDialog.show($mdDialog.confirm()
+      .title('Delete Project')
+      .textContent('Are you sure you want to delete this project?')
+      .ok('OK')
+      .cancel('Cancel')
+    ).then(() => {
+      console.log('delete')
+    });
+
+  };
+
   this.getProjects = () => {
     return this.projects.filter((project) => {
       return project.name.toLowerCase().indexOf(this.filtrers.searchText.toLowerCase()) !== -1;
     });
   };
 
-  this.searchUser = (input, excluded) => {
-    return this.users.filter((user) => {
-      return user.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0 && excluded.indexOf(user) === -1;
-    }) || [];
-  };
 
   init();
 });

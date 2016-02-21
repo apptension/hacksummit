@@ -34,59 +34,23 @@
         </md-list-item>
       </div>
       <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="project.edit">
-        <div layout="column" class="adminTabItem__editForm">
-          <div class="form__inputGroup" layout="row">
-            <label flex="none" class="form__inputLabel projectItem__nameLabel">Project Name: </label>
-            <md-input-container flex md-no-float class="form__inputControl projectItem__projectNameControl">
-              <input class="form__input" ng-model="project.formModel.name" aria-label="formModelName" />
-            </md-input-container>
-          </div>
 
-          <div layout="row" class="projectItem__datepickersContainer" layout-align="start center">
-            <div flex="none">
-              <label flex="none" class="form__inputLabel form__inputLabel--datepicker">Project Duration: </label>
-            </div>
-            <div flex="grow">
-              <div layout="row">
-                <div class="form__inputGroup form__inputGroup--datepicker projectItem__datepicker" layout="row">
-                  <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="project.formModel.startDate" md-placeholder="Start date"></md-datepicker>
-                </div>
+        <project-form project-form-model="project.formModel" project-form-users="projectsCtrl.users"></project-form>
 
-                <md-icon class="projectItem__datepickersSpacer">remove</md-icon>
-
-                <div class="form__inputGroup form__inputGroup--datepicker projectItem__datepicker" layout="row">
-                  <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="project.formModel.endDate" md-placeholder="Start date"></md-datepicker>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form__inputGroup" layout="row">
-            <label flex="none" class="form__inputLabel projectItem__teamLabel">Team: </label>
-            <md-contact-chips
-                    flex="grow"
-                    ng-model="project.members"
-                    ng-required="true"
-                    md-contacts="projectsCtrl.searchUser($query, project.members)"
-                    md-contact-name="name"
-                    md-contact-image="avatar"
-                    md-require-match="true">
-            </md-contact-chips>
-          </div>
-          <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls">
-            <md-button class="md-icon-button adminTabItem__removeIcon" flex="none">
-              <md-icon>delete</md-icon>
-            </md-button>
-            <div flex="none" class="adminTabItem__submitButtons">
-              <md-button class="md-primary" ng-click="project.edit=false">cancel</md-button>
-              <md-button class="md-primary md-raised" ng-click="projectsCtrl.submitProject(project)">save</md-button>
-            </div>
+        <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls">
+          <md-button class="md-icon-button adminTabItem__removeIcon" flex="none" ng-click="projectsCtrl.deleteProject(project)">
+            <md-icon>delete</md-icon>
+          </md-button>
+          <div flex="none" class="adminTabItem__submitButtons">
+            <md-button class="md-primary" ng-click="project.edit=false">cancel</md-button>
+            <md-button class="md-primary md-raised" ng-click="projectsCtrl.submitProject(project)">save</md-button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <md-button class="md-fab md-primary adminTabContent__addButton">
+  <md-button class="md-fab md-primary adminTabContent__addButton" ng-click="projectsCtrl.addProject()">
     <md-icon>add</md-icon>
   </md-button>
 </div>

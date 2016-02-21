@@ -4,6 +4,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
     skill: [],
     user: []
   };
+  let skillsPromise;
 
   let fetchStats = (filters, oldFilters) => {
     if (_.isEqual(filters, oldFilters)) {
@@ -19,12 +20,14 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
         return skill;
       });
 
-      this.softSkillStats = stats.skills.filter(s => s.isSoft);
-      this.hardSkillStats = stats.skills.filter(s => !s.isSoft);
+      skillsPromise.then(() => {
+        this.softSkillStats = stats.global.filter(s => this.skills.find(sk => sk.id === s.skillId).isSoft);
+        this.hardSkillStats = stats.skills.filter(s => !this.skills.find(sk => sk.id === s.skillId).isSoft);
+      });
     });
   };
 
-  let activeUser = User.getProfile().then(res => {
+  let activeUserPromise = User.getProfile().then(res => {
     this.activeUser = res.plain();
     return this.activeUser;
   });
@@ -43,14 +46,14 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
     this.projects = projects;
   });
 
-  let skills = Skill.getList().then((skills) => {
+  skillsPromise = Skill.getList().then((skills) => {
     this.skills = skills.plain();
     return this.skills;
   });
 
   $q.all([
-    activeUser,
-    skills
+    activeUserPromise,
+    skillsPromise
   ]).then(([activeUser, skills]) => {
     $scope.filters.user = [activeUser.id];
     $scope.filters.skill = _.take(skills, 3);
