@@ -15,17 +15,36 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
       let stats = _stats.plain();
       let skillsById = _.keyBy(this.skills, 'id');
 
+
       skillsPromise.then(() => {
+        stats.comments = _.map(stats.comments, (skill) => {
+          skill.comments = skill.comments[0].comments;
+          return skill;
+        });
+
+        let commentsBySkillId = _.keyBy(stats.comments, 'skillId');
+
         stats.skills = _.map(stats.skills, (skill, i) => {
           skill.scores = skill.scores[0].scores;
           skill.color = ColorSet[i % ColorSet.length];
           skill.name = skillsById[skill.skillId].name;
+          skill.comments = commentsBySkillId[skill.skillId].comments || [];
           return skill;
         });
 
-        this.softSkillStats = stats.global.filter(s => skillsById[s.skillId].isSoft);
-        this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
+        this.softSkillStats = stats.global
+          .map(s => {
+            let skill = this.skills.find(sk => sk.id === s.skillId);
+            return {
+              skillId: s.skillId,
+              score: s.score,
+              isSoft: skill.isSoft,
+              name: skill.name
+            };
+          })
+          .filter(s => s.isSoft);
 
+        this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
         this.hardSkillStats = _.map(this.hardSkillStats, (skill, i) => {
           skill.color = ColorSet[i % ColorSet.length];
           return skill;

@@ -1,0 +1,20 @@
+<md-dialog aria-label="Add Role"  ng-cloak class="addProjectDialog">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools addProjectDialog__toolbar">
+                <h2 class="addProjectDialog__header">Add Role</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="close()">
+                    <md-icon maria-label="Close dialog">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <role-form role-form-model="newRole" role-form-skills="skills"></role-form>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" class="addProjectDialog__footer">
+            <md-button class="md-primary" ng-click="close()">cancel</md-button>
+            <md-button class="md-primary md-raised" ng-click="submit()">save</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

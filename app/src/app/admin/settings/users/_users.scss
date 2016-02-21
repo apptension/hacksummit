@@ -1,0 +1,28 @@
+@import "components/userForm/userForm";
+@import "components/addUserDialog/addUserDialog";
+
+.userItem {
+
+  &__nameLabel {
+    &.form__inputLabel {
+      margin-right: 13px;
+    }
+  }
+
+  &__rolesLabel {
+    &.form__inputLabel {
+      margin-right: 15px;
+    }
+  }
+}
+
+/* RESET */
+md-datepicker {
+  background: transparent;
+  margin-left: -14px;
+  white-space: normal;
+}
+
+.md-datepicker-input, .md-datepicker-open  {
+  height: auto;
+}

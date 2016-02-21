@@ -20,10 +20,10 @@ export default ngInject(function ($mdDateLocaleProvider, $mdThemingProvider) {
     }),
     yellowAccentMap = $mdThemingProvider.extendPalette('blue',
     {
-      A100: 'ffdf80',
-      A200: 'ffdf80',
-      A400: 'ffdf80',
-      A700: 'ffdf80'
+      A100: '009cf3',
+      A200: '009cf3',
+      A400: '009cf3',
+      A700: '009cf3'
     });
   $mdThemingProvider
     .definePalette('bluePrimary', bluePrimaryMap)

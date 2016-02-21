@@ -1,17 +1,18 @@
 import _ from 'lodash';
 import d3 from 'd3';
+import d3Ease from 'd3-ease';
+import moment from 'moment';
 
 const defaultConfig = Object.freeze({
   width: 300,
   height: 200,
-  margin: {top: 20, right: 50, bottom: 50, left: 50}
+  margin: {top: 30, right: 50, bottom: 50, left: 50}
 });
 
 export default function LineChart(_config) {
   let config = _.extend({}, defaultConfig, _config);
   let xAxis, yAxis, xTimeScale, xOrdinalScale, yScale, emotesScale, line;
   let dispatch = d3.dispatch('valueSelected');
-  let colorScale = d3.scale.category20();
 
   config.width = config.width - config.margin.left - config.margin.right;
   config.height = config.height - config.margin.top - config.margin.bottom;
@@ -25,7 +26,7 @@ export default function LineChart(_config) {
     let chart = selection.selectAll('.line-chart').data([data]);
 
     data = _.cloneDeep(data);
-    data.series = _.map(data.series, (series, seriesIndex) => {
+    data.series = _.map(data.series, (series) => {
       series.values = _.map(series.values, (value) => {
         value.seriesName = series.name;
         return value;
@@ -38,7 +39,7 @@ export default function LineChart(_config) {
     }).value();
     let me = {
       dispatch: d3.dispatch('bandHitAreaHovered', 'bandSelected'),
-      hoveredBandIndex: null
+      hoveredBandValue: null
     };
 
     xOrdinalScale = d3.scale.ordinal().domain(xValues).rangeBands([0, config.width]);
@@ -59,13 +60,14 @@ export default function LineChart(_config) {
       .call(renderXAxis)
       .call(renderYAxis)
       .call(renderBandHitAreas, me)
-      .call(renderSeries, me);
+      .call(renderSeries)
+      .call(renderCommentIndicators, me);
     chart.exit().remove();
 
-    me.dispatch.on('bandHitAreaHovered', (index) => {
-      me.hoveredBandIndex = index;
+    me.dispatch.on('bandHitAreaHovered', (value) => {
+      me.hoveredBandValue = moment(value);
       chart.call(renderBandBackgrounds, me);
-      chart.call(renderSeries, me);
+      chart.call(renderCommentIndicators, me);
     });
 
     me.dispatch.on('bandSelected', (index) => {
@@ -75,31 +77,33 @@ export default function LineChart(_config) {
 
   function renderBandBackgrounds(selection, me) {
     let bandBackgrounds = selection.selectAll('.line-chart-band-bg')
-      .data(xOrdinalScale.range());
+      .data(xOrdinalScale.domain());
 
     bandBackgrounds.enter().append('rect').classed('line-chart-band-bg', true);
     bandBackgrounds.attr({
-      x: (d) => d,
+      x: (d) => xOrdinalScale(d),
       y: yScale.range()[1],
       width: xOrdinalScale.rangeBand(),
       height: yScale.range()[0] - yScale.range()[1],
-      opacity: (d, i) => me.hoveredBandIndex === i ? 1 : 0
+      opacity: (d) => moment(d).isSame(me.hoveredBandValue) ? 1 : 0
     });
     bandBackgrounds.exit().remove();
   }
 
   function renderBandHitAreas(selection, me) {
     let bandHitAreas = selection.selectAll('.line-chart-band-hitarea')
-      .data(xOrdinalScale.range());
+      .data(xOrdinalScale.domain());
 
     bandHitAreas.enter().append('rect').classed('line-chart-band-hitarea', true);
     bandHitAreas.attr({
-      x: (d) => d,
+      x: (d) => xOrdinalScale(d),
       y: yScale.range()[1],
       width: xOrdinalScale.rangeBand(),
       height: yScale.range()[0] - yScale.range()[1]
-    }).on('mouseenter', (d, i) => {
-      me.dispatch.bandHitAreaHovered(i);
+    }).on('mouseenter', (d) => {
+      me.dispatch.bandHitAreaHovered(d);
+    }).on('mouseleave', (d) => {
+      me.dispatch.bandHitAreaHovered(null);
     }).on('click', (d, i) => {
       me.dispatch.bandSelected(i);
     });
@@ -138,9 +142,9 @@ export default function LineChart(_config) {
 
   function renderEmotes(selection) {
     let emotes = selection.selectAll('.line-chart-emote').data([
-      '\uf2e9', // devil
       '\uf2e8', // cool
       '\uf2e7', // happy
+      '\uf2ee', // tongue
       '\uf2eb', // neutral
       '\uf2ed' // sad
     ]);
@@ -149,68 +153,177 @@ export default function LineChart(_config) {
     emotes.text((d) => d)
       .attr({
         y: function (d, i) {
-          return emotesScale(i) + emotesScale.rangeBand() / 2 + this.getBBox().height / 2;
+          return emotesScale(i) + 8;
         },
-        x: 10
+        x: -50
       });
     emotes.exit().remove();
+
+    let emotesTicks = selection.selectAll('.line-chart-emote-tick').data(d3.range(5));
+    emotesTicks.enter().append('line').classed('line-chart-emote-tick', true);
+    emotesTicks.text((d) => d)
+      .attr({
+        y1: (d, i) => emotesScale(i),
+        x1: -25,
+        y2: (d, i) => emotesScale(i),
+        x2: 0
+      });
+    emotesTicks.exit().remove();
   }
 
-  function renderSeries(selection, me) {
+  function renderSeries(selection) {
     let series = selection.selectAll('.line-chart-series').data((data) => data.series);
 
     series.enter()
       .insert('g', '.line-chart-band-hitarea')
       .classed('line-chart-series', true);
     series.call(renderPaths);
-    series.call(renderDots, me);
+    series.call(renderDots);
     series.exit().remove();
   }
 
   function renderPaths(selection) {
-    let paths = selection.selectAll('.line-chart-series-path').data((data) => [data]);
+    let paths = selection.selectAll('.line-chart-series-path').data((data) => {
+      let pathLength = 0;
+      for (let i = 0; i < data.values.length - 1; i++) {
+        let d = data.values[i];
+        let d2 = data.values[i + 1];
+        let x1 = xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2;
+        let y1 = yScale(d.y);
+        let x2 = xOrdinalScale(d2.x) + xOrdinalScale.rangeBand() / 2;
+        let y2 = yScale(d2.y);
+
+        pathLength += Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+      }
+
+      return [{
+        pathLength,
+        data
+      }];
+    });
     paths.enter().append('path').classed('line-chart-series-path', true)
-      .attr('d', (d) => line(mapPointsToStraightLine(d.values)))
-      .attr('stroke', (d) => d.color);
+      .attr({
+        stroke: (d) => d.data.color,
+        'stroke-dasharray': (d) => `${[0, d.pathLength]}`
+      });
 
     paths
+      .attr('d', (d) => line(d.data.values))
       .transition()
       .duration(1000)
-      .attr('d', (d) => line(d.values));
+      .ease(d3Ease.easeLinear)
+      .attr({
+        'stroke-dasharray': (d) => `${[d.pathLength, d.pathLength]}`
+      });
     paths.exit().remove();
   }
 
-  function renderDots(selection, me) {
-    let dots = selection.selectAll('.line-chart-series-dot').data((data) => data.values);
-    dots.enter().append('circle').classed('line-chart-series-dot', true)
-      .attr('opacity', 0).attr('r', 3);
+  function renderDots(selection) {
+    let dots = selection.selectAll('.line-chart-series-dot').data((data) => {
+      let values = _.cloneDeep(data.values);
+      let pathLength = 0;
+      for (let i = 0; i < values.length - 1; i++) {
+        let d = values[i];
+        let d2 = values[i + 1];
+        let x1 = xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2;
+        let y1 = yScale(d.y);
+        let x2 = xOrdinalScale(d2.x) + xOrdinalScale.rangeBand() / 2;
+        let y2 = yScale(d2.y);
 
-    dots.transition().duration(250)
+        pathLength += Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+        values[i].pathLengthTillPoint = pathLength;
+      }
+      _.last(values).pathLengthTillPoint = pathLength;
+      values.forEach((value) => {
+        value.totalPathLength = pathLength;
+      });
+
+      return values;
+    });
+    dots.enter().append('circle').classed('line-chart-series-dot', true)
       .attr({
         cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
         cy: (d) => yScale(d.y),
-        fill: (d, i) => i === me.hoveredBandIndex ? '#ffffff' : d.color,
-        stroke: (d) => d.color,
-        strokeWidth: (d, i) => i === me.hoveredBandIndex ? 2 : 0,
-        r: (d, i) => i === me.hoveredBandIndex ? 4 : 3
+        fill: (d) => d.color,
+        r: 0
       });
 
-    dots.transition().duration(500).delay(1000)
-      .attr('opacity', 1);
+    dots.transition().duration(500)
+      .delay((d) => (1000 * d.pathLengthTillPoint / d.totalPathLength) - 50)
+      .ease(d3Ease.easeElasticOut)
+      .attr({
+        cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
+        cy: (d) => yScale(d.y),
+        fill: (d) => d.color,
+        r: 3
+      });
 
     dots.exit().remove();
   }
 
-  function mapPointsToStraightLine(points) {
-    let a = (_.first(points).y - _.last(points).y) / (_.first(points).x - _.last(points).x);
-    let b = _.first(points).y - a * _.first(points).x;
-
-    return _.map(points, (point) => {
-      return _.extend({}, point, {
-        x: point.x,
-        y: a * point.x + b
-      });
+  function renderCommentIndicators(selection, me) {
+    let commentIndicator = selection.selectAll('.line-chart-comment-indicator').data((data) => {
+      return _(data.series).map('values').flatten().filter('commentsCount').value();
     });
+
+    commentIndicator.enter()
+      .insert('g', '.line-chart-comment-indicator')
+      .classed('line-chart-comment-indicator', true)
+      .attr({
+        opacity: 0,
+        transform: (d) => `translate(${[xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2, yScale(d.y) + 5]})`
+      });
+    commentIndicator.transition().duration(500).delay(1000)
+      .attr({
+        opacity: 1,
+        transform: (d) => `translate(${[xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2, yScale(d.y) - 5]})`
+      });
+    commentIndicator.exit().remove();
+
+    let circles = commentIndicator.selectAll('circle').data((d) => [d]);
+    circles.enter().append('circle').attr({
+      r: 4,
+      cy: -10
+    });
+
+    circles
+      .attr({
+        fill: (d) => d.x.isSame(me.hoveredBandValue) ? d.color : '#ffffff'
+      })
+      .transition().duration(500).ease(d3Ease.easeElasticOut)
+      .attr({
+        cx: 0,
+        cy: (d) => d.x.isSame(me.hoveredBandValue) ? -12 : -10,
+        r: (d) => d.x.isSame(me.hoveredBandValue) ? 6 : 4,
+        stroke: (d) => d.color,
+        'stroke-width': 2
+      });
+    circles.exit().remove();
+
+    let triangleLine = d3.svg.line().x((d) => d[0]).y((d) => d[1]);
+    let triangle = commentIndicator.selectAll('path').data((d) => [d]);
+    triangle.enter().append('path');
+    triangle.attr({
+      d: triangleLine([
+        [-3, -6],
+        [3, -6],
+        [0, -2]
+      ]) + 'Z',
+      fill: (d) => d.color
+    });
+    triangle.exit().remove();
+
+    let text = commentIndicator.selectAll('text').data((d) => [d]);
+    text.enter().append('text').attr({
+      opacity: 0,
+      y: -8
+    });
+    text.text((d) => d.commentsCount)
+      .transition().duration(500).ease(d3Ease.easeElasticOut)
+      .attr({
+        opacity: (d) => d.x.isSame(me.hoveredBandValue) ? 1 : 0
+      });
+    text.exit().remove();
   }
 
   chart.width = (value) => {

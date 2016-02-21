@@ -2,14 +2,6 @@
 @import "components/addProjectDialog/addProjectDialog";
 
 .projectItem {
-  &__icon {
-    width: 40px;
-    height: 40px;
-    background-size: cover;
-    margin: 6px 15px 8px 0px;
-    text-align: center;
-  }
-
   &__datepicker {
     -webkit-flex: 1 1 48%;
     -ms-flex: 1 1 48%;

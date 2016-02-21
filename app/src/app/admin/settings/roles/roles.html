@@ -1,14 +1,14 @@
 <div layout="column" class="adminTabContent__layout">
-    <div flex layout="column" layout-fill class="adminTabContent__header">
+    <div flex="nogrow" layout="column" layout-fill class="adminTabContent__header">
         <h1 class="md-title adminTabContent__tabTitle">Manage Roles</h1>
         <div class="adminTabContent__tabDesc">
             This space is where you manage and define roles. You can add new ones, e.g. Frontend Developer, and then list skills that this role should possess.
         </div>
-        <div flex layout="row" class="adminTabContent__sortControls" layout-align="start center">
+        <div flex="nogrow" layout="row" class="adminTabContent__filterControls" layout-align="start center">
             <div class="form__inputGroup">
                 <label class="form__inputLabel">Role Name: </label>
                 <md-input-container md-no-float class="form__inputControl adminTabContent__filterControl">
-                    <input class="form__input" placeholder="Search" ng-model="rolesCtrl.filtrers.searchText"/>
+                    <input class="form__input" placeholder="Search" ng-model="rolesCtrl.filters.searchText"/>
                 </md-input-container>
             </div>
         </div>
@@ -18,32 +18,38 @@
         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
 
-    <div flex layout="column" layout-align="center center">
-        <div flex="none" class="adminTabItem__mainContainer" ng-repeat="role in roleList">
-            <div layout class="adminTabItem__labelContainer" ng-click="toggleItem(role)">
+    <div flex layout="column"  class="adminTabContent__tabList">
+        <div flex="none" class="adminTabItem__mainContainer" ng-repeat="role in rolesCtrl.getRoles()">
+            <div layout class="adminTabItem__labelContainer" ng-click="rolesCtrl.toggleItem(role)">
                 <md-list-item>
-                    <div class="projectItem__icon" layout layout-align="center center">
-                        <md-icon flex>markunread_mailbox</md-icon>
+                    <div class="adminTabItem__icon" layout layout-align="center center">
+                        <md-icon flex>list</md-icon>
                     </div>
                     <div class="md-list-item-text">
                         <span class="adminTabItem__name">{{ role.name }}</span>
-                        <span class="adminTabItem__desc">{{role.updatedAt}}</span>
                     </div>
                 </md-list-item>
             </div>
             <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="role.edit">
-                <div layout="column" class="adminTabItem__editForm">
-                    <role-item-directive role="role"></role-item-directive>
+                <role-form role-form-model="role.formModel" role-form-skills="rolesCtrl.skills"></role-form>
+
+                <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls">
+                    <md-button class="md-icon-button adminTabItem__removeIcon" flex="none" ng-click="rolesCtrl.deleteRole(role)">
+                        <md-icon>delete</md-icon>
+                    </md-button>
+                    <div flex="none" class="adminTabItem__submitButtons">
+                        <md-button class="md-primary" ng-click="role.edit=false">cancel</md-button>
+                        <md-button class="md-primary md-raised" ng-click="rolesCtrl.submitRole(role)">save</md-button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <md-button class="md-fab md-primary adminTabContent__addButton" ng-click="rolesCtrl.addRole()">
+        <md-icon>add</md-icon>
+    </md-button>
 </div>
 
-<section class="md-whiteframe-z1">
-    <md-button class="md-fab md-primary md-raised" ng-click="showAdvanced($event)"  aria-label="Add Role">
-        <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
-    </md-button>
-</section>
 
 

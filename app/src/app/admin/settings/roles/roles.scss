@@ -1,0 +1,14 @@
+@import "components/roleForm/roleForm";
+
+.roleItem {
+  &__nameLabel {
+    &.form__inputLabel {
+    }
+  }
+
+  &__skillsLabel {
+    &.form__inputLabel {
+      margin-right: 14px;
+    }
+  }
+}
