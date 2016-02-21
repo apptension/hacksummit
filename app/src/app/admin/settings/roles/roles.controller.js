@@ -3,13 +3,17 @@ import DialogController from './dialogs/addDialog.controller';
 
 export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Role, moment) {
   $scope.roleList = [];
-  Role.getList().then((data) => {
-    $scope.roleList = data.map((role) => {
-      role.edit = false;
-      role.updatedAt = moment.utc(role.updatedAt).format('lll');
-      return role;
+
+  loadRoles();
+  function loadRoles() {
+    Role.getList().then((data) => {
+      $scope.roleList = data.map((role) => {
+        role.edit = false;
+        role.updatedAt = moment.utc(role.updatedAt).format('lll');
+        return role;
+      });
     });
-  });
+  }
 
   $scope.showAdvanced = (ev) => {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
@@ -19,13 +23,11 @@ export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Rol
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,
-      fullscreen: useFullScreen
-    })
-      .then(function (answer) {
-        $scope.status = 'You said the information was "' + answer + '".';
-      }, function () {
-        $scope.status = 'You cancelled the dialog.';
-      });
+      fullscreen: useFullScreen,
+      locals: {
+        role: []
+      }
+    });
   };
 
 
@@ -45,4 +47,19 @@ export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Rol
 
     selected.edit = true;
   };
+
+
+  $scope.$on('newRoleAdded', function () {
+    console.log('here');
+    loadRoles();
+    $mdDialog.hide();
+  });
+
+  $scope.$on('canceledRole', function () {
+    $mdDialog.hide();
+  });
+
+  $scope.$on('deletedRole', function () {
+    loadRoles();
+  });
 });

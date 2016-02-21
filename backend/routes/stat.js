@@ -9,7 +9,9 @@ let express = require('express'),
 router.get('/', (req, res, next) => {
 
   let sequelize = models.sequelize,
-    where = {},
+    where = {
+      state: 1 // ANSWERED only
+    },
     projects = req.query.project,
     startDate = req.query.startDate,
     endDate = req.query.endDate,
@@ -53,6 +55,21 @@ router.get('/', (req, res, next) => {
       sequelize.col('date')
     ]
   };
+      ]
+    },
+
+    globalQuery = {
+      attributes: [
+        [sequelize.fn('avg', sequelize.col('starred')), 'value'],
+        'skillId',
+        'userId'
+      ],
+      group: [
+        'skillId',
+        'userId'
+      ]
+    };
+
 
   if (users && users.length) {
     //query.attributes.push('userId');
@@ -61,9 +78,11 @@ router.get('/', (req, res, next) => {
   }
 
   query.where = where;
+  globalQuery.where = where;
 
-  models.Evaluation.findAll(query).then(function (result) {
+  let global = models.Evaluation.findAll(globalQuery);
 
+  models.Evaluation.findAll(query).then((result) => {
 
     var mapped = result.map((el) => {
       return {
@@ -88,9 +107,57 @@ router.get('/', (req, res, next) => {
       }
     });
 
-    res.json({
-      skills: grouped
+    global.then((globalStats) => {
+      res.json({
+        skills: grouped,
+        global: globalStats.map((stat) => {
+          return {
+            score: stat.getDataValue('value'),
+            skillId: stat.getDataValue('skillId'),
+            userId: stat.getDataValue('userId')
+          };
+        })
+      });
     });
+  });
+
+});
+
+router.get('/contributors', (req, res, next) => {
+  let sequelize = models.sequelize;
+
+  let query = {
+    include: [{
+      model: models.User
+    }],
+    attributes: [
+      [sequelize.fn('count', 'id'), 'score'],
+      'userId'
+    ],
+    group: [
+      'userId'
+    ],
+    order: [[sequelize.col('score'), 'DESC']],
+    where: {
+      date: {
+        $and: {
+          $gte: moment().subtract(7, 'days').format('YYYY-MM-DD HH:mm:ss'),
+          $lte: moment().format('YYYY-MM-DD HH:mm:ss')
+        }
+      },
+      state: 1
+    },
+    limit: 3
+  };
+
+  models.Evaluation.findAll(query).then((result) => {
+    res.json(result.map((userData) => {
+      return {
+        score: userData.getDataValue('score'),
+        userId: userData.getDataValue('userId'),
+        User: userData.getDataValue('User')
+      };
+    }));
   });
 
 });

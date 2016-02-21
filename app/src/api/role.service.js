@@ -16,4 +16,9 @@ export default ngInject(function RoleService(API) {
   this.post = (role) => {
     roleApi.post(role);
   };
+
+  this.delete = (role) => {
+    console.log(role);
+    role.remove();
+  };
 });

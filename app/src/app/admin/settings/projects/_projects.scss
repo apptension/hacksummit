@@ -5,15 +5,36 @@
     background-size: cover;
     margin: 6px 15px 8px 0px;
     text-align: center;
+  }
 
+  &__datepicker {
+    -webkit-flex: 1 1 48%;
+    -ms-flex: 1 1 48%;
+    flex: 1 1 48%;
+    max-width: 48%;
+    box-sizing: border-box;
   }
 
   &__datepickersSpacer {
-    margin: 5px 20px;
+    -webkit-flex: 1 1 4%;
+    -ms-flex: 1 1 4%;
+    flex: 1 1 4%;
+    max-width: 4%;
+    box-sizing: border-box;
+    margin: 7px 15px 5px 10px;
     text-align: center;
   }
 
-  &__datepickersContainer {
+  &__datepickerColumn {
+    -webkit-flex: 1 1 48%;
+    -ms-flex: 1 1 48%;
+    flex: 1 1 48%;
+    max-width: 48%;
+    max-height: 100%;
+    box-sizing: border-box;
+  }
+
+  &__datepickerContainer {
     margin-bottom: 20px;
   }
 
@@ -22,12 +43,19 @@
       margin-right: 26px;
     }
   }
+
+  &__teamLabel {
+    &.form__inputLabel {
+      margin-right: 75px;
+    }
+  }
 }
 
 /* RESET */
 md-datepicker {
   background: transparent;
   margin-left: -14px;
+  white-space: normal;
 }
 
 .md-datepicker-input, .md-datepicker-open  {

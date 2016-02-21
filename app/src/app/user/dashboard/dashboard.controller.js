@@ -29,8 +29,11 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
 
   Stats.getContributors().then((contributors) => {
     this.contributorsList = {
-      list: contributors.list,
-      rank: contributors.rank
+      list: contributors
+        .sort(c => -c.score)
+        .map(c => {
+          return c.User;
+        })
     };
   });
 

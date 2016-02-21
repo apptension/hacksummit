@@ -1,4 +1,4 @@
-export default ngInject(function UserService(API, moment) {
+export default ngInject(function UserService(API, MockAPI) {
   const usersAPIName = 'user';
 
   this.getList = () => {
@@ -14,7 +14,25 @@ export default ngInject(function UserService(API, moment) {
   };
 
   this.getSuggestedEvaluation = () => {
-    return API.all(usersAPIName).customGET('evaluation');
+    return this.getProfile(u => {
+      return API.all(usersAPIName).one(u.id).customGET('evaluation');
+    });
+  };
+
+  this.submitEvaluation = (data) => {
+    let putData = this.prepareSubmitData(data);
+    return this.getProfile().then(u => {
+      return API.one('user', u.id).customPUT(putData,'evaluation');
+    });
+  };
+
+  this.prepareSubmitData = (data) => {
+    return {
+      id: data.id,
+      comment: data.comment,
+      state: data.value !== -1 ? 1 : 2,
+      starred: data.value === 1 ? 1 : 0
+    };
   };
 
   this.login = (userId) => {

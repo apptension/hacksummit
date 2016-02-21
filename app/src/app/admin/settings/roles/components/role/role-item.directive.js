@@ -4,16 +4,27 @@ import template from './role-item.html';
 export default ngInject((Skill, moment, Role) => {
   return {
     restrict: 'AE',
+    scope: {
+      role: '='
+    },
     template: template,
     link: function ($scope) {
       $scope.roleName = 'Role test';
     },
-    controller: function ($scope) {
+    controller: function ($scope, $rootScope) {
+      if (!$scope.role) {
+        $scope.role = {
+          Skills: []
+        };
+      }
+
       $scope.selectedItem = null;
       $scope.searchText = null;
       $scope.transformChip = transformChip;
       $scope.skills = [];
       $scope.submitRole = submitRole;
+      $scope.cancelRole = cancelRole;
+      $scope.deleteRole = deleteRole;
 
       Skill.getList().then((data) => {
         $scope.skills = data.map((skill) => {
@@ -25,7 +36,6 @@ export default ngInject((Skill, moment, Role) => {
 
       $scope.querySearch = querySearch;
       $scope.transformChip = transformChip;
-
 
 
       function querySearch(query) {
@@ -43,19 +53,21 @@ export default ngInject((Skill, moment, Role) => {
 
       function transformChip(chip, role) {
         // If it is an object, it's already a known chip
+
         if (angular.isObject(chip)) {
           return chip;
         }
 
-
-        Skill.post({
-          name: chip,
-          isSoft: false
-        }).then((data) => {
-          role.Skills.push(data);
-          return data;
-        });
-        return null;
+        if (role) {
+          Skill.post({
+            name: chip,
+            isSoft: false
+          }).then((data) => {
+            role.Skills.push(data);
+            return data;
+          });
+          return null;
+        }
       }
 
       function submitRole(role) {
@@ -63,7 +75,22 @@ export default ngInject((Skill, moment, Role) => {
           Role.put(role);
         } else {
           Role.post(role);
+          $rootScope.$broadcast('newRoleAdded', []);
         }
+      }
+
+      function deleteRole(role){
+        Role.delete(role);
+        $rootScope.$broadcast('deletedRole', []);
+      }
+
+      function cancelRole(role) {
+        console.log(Object.keys(role).length);
+        if (Object.keys(role).length > 1) {
+          role.edit = false;
+          return role.edit;
+        }
+        return $rootScope.$broadcast('canceledRole', []);
       }
     }
   };

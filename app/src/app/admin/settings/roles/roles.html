@@ -2,23 +2,15 @@
     <div flex layout="column" layout-fill class="adminTabContent__header">
         <h1 class="md-title adminTabContent__tabTitle">Manage Roles</h1>
         <div class="adminTabContent__tabDesc">
-            Lorem ipsum...
+            This space is where you manage and define roles. You can add new ones, e.g. Frontend Developer, and then list skills that this role should possess.
         </div>
         <div flex layout="row" class="adminTabContent__sortControls" layout-align="start center">
-            <md-menu>
-                <div class="adminTabContent__sortDropdown" ng-click="$mdOpenMenu($event)" layout="row" layout-align="space-between center">
-                    <span flex="grow">sorting 1</span>
-                    <md-icon flex="nogrow">arrow_drop_down</md-icon>
-                </div>
-                <md-menu-content width="3">
-                    <md-menu-item>
-                        <md-button>sorting 1</md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button>sorting 2</md-button>
-                    </md-menu-item>
-                </md-menu-content>
-            </md-menu>
+            <div class="form__inputGroup">
+                <label class="form__inputLabel">Role Name: </label>
+                <md-input-container md-no-float class="form__inputControl adminTabContent__filterControl">
+                    <input class="form__input" placeholder="Search" ng-model="rolesCtrl.filtrers.searchText"/>
+                </md-input-container>
+            </div>
         </div>
     </div>
 
@@ -35,13 +27,13 @@
                     </div>
                     <div class="md-list-item-text">
                         <span class="adminTabItem__name">{{ role.name }}</span>
-                        <span class="adminTabItem__desc">...</span>
+                        <span class="adminTabItem__desc">{{role.updatedAt}}</span>
                     </div>
                 </md-list-item>
             </div>
             <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="role.edit">
                 <div layout="column" class="adminTabItem__editForm">
-                    <role-item-directive></role-item-directive>
+                    <role-item-directive role="role"></role-item-directive>
                 </div>
             </div>
         </div>

@@ -9,10 +9,3 @@
 
 @import "utils/utils";
 
-body {
-	padding: 0 20px;
-
-	@media(min-width: 900px) {
-		padding: 0 80px;
-	}
-}
