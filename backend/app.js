@@ -86,7 +86,7 @@ usersResource.use(assoMiddleware({
 
 var projectsResource = epilogue.resource({
   model: models.Project,
-  include     : [models.Skillset, models.User],
+  include     : [models.User],
   endpoints: ['/api/project', '/api/project/:id']
 });
 
