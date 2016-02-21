@@ -3,18 +3,17 @@ import moment from 'moment';
 export default ngInject(function StatsService(MockAPI, $httpParamSerializerJQLike) {
   const statsMockAPI = MockAPI.all('stats');
 
-  this.getUserStats = (userId, params = null) => {
   this.getContributors = () => {
     return statsMockAPI.customGET('contributors');
   };
 
-  this.getUserStats = (userId) => {
+  this.getUserStats = (userId, params = null) => {
     let paramsParsed = '';
     
     if (params !== null) {
       paramsParsed = $httpParamSerializerJQLike(params);
     }
-    
+
     return statsMockAPI
       .get(userId + paramsParsed)
       .then(parseUserStats);
