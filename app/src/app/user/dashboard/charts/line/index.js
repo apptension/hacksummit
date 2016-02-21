@@ -285,7 +285,7 @@ export default function LineChart(_config) {
     });
 
     commentIndicator.enter()
-      .insert('g', '.line-chart-comment-indicator')
+      .insert('g', '.line-chart-band-hitarea')
       .classed('line-chart-comment-indicator', true)
       .attr({
         opacity: 0,
@@ -311,8 +311,8 @@ export default function LineChart(_config) {
       .transition().duration(500).ease(d3Ease.easeElasticOut)
       .attr({
         cx: 0,
-        cy: (d) => d.x.isSame(me.hoveredBandValue) ? -12 : -10,
-        r: (d) => d.x.isSame(me.hoveredBandValue) ? 6 : 4,
+        cy: (d) => d.x.isSame(me.hoveredBandValue) ? -14 : -10,
+        r: (d) => d.x.isSame(me.hoveredBandValue) ? 8 : 4,
         stroke: (d) => d.color,
         'stroke-width': 2
       });
@@ -334,7 +334,7 @@ export default function LineChart(_config) {
     let text = commentIndicator.selectAll('text').data((d) => [d]);
     text.enter().append('text').attr({
       opacity: 0,
-      y: -8
+      y: -10
     });
     text.text((d) => d.commentsCount)
       .transition().duration(500).ease(d3Ease.easeElasticOut)
