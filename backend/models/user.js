@@ -3,7 +3,10 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     avatar: {
       type: DataTypes.STRING,
@@ -11,7 +14,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     }
   }, {
     tableName: 'users',

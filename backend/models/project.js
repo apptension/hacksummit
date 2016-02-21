@@ -1,17 +1,29 @@
 'use strict';
+
+let moment = require('moment');
+
 module.exports = function(sequelize, DataTypes) {
   var Project = sequelize.define('Project', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     startDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     endDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     }
   }, {
     tableName: 'projects',

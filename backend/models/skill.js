@@ -3,11 +3,17 @@ module.exports = function(sequelize, DataTypes) {
   var Skill = sequelize.define('Skill', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     isSoft: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     }
   }, {
     tableName: 'skills',
