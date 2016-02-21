@@ -3,7 +3,6 @@ $color-red: #f9615b;
 
 md-dialog {
 	min-width: 0 !important;
-	overflow: hidden;
 }
 
 .feedback {
@@ -11,9 +10,10 @@ md-dialog {
 }
 
 .rate {
-	min-height: 570px;
+	min-height: 600px;
 	width: 344px;
 	position: relative;
+	overflow: hidden;
 }
 
 .rate__bar {
@@ -134,7 +134,7 @@ md-dialog {
 	text-transform: uppercase;
 	color: rgba(0,0,0,.3);
 	position: absolute;
-	bottom: 0;
+	bottom: 20px;
 	left: 50%;
 	transform: translateX(-50%);
 	transition: transform .5s ease-in;
@@ -195,7 +195,7 @@ md-dialog {
 
 .feedback-btns {
 	position: absolute;
-	bottom: 0;
+	bottom: 20px;
 }
 
 .submit-btn, .cancel-btn {
