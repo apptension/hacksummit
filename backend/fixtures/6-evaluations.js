@@ -1,6 +1,7 @@
 'use strict';
 
 let _ = require('lodash'),
+  faker = require('faker'),
   models = [],
   dateFrom = (new Date(2016, 1, 1, 0, 0, 0)).getTime(),
   dateTo = (new Date(2016, 3, 24, 0, 0, 0)).getTime(),
@@ -26,7 +27,7 @@ _.times(3000, (id) => {
       id: id,
       starred: Math.random() >= 0.5 ? 1 : 0,
       state: _.random(0, 2),
-      comment: comments[_.random(0, 10)],
+      comment: Math.random() >= 0.5 ? faker.lorem.sentence() : '',
       date: dateFrom + Math.random() * (dateTo - dateFrom),
       ProjectId: _.random(1, 5),
       EvaluatedUserId: _.random(1, 2),
