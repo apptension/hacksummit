@@ -76,7 +76,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
 
   let formatDateRange = (date) => {
     let dateStart = moment(date).format('YYYY.MM.DD'),
-      dateEnd = moment(date).add(6, 'days').format('YYYY.MM.DD');
+      dateEnd = moment(date).add(7, 'days').format('YYYY.MM.DD');
     return dateStart + ' - ' + dateEnd;
   };
 

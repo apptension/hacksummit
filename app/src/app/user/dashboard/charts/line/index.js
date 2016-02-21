@@ -9,6 +9,8 @@ const defaultConfig = Object.freeze({
   margin: {top: 30, right: 50, bottom: 50, left: 50}
 });
 
+const HOURS_TO_MIDDLE_OF_WEEK = 24 * 3.5;
+
 export default function LineChart(_config) {
   let config = _.extend({}, defaultConfig, _config);
   let xAxis, yAxis, xTimeScale, xOrdinalScale, yScale, emotesScale, line;
@@ -37,20 +39,25 @@ export default function LineChart(_config) {
     let xValues = _(data.series).map('values').flatten().map('x').sortBy((x) => {
       return parseInt(x.format('x'), 10);
     }).value();
+
+    let xExtent = d3.extent(_(xValues).map((d) => {
+      return [d, moment(d).add(7, 'day')];
+    }).flatten().value());
+
     let me = {
       dispatch: d3.dispatch('bandHitAreaHovered', 'bandSelected'),
       hoveredBandValue: null
     };
 
     xOrdinalScale = d3.scale.ordinal().domain(xValues).rangeBands([0, config.width]);
-    xTimeScale = d3.time.scale().domain(d3.extent(xValues)).nice().range([0, config.width]);
+    xTimeScale = d3.time.scale().domain(xExtent).range([0, config.width]);
     yScale = d3.scale.linear().domain([0, 100]).nice().range([config.height, 0]);
     emotesScale = d3.scale.ordinal().domain(d3.range(5)).rangeBands([0, config.height]);
 
     xAxis = d3.svg.axis().scale(xTimeScale).orient('bottom').tickSize(13);
     yAxis = d3.svg.axis().scale(yScale).orient('left').ticks(5).tickSize(-config.width, 0);
     line = d3.svg.line()
-      .x((d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2)
+      .x((d) => xTimeScale(moment(d.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour')))
       .y((d) => yScale(d.y));
 
     chart.enter().append('g').classed('line-chart', true);
@@ -70,8 +77,8 @@ export default function LineChart(_config) {
       chart.call(renderCommentIndicators, me);
     });
 
-    me.dispatch.on('bandSelected', (index) => {
-      dispatch.valueSelected(xOrdinalScale.domain()[index]);
+    me.dispatch.on('bandSelected', (d) => {
+      dispatch.valueSelected(d);
     });
   }
 
@@ -81,9 +88,9 @@ export default function LineChart(_config) {
 
     bandBackgrounds.enter().insert('rect', ':first-child').classed('line-chart-band-bg', true);
     bandBackgrounds.attr({
-      x: (d) => xOrdinalScale(d),
+      x: (d) => xTimeScale(d),
       y: yScale.range()[1],
-      width: xOrdinalScale.rangeBand(),
+      width: (d) => xTimeScale(moment(d).add(7, 'day')) - xTimeScale(d),
       height: yScale.range()[0] - yScale.range()[1],
       opacity: (d) => moment(d).isSame(me.hoveredBandValue) ? 1 : 0
     });
@@ -96,16 +103,16 @@ export default function LineChart(_config) {
 
     bandHitAreas.enter().append('rect').classed('line-chart-band-hitarea', true);
     bandHitAreas.attr({
-      x: (d) => xOrdinalScale(d),
+      x: (d) => xTimeScale(d),
       y: yScale.range()[1],
-      width: xOrdinalScale.rangeBand(),
+      width: (d) => xTimeScale(moment(d).add(7, 'day')) - xTimeScale(d),
       height: yScale.range()[0] - yScale.range()[1]
     }).on('mouseenter', (d) => {
       me.dispatch.bandHitAreaHovered(d);
-    }).on('mouseleave', (d) => {
+    }).on('mouseleave', () => {
       me.dispatch.bandHitAreaHovered(null);
-    }).on('click', (d, i) => {
-      me.dispatch.bandSelected(i);
+    }).on('click', (d) => {
+      me.dispatch.bandSelected(d);
     });
     bandHitAreas.exit().remove();
   }
@@ -188,9 +195,9 @@ export default function LineChart(_config) {
       for (let i = 0; i < data.values.length - 1; i++) {
         let d = data.values[i];
         let d2 = data.values[i + 1];
-        let x1 = xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2;
+        let x1 = xTimeScale(moment(d.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour'));
         let y1 = yScale(d.y);
-        let x2 = xOrdinalScale(d2.x) + xOrdinalScale.rangeBand() / 2;
+        let x2 = xTimeScale(moment(d2.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour'));
         let y2 = yScale(d2.y);
 
         pathLength += Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
@@ -244,9 +251,9 @@ export default function LineChart(_config) {
       for (let i = 0; i < values.length - 1; i++) {
         let d = values[i];
         let d2 = values[i + 1];
-        let x1 = xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2;
+        let x1 = xTimeScale(moment(d.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour'));
         let y1 = yScale(d.y);
-        let x2 = xOrdinalScale(d2.x) + xOrdinalScale.rangeBand() / 2;
+        let x2 = xTimeScale(moment(d2.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour'));
         let y2 = yScale(d2.y);
 
         pathLength += Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
@@ -261,7 +268,7 @@ export default function LineChart(_config) {
     });
     dots.enter().append('circle').classed('line-chart-series-dot', true)
       .attr({
-        cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
+        cx: (d) => xTimeScale(moment(d.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour')),
         cy: (d) => yScale(d.y),
         fill: (d) => d.color,
         r: 0
@@ -271,7 +278,7 @@ export default function LineChart(_config) {
       .delay((d) => (1000 * d.pathLengthTillPoint / d.totalPathLength) - 50)
       .ease(d3Ease.easeElasticOut)
       .attr({
-        cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
+        cx: (d) => xTimeScale(moment(d.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour')),
         cy: (d) => yScale(d.y),
         fill: (d) => d.color,
         r: 3
@@ -290,12 +297,12 @@ export default function LineChart(_config) {
       .classed('line-chart-comment-indicator', true)
       .attr({
         opacity: 0,
-        transform: (d) => `translate(${[xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2, yScale(d.y) + 5]})`
+        transform: (d) => `translate(${[xTimeScale(moment(d.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour')), yScale(d.y) + 5]})`
       });
     commentIndicator.transition().duration(500).delay(1000)
       .attr({
         opacity: 1,
-        transform: (d) => `translate(${[xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2, yScale(d.y) - 5]})`
+        transform: (d) => `translate(${[xTimeScale(moment(d.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour')), yScale(d.y) - 5]})`
       });
     commentIndicator.exit().remove();
 
