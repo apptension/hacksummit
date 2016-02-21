@@ -108,7 +108,10 @@ router.get('/', (req, res, next) => {
   commentsQuery.where.comment = {
     $ne: null
   };
-  averageQuery.where = where;
+  averageQuery.where = _.clone(where);
+  if (averageQuery.where.userId) {
+    delete averageQuery.where.userId;
+  }
 
   if (globalQuery.where.skillId) {
     globalQuery.include = [{
