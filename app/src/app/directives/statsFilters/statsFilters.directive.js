@@ -16,17 +16,26 @@ export default ngInject(($q, Project, Skill, User, Stats) => {
           let idFn = (obj) => {
               return obj.id;
             },
-            filters = _.cloneDeep(data);
+            filters = {};
 
-          filters.projects = filters.projects.map(idFn);
-          filters.skills = filters.projects.map(idFn);
-          filters.users = filters.projects.map(idFn);
-
+          if (data.projects && data.projects.length !== 0) {
+            filters.projects = data.projects.map(idFn);
+          }
+          if (data.skills && data.skills.length !== 0) {
+            filters.skills = data.skills.map(idFn);
+          }
+          if (data.users && data.users.length !== 0) {
+            filters.users = data.users.map(idFn);
+          }
           if (data.dateFrom) {
-            filters.dateFrom = moment(filters.dateFrom).format('YYYY-MM-DD');
+            filters.dateFrom = moment(data.dateFrom).format('YYYY-MM-DD');
           }
           if (data.dateTo) {
-            filters.dateTo = moment(filters.dateTo).format('YYYY-MM-DD');
+            filters.dateTo = moment(data.dateTo).format('YYYY-MM-DD');
+          }
+
+          if (Object.keys(filters).length === 0) {
+            return null;
           }
 
           return filters;

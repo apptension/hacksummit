@@ -7,7 +7,7 @@ export default ngInject(function StatsService(MockAPI, $httpParamSerializerJQLik
     let paramsParsed = '';
 
     if (params !== null) {
-      paramsParsed = $httpParamSerializerJQLike(params);
+      paramsParsed = '?' + $httpParamSerializerJQLike(params);
     }
 
     return paramsParsed;
