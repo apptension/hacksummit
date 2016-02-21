@@ -1,4 +1,5 @@
 @import 'projects/projects';
+@import 'users/users';
 
 $content-padding: 40px;
 $entity-padding: 30px;
@@ -6,7 +7,6 @@ $entity-height: 85px;
 
 .adminSettings {
   &__sideMenu {
-    border-right: 1px solid rgba(0,0,0,0.12);
     width: 280px;
   }
 
@@ -73,6 +73,14 @@ $entity-height: 85px;
     outline: none;
   }
 
+  &__icon {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    margin: 6px 15px 8px 0px;
+    text-align: center;
+  }
+
   &__name {
     display: block;
     font-size: 16px;
@@ -132,6 +140,11 @@ $entity-height: 85px;
 }
 
 .adminTabContent {
+  &__layout {
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    min-height: 100%;
+  }
+
   &__header {
     align-self: flex-start;
     margin-bottom: 16px;

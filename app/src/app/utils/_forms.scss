@@ -141,3 +141,19 @@ md-datepicker {
   margin-top: 0;
   vertical-align: middle;
 }
+
+md-switch {
+  margin: 8px 0 7px;
+}
+
+md-switch.md-default-theme.md-checked .md-thumb, md-switch.md-checked .md-thumb {
+  background: #fafafa;
+}
+
+md-switch.md-default-theme.md-checked .md-bar, md-switch.md-checked .md-bar {
+  background: #009cf3;
+}
+
+md-switch.md-default-theme .md-bar, md-switch .md-bar {
+  background: #eaeaea;
+}

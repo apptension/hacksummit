@@ -53,6 +53,7 @@ export default ngInject(function ProjectsController(Project, User, $mdDialog) {
     let projectIndex = this.projects.indexOf(project);
 
     project = project.formModel;
+    project.edit = true;
     project.formModel = null;
     project.formModel = angular.copy(project);
 
@@ -83,7 +84,6 @@ export default ngInject(function ProjectsController(Project, User, $mdDialog) {
     ).then(() => {
       console.log('delete')
     });
-
   };
 
   this.getProjects = () => {
