@@ -48,6 +48,7 @@ export default ngInject(($window, $timeout) => {
                 return {
                   name: skill.name,
                   color: skill.color,
+                  isDashed: skill.isDashed,
                   values: _.map(skill.scores, (score) => {
                     return {
                       x: score.date,

@@ -61,6 +61,15 @@ export default ngInject(function StatsService(API, $httpParamSerializerJQLike) {
       return comment;
     });
 
+    data.average = _.map(data.average, (skill) => {
+      skill.scores = _.map(skill.scores, (score) => {
+        score.date = moment.utc(parseInt(score.date, 10) * 1000);
+        score.value *= 100;
+        return score;
+      });
+      return skill;
+    });
+
     return data;
   }
 });

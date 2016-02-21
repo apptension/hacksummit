@@ -7,7 +7,7 @@
                 filter-skills="filters.skill"
                 filter-date-from="filters.startDate"
                 filter-date-to="filters.endDate"
-                available-skills="vm.skills"
+                available-skills="vm.hardSkills"
                 available-projects="vm.projects"/>
         <md-button class="md-raised" ui-sref="app.user.dashboard.rate" style="margin-top: 80px;">I WANT TO RATE SOMEONE NOW!!</md-button>
     </div>
@@ -24,14 +24,11 @@
 
             <div ng-repeat="skill in vm.hardSkillStats track by skill.skillId">
                 <h3>Your {{skill.name}} skills</h3>
-                <user-stats-chart class="user-stats-chart" data="[skill]"
+                <user-stats-chart class="user-stats-chart" data="[skill, skill.average]"
                                   skillpoint-selected="vm.skillpointSelected(skill, date)"></user-stats-chart>
             </div>
 
             <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">
-                <md-toolbar class="md-theme-light">
-                    <h1 class="md-toolbar-tools">Comments</h1>
-                </md-toolbar>
                 <md-content layout-padding>
                     <div ng-repeat="comment in vm.comments">
                         <p>{{::comment.comment }}</p>

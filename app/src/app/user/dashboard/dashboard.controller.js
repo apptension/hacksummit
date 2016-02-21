@@ -30,6 +30,9 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
           skill.color = ColorSet[i % ColorSet.length];
           skill.name = skillsById[skill.skillId].name;
           skill.comments = commentsBySkillId[skill.skillId].comments || [];
+          skill.average = _.find(stats.average, {skillId: skill.skillId});
+          skill.average.color = skill.color;
+          skill.average.isDashed = true;
           return skill;
         });
 
@@ -75,6 +78,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
 
   skillsPromise = Skill.getList().then((skills) => {
     this.skills = skills.plain();
+    this.hardSkills = _.filter(this.skills, ({isSoft}) => !isSoft);
     return this.skills;
   });
 
@@ -83,7 +87,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
     skillsPromise
   ]).then(([activeUser, skills]) => {
     $scope.filters.user = [activeUser.id];
-    $scope.filters.skill = _.take(skills, 3);
+    $scope.filters.skill = _(skills).filter(({isSoft}) => !isSoft).take(3).value();
   });
 
   this.skillpointSelected = (skill, date) => {

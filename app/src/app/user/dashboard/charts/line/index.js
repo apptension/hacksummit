@@ -202,24 +202,42 @@ export default function LineChart(_config) {
       }];
     });
     paths.enter().append('path').classed('line-chart-series-path', true)
+      .classed('is-dashed', (d) => d.data.isDashed)
       .attr({
         stroke: (d) => d.data.color,
-        'stroke-dasharray': (d) => `${[0, d.pathLength]}`
+        'stroke-dasharray': (d) => {
+          if (d.data.isDashed) {
+            return [3, 3];
+          }
+          return [0, d.pathLength];
+        },
+        opacity: (d) => d.data.isDashed ? 0 : 1
       });
 
     paths
       .attr('d', (d) => line(d.data.values))
       .transition()
       .duration(1000)
+      .delay((d) => d.data.isDashed ? 1000 : 0)
       .ease(d3Ease.easeLinear)
       .attr({
-        'stroke-dasharray': (d) => `${[d.pathLength, d.pathLength]}`
+        'stroke-dasharray': (d) => {
+          if (d.data.isDashed) {
+            return [3, 3];
+          }
+          return [d.pathLength, d.pathLength];
+        },
+        opacity: (d) => d.data.isDashed ? 0.5 : 1
       });
     paths.exit().remove();
   }
 
   function renderDots(selection) {
     let dots = selection.selectAll('.line-chart-series-dot').data((data) => {
+      if (data.isDashed) {
+        return [];
+      }
+
       let values = _.cloneDeep(data.values);
       let pathLength = 0;
       for (let i = 0; i < values.length - 1; i++) {
