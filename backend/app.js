@@ -77,9 +77,11 @@ var usersResource = epilogue.resource({
 });
 
 usersResource.use(assoMiddleware({
-  associatedModel: models.Role,
-  attribute: 'Roles',
-  setMethod: 'setRoles'
+  associations: [{
+    associatedModel: models.Role,
+    attribute: 'Roles',
+    setMethod: 'setRoles'
+  }]
 }));
 
 var projectsResource = epilogue.resource({
