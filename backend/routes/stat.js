@@ -66,6 +66,16 @@ router.get('/', (req, res, next) => {
         'skillId',
         'userId'
       ]
+    },
+
+    commentsQuery = {
+      attributes: [
+        [sequelize.fn('year', sequelize.col('date')), 'year'],
+        [sequelize.fn('weekofyear', sequelize.col('date')), 'week'],
+        'skillId',
+        'userId',
+        'comment'
+      ]
     };
 
 
@@ -77,44 +87,75 @@ router.get('/', (req, res, next) => {
 
   query.where = where;
   globalQuery.where = where;
+  commentsQuery.where = _.clone(where);
+  commentsQuery.where.comment = {
+    $ne: null
+  };
 
-  let global = models.Evaluation.findAll(globalQuery);
+  let global = models.Evaluation.findAll(globalQuery),
+    commentsQ = models.Evaluation.findAll(commentsQuery);
 
   models.Evaluation.findAll(query).then((result) => {
+    commentsQ.then((commentsData) => {
 
-    var mapped = result.map((el) => {
-      return {
-        userId: el.getDataValue('userId'),
-        skillId: el.getDataValue('skillId'),
-        value: el.getDataValue('value'),
-        date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')) - 1, 'weeks').format('X')
-      };
-    });
+      let mapped = result.map((el) => {
+        return {
+          userId: el.getDataValue('userId'),
+          skillId: el.getDataValue('skillId'),
+          value: el.getDataValue('value'),
+          date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')) - 1, 'weeks').format('X')
+        };
+      });
 
-    let grouped = _.values(_.groupBy(mapped, 'skillId')).map((skillStats) => {
-      return {
-        skillId: skillStats[0].skillId,
-        scores: _.values(_.groupBy(skillStats, 'userId')).map((userStats) => {
-          return {
-            userId: userStats[0].userId,
-            scores: userStats.map((s) => {
-              return _.pick(s, ['date', 'value']);
-            })
-          }
-        })
-      }
-    });
+      let grouped = _.values(_.groupBy(mapped, 'skillId')).map((skillStats) => {
+        return {
+          skillId: skillStats[0].skillId,
+          scores: _.values(_.groupBy(skillStats, 'userId')).map((userStats) => {
+            return {
+              userId: userStats[0].userId,
+              scores: userStats.map((s) => {
+                return _.pick(s, ['date', 'value']);
+              })
+            }
+          })
+        }
+      });
 
-    global.then((globalStats) => {
-      res.json({
-        skills: grouped,
-        global: globalStats.map((stat) => {
-          return {
-            score: stat.getDataValue('value'),
-            skillId: stat.getDataValue('skillId'),
-            userId: stat.getDataValue('userId')
-          };
-        })
+      let commentsMapped = commentsData.map((el) => {
+        return {
+          userId: el.getDataValue('userId'),
+          skillId: el.getDataValue('skillId'),
+          comment: el.getDataValue('comment'),
+          date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')) - 1, 'weeks').format('X')
+        };
+      });
+
+      let commentsGrouped = _.values(_.groupBy(commentsMapped, 'skillId')).map((skillStats) => {
+        return {
+          skillId: skillStats[0].skillId,
+          comments: _.values(_.groupBy(skillStats, 'userId')).map((userStats) => {
+            return {
+              userId: userStats[0].userId,
+              comments: userStats.map((s) => {
+                return _.pick(s, ['date', 'comment']);
+              })
+            }
+          })
+        }
+      });
+
+      global.then((globalStats) => {
+        res.json({
+          skills: grouped,
+          global: globalStats.map((stat) => {
+            return {
+              score: stat.getDataValue('value'),
+              skillId: stat.getDataValue('skillId'),
+              userId: stat.getDataValue('userId')
+            };
+          }),
+          comments: commentsGrouped
+        });
       });
     });
   });

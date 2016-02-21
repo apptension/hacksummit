@@ -17,12 +17,12 @@
             <div>
                 <h3>Your team skills</h3>
                 <div class="user-dashboard__team-skills">
-                    <span ng-repeat="skill in vm.softSkillStats" skill-badge data="skill"
+                    <span ng-repeat="skill in vm.softSkillStats track by skill.skillId" skill-badge data="skill"
                           ng-if="vm.softSkillStats"></span>
                 </div>
             </div>
 
-            <div ng-repeat="skill in vm.hardSkillStats">
+            <div ng-repeat="skill in vm.hardSkillStats track by skill.skillId">
                 <h3>Your {{skill.name}} skills</h3>
                 <user-stats-chart class="user-stats-chart" data="[skill]"
                                   skillpoint-selected="vm.skillpointSelected(date)"></user-stats-chart>

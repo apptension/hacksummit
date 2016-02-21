@@ -27,6 +27,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
           .map(s => {
             let skill = this.skills.find(sk => sk.id === s.skillId);
             return {
+              skillId: s.skillId,
               score: s.score,
               isSoft: skill.isSoft,
               name: skill.name
