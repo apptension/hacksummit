@@ -56,11 +56,7 @@ export default function PieChart(_config) {
       .append('path')
       .style('fill', '#515050')
       .attr('d', shadowArc)
-      .classed('pie-chart-shadow', true)
-      .style('transform', 'scale(0)')
-      .transition()
-      .duration(1000)
-      .style('transform', 'scale(1)');
+      .classed('pie-chart-shadow', true);
 
 
     series.exit().remove();
