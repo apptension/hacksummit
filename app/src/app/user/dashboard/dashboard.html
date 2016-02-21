@@ -46,7 +46,7 @@
                             <md-icon ng-class="{'dashboard-sidenav__thumb-up-icon': evaluation.starred, 'dashboard-sidenav__thumb-down-icon': !evaluation.starred}"></md-icon>
                         </div>
                         <div flex class="dashboard-sidenav__comment-content">
-                            <span class="dashboard-sidenav__comment-time">{{::comment.date.fromNow() }}</span>
+                            <span class="dashboard-sidenav__comment-time">{{::comment.date.toNow() }}</span>
                             <span class="dashboard-sidenav__comment-text">{{::comment.comment }}</span>
                         </div>
                     </div>
