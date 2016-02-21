@@ -17,7 +17,7 @@
             <span class="ripple-effect" ng-class="{'ripple-effect--active':activeStep === 'positive',
                             'ripple-effect--inactive':activeStep === 'negative'}"></span>
         </span>
-        <span ng-show="!activeStep" class="circle-button__label">YES</span>
+        <span ng-show="!activeStep" class="circle-button__label mdi mdi-thumb-up"></span>
     </div>
 
     <div class="circle-button circle-button--right"
@@ -26,10 +26,12 @@
             <span class="ripple-effect" ng-class="{'ripple-effect--active':activeStep === 'negative',
                             'ripple-effect--inactive':activeStep === 'positive'}"></span>
         </span>
-        <span ng-show="!activeStep" class="circle-button__label circle-button__label--right">NO</span>
+        <span ng-show="!activeStep" class="circle-button__label circle-button__label--right mdi mdi-thumb-down"></span>
     </div>
 
-    <md-button class="dismiss-btn" ng-click="submit(-1)">I'm not able to tell</md-button>
+    <md-button class="dismiss-btn"
+               ng-click="submit(-1)"
+               ng-class="{'dismiss-btn--inactive':activeStep }">I'm not able to tell</md-button>
 
     <div class="feedback" ng-show="activeStep" ng-class="'feedback--' + activeStep">
         <h3 class="feedback__title">{{ feedback.title }}</h3>

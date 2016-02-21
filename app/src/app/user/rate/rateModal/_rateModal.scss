@@ -108,11 +108,26 @@ md-dialog {
 	left: 10px;
 	color: white;
 	pointer-events: none;
+
+	display: inline-block;
+	width: 27px;
+	height: 27px;
+	border-radius: 50%;
+	border: 1px solid white;
+
+	&:before {
+		transform: translate(4px, 3px);
+		display: inline-block;
+	}
 }
 
 .circle-button__label--right {
 	left: auto;
 	right: 10px;
+
+	&:before {
+		transform: translate(3px, 4px);
+	}
 }
 
 .dismiss-btn {
@@ -122,6 +137,11 @@ md-dialog {
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%);
+	transition: transform .5s ease-in;
+}
+
+.dismiss-btn--inactive {
+	transform: translate(-50%, 100px);
 }
 
 .feedback {
