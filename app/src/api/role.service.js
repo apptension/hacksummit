@@ -8,4 +8,12 @@ export default ngInject(function RoleService(API) {
   this.get = (id) => {
     return roleApi.get(id);
   };
+
+  this.put = (role) => {
+    role.put();
+  };
+
+  this.post = (role) => {
+    roleApi.post(role);
+  };
 });
