@@ -1,22 +1,10 @@
 <div class="user-dashboard">
-    <div>
-        <div layout="row">
-            <div flex="33">
-                <filter-list filter-collection="vm.projects" filter-model="vm.filters.projects"
-                             filter-name-attributes="['name']" placeholder="All Projects"></filter-list>
-            </div>
-
-            <div flex="33">
-                <filter-list filter-collection="vm.skills" filter-model="vm.filters.skills"
-                             filter-name-attributes="['name']" placeholder="All Skills"></filter-list>
-            </div>
-
-            <div flex="33">
-                <md-datepicker ng-model="filters.dateFrom" md-placeholder="Enter date"></md-datepicker>
-                <md-datepicker ng-model="filters.dateTo" md-placeholder="Enter date"></md-datepicker>
-            </div>
-        </div>
-    </div>
+    <stats-filters
+        projects="projects"
+        skills="skills"
+        users="users"
+        stats="stats"
+        user-id="userId" />
 
     <div>
         <md-button class="md-raised" ui-sref="app.user.rate">I WANT TO RATE SOMEONE NOW!!</md-button>
