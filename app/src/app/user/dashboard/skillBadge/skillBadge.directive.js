@@ -13,7 +13,9 @@ export default ngInject(() => {
       let ratioEl = $el.find('.card__value');
 
       let interpolate = (val, step) => {
-        return Math.round(step / maxSteps * 100 * val);
+        let input = Math.round(val * 100);
+        let rounded = Math.round(step / maxSteps * 100 * val);
+        return Math.max(0,Math.min(input, rounded));
       };
 
       let cancelWatch = scope.$watch('data', (d) => {
