@@ -23,6 +23,8 @@ export default ngInject((Skill, moment, Role) => {
       $scope.transformChip = transformChip;
       $scope.skills = [];
       $scope.submitRole = submitRole;
+      $scope.cancelRole = cancelRole;
+      $scope.deleteRole = deleteRole;
 
       Skill.getList().then((data) => {
         $scope.skills = data.map((skill) => {
@@ -77,12 +79,18 @@ export default ngInject((Skill, moment, Role) => {
         }
       }
 
+      function deleteRole(role){
+        Role.delete(role);
+        $rootScope.$broadcast('deletedRole', []);
+      }
+
       function cancelRole(role) {
-        if (role) {
+        console.log(Object.keys(role).length);
+        if (Object.keys(role).length > 1) {
           role.edit = false;
           return role.edit;
         }
-        return $rootScope.$emit('canceledRole', []);
+        return $rootScope.$broadcast('canceledRole', []);
       }
     }
   };

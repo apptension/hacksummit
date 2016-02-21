@@ -26,7 +26,7 @@
             </div>
             <div layout-gt-xs="row">
                 <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls" >
-                    <md-button class="md-icon-button adminTabItem__removeIcon" flex="none" ng-show="role.id">
+                    <md-button ng-click="deleteRole(role)" class="md-icon-button adminTabItem__removeIcon" flex="none" ng-show="role.id">
                         <md-icon>delete</md-icon>
                     </md-button>
                     <div flex="none" class="adminTabItem__submitButtons">

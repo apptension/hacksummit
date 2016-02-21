@@ -58,4 +58,8 @@ export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Rol
   $scope.$on('canceledRole', function () {
     $mdDialog.hide();
   });
+
+  $scope.$on('deletedRole', function () {
+    loadRoles();
+  });
 });
