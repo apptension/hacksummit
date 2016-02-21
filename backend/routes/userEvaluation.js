@@ -10,26 +10,33 @@ router.get('/:id/evaluation', (req, res, next) => {
       return models.Evaluation.findOne({
         where: {
           EvaluatedUserId: req.params.id,
-          date: {
-            $gte: (new Date()).getTime() - 604800000 // date >= now() - 7 days
-          }
+          state: models.Evaluation.attributes.state.values.PENDING
         }
       }).then(function(lastEvaluation) {
         if (!lastEvaluation) {
-          return models.Evaluation.findOne({
-            where: {
-              EvaluatedUserId: req.params.id,
-              state: models.Evaluation.attributes.state.values.PENDING
-            }
-          }).then(function(evaluation) {
-            if (evaluation) {
-              return res.json(evaluation);
+          return models.sequelize.query('select skills.id, userprojects.ProjectId, evaluations.id evaluate, (select users.id from users where isAdmin=1 order by rand() limit 1) userId from (skills, skillskillsets, skillsets, userprojects) left join evaluations on (evaluations.SkillId=skills.id and evaluations.EvaluatedUserId=? and (evaluations.date is null or evaluations.date>=date_sub(now(), interval 7 day))) where skills.id=skillskillsets.SkillId and skillskillsets.SkillsetId=skillsets.id and skillsets.ProjectId=userprojects.ProjectId and userprojects.UserId=? having evaluate is null order by rand() limit 1', {replacements: [req.params.id, req.params.id], type: models.sequelize.QueryTypes.SELECT}).then(function(skill) {
+            if (skill.length) {
+              return models.Evaluation.upsert({
+                ProjectId: skill[0].ProjectId,
+                EvaluatedUserId: req.params.id,
+                UserId: skill[0].userId,
+                SkillId: skill[0].id
+              }).then(function() {
+                return models.Evaluation.findOne({
+                  where: {
+                    EvaluatedUserId: req.params.id,
+                    state: models.Evaluation.attributes.state.values.PENDING
+                  }
+                }).then(function(evaluation) {
+                  return res.json(evaluation);
+                });
+              });
             } else {
               return res.status(204).json({});
             }
           });
         } else {
-          return res.status(204).json({});
+          return res.json(lastEvaluation);
         }
       });
     } else {
@@ -43,50 +50,37 @@ router.put('/:id/evaluation', (req, res, next) => {
     if (user) {
       return models.Evaluation.findOne({
         where: {
+          id: req.body.evaluationId,
           EvaluatedUserId: req.params.id,
-          date: {
-            $gte: (new Date()).getTime() - 604800000 // date >= now() - 7 days
-          }
+          state: models.Evaluation.attributes.state.values.PENDING
         }
-      }).then(function(lastEvaluation) {
-        if (!lastEvaluation) {
-          return models.Evaluation.findOne({
-            where: {
-              id: req.body.evaluationId,
-              EvaluatedUserId: req.params.id,
-              state: models.Evaluation.attributes.state.values.PENDING
-            }
-          }).then(function(evaluation) {
-            if (evaluation) {
-              var state = models.Evaluation.attributes.state.values.PENDING, starred = 0;
-              if ('state' in req.body && parseInt(req.body.state) === models.Evaluation.attributes.state.values.SKIPPED) {
-                state = models.Evaluation.attributes.state.values.SKIPPED;
-              } else if ('starred' in req.body) {
-                state = models.Evaluation.attributes.state.values.ANSWERED;
-                starred = parseInt(req.body.starred) === 1;
+      }).then(function(evaluation) {
+        if (evaluation) {
+          var state = models.Evaluation.attributes.state.values.PENDING, starred = 0;
+          if ('state' in req.body && parseInt(req.body.state) === models.Evaluation.attributes.state.values.SKIPPED) {
+            state = models.Evaluation.attributes.state.values.SKIPPED;
+          } else if ('starred' in req.body) {
+            state = models.Evaluation.attributes.state.values.ANSWERED;
+            starred = parseInt(req.body.starred) === 1;
+          }
+          if (state !== models.Evaluation.attributes.state.values.PENDING) {
+            return models.Evaluation.update({
+              starred: starred,
+              date: (new Date()).getTime(),
+              state: state,
+              comment: req.body.comment
+            }, {
+              where: {
+                id: evaluation.id
               }
-              if (state !== models.Evaluation.attributes.state.values.PENDING) {
-                return models.Evaluation.update({
-                  starred: starred,
-                  date: (new Date()).getTime(),
-                  state: state,
-                  comment: req.body.comment
-                }, {
-                  where: {
-                    id: evaluation.id
-                  }
-                }).then(function() {
-                  return res.json({ success: true });
-                });
-              } else {
-                return res.status(400).json({ error: 'incorrect post data', success: false });
-              }
-            } else {
-              return res.status(404).json({ error: 'evaluation not found', success: false });
-            }
-          });
+            }).then(function() {
+              return res.json({ success: true });
+            });
+          } else {
+            return res.status(400).json({ error: 'incorrect post data', success: false });
+          }
         } else {
-          return res.status(204).json({});
+          return res.status(404).json({ error: 'evaluation not found', success: false });
         }
       });
     } else {

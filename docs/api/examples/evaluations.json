@@ -4,7 +4,8 @@
   "date": 1456572160000,
   "state": 2,
   "comment": "lorem ipsum dolor sit amet",
-  "userId": 1,
+  "userId": 2,
+  "EvaluatedUser": 1,
   "projectId": 1,
   "skillId": 1
 }, {
@@ -13,7 +14,8 @@
   "date": 1456572160000,
   "state": 1,
   "comment": "",
-  "userId": 1,
+  "userId": 2,
+  "EvaluatedUser": 1,
   "projectId": 1,
   "skillId": 1
 }]
