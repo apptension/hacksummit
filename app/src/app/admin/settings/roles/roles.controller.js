@@ -45,6 +45,12 @@ export default ngInject(function RolesController($scope, $mdDialog, $mdMedia, $t
     });
   };
 
+  this.cancelEdit = (role) => {
+    role.edit = false;
+    role.formModel = null;
+    createRole(role);
+  };
+
   this.submitRole = (role) => {
     let roleIndex = this.roles.indexOf(role);
 
@@ -84,7 +90,7 @@ export default ngInject(function RolesController($scope, $mdDialog, $mdMedia, $t
     ).then(() => {
       Role.delete(role).then(() => {
         this.roles = _.without(this.roles, role);
-      })
+      });
     });
   };
 

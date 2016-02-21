@@ -50,6 +50,13 @@ export default ngInject(function ProjectsController($timeout, Project, User, $md
     selected.edit = true;
   };
 
+
+  this.cancelEdit = (project) => {
+    project.edit = false;
+    project.formModel = null;
+    createProject(project);
+  };
+
   this.submitProject = (project) => {
     let projectIndex = this.projects.indexOf(project);
 
