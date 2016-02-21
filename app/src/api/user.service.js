@@ -14,8 +14,8 @@ export default ngInject(function UserService(API, MockAPI) {
   };
 
   this.getSuggestedEvaluation = () => {
-    return this.getProfile(u => {
-      return API.all(usersAPIName).one(u.id).customGET('evaluation');
+    return this.getProfile().then(u => {
+      return API.all(usersAPIName).one(`${u.id}`).customGET('evaluation');
     });
   };
 

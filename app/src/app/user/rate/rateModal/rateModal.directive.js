@@ -1,6 +1,6 @@
 import template from './rateModal.html';
 
-export default ngInject(($state, User, Question) => {
+export default ngInject(($state, User, Question, Project) => {
   return {
     restrict: 'A',
     template,
@@ -38,7 +38,33 @@ export default ngInject(($state, User, Question) => {
       User.getSuggestedEvaluation().then((evaluation) => {
         scope.evaluation = evaluation.plain();
         Question.randomizeQuestion(evaluation.skillId || 1, evaluation.userId || 1).then(q => {scope.question = q;});
+
+        User.get(evaluation.EvaluatedUserId).then(u => {
+          scope.user = u;
+        });
+
+        Project.get(evaluation.ProjectId).then(p => {
+          scope.project = p.name;
+        });
+
+        User.getProfile().then(u => {
+          scope.me = u.name;
+        });
       });
+
+      scope.intro = () => {
+        return `Hey ${scope.me}, since you worked with
+          <span class="rate_intro-markup">${scope.user.name}</span>
+          on <span class="rate_intro-markup">${scope.project}</span>,
+          please answer this question:`;
+      };
+
+      scope.getUserImage = (user) => {
+        let img = user.avatar || 'http://placehold.it/100/100';
+        return {
+          backgroundImage: `url('${img}')`
+        }
+      };
 
       scope.sendSubmit = (answer) => {
         User.submitEvaluation({
