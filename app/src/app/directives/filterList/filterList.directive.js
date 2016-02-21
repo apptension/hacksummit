@@ -27,8 +27,9 @@ export default ngInject(() => {
         if (!scope.filterModel) {
           return;
         }
-
-        if (scope.filterModel.length > 0) {
+        if (scope.filterModel.length >= 3) {
+          scope.placeholder = 'Max. 3 items!';
+        } else if (scope.filterModel.length > 0) {
           scope.placeholder = scope.secondaryPlaceholder;
         } else {
           scope.placeholder = scope.primaryPlaceholder;
