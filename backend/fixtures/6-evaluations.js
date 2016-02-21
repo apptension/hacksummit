@@ -19,7 +19,7 @@ _.times(3000, (id) => {
       ProjectId: _.random(1, 5),
       EvaluatedUserId: _.random(1, 2),
       UserId: _.random(2, 5),
-      SkillId: _.random(1, 38)
+      SkillId: _.random(1, 37)
     }
   });
 });
