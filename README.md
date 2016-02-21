@@ -1,2 +1,2 @@
 # hacksummit
-Repository for hacksummit Hackaton
+Repository for hacksummit Hackathon
