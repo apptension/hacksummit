@@ -1,4 +1,4 @@
-<md-chips ng-model="filterModel" md-autocomplete-snap
+<md-chips ng-model="filterModel" placeholder="Bla" md-autocomplete-snap
           md-require-match="true"
           class="filterList">
     <md-autocomplete
@@ -12,8 +12,8 @@
         <span md-highlight-text="searchModel" md-highlight-flags="i" class="filterList__searchText">{{ getName(item) }}</span>
     </md-autocomplete>
     <md-chip-template>
-            <span>
-              <strong>{{getName($chip)}}</strong>
-            </span>
+        <div class="form__tooltipContainer">
+            {{ getName($chip) | limitTo: 30 }}{{ getName($chip).length > 30 ? '...' : '' }}
+        </div>
     </md-chip-template>
 </md-chips>

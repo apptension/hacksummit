@@ -1,13 +1,25 @@
 .statsFilters {
-  &__filters {
-    margin-bottom: 2em;
+  &__chips {
+  	width: 190px;
   }
 
-  &__filterItem {
-    padding-right: 2em;
+  &__chipsLabel {
+  	padding-right: 10px;
+  	font-size: 14px;
+  	line-height: 28px;
+  	margin-top: 8px;
   }
 
-  &__filters {
-    margin-bottom: 2em;
+  &__inputGroup {
+  	margin-right: 30px;
+  }
+
+  &__datepickerContainer {
+  	width: 280px;
+  }
+
+  &__datepickersSpacer {
+  	margin-top: 11px;
+    text-align: center;
   }
 }
