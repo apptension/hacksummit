@@ -58,3 +58,7 @@ md-sidenav, md-backdrop {
 	align-items: center;
 	justify-content: space-around;
 }
+
+md-toast.md-default-theme .md-toast-content, md-toast .md-toast-content {
+	line-height: 130%;
+}
