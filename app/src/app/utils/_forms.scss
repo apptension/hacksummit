@@ -1,10 +1,54 @@
 .form {
   &__inputGroup {
     font-size: 0;
+
+    .md-errors-spacer {
+      display: none;
+    }
+
+    .md-chips {
+      padding: 0;
+      box-shadow: 0 1px rgba(0,0,0,0.7);
+
+      .md-chip-input-container input {
+        color: rgba(0,0,0,0.7);
+        font-size: 14px;
+      }
+
+      md-chip-template {
+        font-size: 14px;
+      }
+      .md-chip {
+        height: 28px;
+        line-height: 28px;
+        background: #eaeaea;
+
+        &.md-focused {
+          background: #009cf3;
+        }
+
+        .md-contact-avatar img {
+          height: 28px;
+        }
+        .md-chip-remove {
+          height: 28px;
+          width: 28px;
+
+          md-icon {
+            height: 14px;
+            width: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  &__inputGroup--datepicker {
+    height: 40px;
   }
 
   &__inputLabel {
-    line-height: 30px;
+    line-height: 43px;
     display: inline-block;
     vertical-align: top;
     margin-top: 2px;
@@ -13,58 +57,87 @@
     margin-right: 10px;
   }
 
+  &__inputLabel--datepicker {
+    height: 43px;
+    line-height: 40px;
+    padding-bottom: 3px;
+  }
+
   &__inputControl {
-    margin: 0;
+    margin: 7px 0 0 0;
     padding-left: 0;
     padding-right: 0;
   }
 }
 
-
-md-input-container .form__input {
-  color: rgba(0,0,0,0.7);
-  font-size: 14px;
-  border-color: rgba(0,0,0,0.7);
-}
-
-md-datepicker.form__datepicker {
-  margin: 0;
-  padding: 0;
-
-  .md-datepicker-button {
-    display: none;
-  }
-
-  .md-datepicker-input-container {
-    padding-bottom: 0;
-    margin-top: 2px;
-    margin-bottom: 1px;
-    margin-left: 0;
-    border-color: rgba(0,0,0,0.7);
-    height: 31px;
-    width: 100%;
-
-    &.md-datepicker-focused {
-      margin-bottom: 0;
-      border-color: #009cf3;
-      height: 32px;
-    }
-  }
-
-  .md-datepicker-input {
-    height: 30px;
+md-input-container {
+  .form__input {
     color: rgba(0,0,0,0.7);
     font-size: 14px;
-    padding-left: 2px;
-    padding-right: 2px;
-  }
-
-  .md-datepicker-triangle-button {
-    top: 6px;
+    border-color: rgba(0,0,0,0.7);
   }
 }
 
+md-datepicker {
+  margin-left: 0;
+  overflow: visible;
+  &.form__datepicker {
+    margin-top: 6px;
+    &.md-datepicker-open {
+      margin-top: 0;
+    }
+  }
+}
 
+.md-datepicker-input-container {
+  padding-bottom: 0;
+  margin-left: 0;
+  border-color: rgba(0,0,0,0.7);
+  width: 100%;
 
+  .md-datepicker-triangle-button {
+    top: 4px;
+  }
+}
 
+.md-datepicker-button {
+  display: none
+;
+}
 
+.md-datepicker-input {
+  line-height: 26px;
+  color: rgba(0,0,0,0.7);
+  font-size: 14px;
+  padding-left: 2px;
+}
+
+.md-datepicker-open {
+  .md-datepicker-input {
+    background: #fff;
+    margin-left: 0;
+    padding-left: 24px;
+    width: 100%;
+  }
+}
+
+.md-datepicker-input-mask {
+  width: 312px;
+ .md-datepicker-input-mask-opaque {
+   margin-left: -1px;
+ }
+}
+
+.md-calendar-day-header {
+  width: 312px;
+}
+
+.md-contact-suggestion .md-contact-name {
+  line-height: 56px;
+  vertical-align: middle;
+}
+
+.md-contact-suggestion img {
+  margin-top: 0;
+  vertical-align: middle;
+}

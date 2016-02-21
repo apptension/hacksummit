@@ -1,6 +1,9 @@
 export default ngInject(function ProjectsController(Project, User) {
   this.projects = [];
   this.users = [];
+  this.filtrers = {
+    searchText: ''
+  };
 
   let loadProjects = () => {
     Project.getList().then((data) => {
@@ -9,6 +12,7 @@ export default ngInject(function ProjectsController(Project, User) {
         project.formModel = angular.copy(project);
         project.formModel.startDate = project.formModel.startDate.toDate();
         project.formModel.endDate = project.formModel.endDate.toDate();
+        project.members = [];
         project.members = project.members.map((memberId) => {
           return _.find(this.users, {id: memberId});
         });
@@ -50,6 +54,12 @@ export default ngInject(function ProjectsController(Project, User) {
     project.formModel = angular.copy(project);
 
     this.projects[projectIndex] = project;
+  };
+
+  this.getProjects = () => {
+    return this.projects.filter((project) => {
+      return project.name.toLowerCase().indexOf(this.filtrers.searchText.toLowerCase()) !== -1;
+    });
   };
 
   this.searchUser = (input, excluded) => {

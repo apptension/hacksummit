@@ -127,7 +127,7 @@ $entity-height: 85px;
   }
 
   &__bottomControls {
-    margin-top: 20px;
+    margin-top: 50px;
   }
 }
 
@@ -149,6 +149,10 @@ $entity-height: 85px;
     color: rgba(33, 33, 33, 0.38);
   }
 
+  &__filterControl {
+    width: 248px;
+  }
+
   &__tabTitle {
     text-transform: uppercase;
     padding: 40px $content-padding 30px;
@@ -162,6 +166,15 @@ $entity-height: 85px;
     margin-bottom: 52px;
     font-size: 14px;
     width: 750px;
+  }
+
+  &__addButton {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    &.md-button.md-fab,  &.md-button.md-fab.md-focused{
+      box-shadow: none;
+    }
   }
 }
 
