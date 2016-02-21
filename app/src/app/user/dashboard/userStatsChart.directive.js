@@ -43,7 +43,7 @@ export default ngInject(($window) => {
 
         let svg = d3.select(element[0]).selectAll('svg')
           .data([{
-            series: _.map(data.skills, (skill) => {
+            series: _.map(data, (skill) => {
               return {
                 name: skill.name,
                 values: _.map(skill.scores, (score) => {

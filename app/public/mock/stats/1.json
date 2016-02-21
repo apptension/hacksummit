@@ -45,7 +45,7 @@
         }
       ],
       "ratio": 33,
-      "isSoft": true
+      "isSoft": false
     },
     {
       "name": "Css",
@@ -92,6 +92,31 @@
         }
       ],
       "ratio": 66,
+      "isSoft": false
+    },
+    {
+      "name": "Communication",
+      "ratio": 66,
+      "isSoft": true
+    },
+    {
+      "name": "Creativity",
+      "ratio": 15,
+      "isSoft": true
+    },
+    {
+      "name": "Teamwork",
+      "ratio": 77,
+      "isSoft": true
+    },
+    {
+      "name": "Planning",
+      "ratio": 90,
+      "isSoft": true
+    },
+    {
+      "name": "Confidence",
+      "ratio": 55,
       "isSoft": true
     }
   ]
