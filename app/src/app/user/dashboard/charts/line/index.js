@@ -189,7 +189,9 @@ export default function LineChart(_config) {
       .attr({
         cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
         cy: (d) => yScale(d.y),
-        fill: (d) => colorScale(d.seriesIndex),
+        fill: (d, i) => i === me.hoveredBandIndex ? '#ffffff' : colorScale(d.seriesIndex),
+        stroke: (d) => colorScale(d.seriesIndex),
+        strokeWidth: (d, i) => i === me.hoveredBandIndex ? 2 : 0,
         r: (d, i) => i === me.hoveredBandIndex ? 5 : 3
       });
 
