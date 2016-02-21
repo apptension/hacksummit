@@ -1,15 +1,15 @@
 <div layout="row" class="statsFilters__mainContainer">
   <div flex="25" class="statsFilters__itemContainer">
-    <filter-list filter-collection="projects" filter-model="filters.projects" filter-name-attributes="['name']" placeholder="All Projects"></filter-list>
+    <filter-list filter-collection="availableProjects" filter-model="filterProjects" filter-name-attributes="['name']" placeholder="All Projects"></filter-list>
   </div>
   <div flex="25" class="statsFilters__itemContainer">
-    <filter-list filter-collection="skills" filter-model="filters.skills" filter-name-attributes="['name']" placeholder="All Skills"></filter-list>
+    <filter-list filter-collection="availableSkills" filter-model="filterSkills" filter-name-attributes="['name']" placeholder="All Skills"></filter-list>
   </div>
-  <div flex="25" class="statsFilters__itemContainer" ng-if="!userId">
-    <filter-list filter-collection="users" filter-model="filters.users" filter-name-attributes="['name']" placeholder="All Users"></filter-list>
+  <div flex="25" class="statsFilters__itemContainer" ng-if="availableUsers">
+    <filter-list filter-collection="availableUsers" filter-model="filterUsers" filter-name-attributes="['name']" placeholder="All Users"></filter-list>
   </div>
   <div flex="25" class="statsFilters__itemContainer">
-    <md-datepicker ng-model="filters.dateFrom" md-placeholder="Enter date"></md-datepicker>
-    <md-datepicker ng-model="filters.dateTo" md-placeholder="Enter date"></md-datepicker>
+    <md-datepicker ng-model="filterDateFrom" md-placeholder="Enter date"></md-datepicker>
+    <md-datepicker ng-model="filterDateTo" md-placeholder="Enter date"></md-datepicker>
   </div>
 </div>

@@ -1,41 +1,51 @@
+import _ from 'lodash';
 import moment from 'moment';
 
-export default ngInject(function StatsService(MockAPI, $httpParamSerializerJQLike) {
-  const statsMockAPI = MockAPI.all('stats');
+export default ngInject(function StatsService(API, $httpParamSerializerJQLike) {
+  const statsAPI = API.all('stat');
 
   let parseParams = (params = null) => {
     let paramsParsed = '';
 
     if (params !== null) {
-      paramsParsed = '?' + $httpParamSerializerJQLike(params);
+      paramsParsed = '?' + decodeURIComponent($httpParamSerializerJQLike(params));
     }
 
     return paramsParsed;
   };
 
   this.getContributors = () => {
-    return statsMockAPI.customGET('contributors');
+    return statsAPI.customGET('contributors');
   };
 
-  this.getList = (params = null) => {
-    return statsMockAPI
+  this.getList = (_params = null) => {
+    let params = _.cloneDeep(_params);
+
+    params.skill = _.map(params.skill, 'id');
+    params.project = _.map(params.project, 'id');
+
+    return statsAPI
       .customGET(parseParams(params))
       .then((data) => {
-        return data.map(parseUserStats);
+        return parseUserStats(data);
       });
   };
 
   this.getUserStats = (userId, params = null) => {
-    return statsMockAPI
+    return statsAPI
       .customGET(userId + parseParams(params))
       .then(parseUserStats);
   };
 
   function parseUserStats(data) {
     data.skills = _.map(data.skills, (skill) => {
-      skill.scores = _.map(skill.scores, (score) => {
-        score.date = moment.utc(score.date);
-        return score;
+      skill.scores = _.map(skill.scores, (skillsScore) => {
+        skillsScore.scores = _.map(skillsScore.scores, (userScore) => {
+          userScore.date = moment.utc(parseInt(userScore.date, 10) * 1000);
+          userScore.value *= 100;
+          return userScore;
+        });
+        return skillsScore;
       });
       return skill;
     });

@@ -1,9 +1,30 @@
-export default ngInject(function DashboardController($state, $scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
-  $scope.userId = 1;
+export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
+  $scope.filters = {
+    project: [],
+    skill: [],
+    user: []
+  };
 
-  Stats.getUserStats($scope.userId).then((stats) => {
-    this.softSkillStats = stats.skills.filter(s => s.isSoft);
-    this.hardSkillStats = stats.skills.filter(s => !s.isSoft);
+  let fetchStats = (filters, oldFilters) => {
+    if (_.isEqual(filters, oldFilters)) {
+      return;
+    }
+
+    Stats.getList(filters).then((_stats) => {
+      let stats = _stats.plain();
+      stats.skills = _.map(stats.skills, (skill) => {
+        skill.scores = skill.scores[0].scores;
+        return skill;
+      });
+
+      this.softSkillStats = stats.skills.filter(s => s.isSoft);
+      this.hardSkillStats = stats.skills.filter(s => !s.isSoft);
+    });
+  };
+
+  let activeUser = User.getProfile().then(res => {
+    this.activeUser = res.plain();
+    return this.activeUser;
   });
 
   Stats.getContributors().then((contributors) => {
@@ -17,14 +38,18 @@ export default ngInject(function DashboardController($state, $scope, $mdSidenav,
     this.projects = projects;
   });
 
-  Skill.getList().then((skills) => {
-    this.skills = skills;
+  let skills = Skill.getList().then((skills) => {
+    this.skills = skills.plain();
+    return this.skills;
   });
 
-  this.filters = {
-    projects: [],
-    skills: []
-  };
+  $q.all([
+    activeUser,
+    skills
+  ]).then(([activeUser, skills]) => {
+    $scope.filters.user = [activeUser.id];
+    $scope.filters.skill = _.take(skills, 3);
+  });
 
   this.skillpointSelected = (date) => {
     Evaluation.getList(date.format('x')).then((evaluations) => {
@@ -35,6 +60,7 @@ export default ngInject(function DashboardController($state, $scope, $mdSidenav,
 
   Notification.scheduleNotfication();
 
+  $scope.$watch('filters', fetchStats, true);
   $scope.$on('$destroy', () => {
     Notification.cancelScheduled();
   });

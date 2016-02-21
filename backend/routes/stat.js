@@ -48,8 +48,11 @@ router.get('/', (req, res, next) => {
       sequelize.fn('weekofyear', sequelize.col('date')),
       'skillId',
       'userId'
-      ]
-    };
+    ],
+    order: [
+      sequelize.col('date')
+    ]
+  };
 
   if (users && users.length) {
     //query.attributes.push('userId');
