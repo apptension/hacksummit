@@ -2,10 +2,25 @@ body{
   margin: 0 0 0 0;
 }
 
-.homeHeader{
+.homeHeader {
   width: 100%;
   height: 100vh;
+  background: url("/public/images/sectionHeader.png") center center fixed;
+  background-size:cover;
+  position: relative;
+  div{
+    position: absolute;
+  }
 }
+
+.homeHeader__background{
+  //@include retina-sprite($section-header-group);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
 .homeHeader__logo{
   width:100px;
   margin: 200px auto auto 100px;
@@ -16,6 +31,10 @@ body{
   height: 200px;
   text-align: center;
   margin-bottom: 50px;
+
+  h1{
+    font-size:16pt;
+  }
 }
 
 .homeHeader__btnWrapper{
