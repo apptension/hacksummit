@@ -50,6 +50,16 @@ schemas:
                 { "success": true }
 
   /{id}:
+    uriParameters:
+      id:
+        type: integer
+    get:
+      description: Get single user
+      responses:
+        200:
+          body:
+            application/json:
+              schema: User
     /role:
       get:
         description: list all user roles
@@ -120,6 +130,9 @@ schemas:
           application/json:
             schema: Project
   /{id}:
+    uriParameters:
+      id:
+        type: integer
     get:
       description: Get single project
       responses:
@@ -170,6 +183,9 @@ schemas:
           application/json:
             schema: Skill
   /{id}:
+    uriParameters:
+      id:
+        type: integer
     get:
       description: Get single skill
       responses:
@@ -212,6 +228,9 @@ schemas:
           application/json:
             schema: Skillset
   /{id}:
+    uriParameters:
+      id:
+        type: integer
     get:
       description: Get single skillset
       responses:
@@ -272,6 +291,9 @@ schemas:
           application/json:
             schema: Role
   /{id}:
+    uriParameters:
+      id:
+        type: integer
     get:
       description: Get single role
       responses:
@@ -315,6 +337,9 @@ schemas:
 
 /stat:
   /user/{id}:
+    uriParameters:
+      id:
+        type: integer
     get:
       description: Returns stats for given user
       responses:
