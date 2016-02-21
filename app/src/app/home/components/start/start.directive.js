@@ -10,7 +10,24 @@ export default ngInject((User) => {
       admin: '='
     },
     link: function ($scope) {
-      $scope.roleName = 'Role test';
+
+      let getRandomInt = (min, max) => {
+        return Math.floor(Math.random() * (max - min)) + min;
+      };
+
+      let shuffleArray = () => {
+        console.log($scope.users);
+        $scope.img1 = $scope.users[getRandomInt(0, $scope.users.length)].avatar;
+        $scope.img2 = $scope.users[getRandomInt(0, $scope.users.length)].avatar;
+      };
+
+      $scope.users = [];
+      User.getList().then((data) => {
+        $scope.users = data.map((user) => {
+          return user;
+        });
+        shuffleArray();
+      });
     }
   };
 });
