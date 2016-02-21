@@ -1,3 +1,3 @@
-export default ngInject(function DialogController($scope) {
-
+export default ngInject(function DialogController($scope, role) {
+  role.Skills = [];
 });

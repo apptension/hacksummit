@@ -4,11 +4,21 @@ import template from './role-item.html';
 export default ngInject((Skill, moment, Role) => {
   return {
     restrict: 'AE',
+    scope: {
+      role: '='
+    },
     template: template,
     link: function ($scope) {
       $scope.roleName = 'Role test';
     },
     controller: function ($scope) {
+      if (!$scope.role) {
+        $scope.role = {
+          Skills: []
+        };
+      }
+
+      console.log($scope.role);
       $scope.selectedItem = null;
       $scope.searchText = null;
       $scope.transformChip = transformChip;
@@ -27,7 +37,6 @@ export default ngInject((Skill, moment, Role) => {
       $scope.transformChip = transformChip;
 
 
-
       function querySearch(query) {
         var results = query ? $scope.skills.filter(createFilterFor(query)) : [];
         return results;
@@ -43,19 +52,22 @@ export default ngInject((Skill, moment, Role) => {
 
       function transformChip(chip, role) {
         // If it is an object, it's already a known chip
+
         if (angular.isObject(chip)) {
+          console.log(chip);
           return chip;
         }
 
-
-        Skill.post({
-          name: chip,
-          isSoft: false
-        }).then((data) => {
-          role.Skills.push(data);
-          return data;
-        });
-        return null;
+        if (role) {
+          Skill.post({
+            name: chip,
+            isSoft: false
+          }).then((data) => {
+            role.Skills.push(data);
+            return data;
+          });
+          return null;
+        }
       }
 
       function submitRole(role) {
@@ -63,7 +75,17 @@ export default ngInject((Skill, moment, Role) => {
           Role.put(role);
         } else {
           Role.post(role);
+
+          $scope.$emit('newRoleAdded', []);
         }
+      }
+
+      function cancelRole(role) {
+        if (role) {
+          role.edit = false;
+          return role.edit;
+        }
+        return $scope.$emit('canceledRole', []);
       }
     }
   };
