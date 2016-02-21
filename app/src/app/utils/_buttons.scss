@@ -1,0 +1,7 @@
+.md-button.md-raised:not([disabled]) {
+  box-shadow: none;
+
+  &.md-primary.md-focused {
+    box-shadow: none;
+  }
+}

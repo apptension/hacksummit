@@ -58,9 +58,9 @@
   }
 
   &__inputLabel--datepicker {
-    height: 43px;
-    line-height: 40px;
-    padding-bottom: 3px;
+    height: 41px;
+    line-height: 41px;
+    margin-top: 4px;
   }
 
   &__inputControl {
@@ -82,7 +82,7 @@ md-datepicker {
   margin-left: 0;
   overflow: visible;
   &.form__datepicker {
-    margin-top: 6px;
+    margin-top: 9px;
     &.md-datepicker-open {
       margin-top: 0;
     }

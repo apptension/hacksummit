@@ -60,7 +60,7 @@ $entity-height: 85px;
   &__mainContainer {
     align-content: center;
     min-height: $entity-height;
-    width: (800px - $content-padding * 2);
+    width: 650px;
     margin-bottom: 20px;
     cursor: pointer;
     border: 1px solid rgba(0,0,0,0.12);
@@ -127,7 +127,7 @@ $entity-height: 85px;
   }
 
   &__bottomControls {
-    margin-top: 50px;
+    margin: 50px 30px 20px;
   }
 }
 
@@ -165,13 +165,13 @@ $entity-height: 85px;
     padding: 0px $content-padding;
     margin-bottom: 52px;
     font-size: 14px;
-    width: 750px;
+    width: 650px;
   }
 
   &__addButton {
     position: fixed;
-    right: 40px;
-    bottom: 40px;
+    right: 20px;
+    bottom: 20px;
     &.md-button.md-fab,  &.md-button.md-fab.md-focused{
       box-shadow: none;
     }
