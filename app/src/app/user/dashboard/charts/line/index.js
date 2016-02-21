@@ -59,13 +59,12 @@ export default function LineChart(_config) {
       .call(renderXAxis)
       .call(renderYAxis)
       .call(renderBandHitAreas, me)
-      .call(renderSeries, me);
+      .call(renderSeries);
     chart.exit().remove();
 
     me.dispatch.on('bandHitAreaHovered', (index) => {
       me.hoveredBandIndex = index;
       chart.call(renderBandBackgrounds, me);
-      chart.call(renderSeries, me);
     });
 
     me.dispatch.on('bandSelected', (index) => {
@@ -138,9 +137,9 @@ export default function LineChart(_config) {
 
   function renderEmotes(selection) {
     let emotes = selection.selectAll('.line-chart-emote').data([
-      '\uf2e9', // devil
       '\uf2e8', // cool
       '\uf2e7', // happy
+      '\uf2ee', // tongue
       '\uf2eb', // neutral
       '\uf2ed' // sad
     ]);
@@ -149,21 +148,32 @@ export default function LineChart(_config) {
     emotes.text((d) => d)
       .attr({
         y: function (d, i) {
-          return emotesScale(i) + emotesScale.rangeBand() / 2 + this.getBBox().height / 2;
+          return emotesScale(i) + 8;
         },
-        x: 10
+        x: -50
       });
     emotes.exit().remove();
+
+    let emotesTicks = selection.selectAll('.line-chart-emote-tick').data(d3.range(5));
+    emotesTicks.enter().append('line').classed('line-chart-emote-tick', true);
+    emotesTicks.text((d) => d)
+      .attr({
+        y1: (d, i) => emotesScale(i),
+        x1: -25,
+        y2: (d, i) => emotesScale(i),
+        x2: 0
+      });
+    emotesTicks.exit().remove();
   }
 
-  function renderSeries(selection, me) {
+  function renderSeries(selection) {
     let series = selection.selectAll('.line-chart-series').data((data) => data.series);
 
     series.enter()
       .insert('g', '.line-chart-band-hitarea')
       .classed('line-chart-series', true);
     series.call(renderPaths);
-    series.call(renderDots, me);
+    series.call(renderDots);
     series.exit().remove();
   }
 
@@ -189,10 +199,8 @@ export default function LineChart(_config) {
       .attr({
         cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
         cy: (d) => yScale(d.y),
-        fill: (d, i) => i === me.hoveredBandIndex ? '#ffffff' : d.color,
-        stroke: (d) => d.color,
-        strokeWidth: (d, i) => i === me.hoveredBandIndex ? 2 : 0,
-        r: (d, i) => i === me.hoveredBandIndex ? 4 : 3
+        fill: (d) => d.color,
+        r: 2
       });
 
     dots.transition().duration(500).delay(1000)
