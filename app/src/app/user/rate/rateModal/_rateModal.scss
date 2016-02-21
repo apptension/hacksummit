@@ -52,10 +52,14 @@ md-input-container {
 	left: 0;
 	height: 100px;
 	width: 100px;
+
+	&:focus {
+		outline: none;
+	}
 }
 
 .ripple--left {
-	transform: translate(-220%, -100%);
+	transform: translate(-180%, -100%);
 
 	.ripple-effect {
 		background-color: $color-greed;
@@ -63,7 +67,7 @@ md-input-container {
 }
 
 .ripple--right {
-	transform: translate(120%, -100%);
+	transform: translate(180%, -100%);
 
 	.ripple-effect {
 		background-color: $color-red;
@@ -71,12 +75,21 @@ md-input-container {
 }
 
 .ripple-effect {
-	transform: scale(5);
 	position: absolute;
-	height: 100px;
-	width: 100px;
+	height: 500px;
+	width: 500px;
+	transform: translate(-50%,-50%);
 	border-radius: 50%;
-	transition: transform ease-in-out 2s;
+	transition: all ease-in-out .5s;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.ripple-effect--active {
+	width: 1200px;
+	height: 2200px;
 }
 
 .circle-button__label {
@@ -84,15 +97,12 @@ md-input-container {
 	bottom: 80px;
 	left: 10px;
 	color: white;
+	pointer-events: none;
 }
 
 .circle-button__label--right {
 	left: auto;
 	right: 10px;
-}
-
-.ripple-effect--active {
-	transform: scale(15);
 }
 
 .dismiss-btn {
