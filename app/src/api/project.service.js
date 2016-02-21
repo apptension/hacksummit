@@ -13,14 +13,17 @@ export default ngInject(function ProjectService(API) {
 
   this.put = (project) => {
     let projectCopy = angular.copy(project);
-    projectCopy.startDate = project.startDate.utc().format('x');
-    projectCopy.endDate = project.endDate.utc().format('x');
+    projectCopy.startDate = moment(project.startDate).format('x');
+    projectCopy.endDate = moment(project.endDate).format('x');
 
     return api.customPUT(projectCopy, projectCopy.id);
   };
 
   this.post = (project) => {
-    return api.post(project).then(parseProject);
+    let copy = angular.copy(project);
+    copy.startDate = moment(copy.startDate).format('x');
+    copy.endDate = moment(copy.endDate).format('x');
+    return api.post(copy).then(parseProject);
   };
 
   this.delete = (role) => {
@@ -30,8 +33,8 @@ export default ngInject(function ProjectService(API) {
   function parseProject(data) {
     let project = data.plain();
 
-    project.startDate = moment.utc(project.startDate);
-    project.endDate = moment.utc(project.endDate);
+    project.startDate = moment(project.startDate);
+    project.endDate = moment(project.endDate);
 
     return project;
   }
@@ -40,8 +43,8 @@ export default ngInject(function ProjectService(API) {
     let projects = data.plain();
 
     projects.map((project) => {
-      project.startDate = moment.utc(project.startDate);
-      project.endDate = moment.utc(project.endDate);
+      project.startDate = moment(project.startDate);
+      project.endDate = moment(project.endDate);
       return project;
     });
 

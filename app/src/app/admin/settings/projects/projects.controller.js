@@ -12,14 +12,14 @@ export default ngInject(function ProjectsController($timeout, Project, User, $md
   let createProject = (project) => {
     project.edit = false;
     project.formModel = angular.copy(project);
-    project.formModel.startDate = project.formModel.startDate.utc().toDate();
-    project.formModel.endDate = project.formModel.endDate.utc().toDate();
   };
 
   let loadProjects = () => {
     Project.getList().then((data) => {
       this.projects = data.map((project) => {
         createProject(project);
+        project.formModel.startDate = project.formModel.startDate.toDate();
+        project.formModel.endDate = project.formModel.endDate.toDate();
         return project;
       });
     });
@@ -53,22 +53,18 @@ export default ngInject(function ProjectsController($timeout, Project, User, $md
   this.submitProject = (project) => {
     let projectIndex = this.projects.indexOf(project);
 
-    project.formModel.startDate = moment(project.formModel.startDate);
-    project.formModel.endDate = moment(project.formModel.endDate);
     Project.put(project.formModel);
 
     project = project.formModel;
     project.edit = true;
     project.formModel = null;
     project.formModel = angular.copy(project);
-    project.formModel.startDate = project.formModel.startDate.toDate();
-    project.formModel.endDate = project.formModel.endDate.toDate();
 
     this.projects[projectIndex] = project;
 
     $timeout(() => {
       project.edit = false;
-    })
+    });
   };
 
   this.addProject = (ev) => {
@@ -84,10 +80,8 @@ export default ngInject(function ProjectsController($timeout, Project, User, $md
     }).then((newProject) => {
       Project.post(newProject).then((created) => {
         newProject.id = created.id;
-        newProject.startDate = moment.utc(newProject.startDate);
-        newProject.endDate = moment.utc(newProject.endDate);
         createProject(newProject);
-        this.projects.push(newProject)
+        this.projects.push(newProject);
       });
     });
   };
@@ -101,7 +95,7 @@ export default ngInject(function ProjectsController($timeout, Project, User, $md
     ).then(() => {
       Project.delete(project).then(() => {
         this.projects = _.without(this.projects, project);
-      })
+      });
     });
   };
 
@@ -109,6 +103,10 @@ export default ngInject(function ProjectsController($timeout, Project, User, $md
     return this.projects.filter((project) => {
       return project.name.toLowerCase().indexOf(this.filtrers.searchText.toLowerCase()) !== -1;
     });
+  };
+
+  this.formatDate = (date) => {
+    return moment(date).format('DD MMM YYYY');
   };
 
 
