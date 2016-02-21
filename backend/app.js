@@ -15,6 +15,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var user = require('./routes/user');
+var stat = require('./routes/stat');
 
 var assoMiddleware = require('./middleware/associationFactory');
 
@@ -51,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/users', users);
 app.use('/api/user/me', user);
 app.use('/api/user/login', login);
+app.use('/api/stat', stat);
 
 // Initialize epilogue
 epilogue.initialize({

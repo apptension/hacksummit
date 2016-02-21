@@ -16,6 +16,8 @@
     "express": "~4.13.1",
     "express-session": "^1.13.0",
     "jade": "~1.11.0",
+    "lodash": "^4.5.0",
+    "moment": "^2.11.2",
     "morgan": "~1.6.1",
     "mysql": "^2.10.2",
     "nodemon": "^1.9.0",

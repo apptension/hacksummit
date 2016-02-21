@@ -305,11 +305,19 @@ schemas:
     #             example: !include examples/skills.json
 
 /stat:
-  /user/{id}:
-    get:
-      description: Returns stats for given user
-      responses:
-        200:
-          body:
-            application/json:
-              example: !include ./examples/stats.json
+  get:
+    description: Returns stats for given user
+    queryParameters:
+      startDate:
+        type: date
+      endDate:
+        type: date
+      user:
+      project:
+      skill:
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ./examples/stats.json

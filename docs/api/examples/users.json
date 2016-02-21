@@ -3,11 +3,19 @@
   "username": "sample_username",
   "isAdmin": true,
   "name": "Zbigniew Czarnecki",
-  "avatar": "http://lorempixel.com/300/300/people/"
+  "avatar": "http://lorempixel.com/300/300/people/",
+  "Roles": [{
+    "id": 1,
+    "name": "Role name"
+  }]
 }, {
   "id": 2,
   "username": "second_sample_username",
   "isAdmin": false,
   "name": "Artur Gutkowski",
-  "avatar": "http://lorempixel.com/300/300/people/"
+  "avatar": "http://lorempixel.com/300/300/people/",
+  "Roles": [{
+    "id": 1,
+    "name": "Role name"
+  }]
 }]
