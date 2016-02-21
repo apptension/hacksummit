@@ -1,3 +1,10 @@
+.profile-row {
+	display: inline-flex;
+}
+
 .profile-row__name {
 	margin-left: 10px;
+	flex-grow: 1;
+	vertical-align: middle;
+	align-self: center;
 }

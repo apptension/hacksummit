@@ -14,7 +14,10 @@ var models = require('./models'),
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
 var user = require('./routes/user');
+var userEvaluation = require('./routes/userEvaluation');
+var evaluation = require('./routes/evaluation');
 var stat = require('./routes/stat');
 
 var assoMiddleware = require('./middleware/associationFactory');
@@ -52,6 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/users', users);
 app.use('/api/user/me', user);
 app.use('/api/user/login', login);
+app.use('/api/user/logout', logout);
 app.use('/api/stat', stat);
 
 // Initialize epilogue
@@ -108,68 +112,14 @@ rolesResource.use(assoMiddleware({
   setMethod: 'setSkills'
 }));
 
-app.get('/api/user/:id/evaluation', function(req, res, next) {
-  return models.User.findById(parseInt(req.params.id)).then(function(user) {
-    if (user) {
-      return models.Evaluation.findOne({
-        where: {
-          EvaluatedUserId: req.params.id,
-          state: models.Evaluation.attributes.state.values.PENDING
-        }
-      }).then(function(evaluation) {
-        if (evaluation) {
-          return res.json(evaluation);
-        } else {
-          return res.status(204).json({});
-        }
-      });
-    } else {
-      return res.status(404).json({ error: 'user not found' });
-    }
-  });
+var evaluationsResource = epilogue.resource({
+  model: models.Evaluation,
+  endpoints: ['/api/evaluation'],
+  actions: ['list']
 });
 
-app.post('/api/user/:id/evaluation', function(req, res, next) {
-  return models.User.findById(parseInt(req.params.id)).then(function(user) {
-    if (user) {
-      return models.Evaluation.findOne({
-        where: {
-          EvaluatedUserId: req.params.id,
-          state: models.Evaluation.attributes.state.values.PENDING
-        }
-      }).then(function(evaluation) {
-        if (evaluation) {
-          var state = models.Evaluation.attributes.state.values.PENDING, starred = 0;
-          if ('state' in req.body && parseInt(req.body.state) === models.Evaluation.attributes.state.values.SKIPPED) {
-            state = models.Evaluation.attributes.state.values.SKIPPED;
-          } else if ('starred' in req.body) {
-            state = models.Evaluation.attributes.state.values.ANSWERED;
-            starred = parseInt(req.body.starred) === 1;
-          }
-          if (state !== models.Evaluation.attributes.state.values.PENDING) {
-            return models.Evaluation.update({
-              starred: starred,
-              date: (new Date()).getTime(),
-              state: state
-            }, {
-              where: {
-                id: evaluation.id
-              }
-            }).then(function() {
-              return res.json({ success: true });
-            });
-          } else {
-            return res.status(400).json({ error: 'incorrect post data', success: false });
-          }
-        } else {
-          return res.status(404).json({ error: 'evaluation not found', success: false });
-        }
-      });
-    } else {
-      return res.status(404).json({ error: 'user not found', success: false });
-    }
-  });
-});
+app.use('/api/user', userEvaluation);
+app.use('/api/evaluation', evaluation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,94 +4,119 @@
       "name": "Javascript",
       "scores": [
         {
-          "value": 7.3,
+          "value": 73,
           "date": 1455974553449
         },
         {
-          "value": 7,
+          "value": 70,
           "date": 1456579353451
         },
         {
-          "value": 6.7,
+          "value": 67,
           "date": 1457184153452
         },
         {
-          "value": 6.9,
+          "value": 69,
           "date": 1457788953452
         },
         {
-          "value": 7.8,
+          "value": 78,
           "date": 1458393753452
         },
         {
-          "value": 8.2,
+          "value": 82,
           "date": 1458998553452
         },
         {
-          "value": 8.0,
+          "value": 80,
           "date": 1459603353452
         },
         {
-          "value": 7.6,
+          "value": 90,
           "date": 1460208153452
         },
         {
-          "value": 8.1,
+          "value": 40,
           "date": 1460812953453
         },
         {
-          "value": 8.4,
+          "value": 84,
           "date": 1461417753453
         }
       ],
       "ratio": 33,
-      "isSoft": true
+      "isSoft": false
     },
     {
       "name": "Css",
       "scores": [
         {
-          "value": 6.3,
+          "value": 50,
           "date": 1455974553449
         },
         {
-          "value": 6.5,
+          "value": 54,
           "date": 1456579353451
         },
         {
-          "value": 7,
+          "value": 56,
           "date": 1457184153452
         },
         {
-          "value": 6.8,
+          "value": 10,
           "date": 1457788953452
         },
         {
-          "value": 7.1,
+          "value": 20,
           "date": 1458393753452
         },
         {
-          "value": 7.4,
+          "value": 15,
           "date": 1458998553452
         },
         {
-          "value": 7.2,
+          "value": 20,
           "date": 1459603353452
         },
         {
-          "value": 7.6,
+          "value": 30,
           "date": 1460208153452
         },
         {
-          "value": 8.1,
+          "value": 35,
           "date": 1460812953453
         },
         {
-          "value": 8.3,
+          "value": 45,
           "date": 1461417753453
         }
       ],
       "ratio": 66,
+      "isSoft": false
+    },
+    {
+      "name": "Communication",
+      "ratio": 66,
+      "isSoft": true
+    },
+    {
+      "name": "Creativity",
+      "ratio": 15,
+      "isSoft": true
+    },
+    {
+      "name": "Teamwork",
+      "ratio": 77,
+      "isSoft": true
+    },
+    {
+      "name": "Planning",
+      "ratio": 90,
+      "isSoft": true
+    },
+    {
+      "name": "Confidence",
+      "ratio": 55,
       "isSoft": true
     }
   ]

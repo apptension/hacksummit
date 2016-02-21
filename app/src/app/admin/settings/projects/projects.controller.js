@@ -6,6 +6,9 @@ export default ngInject(function ProjectsController(Project, User) {
     Project.getList().then((data) => {
       this.projects = data.map((project) => {
         project.edit = false;
+        project.formModel = angular.copy(project);
+        project.formModel.startDate = project.formModel.startDate.toDate();
+        project.formModel.endDate = project.formModel.endDate.toDate();
         project.members = project.members.map((memberId) => {
           return _.find(this.users, {id: memberId});
         });
@@ -39,9 +42,19 @@ export default ngInject(function ProjectsController(Project, User) {
     selected.edit = true;
   };
 
-  this.searchUser = (input) => {
+  this.submitProject = (project) => {
+    let projectIndex = this.projects.indexOf(project);
+
+    project = project.formModel;
+    project.formModel = null;
+    project.formModel = angular.copy(project);
+
+    this.projects[projectIndex] = project;
+  };
+
+  this.searchUser = (input, excluded) => {
     return this.users.filter((user) => {
-      return user.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0;
+      return user.name.toLowerCase().indexOf(angular.lowercase(input)) >= 0 && excluded.indexOf(user) === -1;
     }) || [];
   };
 

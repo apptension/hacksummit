@@ -17,11 +17,14 @@ import user from './user';
 import admin from './admin';
 import api from '../api';
 
+import material from './material.config';
 /**
  * Local imports
  */
 import AppController from './app.controller';
 import UserController from './user/user.controller';
+import statsFilters from './directives/statsFilters/statsFilters.directive';
+import filterList from './directives/filterList/filterList.directive';
 
 export default angular.module('app', [
   ngCookies,
@@ -34,6 +37,9 @@ export default angular.module('app', [
   user,
   ngMaterial
 ]).config(routing)
+  .config(material)
   .controller('AppController', AppController)
   .controller('UserController', UserController)
+  .directive('filterList', filterList)
+  .directive('statsFilters', statsFilters)
   .name;

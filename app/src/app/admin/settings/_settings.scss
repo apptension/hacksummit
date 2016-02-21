@@ -1,21 +1,50 @@
 @import 'projects/projects';
 
-$content-padding: 20px;
-$entity-padding: 20px;
+$content-padding: 40px;
+$entity-padding: 30px;
 $entity-height: 85px;
 
 .adminSettings {
   &__sideMenu {
-    border-right: 1px solid black;
+    border-right: 1px solid rgba(0,0,0,0.12);
+    width: 280px;
+  }
+
+  &__sideMenuList {
+    padding: 0;
   }
 
   &__sideMenuItem {
+    padding: 0;
     border-left: 4px solid transparent;
   }
 
+  &__sideMenuItemButton {
+    padding: 6px 30px;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+    text-transform: none;
+  }
+
+  &__sideMenuItemButton--active {
+    background: #fafafa;
+  }
+
+  &__sideMenuItemIcon {
+    margin-right: 26px;
+  }
 
   &__sideMenuItem--active {
-    border-left: 4px solid rgb(63,81,181);
+    border-left: 4px solid #009cf3;
+  }
+
+  &__sideMenuArrow {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    @include transform(rotate(-90deg))
   }
 
   &__sideMenuItemLink {
@@ -24,7 +53,6 @@ $entity-height: 85px;
   }
 
   &__componentContainer {
-    width: 800px;
   }
 }
 
@@ -33,9 +61,9 @@ $entity-height: 85px;
     align-content: center;
     min-height: $entity-height;
     width: (800px - $content-padding * 2);
-    margin-bottom: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
     cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.12);
   }
 
   &__labelContainer {
@@ -57,14 +85,18 @@ $entity-height: 85px;
 
   &__date {
     height: ($entity-height - $entity-padding * 2);
+    line-height: ($entity-height - $entity-padding * 2);
     color: #757575;
-    text-transform: uppercase;
+    font-size: 14px;
+    position: absolute;
+    right: 16px;
+    top: 30px;
   }
 
   &__editContainer {
     transition: max-height 0.5s ease-in-out;
     background: #fafafa;
-    border-top: 1px solid #dcdcdc;
+    border-top: 1px solid rgba(0,0,0,0.12);
     overflow: hidden;
     box-sizing: border-box;
     max-height: 350px;
@@ -91,7 +123,7 @@ $entity-height: 85px;
   }
 
   &__editForm {
-    margin: $entity-padding $entity-padding 10px $entity-padding;
+    margin: $entity-padding $entity-padding 20px $entity-padding;
   }
 
   &__bottomControls {
@@ -102,35 +134,43 @@ $entity-height: 85px;
 .adminTabContent {
   &__header {
     align-self: flex-start;
-    background: #fafafa;
-    border-bottom: 1px solid #dcdcdc;
-    border-right: 1px solid #dcdcdc;
-    margin-bottom: $content-padding;
+    margin-bottom: 16px;
   }
 
-  &__sortControls {
+  &__tabList {
+    padding: 0 $content-padding;
+  }
+
+  &__filterControls {
     padding-left: $content-padding;
     font-size: 12px;
     letter-spacing: 0.007em;
     line-height: 13px;
     color: rgba(33, 33, 33, 0.38);
-    border-top: 1px solid #dcdcdc;
-  }
-
-  &__sortDropdown {
-    outline: none;
-    cursor: pointer;
-    width: 186px;
   }
 
   &__tabTitle {
-    padding: 8px $content-padding;
+    text-transform: uppercase;
+    padding: 40px $content-padding 30px;
+    font-size: 24px;
+    margin: 0;
   }
 
   &__tabDesc {
     color: rgba(0, 0, 0, 0.54);
-    padding: 8px $content-padding;
+    padding: 0px $content-padding;
+    margin-bottom: 52px;
     font-size: 14px;
-    border-top: 1px solid #dcdcdc;
+    width: 750px;
+  }
+}
+
+a.md-button.adminSettings__sideMenuItemButton {
+  &:hover:not([disabled]) {
+    background: transparent;
+
+    &.adminSettings__sideMenuItemButton--active {
+      background: #fafafa;
+    }
   }
 }

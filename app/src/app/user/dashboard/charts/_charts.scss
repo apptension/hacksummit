@@ -1,14 +1,39 @@
-svg {
-  font: 10px sans-serif;
-}
-
-.line-chart-xaxis,
-.line-chart-yaxis {
+.line-chart-xaxis {
   path, line {
     fill: none;
-    stroke: #e7e7e7;
+    stroke: #7a7a7a;
     shape-rendering: crispEdges;
   }
+}
+
+.line-chart-yaxis {
+  path {
+    fill: none;
+    stroke: #7a7a7a;
+    shape-rendering: crispEdges;
+  }
+
+  line {
+    stroke: #f7f7f7;
+    shape-rendering: crispEdges;
+  }
+
+  .tick:first-child {
+    line {
+      stroke: #7a7a7a;
+    }
+  }
+
+  .tick {
+    text {
+      display: none;
+    }
+  }
+}
+
+.line-chart-xaxis {
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 .line-chart-series {
@@ -16,6 +41,22 @@ svg {
   stroke-width: 2;
 }
 
-.line-chart-series-dot {
+.line-chart-band-bg {
+  fill: #f3f3f3;
+  shape-rendering: crispEdges
+}
+
+.line-chart-band-hitarea {
+  fill: transparent;
+  pointer-events: visible;
   cursor: pointer;
+}
+
+.user-stats-chart {
+  display: block;
+  height: 400px;
+}
+
+.line-chart-emote {
+  font-size: 20px;
 }

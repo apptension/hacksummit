@@ -1,10 +1,16 @@
 [
   {
+    "id": 1,
     "name": "Project One",
+    "startDate": 1455974553449,
+    "endDate": 1455974653449,
     "members": [1]
   },
   {
+    "id": 2,
     "name": "Project Two",
+    "startDate": 1455174553449,
+    "endDate": 1455174653449,
     "members": [1,2]
   }
 ]

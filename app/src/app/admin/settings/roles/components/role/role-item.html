@@ -7,11 +7,8 @@
                     <input ng-model="role.name">
                 </md-input-container>
             </div>
-
-
-
             <div layout-gt-xs="row">
-                <md-chips ng-model="roleSkills" md-autocomplete-snap md-transform-chip="transformChip($chip)">
+                <md-chips ng-model="role.Skills" md-autocomplete-snap md-require-match="false" md-transform-chip="transformChip($chip, role)">
                     <md-autocomplete
                             md-selected-item="selectedItem"
                             md-search-text="searchText"
@@ -20,12 +17,23 @@
                             placeholder="Search skills">
                         <span md-highlight-text="searchText">{{item.name}}</span>
                     </md-autocomplete>
-                    <md-chip-template>
+                    <md-chip-template ng-show="$chip.name != ''">
                         <span>
                           <strong>{{$chip.name}}</strong>
                         </span>
                     </md-chip-template>
                 </md-chips>
+            </div>
+            <div layout-gt-xs="row">
+                <div layout="row" layout-align="space-between center" class="adminTabItem__bottomControls" >
+                    <md-button class="md-icon-button adminTabItem__removeIcon" flex="none">
+                        <md-icon>delete</md-icon>
+                    </md-button>
+                    <div flex="none" class="adminTabItem__submitButtons">
+                        <md-button class="md-primary" ng-click="project.edit=false">cancel</md-button>
+                        <md-button class="md-primary" ng-click="submitRole(role)">save</md-button>
+                    </div>
+                </div>
             </div>
         </form>
     </md-content>

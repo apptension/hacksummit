@@ -1,21 +1,9 @@
 <div class="adminHome__layout">
-  <div class="adminHome__filters">
-    <div layout="row">
-      <div flex="25" class="adminHome__filterItem">
-        <filter-list filter-collection="projects" filter-model="filters.projects" filter-name-attributes="['name']" placeholder="All Projects"></filter-list>
-      </div>
-      <div flex="25" class="adminHome__filterItem">
-        <filter-list filter-collection="skills" filter-model="filters.skills" filter-name-attributes="['name']" placeholder="All Skills"></filter-list>
-      </div>
-      <div flex="25" class="adminHome__filterItem">
-        <filter-list filter-collection="users" filter-model="filters.users" filter-name-attributes="['name']" placeholder="All Users"></filter-list>
-      </div>
-      <div flex="25" class="adminHome__filterItem">
-        <md-datepicker ng-model="filters.dateFrom" md-placeholder="Enter date"></md-datepicker>
-        <md-datepicker ng-model="filters.dateTo" md-placeholder="Enter date"></md-datepicker>
-      </div>
-    </div>
-  </div>
+  <stats-filters
+    projects="projects"
+    skills="skills"
+    users="users"
+    stats="stats" />
 
   <div layout="row" layout-fill>
     <div flex="60">

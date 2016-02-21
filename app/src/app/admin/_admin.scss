@@ -1,18 +1,41 @@
 @import "settings/settings";
 @import "home/home";
 
-md-tabs-canvas {
-  height: 64px;
+md-toolbar, .md-toolbar-tools {
+  height: 60px;
+  min-height: 0;
 }
 
-md-pagination-wrapper {
-  height: 64px;
+.md-toolbar-tools {
+  padding: 0 30px;
+  font-size: 0;
 }
 
-.md-tab {
-  line-height: 40px;
+.admin__headerItem {
+  line-height: 60px;
+  vertical-align: top;
+  margin: 0;
+  padding: 0 30px;
+  text-transform: none;
+  font-weight: bold;
+}
+
+.admin__headerItem--active {
+  > span {
+    border-bottom: 1px solid #fff;
+  }
+}
+
+md-tabs .md-tab {
+  color: rgba(255, 255, 255, 0.7)
 }
 
 md-tabs .md-tab.md-active {
-  color: rgba(255, 255, 255, 0.87)
+  color: rgba(255, 255, 255, 1)
+}
+
+.admin__headerLogo {
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
 }

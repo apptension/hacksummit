@@ -13,7 +13,7 @@ export default ngInject(function NotificationService($state) {
 
   this.notify = (content) => {
     if (!this.isEnabled()) {
-      console.warn('Notifications not supported :(')
+      console.warn('Notifications not supported :(');
     } else {
       this.showNotification(content);
     }

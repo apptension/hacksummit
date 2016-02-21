@@ -1,7 +1,7 @@
 import template from './role-item.html';
 
 
-export default ngInject(() => {
+export default ngInject((Skill, moment, Role) => {
   return {
     restrict: 'AE',
     template: template,
@@ -12,36 +12,16 @@ export default ngInject(() => {
       $scope.selectedItem = null;
       $scope.searchText = null;
       $scope.transformChip = transformChip;
-      $scope.skills = [
-        {
-          name: 'Angular 1'
-        },
-        {
-          name: 'Angular 2'
-        },
-        {
-          name: 'ReactJS'
-        },
-        {
-          name: 'TypeScript'
-        },
-        {
-          name: 'CoffeeScript'
-        },
-        {
-          name: 'CSS'
-        },
-        {
-          name: 'WebGL'
-        }
-      ];
+      $scope.skills = [];
+      $scope.submitRole = submitRole;
 
+      Skill.getList().then((data) => {
+        $scope.skills = data.map((skill) => {
+          skill.updatedAt = moment.utc(skill.updatedAt).format("lll");
+          return skill;
+        });
+      });
 
-      $scope.roleSkills = [
-        {
-          name: 'HTML5'
-        }
-      ];
 
       $scope.querySearch = querySearch;
       $scope.transformChip = transformChip;
@@ -60,17 +40,31 @@ export default ngInject(() => {
         };
       }
 
-      function transformChip(chip) {
-        console.log(chip);
+
+      function transformChip(chip, role) {
         // If it is an object, it's already a known chip
         if (angular.isObject(chip)) {
           return chip;
         }
 
-        // Otherwise, create a new one
-        return {name: chip};
+
+        Skill.post({
+          name: chip,
+          isSoft: false
+        }).then((data) => {
+          role.Skills.push(data);
+          return data;
+        });
+        return null;
+      }
+
+      function submitRole(role) {
+        if (role.id) {
+          Role.put(role);
+        } else {
+          Role.post(role);
+        }
       }
     }
   };
-
 });

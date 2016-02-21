@@ -1,8 +1,8 @@
 {
   "id": 1,
-  "stared": false,
-  "date": 1456572160,
-  "state": 0,
+  "starred": false,
+  "date": 1456572160000,
+  "state": 1,
   "comment": "",
   "userId": 1,
   "projectId": 1,

@@ -1,3 +1,36 @@
 @import 'charts/charts';
 @import 'skillBadge/skillBadge';
 @import 'profile/profile';
+@import 'topUsersList/topUsersList';
+
+md-sidenav, md-backdrop {
+	position: fixed;
+}
+
+.user-dashboard h3 {
+	font-weight: normal;
+}
+
+.user-dashboard__col-wrapper {
+	display: flex;
+
+	@media(max-width: 900px) {
+		flex-direction: column;
+	}
+}
+
+.user-dashboard__main-col {
+	flex-grow: 1;
+}
+
+.user-dashboard__side-col {
+	padding: 0 3%;
+	text-align: center;
+}
+
+.user-dashboard__team-skills {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+}

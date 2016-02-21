@@ -1,0 +1,14 @@
+<div class="top-list">
+    <div class="top-list__item" ng-repeat="user in data.list"
+         ng-class="{ 'top-list__item--first': $first, 'top-list__item--last': $last }">
+        <span class="top-list__rank">{{$index + 1}}</span>
+        <span class="top-list__user" profile-row data="user"></span>
+    </div>
+
+    <span class="top-list__divider" ng-if="data.rank"></span>
+
+    <div class="top-list__mine-stats top-list__item" ng-if="data.rank">
+        <span class="top-list__rank">{{data.rank}}</span>
+        <span class="top-list__user" profile-row data="activeUser"></span>
+    </div>
+</div>
