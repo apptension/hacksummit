@@ -6,7 +6,6 @@ mediaType:  application/json
 schemas:
   - User: !include schemas/user.json
   - Project: !include schemas/project.json
-  - Skillset: !include schemas/skillset.json
   - Skill: !include schemas/skill.json
   - Evaluation: !include schemas/evaluation.json
   - Role: !include schemas/role.json
@@ -158,14 +157,6 @@ schemas:
       responses:
         204:
           description: No content
-    /skillset:
-      get:
-        description: Returns list of assigned skillsets to a project
-        responses:
-          200:
-            body:
-              application/json:
-                example: !include ./examples/skillsets.json
 
 /skill:
   get:
@@ -211,69 +202,6 @@ schemas:
       responses:
         204:
           description: No content
-
-/skillset:
-  get:
-    description: Returns list of the skillsets
-    responses:
-      200:
-        body:
-          application/json:
-            example: !include examples/skillsets.json
-  post:
-    description: Add new skillset
-    body:
-      application/json:
-        schema: Skillset
-    responses:
-      200:
-        body:
-          application/json:
-            schema: Skillset
-  /{id}:
-    uriParameters:
-      id:
-        type: integer
-    get:
-      description: Get single skillset
-      responses:
-        200:
-          body:
-            application/json:
-              schema: Skillset
-    put:
-      description: Update skillset
-      body:
-        application/json:
-          schema: Skillset
-      responses:
-        200:
-          body:
-            application/json:
-              schema: Skillset
-    delete:
-      description: Remove skillset
-      responses:
-        204:
-          description: No content
-    # /skill:
-    #   get:
-    #     description: return skills assigned to skillset
-    #     responses:
-    #       200:
-    #         body:
-    #           application/json:
-    #             example: !include examples/skills.json
-    #   post:
-    #     description: assign skills to skillset
-    #     body:
-    #       application/json:
-    #         schema: !include schemas/skills_assign_post.json
-    #     responses:
-    #       200:
-    #         body:
-    #           application/json:
-    #             example: !include examples/skills.json
 
 /role:
   get:

@@ -103,20 +103,6 @@ var skillsResource = epilogue.resource({
   endpoints: ['/api/skill', '/api/skill/:id']
 });
 
-var skillsetsResource = epilogue.resource({
-  model: models.Skillset,
-  include     : [models.Skill],
-  endpoints: ['/api/skillset', '/api/skillset/:id']
-});
-
-skillsetsResource.use(assoMiddleware({
-  associations: [{
-    associatedModel: models.Skill,
-    attribute: 'Skills',
-    setMethod: 'setSkills'
-  }]
-}));
-
 var rolesResource = epilogue.resource({
   model: models.Role,
   include     : [models.Skill],
