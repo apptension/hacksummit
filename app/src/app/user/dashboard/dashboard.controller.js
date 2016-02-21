@@ -40,17 +40,23 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
           return skill;
         });
 
-        this.softSkillStats = stats.global
-          .map(s => {
-            let skill = this.skills.find(sk => sk.id === s.skillId);
-            return {
-              skillId: s.skillId,
-              score: s.score,
-              isSoft: skill.isSoft,
-              name: skill.name
-            };
-          })
-          .filter(s => s.isSoft);
+        User.getProfile().then(u => {
+          this.softSkillStats = stats.global
+            .map(s => {
+              let skill = this.skills.find(sk => sk.id === s.skillId);
+              return {
+                userId: s.userId,
+                skillId: s.skillId,
+                score: s.score,
+                isSoft: skill.isSoft,
+                name: skill.name
+              };
+            })
+            .filter(s => s.isSoft)
+            .filter(s => s.userId === u.id);
+
+          debugger;
+        });
 
         this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
         this.hardSkillStats = _.map(this.hardSkillStats, (skill, i) => {
