@@ -6,7 +6,8 @@ export default ngInject(() => {
       filterModel: '=',
       filterCollection: '=',
       filterNameAttributes: '@',
-      placeholder: '@'
+      primaryPlaceholder: '@placeholder',
+      secondaryPlaceholder: '@'
     },
     link: (scope) => {
       let parseNameAttributes = () => {
@@ -20,6 +21,15 @@ export default ngInject(() => {
 
       scope.searchModel = null;
       scope.nameAttributes = parseNameAttributes();
+      scope.placeholder = '';
+
+      scope.$watch('filterModel', () => {
+        if (scope.filterModel.length > 0) {
+          scope.placeholder = scope.secondaryPlaceholder;
+        } else {
+          scope.placeholder = scope.primaryPlaceholder;
+        }
+      }, true);
 
       scope.getName = (item) => {
         let name = '';
