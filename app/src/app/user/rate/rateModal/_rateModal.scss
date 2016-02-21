@@ -3,7 +3,7 @@ $color-red: #f9615b;
 
 md-dialog {
 	min-width: 0 !important;
-	overflow-y: hidden;
+	overflow: hidden;
 }
 
 md-input-container {
@@ -153,4 +153,39 @@ md-input-container .feedback__text {
 
 .cancel-btn {
 	opacity: .7;
+}
+
+.rate__user-data {
+	text-align: center;
+	margin: 60px;
+}
+
+.rate__user {
+	color: #515050;
+}
+
+.rate__intro {
+	color: #b2b2b2;
+	font-size: 13px;
+	margin-bottom: 25px;
+}
+
+.rate_intro-markup {
+	color: #009bf2;
+}
+
+.rate__question {
+	color: #202020;
+	font-size: 13px;
+	padding: 0 30px;
+}
+
+.rate__image {
+	display: inline-block;
+	width: 90px;
+	height: 90px;
+	border: 1px solid #515050;
+	border-radius: 50%;
+	background-size: cover;
+	background-position: center;
 }

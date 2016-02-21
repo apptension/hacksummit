@@ -3,10 +3,12 @@
         <h2 class="rate__title">Give some props!</h2>
     </md-toolbar>
 
-
-    <h3>{{ user }}</h3>
-    <h3></h3>
-    <p class="rate__question">{{ question }}</p>
+    <div class="rate__user-data">
+        <span class="rate__image" ng-if="user" ng-style="getUserImage(user)"></span>
+        <h3 class="rate__user" ng-if="user">{{ user.name }}</h3>
+        <p class="rate__intro" ng-if="user" ng-bind-html="intro()"></p>
+        <p class="rate__question">{{ question }}</p>
+    </div>
 
     <div class="circle-button circle-button--left"
          ng-class="{'circle-button--active':activeStep === 'positive'}">
