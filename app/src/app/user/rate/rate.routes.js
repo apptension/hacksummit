@@ -1,5 +1,3 @@
-import rateTemplate from './rate.html';
-
 export default ngInject(($stateProvider) => {
   $stateProvider.state('app.user.dashboard.rate', {
     url: '/rate',
