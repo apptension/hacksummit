@@ -3,19 +3,25 @@
         <h2 class="rate__title">Give some props!</h2>
     </md-toolbar>
 
-    <h1 class="rate__question">{{ question }}</h1>
-    <p class="rate__subtitle"> Rate me, pls. </p>
 
-    <div class="circle-button circle-button--left" ng-class="{'circle-button--active':activeStep === 'positive'}">
+    <h3>{{ user }}</h3>
+    <h3></h3>
+    <p class="rate__question">{{ question }}</p>
+
+    <div class="circle-button circle-button--left"
+         ng-class="{'circle-button--active':activeStep === 'positive'}">
         <span class="ripple ripple--left" ng-click="showFeedback('positive')">
-            <span class="ripple-effect" ng-class="{'ripple-effect--active':activeStep === 'positive'}"></span>
+            <span class="ripple-effect" ng-class="{'ripple-effect--active':activeStep === 'positive',
+                            'ripple-effect--inactive':activeStep === 'negative'}"></span>
         </span>
         <span ng-show="!activeStep" class="circle-button__label">YES</span>
     </div>
 
-    <div class="circle-button circle-button--right" ng-class="{'circle-button--active':activeStep === 'negative'}">
+    <div class="circle-button circle-button--right"
+         ng-class="{'circle-button--active':activeStep === 'negative'}">
         <span class="ripple ripple--right" ng-click="showFeedback('negative')">
-            <span class="ripple-effect" ng-class="{'ripple-effect--active':activeStep === 'negative'}"></span>
+            <span class="ripple-effect" ng-class="{'ripple-effect--active':activeStep === 'negative',
+                            'ripple-effect--inactive':activeStep === 'positive'}"></span>
         </span>
         <span ng-show="!activeStep" class="circle-button__label circle-button__label--right">NO</span>
     </div>

@@ -52,6 +52,7 @@ md-input-container {
 	left: 0;
 	height: 100px;
 	width: 100px;
+	cursor: pointer;
 
 	&:focus {
 		outline: none;
@@ -90,6 +91,14 @@ md-input-container {
 .ripple-effect--active {
 	width: 1200px;
 	height: 2200px;
+}
+
+.ripple--right .ripple-effect--inactive {
+	transform: translate(-30%, -50%);
+}
+
+.ripple--left .ripple-effect--inactive {
+	transform: translate(-70%, -50%);
 }
 
 .circle-button__label {
