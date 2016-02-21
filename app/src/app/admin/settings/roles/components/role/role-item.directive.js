@@ -13,16 +13,13 @@ export default ngInject((Skill, moment) => {
       $scope.searchText = null;
       $scope.transformChip = transformChip;
       $scope.skills = [];
-      //Skill.getList()
-      //Skill.getList()
 
-      //roleList.Skills.then((data) => {
-      //  $scope.roleSkills = data.map((skill) => {
-      //    skill.updatedAt = moment.utc(skill.updatedAt).format("lll");
-      //    return skill;
-      //  });
-      //  console.log($scope.roleSkills);
-      //});
+      Skill.getList().then((data) => {
+        $scope.skills = data.map((skill) => {
+          skill.updatedAt = moment.utc(skill.updatedAt).format("lll");
+          return skill;
+        });
+      });
 
 
       $scope.querySearch = querySearch;
@@ -42,14 +39,20 @@ export default ngInject((Skill, moment) => {
         };
       }
 
-      function transformChip(chip) {
+      function transformChip(chip, role) {
         // If it is an object, it's already a known chip
         if (angular.isObject(chip)) {
           return chip;
         }
 
         // Otherwise, create a new one
-        return {name: chip};
+        return Skill.post({
+          name: chip,
+          isSoft: true
+        }).then((data) => {
+          return role.Skills.push(data);
+
+        });
       }
     }
   };
