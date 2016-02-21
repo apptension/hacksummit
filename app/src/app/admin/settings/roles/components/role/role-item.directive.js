@@ -1,7 +1,7 @@
 import template from './role-item.html';
 
 
-export default ngInject((Skill, moment) => {
+export default ngInject((Skill, moment, Role) => {
   return {
     restrict: 'AE',
     template: template,
@@ -13,6 +13,7 @@ export default ngInject((Skill, moment) => {
       $scope.searchText = null;
       $scope.transformChip = transformChip;
       $scope.skills = [];
+      $scope.submitRole = submitRole;
 
       Skill.getList().then((data) => {
         $scope.skills = data.map((skill) => {
@@ -39,20 +40,30 @@ export default ngInject((Skill, moment) => {
         };
       }
 
+
       function transformChip(chip, role) {
         // If it is an object, it's already a known chip
         if (angular.isObject(chip)) {
           return chip;
         }
 
-        // Otherwise, create a new one
-        return Skill.post({
-          name: chip,
-          isSoft: true
-        }).then((data) => {
-          return role.Skills.push(data);
 
+        Skill.post({
+          name: chip,
+          isSoft: false
+        }).then((data) => {
+          role.Skills.push(data);
+          return data;
         });
+        return null;
+      }
+
+      function submitRole(role) {
+        if (role.id) {
+          Role.put(role);
+        } else {
+          Role.post(role);
+        }
       }
     }
   };
