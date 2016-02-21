@@ -39,7 +39,7 @@
                     </md-button>
                     <div flex="none" class="adminTabItem__submitButtons">
                         <md-button class="md-primary" ng-click="rolesCtrl.cancelEdit(role)">cancel</md-button>
-                        <md-button class="md-primary md-raised" ng-click="rolesCtrl.submitRole(role)">save</md-button>
+                        <md-button class="md-primary md-raised" ng-disabled="roleForm.$invalid" ng-click="rolesCtrl.submitRole(role)">save</md-button>
                     </div>
                 </div>
             </div>

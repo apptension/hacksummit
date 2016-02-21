@@ -187,17 +187,19 @@ md-dialog {
 
 .rate__user-data {
 	text-align: center;
-	margin: 60px;
+	margin: 30px 60px;
 }
 
 .rate__user {
 	color: #515050;
+	margin-bottom: 5px;
 }
 
 .rate__intro {
 	color: #b2b2b2;
 	font-size: 13px;
 	margin-bottom: 25px;
+	line-height: 130%;
 }
 
 .rate_intro-markup {
@@ -208,6 +210,7 @@ md-dialog {
 	color: #202020;
 	font-size: 13px;
 	padding: 0 30px;
+	line-height: 130%;
 }
 
 .rate__image {

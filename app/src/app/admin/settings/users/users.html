@@ -41,7 +41,7 @@
           </md-button>
           <div flex="none" class="adminTabItem__submitButtons">
             <md-button class="md-primary" ng-click="usersCtrl.cancelEdit(user)">cancel</md-button>
-            <md-button class="md-primary md-raised" ng-click="usersCtrl.submitUser(user)">save</md-button>
+            <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="usersCtrl.submitUser(user)">save</md-button>
           </div>
         </div>
       </div>

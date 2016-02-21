@@ -29,7 +29,7 @@
             <span class="adminTabItem__name">{{ project.name }}</span>
           </div>
           <div class="adminTabItem__date">
-            {{ project.startDate.format('DD MMM YYYY') }}
+            {{ projectsCtrl.formatDate(project.startDate) }}
           </div>
         </md-list-item>
       </div>

@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, ColorSet, Stats, Evaluation, Project, Skill, User, Notification) {
+export default ngInject(function DashboardController($q, $state, $scope, $mdSidenav, ColorSet, Stats, Evaluation, Project, Skill, User, Notification, $mdToast) {
   $scope.filters = {
     project: [],
     skill: [],
@@ -43,7 +43,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
         });
 
         User.getProfile().then(u => {
-          this.softSkillStats = stats.global
+          let fetchedSoftSkills = stats.global
             .map(s => {
               let skill = this.skills.find(sk => sk.id === s.skillId);
               return {
@@ -56,6 +56,8 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
             })
             .filter(s => s.isSoft)
             .filter(s => s.userId === u.id);
+
+          if(!this.softSkillStats) this.softSkillStats = fetchedSoftSkills;
         });
 
         this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
@@ -122,6 +124,12 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
   };
 
   Notification.scheduleNotfication();
+
+  $mdToast.show($mdToast
+    .simple()
+    .hideDelay(20000)
+    .textContent('The way Propsy works is that team members are notified about the next question awaiting them. Your notification should appear in 10 seconds. We know you’re busy people, so if you just can’t wait, just click the button below.')
+    .position('bottom'));
 
   $scope.$watch('filters', fetchStats, true);
   $scope.$on('$destroy', () => {
