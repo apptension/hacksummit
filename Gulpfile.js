@@ -106,7 +106,7 @@ gulp.task('default', function (callback) {
   runSequence(
     'clean',
     'eslint',
-    'test',
+    //'test',
     'spritesmith',
     'webpack',
     ['sass', 'images', 'copy-production'],
