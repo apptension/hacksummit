@@ -18,7 +18,7 @@ export default ngInject(($state, User, Question, Project) => {
           return {
             title: 'OK, noted!',
             description: 'Would you like to help out with some feedback?'
-          }
+          };
       };
 
       scope.showFeedback = (feedback) => {
@@ -43,10 +43,6 @@ export default ngInject(($state, User, Question, Project) => {
           scope.user = u;
         });
 
-        Project.get(evaluation.ProjectId).then(p => {
-          scope.project = p.name;
-        });
-
         User.getProfile().then(u => {
           scope.me = u.name;
         });
@@ -63,7 +59,7 @@ export default ngInject(($state, User, Question, Project) => {
         let img = user.avatar || 'http://placehold.it/100/100';
         return {
           backgroundImage: `url('${img}')`
-        }
+        };
       };
 
       scope.sendSubmit = (answer) => {

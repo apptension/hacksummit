@@ -1,5 +1,4 @@
 'use strict';
-var moment = require('moment');
 module.exports = function(sequelize, DataTypes) {
   var Project = sequelize.define('Project', {
     name: {
@@ -21,7 +20,6 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         models.Project.belongsToMany(models.User, { through: models.UserProject });
         models.Project.hasMany(models.Evaluation, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
-        models.Project.hasMany(models.Skillset, { onDelete: 'CASCADE', foreignKey: { allowNull: false }});
       }
     },
     getterMethods: {

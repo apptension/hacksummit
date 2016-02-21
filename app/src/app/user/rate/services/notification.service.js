@@ -4,7 +4,7 @@ export default ngInject(function NotificationService($state) {
 
   this.scheduleNotfication = () => {
     this.cancelScheduled();
-    notificationScheduled = setTimeout(this.showNotification.bind(this), 5000);
+    notificationScheduled = setTimeout(this.showNotification.bind(this), 10000);
   };
 
   this.cancelScheduled = () => {

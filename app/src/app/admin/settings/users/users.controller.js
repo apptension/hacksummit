@@ -2,7 +2,7 @@ import addUserDialogController from './components/addUserDialog/addUserDialog.co
 import addUserDialogTempalte from './components/addUserDialog/addUserDialog.html';
 
 
-export default ngInject(function UsersController($scope, $mdDialog, User, Role, moment) {
+export default ngInject(function UsersController($scope, $mdDialog, $timeout, User, Role, moment) {
   this.users = [];
   this.roles = [];
   this.filters = {
@@ -10,12 +10,15 @@ export default ngInject(function UsersController($scope, $mdDialog, User, Role, 
     roleSearchText: null
   };
 
+  let createUser = (user) => {
+    user.edit = false;
+    user.updatedAt = moment.utc(user.updatedAt).format("lll");
+    user.formModel = angular.copy(user);
+  };
+
   User.getList().then((data) => {
     this.users = data.map((user) => {
-      user.edit = false;
-      user.updatedAt = moment.utc(user.updatedAt).format("lll");
-      user.roles = data.roles ? data.roles : [];
-      user.formModel = angular.copy(user);
+      createUser(user);
       return user;
     });
   });
@@ -47,13 +50,25 @@ export default ngInject(function UsersController($scope, $mdDialog, User, Role, 
       locals: {
         roles: this.roles
       }
-    }).then((newProject) => {
-      console.log(newProject);
+    }).then((newUser) => {
+      User.post(newUser).then((created) => {
+        newUser.id = created.id;
+        createUser(newUser);
+        this.users.push(newUser);
+      });
     });
+  };
+
+  this.cancelEdit = (user) => {
+    user.edit = false;
+    user.formModel = null;
+    createUser(user);
   };
 
   this.submitUser = (user) => {
     let userIndex = this.users.indexOf(user);
+
+    User.put(user.formModel);
 
     user = user.formModel;
     user.edit = true;
@@ -61,6 +76,10 @@ export default ngInject(function UsersController($scope, $mdDialog, User, Role, 
     user.formModel = angular.copy(user);
 
     this.users[userIndex] = user;
+
+    $timeout(() => {
+      user.edit = false;
+    })
   };
 
   this.deleteUser = (user) => {
@@ -70,7 +89,9 @@ export default ngInject(function UsersController($scope, $mdDialog, User, Role, 
       .ok('OK')
       .cancel('Cancel')
     ).then(() => {
-      console.log('delete')
+      User.delete(user).then(() => {
+        this.users = _.without(this.users, user);
+      });
     });
   };
 

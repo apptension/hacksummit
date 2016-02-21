@@ -9,6 +9,19 @@ export default ngInject(function UserService(API, MockAPI) {
     return API.all(usersAPIName).get(id);
   };
 
+  this.put = (user) => {
+    return API.all(usersAPIName).customPUT(user, user.id);
+  };
+
+  this.post = (user) => {
+    user.avatar = '/public/images/userAvatar.png';
+    return API.all(usersAPIName).post(user);
+  };
+
+  this.delete = (user) => {
+    return API.all(usersAPIName).customDELETE(user.id);
+  };
+
   this.getProfile = () => {
     return API.all(usersAPIName).customGET('me');
   };
