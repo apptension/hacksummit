@@ -6,6 +6,6 @@ export default ngInject(function ($stateProvider) {
       url: '',
       template: homeTemplate,
       controller: 'AdminHomeController',
-      controllerAs: 'home'
+      controllerAs: 'vm'
     });
 });

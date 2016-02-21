@@ -1,74 +1,84 @@
 <div class="adminHome__layout">
-  <stats-filters
-    projects="projects"
-    skills="skills"
-    users="users"
-    stats="stats" />
+    <stats-filters
+            filter-projects="filters.project"
+            filter-skills="filters.skill"
+            filter-users="filters.user"
+            filter-date-from="filters.startDate"
+            filter-date-to="filters.endDate"
+            available-skills="vm.skills"
+            available-projects="vm.projects"
+            available-users="vm.users"/>
 
-  <div layout="row" layout-fill>
-    <div flex="60">
-      <h2>Project Name</h2>
+    <div layout="row" layout-fill>
+        <div flex="60">
+            <h2>Project Name</h2>
 
-      <div class="adminHome__usersGroup">
-        <h3>Most Active</h3>
-        <div class="adminHome__usersList">
-          <div class="adminHome__usersListItem">
-            <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-          </div>
-          <div class="adminHome__usersListItem">
-            <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-          </div>
-          <div class="adminHome__usersListItem">
-            <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-          </div>
-          <div class="adminHome__usersListItem">
-            <img  class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-          </div>
+            <div class="adminHome__usersGroup">
+                <h3>Most Active</h3>
+                <div class="adminHome__usersList">
+                    <div class="adminHome__usersListItem">
+                        <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                    </div>
+                    <div class="adminHome__usersListItem">
+                        <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                    </div>
+                    <div class="adminHome__usersListItem">
+                        <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                    </div>
+                    <div class="adminHome__usersListItem">
+                        <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="adminHome__usersGroup">
+                <h3>Top Rated By Skill</h3>
+
+                <md-list class="adminHome__skillsList">
+                    <md-list-item class="adminHome__skillsListItem">
+                        <div flex="10">CSS</div>
+                        <div flex>
+                            <div class="adminHome__usersList">
+                                <div class="adminHome__usersListItem">
+                                    <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                                </div>
+                                <div class="adminHome__usersListItem">
+                                    <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                                </div>
+                                <div class="adminHome__usersListItem">
+                                    <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                                </div>
+                                <div class="adminHome__usersListItem">
+                                    <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                                </div>
+                            </div>
+                        </div>
+                    </md-list-item>
+                    <md-list-item class="adminHome__skillsListItem">
+                        <div flex="10">JavaScript</div>
+                        <div flex>
+                            <div class="adminHome__usersList">
+                                <div class="adminHome__usersListItem">
+                                    <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                                </div>
+                                <div class="adminHome__usersListItem">
+                                    <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
+                                </div>
+                            </div>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
         </div>
-      </div>
-
-      <div class="adminHome__usersGroup">
-        <h3>Top Rated By Skill</h3>
-
-        <md-list class="adminHome__skillsList">
-          <md-list-item class="adminHome__skillsListItem">
-            <div flex="10">CSS</div>
-            <div flex>
-              <div class="adminHome__usersList">
-                <div class="adminHome__usersListItem">
-                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-                </div>
-                <div class="adminHome__usersListItem">
-                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-                </div>
-                <div class="adminHome__usersListItem">
-                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-                </div>
-                <div class="adminHome__usersListItem">
-                  <img  class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-                </div>
-              </div>
-            </div>
-          </md-list-item>
-          <md-list-item class="adminHome__skillsListItem">
-            <div flex="10">JavaScript</div>
-            <div flex>
-              <div class="adminHome__usersList">
-                <div class="adminHome__usersListItem">
-                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-                </div>
-                <div class="adminHome__usersListItem">
-                  <img class="adminHome__usersListAvatar" ng-src="http://placehold.it/80x80"/>
-                </div>
-              </div>
-            </div>
-          </md-list-item>
-        </md-list>
-      </div>
+        <div flex="40">
+            <h2>11 May - 21 Jun</h2>
+            <h3> Overall happiness 66% </h3>
+        </div>
     </div>
-    <div flex="40">
-      <h2>11 May - 21 Jun</h2>
-      <h3> Overall happiness 66% </h3>
+
+    <div ng-repeat="skill in vm.stats.skills track by skill.skillId">
+        {{skill.name}}
+
+        <user-stats-chart class="user-stats-chart" data="skill.scores"></user-stats-chart>
     </div>
-  </div>
 </div>
