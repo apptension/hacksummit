@@ -13,6 +13,20 @@ body{
 
 }
 
+.homeHeader__getPropsy{
+  background-image: url('/public/images/get_propsy.png');
+  background-repeat: no-repeat;
+  width: 184px;
+  height: 60px;
+  position: absolute;
+  display: inline-block;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-weight: 600;
+}
+
 .homeHeader__background{
   //@include retina-sprite($section-header-group);
   background-size: cover;
@@ -23,8 +37,9 @@ body{
 
 .homeHeader__logo{
   width:100px;
-  margin: 200px auto auto 100px;
   position: absolute;
+  left: 50px;
+  top: 50px;
 }
 
 .homeHeader__Heading{
@@ -38,12 +53,18 @@ body{
   color: #FFFFFF;
   font-size: 40px;
   font-weight: 300;
+
 }
 
 .homeHeader__bannerTextWrapper{
   display:inline-block;
   vertical-align: middle;
   text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
 }
 
 .homeHeader__btnWrapper{
