@@ -42,7 +42,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
         });
 
         User.getProfile().then(u => {
-          this.softSkillStats = stats.global
+          let fetchedSoftSkills = stats.global
             .map(s => {
               let skill = this.skills.find(sk => sk.id === s.skillId);
               return {
@@ -55,6 +55,8 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
             })
             .filter(s => s.isSoft)
             .filter(s => s.userId === u.id);
+
+          if(!this.softSkillStats) this.softSkillStats = fetchedSoftSkills;
         });
 
         this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
