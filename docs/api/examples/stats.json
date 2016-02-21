@@ -2,7 +2,7 @@
   "skills": [
     {
       "name": "Javascript",
-
+      "userId": 1,
       "scores": [
         {
           "value": 7.3,

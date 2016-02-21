@@ -1,18 +1,29 @@
 import template from './role-item.html';
 
 
-export default ngInject((Skill, moment) => {
+export default ngInject((Skill, moment, Role) => {
   return {
     restrict: 'AE',
+    scope: {
+      role: '='
+    },
     template: template,
     link: function ($scope) {
       $scope.roleName = 'Role test';
     },
     controller: function ($scope) {
+      if (!$scope.role) {
+        $scope.role = {
+          Skills: []
+        };
+      }
+
+      console.log($scope.role);
       $scope.selectedItem = null;
       $scope.searchText = null;
       $scope.transformChip = transformChip;
       $scope.skills = [];
+      $scope.submitRole = submitRole;
 
       Skill.getList().then((data) => {
         $scope.skills = data.map((skill) => {
@@ -24,7 +35,6 @@ export default ngInject((Skill, moment) => {
 
       $scope.querySearch = querySearch;
       $scope.transformChip = transformChip;
-
 
 
       function querySearch(query) {
@@ -39,20 +49,43 @@ export default ngInject((Skill, moment) => {
         };
       }
 
+
       function transformChip(chip, role) {
         // If it is an object, it's already a known chip
+
         if (angular.isObject(chip)) {
+          console.log(chip);
           return chip;
         }
 
-        // Otherwise, create a new one
-        return Skill.post({
-          name: chip,
-          isSoft: true
-        }).then((data) => {
-          return role.Skills.push(data);
+        if (role) {
+          Skill.post({
+            name: chip,
+            isSoft: false
+          }).then((data) => {
+            role.Skills.push(data);
+            return data;
+          });
+          return null;
+        }
+      }
 
-        });
+      function submitRole(role) {
+        if (role.id) {
+          Role.put(role);
+        } else {
+          Role.post(role);
+
+          $scope.$emit('newRoleAdded', []);
+        }
+      }
+
+      function cancelRole(role) {
+        if (role) {
+          role.edit = false;
+          return role.edit;
+        }
+        return $scope.$emit('canceledRole', []);
       }
     }
   };

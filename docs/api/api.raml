@@ -102,6 +102,9 @@ schemas:
               starred:
                 description: Rating value. 0 = zero, 1 = plus one. Optional if rating is dismissed.
                 type: integer
+              comment:
+                description: Optional comment.
+                type: string
         responses:
           200:
             body:
@@ -335,15 +338,40 @@ schemas:
     #           application/json:
     #             example: !include examples/skills.json
 
-/stat:
-  /user/{id}:
+/evaluation:
+  get:
+    description: Returns list of evaluations
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/evaluations.json
+  /date/{date}:
     uriParameters:
-      id:
+      date:
         type: integer
     get:
-      description: Returns stats for given user
+      description: Returns list of evaluations for the given date
       responses:
         200:
           body:
             application/json:
-              example: !include ./examples/stats.json
+              schema: Evaluation
+
+/stat:
+  get:
+    description: Returns stats for given user
+    queryParameters:
+      startDate:
+        type: date
+      endDate:
+        type: date
+      user:
+      project:
+      skill:
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ./examples/stats.json
