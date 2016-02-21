@@ -23,8 +23,8 @@ export default ngInject(function ProjectService(API) {
     return api.post(project).then(parseProject);
   };
 
-  this.delete = (role) => {
-    return api.customDELETE(role.id);
+  this.delete = (project) => {
+    return api.customDELETE(project.id);
   };
 
   function parseProject(data) {
