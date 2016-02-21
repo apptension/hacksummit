@@ -42,7 +42,7 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
           return skill;
         });
 
-        User.getProfile().then(u => {
+        activeUserPromise.then(u => {
           let fetchedSoftSkills = stats.global
             .map(s => {
               let skill = this.skills.find(sk => sk.id === s.skillId);
@@ -72,6 +72,8 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
   let activeUserPromise = User.getProfile().then(res => {
     this.activeUser = res.plain();
     return this.activeUser;
+  }).catch((err) => {
+    $state.go('app.home');
   });
 
   let formatDateRange = (date) => {
