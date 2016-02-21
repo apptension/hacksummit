@@ -1,14 +1,14 @@
 import moment from 'moment';
 
-export default ngInject(function ProjectService(MockAPI) {
-  const projectsMockAPI = MockAPI.all('project');
+export default ngInject(function ProjectService(API) {
+  const api = API.all('project');
 
   this.getList = () => {
-    return projectsMockAPI.getList().then(parseProject);
+    return api.getList().then(parseProject);
   };
 
   this.get = (id) => {
-    return projectsMockAPI.get(id);
+    return api.get(id);
   };
 
   function parseProject(data) {

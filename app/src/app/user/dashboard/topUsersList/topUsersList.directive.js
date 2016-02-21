@@ -10,7 +10,7 @@ export default ngInject((User) => {
     link: (scope) => {
       User.getProfile().then(res => {
         scope.activeUser = res;
-      })
+      });
     }
   };
 });
