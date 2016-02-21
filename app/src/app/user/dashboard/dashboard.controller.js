@@ -26,13 +26,17 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
         let commentsBySkillId = _.keyBy(stats.comments, 'skillId');
 
         stats.skills = _.map(stats.skills, (skill, i) => {
+          let comments = commentsBySkillId[skill.skillId];
+
           skill.scores = skill.scores[0].scores;
           skill.color = ColorSet[i % ColorSet.length];
           skill.name = skillsById[skill.skillId].name;
-          skill.comments = commentsBySkillId[skill.skillId].comments || [];
+          skill.comments = comments ? comments.comments : [];
           skill.average = _.find(stats.average, {skillId: skill.skillId});
-          skill.average.color = skill.color;
-          skill.average.isDashed = true;
+          if (skill.average) {
+            skill.average.color = skill.color;
+            skill.average.isDashed = true;
+          }
           return skill;
         });
 
