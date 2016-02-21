@@ -1,7 +1,3 @@
-svg {
-  font: 10px sans-serif;
-}
-
 .line-chart-xaxis {
   path, line {
     fill: none;
@@ -33,6 +29,11 @@ svg {
       display: none;
     }
   }
+}
+
+.line-chart-xaxis {
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 .line-chart-series {

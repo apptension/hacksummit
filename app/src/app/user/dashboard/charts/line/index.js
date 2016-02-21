@@ -4,7 +4,7 @@ import d3 from 'd3';
 const defaultConfig = Object.freeze({
   width: 300,
   height: 200,
-  margin: {top: 20, right: 20, bottom: 50, left: 50}
+  margin: {top: 20, right: 50, bottom: 50, left: 50}
 });
 
 export default function LineChart(_config) {
