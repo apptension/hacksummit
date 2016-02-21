@@ -23,6 +23,7 @@ export default ngInject(function StatsService(API, $httpParamSerializerJQLike) {
 
     params.skill = _.map(params.skill, 'id');
     params.project = _.map(params.project, 'id');
+    params.user = _.map(params.user, 'id');
     if (params.startDate) {
       params.startDate = moment(params.startDate).utc().format('X');
     }

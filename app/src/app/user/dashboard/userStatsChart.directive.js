@@ -43,17 +43,16 @@ export default ngInject(($window, $timeout) => {
 
         let svg = d3.select(element[0]).selectAll('svg')
           .data([{
-            series: _.map(data, (skill) => {
+            series: _.map(data, (series) => {
               return {
-                name: skill.name,
-                color: skill.color,
-                isDashed: skill.isDashed,
-                values: _.map(skill.scores, (score) => {
+                color: series.color,
+                isDashed: series.isDashed,
+                values: _.map(series.scores, (score) => {
                   return {
                     x: score.date,
                     y: score.value,
-                    color: skill.color,
-                    commentsCount: _.reduce(skill.comments, (sum, comment) => {
+                    color: series.color,
+                    commentsCount: _.reduce(series.comments, (sum, comment) => {
                       return sum + (comment.date.isSame(score.date) ? 1 : 0);
                     }, 0)
                   };
