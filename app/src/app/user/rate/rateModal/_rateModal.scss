@@ -26,6 +26,7 @@ md-dialog {
 .rate__title {
 	color: white;
 	margin: 0;
+	padding-right: 30px;
 }
 
 .circle-button {
@@ -221,4 +222,15 @@ md-dialog {
 	border-radius: 50%;
 	background-size: cover;
 	background-position: center;
+}
+
+.close-icon {
+	@include retina-sprite($modalclose-group);
+
+	display: inline-block;
+	position: absolute;
+	right: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
 }
