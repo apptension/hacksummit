@@ -11,14 +11,13 @@ export default ngInject((Skill, moment, Role) => {
     link: function ($scope) {
       $scope.roleName = 'Role test';
     },
-    controller: function ($scope) {
+    controller: function ($scope, $rootScope) {
       if (!$scope.role) {
         $scope.role = {
           Skills: []
         };
       }
 
-      console.log($scope.role);
       $scope.selectedItem = null;
       $scope.searchText = null;
       $scope.transformChip = transformChip;
@@ -54,7 +53,6 @@ export default ngInject((Skill, moment, Role) => {
         // If it is an object, it's already a known chip
 
         if (angular.isObject(chip)) {
-          console.log(chip);
           return chip;
         }
 
@@ -75,8 +73,7 @@ export default ngInject((Skill, moment, Role) => {
           Role.put(role);
         } else {
           Role.post(role);
-
-          $scope.$emit('newRoleAdded', []);
+          $rootScope.$broadcast('newRoleAdded', []);
         }
       }
 
@@ -85,7 +82,7 @@ export default ngInject((Skill, moment, Role) => {
           role.edit = false;
           return role.edit;
         }
-        return $scope.$emit('canceledRole', []);
+        return $rootScope.$emit('canceledRole', []);
       }
     }
   };

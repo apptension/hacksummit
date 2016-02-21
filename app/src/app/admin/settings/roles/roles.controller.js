@@ -50,6 +50,7 @@ export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Rol
 
 
   $scope.$on('newRoleAdded', function () {
+    console.log('here');
     loadRoles();
     $mdDialog.hide();
   });
