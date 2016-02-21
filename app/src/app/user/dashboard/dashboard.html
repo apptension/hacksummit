@@ -41,13 +41,13 @@
                     </div>
                 </div>
                 <div layout="column">
-                    <div ng-repeat="comment in vm.comments" ng-if="::evaluation.comment" layout="row">
+                    <div ng-repeat="comment in vm.comments" layout="row">
                         <div flex="none" class="dashboard-sidenav__comment-icon" layout layout-align="start center">
                             <md-icon ng-class="{'dashboard-sidenav__thumb-up-icon': evaluation.starred, 'dashboard-sidenav__thumb-down-icon': !evaluation.starred}"></md-icon>
                         </div>
                         <div flex class="dashboard-sidenav__comment-content">
                             <span class="dashboard-sidenav__comment-time">2 min</span>
-                            <p class="dashboard-sidenav__comment-text">{{::comment.comment }}</p>
+                            <span class="dashboard-sidenav__comment-text">{{::comment.comment }}</span>
                         </div>
                     </div>
                 </div>

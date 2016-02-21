@@ -76,8 +76,9 @@ md-sidenav, md-backdrop {
 }
 
 .dashboard-sidenav__date-range {
-	margin-top: 15px;
+	margin-top: 17px;
 	font-size: 14px;
+	line-height: 14px;
 }
 
 .dashboard-sidenav__close-icon {
@@ -91,39 +92,41 @@ md-sidenav, md-backdrop {
 
 .dashboard-sidenav__comment-content {
 	font-size: 14px;
+	line-height: 14px;
 	border-bottom: 2px solid #e6e6e6;
 }
 
 .dashboard-sidenav__comment-icon {
 	width: 57px;
 	height: 96px;
-
 }
 
 .dashboard-sidenav__comment-time {
-	margin-top: 26px;
+	margin-top: 28px;
 	font-size: 12px;
+	line-height: 12px;
 	text-transform: uppercase;
 	color: rgba(0, 0, 0, 0.54);
 	display: block;
 }
 
 .dashboard-sidenav__comment-text {
-	margin-top: 8px;
-	margin-bottom: 16px;
+	margin-top: 12px;
+	margin-bottom: 20px;
 	font-size: 14px;
+	line-height: 14px;
 	width: 346px;
 	display: block;
 	color: #737373;
 }
 
 .dashboard-sidenav__thumb-up-icon {
-	margin-top: 53px;
+	margin-top: 5px;
 	@include retina-sprite($thumb-up-group);
 }
 
 .dashboard-sidenav__thumb-down-icon {
-	margin-top: 53px;
+	margin-top: 56px;
 	@include retina-sprite($thumb-down-group);
 }
 
@@ -131,4 +134,3 @@ md-sidenav, md-backdrop {
 	width: 460px;
 	max-width: 460px;
 }
-
