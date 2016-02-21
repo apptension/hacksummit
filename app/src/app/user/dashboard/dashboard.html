@@ -1,12 +1,15 @@
 <div class="user-dashboard">
-    <stats-filters
-            filter-projects="filters.project"
-            filter-skills="filters.skill"
-            filter-date-from="filters.startDate"
-            filter-date-to="filters.endDate"
-            available-skills="vm.skills"
-            available-projects="vm.projects"/>
-
+    <div class="user-dashboard__top-bar">
+        <h3 class="user-dashboard__title">My&nbspdashboard</h3>
+        <stats-filters
+                filter-projects="filters.project"
+                filter-skills="filters.skill"
+                filter-date-from="filters.startDate"
+                filter-date-to="filters.endDate"
+                available-skills="vm.skills"
+                available-projects="vm.projects"/>
+    </div>
+    <div class="user-dashboard__top-bar">
         <md-button class="md-raised" ui-sref="app.user.rate">I WANT TO RATE SOMEONE NOW!!</md-button>
     </div>
 
