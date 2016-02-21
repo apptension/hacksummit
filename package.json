@@ -46,6 +46,7 @@
     "lodash": "^4.2.1 ",
     "mdi": "^1.4.57",
     "moment": "^2.11.2",
+    "ng-iscroll": "^1.3.1",
     "node-neat": "^1.7.2",
     "restangular": "^1.5.1"
   }
