@@ -1,8 +1,8 @@
 export default ngInject(function EvaluationService(MockAPI) {
   const evaluationMockAPIName = 'evaluation';
 
-  this.getList = (skill, date) => {
-    return MockAPI.all(evaluationMockAPIName).getList({skill, date}).then((evaluations) => {
+  this.getList = (date) => {
+    return MockAPI.all(evaluationMockAPIName).getList({date}).then((evaluations) => {
       return evaluations;
     });
   };

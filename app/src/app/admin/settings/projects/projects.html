@@ -2,23 +2,15 @@
   <div flex layout="column" layout-fill class="adminTabContent__header">
     <h1 class="md-title adminTabContent__tabTitle">Manage Projects</h1>
     <div class="adminTabContent__tabDesc">
-      Lorem ipsum...
+      Use this space to set up new projects and manage the existing ones. You can change projects’ settings and edit the lineups here.
     </div>
-    <div flex layout="row" class="adminTabContent__sortControls" layout-align="start center">
-      <md-menu>
-        <div class="adminTabContent__sortDropdown" ng-click="$mdOpenMenu($event)" layout="row" layout-align="space-between center">
-          <span flex="grow">sorting 1</span>
-          <md-icon flex="nogrow">arrow_drop_down</md-icon>
-        </div>
-        <md-menu-content width="3">
-          <md-menu-item>
-            <md-button>sorting 1</md-button>
-          </md-menu-item>
-          <md-menu-item>
-            <md-button>sorting 2</md-button>
-          </md-menu-item>
-        </md-menu-content>
-      </md-menu>
+    <div flex layout="row" class="adminTabContent__filterControls" layout-align="start center">
+      <div class="form__inputGroup">
+        <label class="form__inputLabel">Project Name: </label>
+        <md-input-container md-no-float class="form__inputControl">
+          <input class="form__input" placeholder="Search"/>
+        </md-input-container>
+      </div>
     </div>
   </div>
 
@@ -26,39 +18,59 @@
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>
 
-  <div flex layout="column" layout-align="center center">
+  <div flex layout="column" class="adminTabContent__tabList">
     <div flex="none" class="adminTabItem__mainContainer" ng-repeat="project in projectsCtrl.projects">
       <div layout class="adminTabItem__labelContainer" ng-click="projectsCtrl.toggleItem(project)">
         <md-list-item>
           <div class="projectItem__icon" layout layout-align="center center">
-            <md-icon flex>markunread_mailbox</md-icon>
+            <md-icon flex>work</md-icon>
           </div>
           <div class="md-list-item-text">
             <span class="adminTabItem__name">{{ project.name }}</span>
-            <span class="adminTabItem__desc">...</span>
           </div>
-          <div class="md-secondary adminTabItem__date">
-            {{ project.startDate }}
+          <div class="adminTabItem__date">
+            {{ project.startDate.format('DD MMM YYYY') }}
           </div>
         </md-list-item>
       </div>
       <div class="adminTabItem__editContainer projectItem__editContainer" ng-show="project.edit">
         <div layout="column" class="adminTabItem__editForm">
-          <md-input-container>
-            <label>Project Name</label>
-            <input type="text" name="name" ng-model="project.form.name" />
-          </md-input-container>
+          <div class="form__inputGroup" layout="row">
+            <label flex="none" class="form__inputLabel projectItem__nameLabel">Project Name: </label>
+            <md-input-container flex md-no-float class="form__inputControl projectItem__projectNameControl">
+              <input class="form__input" ng-model="project.formModel.name" />
+            </md-input-container>
+          </div>
+
           <div layout="row" class="projectItem__datepickersContainer" layout-align="start center">
-            <md-datepicker flex="nogrow" ng-model="startDate" md-placeholder="Start date"></md-datepicker>
-            <md-icon flex="nogrow" class="projectItem__datepickersSpacer">remove</md-icon>
-            <md-datepicker flex="nogrow" ng-model="endDate" md-placeholder="End date"></md-datepicker>
+            <div flex="none">
+              <label flex="none" class="form__inputLabel">Project Duration: </label>
+            </div>
+            <div flex="grow">
+              <div layout="row">
+                <div flex="45">
+                  <div class="form__inputGroup" layout="row">
+                    <md-datepicker flex class="form__input form__datepicker" ng-model="project.formModel.startDate" md-placeholder="Start date"></md-datepicker>
+                  </div>
+                </div>
+
+                <md-icon flex="10" class="projectItem__datepickersSpacer">remove</md-icon>
+
+                <div flex="45">
+                  <div layout="row" class="form__inputGroup">
+                    <md-datepicker flex class="form__input form__datepicker" ng-model="project.formModel.endDate" md-placeholder="End date"></md-datepicker>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div flex></div>
           </div>
           <md-contact-chips
             ng-model="project.members"
-            md-contacts="projectsCtrl.searchUser($query)"
+            ng-required="true"
+            md-contacts="projectsCtrl.searchUser($query, project.members)"
             md-contact-name="name"
-            md-contact-email="email"
             md-contact-image="avatar"
             md-require-match="true"
             placeholder="Team members">
@@ -69,7 +81,7 @@
             </md-button>
             <div flex="none" class="adminTabItem__submitButtons">
               <md-button class="md-primary" ng-click="project.edit=false">cancel</md-button>
-              <md-button class="md-primary">change</md-button>
+              <md-button class="md-primary" ng-click="projectsCtrl.submitProject(project)">save</md-button>
             </div>
           </div>
         </div>

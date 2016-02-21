@@ -4,12 +4,17 @@ export default ngInject(function StatsService(MockAPI, $httpParamSerializerJQLik
   const statsMockAPI = MockAPI.all('stats');
 
   this.getUserStats = (userId, params = null) => {
+  this.getContributors = () => {
+    return statsMockAPI.customGET('contributors');
+  };
+
+  this.getUserStats = (userId) => {
     let paramsParsed = '';
     
     if (params !== null) {
       paramsParsed = $httpParamSerializerJQLike(params);
     }
-
+    
     return statsMockAPI
       .get(userId + paramsParsed)
       .then(parseUserStats);

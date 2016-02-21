@@ -1,22 +1,15 @@
 export default ngInject(function DashboardController($state, $scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
-  let loadStats = () => {
-      this.userData.id = 1;
-      Stats.getUserStats(this.userData.id).then((stats) => {
-        this.userStats = stats;
-      });
-    },
+  Stats.getUserStats(1).then((stats) => {
+    this.softSkillStats = stats.skills.filter(s => s.isSoft);
+    this.hardSkillStats = stats.skills.filter(s => !s.isSoft);
+  });
 
-    applyFilters = () => {
-
-    },
-
-    init = () => {
-      User.getProfile().then((profile) => {
-        this.userData = profile;
-      }, () => {
-        $state.go('app.home');
-      }).then(loadStats);
+  Stats.getContributors().then((contributors) => {
+    this.contributorsList = {
+      list: contributors.list,
+      rank: contributors.rank
     };
+  });
 
   Project.getList().then((projects) => {
     this.projects = projects;
@@ -31,8 +24,8 @@ export default ngInject(function DashboardController($state, $scope, $mdSidenav,
     skills: []
   };
 
-  this.skillpointSelected = (skillName, date) => {
-    Evaluation.getList(skillName, date.format('x')).then((evaluations) => {
+  this.skillpointSelected = (date) => {
+    Evaluation.getList(date.format('x')).then((evaluations) => {
       this.evaluations = evaluations;
       $mdSidenav('commentSidebar').toggle();
     });

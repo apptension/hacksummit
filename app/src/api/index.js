@@ -9,6 +9,7 @@ import Skill from './skill.service';
 import Evaluation from './evaluation.service';
 import Stats from './stats.service';
 import Role from './role.service';
+import moment from 'moment';
 
 export default angular.module('api', [
   'restangular'
@@ -20,4 +21,5 @@ export default angular.module('api', [
   .service('Evaluation', Evaluation)
   .service('Stats', Stats)
   .service('Role', Role)
+  .service('moment', moment)
   .name;

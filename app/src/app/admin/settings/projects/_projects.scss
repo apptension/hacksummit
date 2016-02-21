@@ -3,20 +3,24 @@
     width: 40px;
     height: 40px;
     background-size: cover;
-    margin: 8px 15px 8px 0px;
-    background-color: #757575;
+    margin: 6px 15px 8px 0px;
     text-align: center;
-    md-icon {
-      color: #fff;
-    }
+
   }
 
   &__datepickersSpacer {
-    margin: 0 20px;
+    margin: 5px 20px;
+    text-align: center;
   }
 
   &__datepickersContainer {
     margin-bottom: 20px;
+  }
+
+  &__nameLabel {
+    &.form__inputLabel {
+      margin-right: 26px;
+    }
   }
 }
 
@@ -24,4 +28,8 @@
 md-datepicker {
   background: transparent;
   margin-left: -14px;
+}
+
+.md-datepicker-input, .md-datepicker-open  {
+  height: auto;
 }

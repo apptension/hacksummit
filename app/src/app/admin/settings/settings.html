@@ -1,15 +1,33 @@
 <div class="adminSettings__layout" layout-fill>
   <div layout="row" layout-fill>
-    <div class="adminSettings__sideMenu" flex="15">
-      <md-list ng-cloak>
+    <div class="adminSettings__sideMenu" flex="none">
+      <md-list ng-cloak class="adminSettings__sideMenuList">
         <md-list-item class="adminSettings__sideMenuItem" ng-class="{ 'adminSettings__sideMenuItem--active' : getSelectedTab() == USERS_TAB }">
-          <md-button ui-sref="app.admin.settings.users" class="adminSettings__sideMenuItem">Users</md-button>
+          <md-button ui-sref="app.admin.settings.users" class="adminSettings__sideMenuItemButton"
+                     ng-class="{ 'adminSettings__sideMenuItemButton--active' : getSelectedTab() == USERS_TAB }">
+            <md-icon class="adminSettings__sideMenuItemIcon">supervisor_account</md-icon>
+            Users
+
+            <md-icon class="adminSettings__sideMenuArrow" ng-show="getSelectedTab() == USERS_TAB">arrow_drop_down</md-icon>
+          </md-button>
         </md-list-item>
         <md-list-item class="adminSettings__sideMenuItem" ng-class="{ 'adminSettings__sideMenuItem--active' : getSelectedTab() == PROJECTS_TAB }">
-          <md-button ui-sref="app.admin.settings.projects" class="adminSettings__sideMenuItem">Projects</md-button>
+          <md-button ui-sref="app.admin.settings.projects" class="adminSettings__sideMenuItemButton"
+                     ng-class="{ 'adminSettings__sideMenuItemButton--active' : getSelectedTab() == PROJECTS_TAB }">
+            <md-icon class="adminSettings__sideMenuItemIcon">work</md-icon>
+            Projects
+
+            <md-icon class="adminSettings__sideMenuArrow" ng-show="getSelectedTab() == PROJECTS_TAB">arrow_drop_down</md-icon>
+          </md-button>
         </md-list-item>
         <md-list-item class="adminSettings__sideMenuItem" ng-class="{ 'adminSettings__sideMenuItem--active' : getSelectedTab() == ROLES_TAB }">
-          <md-button ui-sref="app.admin.settings.roles" class="adminSettings__sideMenuItem">Roles</md-button>
+          <md-button ui-sref="app.admin.settings.roles" class="adminSettings__sideMenuItemButton"
+                     ng-class="{ 'adminSettings__sideMenuItemButton--active' : getSelectedTab() == ROLES_TAB }">
+            <md-icon class="adminSettings__sideMenuItemIcon">list</md-icon>
+            Roles
+
+            <md-icon class="adminSettings__sideMenuArrow" ng-show="getSelectedTab() == ROLES_TAB">arrow_drop_down</md-icon>
+          </md-button>
         </md-list-item>
       </md-list>
     </div>

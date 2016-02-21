@@ -1,3 +1,5 @@
+require('mdi/css/materialdesignicons.css');
+
 /**
  * ng-annotate helper
  */

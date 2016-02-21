@@ -1,8 +1,15 @@
 import template from './dialogs/addDialog.html';
 import DialogController from './dialogs/addDialog.controller';
 
-export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Role) {
-  $scope.roleList = Role.getList();
+export default ngInject(function RolesController($scope,$mdDialog, $mdMedia, Role, moment) {
+  $scope.roleList = [];
+  Role.getList().then((data) => {
+    $scope.roleList = data.map((role) => {
+      role.edit = false;
+      role.updatedAt = moment.utc(role.updatedAt).format('lll');
+      return role;
+    });
+  });
 
   $scope.showAdvanced = (ev) => {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;

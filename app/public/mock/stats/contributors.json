@@ -1,0 +1,17 @@
+{
+  "list": [
+    {
+      "name": "Name Surname",
+      "image": "http://lorempixel.com/100/100/cats/"
+    },
+    {
+      "name": "Name Surname2",
+      "image": "http://lorempixel.com/100/100/people/"
+    },
+    {
+      "name": "Name Surname3",
+      "image": "http://lorempixel.com/100/100/nature/"
+    }
+  ],
+  "rank": 18
+}
