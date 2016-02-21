@@ -1,4 +1,4 @@
-export default ngInject(function UserService(API) {
+export default ngInject(function UserService(API, moment) {
   const usersAPIName = 'user';
 
   this.getList = () => {

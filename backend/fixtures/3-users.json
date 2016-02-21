@@ -5,7 +5,9 @@
     "data": {
       "id": 1,
       "username": "AdminUser",
-      "isAdmin": true
+      "isAdmin": true,
+      "name": "Zbigniew Czarnecki",
+      "avatar": "http://lorempixel.com/300/300/people/"
     }
   },
   {
@@ -14,7 +16,9 @@
     "data": {
       "id": 2,
       "username": "User",
-      "isAdmin": false
+      "isAdmin": false,
+      "name": "Artur Gutkowski",
+      "avatar": "http://lorempixel.com/300/300/people/"
     }
   }
 ]

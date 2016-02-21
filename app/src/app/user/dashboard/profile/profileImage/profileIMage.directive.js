@@ -1,4 +1,4 @@
-import template from './userBadge.html';
+import template from './profileImage.html';
 
 const defaultPhoto = 'http://lorempixel.com/100/100/people';
 
@@ -12,7 +12,6 @@ export default ngInject(() => {
     link: (scope) => {
       scope.userImageBackground = () => {
         if (!scope.data) {return {};}
-
         return {
           backgroundImage: `url(${scope.data.image || defaultPhoto})`
         };

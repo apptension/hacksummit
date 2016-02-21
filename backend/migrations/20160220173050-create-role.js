@@ -92,7 +92,7 @@ module.exports = {
     return queryInterface.dropTable('userRoles').then(() => {
       return queryInterface.dropTable('skillRoles').then(() => {
         return queryInterface.dropTable('roles');
-      })
+      });
     });
   }
 };

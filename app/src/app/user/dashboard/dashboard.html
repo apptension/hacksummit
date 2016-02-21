@@ -24,11 +24,21 @@
             <span user-badge data="vm.userData"></span>
             <span ng-repeat="skill in vm.userStats.skills | softSkills" skill-badge data="skill"
                   ng-if="vm.userStats"></span>
+            <h3>Your team skills</h3>
+            <span ng-repeat="skill in vm.userStats.skills | softSkills" skill-badge data="skill" ng-if="vm.userStats"></span>
         </div>
 
         <div>
             <user-stats-chart class="user-stats-chart" data="vm.userStats"
                               skillpoint-selected="vm.skillpointSelected(date)"></user-stats-chart>
+            <h3>Contributors this week</h3>
+            <div users-top-list data="vm.contributorsList">
+        </div>
+
+        <div>
+            <h3>Your technical skills</h3>
+            <user-stats-chart data="vm.userStats"
+                              skillpoint-selected="vm.skillpointSelected(skillName, date)"></user-stats-chart>
         </div>
 
         <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="commentSidebar">

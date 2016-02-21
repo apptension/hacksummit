@@ -4,6 +4,10 @@ import moment from 'moment';
 export default ngInject(function StatsService(MockAPI) {
   const statsMockAPI = MockAPI.all('stats');
 
+  this.getContributors = () => {
+    return statsMockAPI.customGET('contributors');
+  };
+
   this.getUserStats = (userId) => {
     return statsMockAPI.get(userId).then(parseUserStats);
   };

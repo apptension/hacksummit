@@ -3,6 +3,13 @@ export default ngInject(function DashboardController($state, $scope, $mdSidenav,
     this.userStats = stats;
   });
 
+  Stats.getContributors().then((contributors) => {
+    this.contributorsList = {
+      list: contributors.list,
+      rank: contributors.rank
+    };
+  });
+
   Project.getList().then((projects) => {
     this.projects = projects;
   });

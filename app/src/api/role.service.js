@@ -1,19 +1,41 @@
-export default ngInject(function UserService(API) {
+export default ngInject(function RoleService(API) {
   const roleApi = API.all('role');
 
   this.getList = () => {
-    return roleApi.getList();
+    return [
+      {
+        name: 'frontend',
+        id: 1,
+        skills: [
+          {
+            name: 'javascript',
+            id: 1
+          },
+          {
+            name: 'css',
+            id: 2
+          }
+        ]
+      },
+      {
+        name: 'backend',
+        id: 2,
+        skills: [
+          {
+            name: 'php',
+            id: 3
+          },
+          {
+            name: 'aws configuration',
+            id: 2
+          }
+        ]
+      }
+    ];
+    //return roleApi.getList();
   };
 
   this.get = (id) => {
     return roleApi.get(id);
-  };
-
-  this.getProfile = () => {
-    return usersAPI.customGET('me');
-  };
-
-  this.getSuggestedEvaluation = () => {
-    return usersAPI.customGET('evaluation');
   };
 });

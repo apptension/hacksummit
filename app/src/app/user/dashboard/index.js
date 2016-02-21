@@ -7,9 +7,11 @@ import routes from './dashboard.routes';
 import DashboardController from './dashboard.controller';
 import userStatsChart from './userStatsChart.directive';
 import pieChart from './pieChart.directive';
-import skillBadge from './badges/skillValueBadge/skillValueBadge.directive';
-import userBadge from './badges/userBadge/userBadge.directive';
+import skillBadge from './skillBadge/skillBadge.directive';
 import softSkills from './softSkills.filter';
+import profileImage from './profile/profileImage/profileImage.directive';
+import profileRow from './profile/profileRow/profileRow.directive';
+import topUsers from './topUsersList/topUsersList.directive';
 
 
 export default angular.module('app.user.dashboard', [
@@ -20,6 +22,8 @@ export default angular.module('app.user.dashboard', [
   .directive('userStatsChart', userStatsChart)
   .directive('pieChart', pieChart)
   .directive('skillBadge', skillBadge)
-  .directive('userBadge', userBadge)
+  .directive('profileImage', profileImage)
+  .directive('profileRow', profileRow)
+  .directive('usersTopList', topUsers)
   .filter('softSkills', softSkills)
   .name;

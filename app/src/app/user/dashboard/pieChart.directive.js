@@ -8,8 +8,8 @@ export default ngInject(() => {
       data: '='
     },
     link: (scope, element) => {
-      let width = 100;
-      let height = 100;
+      let width = 170;
+      let height = 170;
 
       let pieChart = PieChart({width, height}); // eslint-disable-line new-cap
 
