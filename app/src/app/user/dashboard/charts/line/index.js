@@ -44,7 +44,7 @@ export default function LineChart(_config) {
     xOrdinalScale = d3.scale.ordinal().domain(xValues).rangeBands([0, config.width]);
     xTimeScale = d3.time.scale().domain(d3.extent(xValues)).nice().range([0, config.width]);
     yScale = d3.scale.linear().domain([0, 100]).nice().range([config.height, 0]);
-    emotesScale = d3.scale.ordinal().domain(d3.range(5)).rangeBands([config.height, 0]);
+    emotesScale = d3.scale.ordinal().domain(d3.range(5)).rangeBands([0, config.height]);
 
     xAxis = d3.svg.axis().scale(xTimeScale).orient('bottom').tickSize(13);
     yAxis = d3.svg.axis().scale(yScale).orient('left').ticks(5).tickSize(-config.width, 0);
@@ -59,17 +59,16 @@ export default function LineChart(_config) {
       .call(renderXAxis)
       .call(renderYAxis)
       .call(renderBandHitAreas, me)
-      .call(renderSeries);
+      .call(renderSeries, me);
     chart.exit().remove();
 
     me.dispatch.on('bandHitAreaHovered', (index) => {
       me.hoveredBandIndex = index;
       chart.call(renderBandBackgrounds, me);
+      chart.call(renderSeries, me);
     });
 
     me.dispatch.on('bandSelected', (index) => {
-      me.selectedBandIndex = index;
-      chart.call(renderBandBackgrounds, me);
       dispatch.valueSelected(xOrdinalScale.domain()[index]);
     });
   }
@@ -157,14 +156,14 @@ export default function LineChart(_config) {
     emotes.exit().remove();
   }
 
-  function renderSeries(selection) {
+  function renderSeries(selection, me) {
     let series = selection.selectAll('.line-chart-series').data((data) => data.series);
 
     series.enter()
       .insert('g', '.line-chart-band-hitarea')
       .classed('line-chart-series', true);
     series.call(renderPaths);
-    series.call(renderDots);
+    series.call(renderDots, me);
     series.exit().remove();
   }
 
@@ -181,15 +180,19 @@ export default function LineChart(_config) {
     paths.exit().remove();
   }
 
-  function renderDots(selection) {
+  function renderDots(selection, me) {
     let dots = selection.selectAll('.line-chart-series-dot').data((data) => data.values);
-    dots.enter().append('circle').classed('line-chart-series-dot', true).attr('opacity', 0);
-    dots.transition().duration(1000)
+    dots.enter().append('circle').classed('line-chart-series-dot', true)
+      .attr('opacity', 0).attr('r', 3);
+
+    dots.transition().duration(250)
       .attr({
         cx: (d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2,
         cy: (d) => yScale(d.y),
-        r: 3,
-        fill: (d) => colorScale(d.seriesIndex)
+        fill: (d, i) => i === me.hoveredBandIndex ? '#ffffff' : colorScale(d.seriesIndex),
+        stroke: (d) => colorScale(d.seriesIndex),
+        strokeWidth: (d, i) => i === me.hoveredBandIndex ? 2 : 0,
+        r: (d, i) => i === me.hoveredBandIndex ? 4 : 3
       });
 
     dots.transition().duration(500).delay(1000)

@@ -78,11 +78,20 @@ schemas:
             body:
               application/json:
                 schema: Evaluation
-      post:
-        description: save the evaluation
+      put:
+        description: update the evaluation
         body:
           application/json:
-            schema: Evaluation
+            formParameters:
+              evaluationId:
+                description: Id of previously received evaluation.
+                type: integer
+              state:
+                description: Rating status. 0 = pending, 1 = answered, 2 = skipped (dismiss). Optional if rating is not dismissed.
+                type: integer
+              starred:
+                description: Rating value. 0 = zero, 1 = plus one. Optional if rating is dismissed.
+                type: integer
         responses:
           200:
             body:
