@@ -24,6 +24,10 @@ export default ngInject(() => {
       scope.placeholder = '';
 
       scope.$watch('filterModel', () => {
+        if (!scope.filterModel) {
+          return;
+        }
+
         if (scope.filterModel.length > 0) {
           scope.placeholder = scope.secondaryPlaceholder;
         } else {
