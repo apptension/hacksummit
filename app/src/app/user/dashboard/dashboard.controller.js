@@ -1,7 +1,5 @@
 export default ngInject(function DashboardController($state, $scope, $mdSidenav, Stats, Evaluation, Project, Skill, User, Notification) {
   Stats.getUserStats(1).then((stats) => {
-    this.userStats = stats;
-
     this.softSkillStats = stats.skills.filter(s => s.isSoft);
     this.hardSkillStats = stats.skills.filter(s => !s.isSoft);
   });
