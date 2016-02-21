@@ -51,8 +51,7 @@ export default function LineChart(_config) {
     yAxis = d3.svg.axis().scale(yScale).orient('left').ticks(5).tickSize(-config.width, 0);
     line = d3.svg.line()
       .x((d) => xOrdinalScale(d.x) + xOrdinalScale.rangeBand() / 2)
-      .y((d) => yScale(d.y))
-      .interpolate('cardinal');
+      .y((d) => yScale(d.y));
 
     chart.enter().append('g').classed('line-chart', true);
     chart
