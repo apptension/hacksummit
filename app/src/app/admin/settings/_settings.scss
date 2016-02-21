@@ -82,6 +82,12 @@ $entity-height: 85px;
     text-align: center;
   }
 
+  &__avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
   &__name {
     display: block;
     font-size: 16px;

@@ -23,7 +23,7 @@
       <div layout class="adminTabItem__labelContainer" ng-click="usersCtrl.toggleItem(user)">
         <md-list-item>
           <div class="adminTabItem__icon" layout layout-align="center center">
-            <md-icon flex>person</md-icon>
+            <img ng-src="{{ user.avatar }}" class="adminTabItem__avatar">
           </div>
           <div class="md-list-item-text">
             <span class="adminTabItem__name">{{user.name}}</span>

@@ -51,4 +51,8 @@ export default ngInject(function UserService(API, MockAPI) {
   this.login = (userId) => {
     return API.all(usersAPIName).customPOST({userId}, 'login');
   };
+
+  this.logout = () => {
+    return API.all(usersAPIName).customPOST({}, 'logout');
+  };
 });
