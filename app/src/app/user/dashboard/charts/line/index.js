@@ -36,7 +36,6 @@ export default function LineChart(_config) {
     });
 
     let xValues = _(data.series).map('values').flatten().map('x').value();
-    let yValues = _(data.series).map('values').flatten().map('y').value();
     let me = {
       dispatch: d3.dispatch('bandHitAreaHovered', 'bandSelected'),
       hoveredBandIndex: null
