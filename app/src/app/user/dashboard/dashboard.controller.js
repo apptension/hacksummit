@@ -8,6 +8,13 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
   };
   let skillsPromise;
 
+  let activeUserPromise = User.getProfile().then(res => {
+    this.activeUser = res.plain();
+    return this.activeUser;
+  }).catch((err) => {
+    $state.go('app.home');
+  });
+
   let fetchStats = (filters, oldFilters) => {
     if (_.isEqual(filters, oldFilters)) {
       return;
@@ -68,13 +75,6 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
       });
     });
   };
-
-  let activeUserPromise = User.getProfile().then(res => {
-    this.activeUser = res.plain();
-    return this.activeUser;
-  }).catch((err) => {
-    $state.go('app.home');
-  });
 
   let formatDateRange = (date) => {
     let dateStart = moment(date).format('YYYY.MM.DD'),
