@@ -1,6 +1,6 @@
 import template from './start.html';
 
-export default ngInject(() => {
+export default ngInject((User) => {
   return {
     restrict: 'AE',
     template: template,
