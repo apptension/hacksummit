@@ -1,2 +1,2 @@
-export default ngInject(function UserController(userProfile) {
+export default ngInject(function UserController() {
 });

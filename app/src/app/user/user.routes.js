@@ -8,17 +8,6 @@ export default ngInject(function ($stateProvider, $urlRouterProvider) {
       url: '/user',
       template: '<ui-view></ui-view>',
       controller: 'UserController',
-      controllerAs: 'user',
-      resolve: {
-        userProfile: function($q, User) {
-          let deferred = $q.defer();
-          User.getProfile().then(function(data) {
-            deferred.resolve(data);
-          }, function(data) {
-            deferred.reject(data);
-          });
-          return deferred.promise;
-        }
-      }
+      controllerAs: 'user'
     });
 });
