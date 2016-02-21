@@ -27,7 +27,6 @@ import UserController from './user/user.controller';
 import statsFilters from './directives/statsFilters/statsFilters.directive';
 import filterList from './directives/filterList/filterList.directive';
 import ColorSet from './colorSet.constant';
-import friendlyDate from './filters/friendlyDate/friendlyDate.filter';
 
 export default angular.module('app', [
   ngCookies,
@@ -46,6 +45,5 @@ export default angular.module('app', [
   .controller('UserController', UserController)
   .directive('filterList', filterList)
   .directive('statsFilters', statsFilters)
-  .filter('friendlyDate', friendlyDate)
   .constant('ColorSet', ColorSet)
   .name;
