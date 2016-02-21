@@ -79,9 +79,17 @@ usersResource.use(assoMiddleware({
 
 var projectsResource = epilogue.resource({
   model: models.Project,
-  include     : [models.Skillset],
+  include     : [models.Skillset, models.User],
   endpoints: ['/api/project', '/api/project/:id']
 });
+
+projectsResource.use(assoMiddleware({
+  associations: [{
+    associatedModel: models.User,
+    attribute: 'Users',
+    setMethod: 'setUsers'
+  }]
+}));
 
 var skillsResource = epilogue.resource({
   model: models.Skill,
@@ -95,9 +103,11 @@ var skillsetsResource = epilogue.resource({
 });
 
 skillsetsResource.use(assoMiddleware({
-  associatedModel: models.Skill,
-  attribute: 'Skills',
-  setMethod: 'setSkills'
+  associations: [{
+    associatedModel: models.Skill,
+    attribute: 'Skills',
+    setMethod: 'setSkills'
+  }]
 }));
 
 var rolesResource = epilogue.resource({
@@ -107,9 +117,11 @@ var rolesResource = epilogue.resource({
 });
 
 rolesResource.use(assoMiddleware({
-  associatedModel: models.Skill,
-  attribute: 'Skills',
-  setMethod: 'setSkills'
+  associations: [{
+    associatedModel: models.Skill,
+    attribute: 'Skills',
+    setMethod: 'setSkills'
+  }]
 }));
 
 var evaluationsResource = epilogue.resource({
