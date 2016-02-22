@@ -6,26 +6,16 @@
   }
 }
 
-.adminHome__usersListItem {
-  display: inline-block;
-  margin-right: 1em;
-}
-
-.adminHome__usersListAvatar {
-  border-radius: 50%;
-}
-
-.adminHome__skillsListItem {
-  margin-bottom: 2em;
-}
-
 .admin-home__skill {
   display: flex;
   flex-direction: row;
 }
 
 .admin-home-skill__users {
-  flex: 0 0 260px;
+  flex: 0 0 300px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .admin-home-skill__chart {
@@ -45,6 +35,7 @@
 
 .admin-home__wrapper {
   display: flex;
+  margin-top: 60px;
 }
 
 .admin-home__col-left {
@@ -52,8 +43,10 @@
 }
 
 .admin-home__col-right {
-  flex: 0 0 260px;
-
+  flex: 0 0 400px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 
   h3 {
     font-weight: normal;
