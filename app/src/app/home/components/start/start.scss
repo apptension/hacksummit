@@ -37,6 +37,7 @@
   color: #ffffff;
   font-weight: 400;
   font-style: normal;
+  padding: 8px 8px 8px 8px;
 
   cursor: pointer;
   &:focus, &:active {
@@ -45,21 +46,25 @@
 
   span {
     vertical-align: middle;
-    line-height: 55px;
+    line-height: 44px;
   }
 }
 
 .homeStart__btnStartTeam{
-  width: 285px;
+  width: 200px;
   height: 60px;
-  background: url('/public/images/btn_team_member.png') no-repeat;
+  background-color: #009bf2;
+  border-radius: 10px;
+
+
 }
 
 .homeStart__btnStartManager{
-  width: 185px;
+  width: 200px;
   height: 60px;
-  background: url('/public/images/btn_manager.png') no-repeat;
-  background-size: 100%;
+  background-color: #fbc006;
+  border-radius: 10px;
+  margin-left: 20px;
 }
 
 .homeStart__banner{
