@@ -211,17 +211,18 @@ export default function LineChart(_config) {
 
     paths.enter().append('path').classed('line-chart-series-path', true)
       .classed('is-dashed', (d) => d.data.isDashed)
-      .attr({
-        stroke: (d) => d.data.color,
-        'stroke-dasharray': (d) => {
-          if (d.data.isDashed) {
-            return [3, 3];
-          }
-          return [0, d.pathLength];
-        },
-        opacity: (d) => d.data.isDashed ? 0 : 1,
-        d: (d) => line(d.data.values)
-      });
+
+    paths.attr({
+      stroke: (d) => d.data.color,
+      'stroke-dasharray': (d) => {
+        if (d.data.isDashed) {
+          return [3, 3];
+        }
+        return [0, d.pathLength];
+      },
+      opacity: (d) => d.data.isDashed ? 0 : 1,
+      d: (d) => line(d.data.values)
+    });
 
     paths
       .transition()
@@ -267,13 +268,13 @@ export default function LineChart(_config) {
 
       return values;
     });
-    dots.enter().append('circle').classed('line-chart-series-dot', true)
-      .attr({
-        cx: (d) => xTimeScale(moment(d.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour')),
-        cy: (d) => yScale(d.y),
-        fill: (d) => d.color,
-        r: 0
-      });
+    dots.enter().append('circle').classed('line-chart-series-dot', true);
+    dots.attr({
+      cx: (d) => xTimeScale(moment(d.x).add(HOURS_TO_MIDDLE_OF_WEEK, 'hour')),
+      cy: (d) => yScale(d.y),
+      fill: (d) => d.color,
+      r: 0
+    });
 
     dots.transition().duration(500)
       .delay((d) => (1000 * d.pathLengthTillPoint / d.totalPathLength) - 50)

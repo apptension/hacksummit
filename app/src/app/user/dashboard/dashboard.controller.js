@@ -22,11 +22,12 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
 
     Stats.getList(filters).then((_stats) => {
       let stats = _stats.plain();
-      let skillsById = _.keyBy(this.skills, 'id');
 
       this.stats = stats;
 
-      skillsPromise.then(() => {
+      skillsPromise.then((skills) => {
+        let skillsById = _.cloneDeep(_.keyBy(skills, 'id'));
+
         stats.comments = _.map(stats.comments, (skill) => {
           skill.comments = skill.comments[0].comments;
           return skill;
@@ -41,18 +42,19 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
           skill.color = ColorSet[i % ColorSet.length];
           skill.name = skillsById[skill.skillId].name;
           skill.comments = comments ? comments.comments : [];
-          skill.average = _.find(stats.average, {skillId: skill.skillId});
+          skill.average = _.cloneDeep(_.find(stats.average, {skillId: skill.skillId}));
           if (skill.average) {
             skill.average.color = skill.color;
             skill.average.isDashed = true;
           }
+
           return skill;
         });
 
         activeUserPromise.then(u => {
           let fetchedSoftSkills = stats.global
             .map(s => {
-              let skill = this.skills.find(sk => sk.id === s.skillId);
+              let skill = skills.find(sk => sk.id === s.skillId);
               return {
                 userId: s.userId,
                 skillId: s.skillId,
@@ -68,10 +70,6 @@ export default ngInject(function DashboardController($q, $state, $scope, $mdSide
         });
 
         this.hardSkillStats = stats.skills.filter(s => !skillsById[s.skillId].isSoft);
-        this.hardSkillStats = _.map(this.hardSkillStats, (skill, i) => {
-          skill.color = ColorSet[i % ColorSet.length];
-          return skill;
-        });
       });
     });
   };

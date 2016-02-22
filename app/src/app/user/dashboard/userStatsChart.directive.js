@@ -36,11 +36,12 @@ export default ngInject(($window, $timeout) => {
         render(scope.data);
       }
 
-      function render(data) {
-        if (!data) {
+      function render(_data) {
+        if (!_data) {
           return;
         }
 
+        let data = _.cloneDeep(_data);
         let svg = d3.select(element[0]).selectAll('svg')
           .data([{
             series: _.map(data, (series) => {
