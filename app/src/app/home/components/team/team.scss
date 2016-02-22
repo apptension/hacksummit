@@ -1,5 +1,168 @@
 .homeTeam{
   width: 100%;
-  height: 50vh;
+  height: 90vh;
+  padding-top: 7%;
+}
+
+.homeTeam__teamRow{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.homeTeam__desc{
+  p{
+    max-width: 50%;
+    margin-left: 25%;
+    color: #5c5757;
+  }
+}
+
+.homeTeam__heading{
+  h1{
+    color: #5c5757;
+    margin-top: 80px;
+    margin-bottom: 50px;
+  }
+}
+
+
+
+.homeTeam__teamMember{
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+  border: 1px solid transparent;
+  position: relative;
+  text-align: center;
+  border-bottom: 0px;
+  transition: all .2s;
+  display: inline-block;
+}
+
+.homeTeam__teamMember:hover{
+  border: 1px solid #fbc106;
+  transition: all .51s;
+
+  .homeTeam__teaMemberTooltip{
+    background-color: #fbc106;
+    transform-origin: center bottom;
+    transform: scale(1);
+    transition: all .51s;
+  }
+}
+
+.homeTeam__teamMember:before{
+  content:"";
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #fbc106;
+  top:0;
+  position: absolute;
+  left: 43%;
+  top: -7%;
+  transform: scale(0);
+}
+
+.homeTeam__teamMember:hover:before{
+
+  transform: scale(1);
+  transition: all .7s;
+
 
 }
+
+.homeTeam__teaMemberTooltip{
+  width: 150px;
+  height: 70px;
+  line-height: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: transparent;
+  background-color: #fbc106;
+  border-radius: 15px;
+  position: absolute;
+  vertical-align: middle;
+  transform: scale(0);
+  top: -83%;
+  left: -27%;
+  transition: all .2s;
+
+  p{
+    margin: 0 0 0 0;
+    color: #ffffff;
+  }
+
+}
+
+.homeTeam__teaMemberTooltip:after{
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #fbc106;
+  position: absolute;
+  bottom: 0;
+  transform: translate(-7px, 6px);
+
+}
+
+
+.daniel{
+  background: url('/public/images/people/daniel.jpg') center center no-repeat;
+  background-size: cover;
+}
+
+.zbigniew{
+  background: url('/public/images/people/zbyszektymczas.jpg') center center no-repeat;
+  background-size: cover;
+}
+.aga_com{
+  background: url('/public/images/people/agag.jpg') center center no-repeat;
+  background-size: cover;
+}
+.aga_w{
+  background: url('/public/images/people/agaw.jpg') center center no-repeat;
+  background-size: cover;
+}
+.wojtek{
+  background: url('/public/images/people/wojtek.png') center center no-repeat;
+  background-size: cover;
+}
+.tymek{
+  background: url('/public/images/people/tymekbleja.jpg') center center no-repeat;
+  background-size: cover;
+}
+.aga_z{
+  background: url('/public/images/people/AgaK.jpg') center center no-repeat;
+  background-size: cover;
+}
+.ania{
+  background: url('/public/images/people/aniak.jpg') center center no-repeat;
+  background-size: cover;
+}
+.michal_k{
+  background: url('/public/images/people/michalk.jpg') center center no-repeat;
+  background-size: cover;
+}
+.michal_p{
+  background: url('/public/images/people/michalp.png') center center no-repeat;
+  background-size: cover;
+}
+.patryk{
+  background: url('/public/images/people/patryk.png') center center no-repeat;
+  background-size: cover;
+}
+.kuba{
+  background: url('/public/images/people/kubapaniaczyk.jpg') center center no-repeat;
+  background-size: cover;
+}
+.andrzej{
+  background: url('/public/images/people/andrzej.png') center center no-repeat;
+  background-size: cover;
+}
+

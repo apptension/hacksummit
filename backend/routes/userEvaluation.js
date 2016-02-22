@@ -9,7 +9,7 @@ router.get('/:id/evaluation', (req, res, next) => {
     if (user) {
       return models.Evaluation.findOne({
         where: {
-          EvaluatedUserId: req.params.id,
+          userId: req.params.id,
           state: models.Evaluation.attributes.state.values.PENDING
         }
       }).then(function(lastEvaluation) {
@@ -24,8 +24,8 @@ router.get('/:id/evaluation', (req, res, next) => {
               }).then(function(users) {
                 var user = users[Math.floor(Math.random() * (users.length - 1))];
                 return models.Evaluation.upsert({
-                  EvaluatedUserId: req.params.id,
-                  UserId: user.id,
+                  UserId: req.params.id,
+                  EvaluatedUserId: user.id,
                   SkillId: skill.id
                 }).then(function() {
                   return models.Evaluation.findOne({

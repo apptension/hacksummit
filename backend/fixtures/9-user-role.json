@@ -1,0 +1,90 @@
+[
+  {
+    "model": "UserRole",
+    "keys": ["UserId", "RoleId"],
+    "data": {
+      "UserId": 2,
+      "RoleId": 2
+    }
+  },
+  {
+    "model": "UserRole",
+    "keys": ["UserId", "RoletId"],
+    "data": {
+      "UserId": 3,
+      "RoleId": 1
+    }
+  },
+  {
+    "model": "UserRole",
+    "keys": ["UserId", "RoleId"],
+    "data": {
+      "UserId": 4,
+      "RoleId": 2
+    }
+  },
+  {
+    "model": "UserRole",
+    "keys": ["UserId", "RoletId"],
+    "data": {
+      "UserId": 5,
+      "RoleId": 1
+    }
+  }, 
+  {
+    "model": "UserRole",
+    "keys": ["UserId", "RoleId"],
+    "data": {
+      "UserId": 6,
+      "RoleId": 3
+    }
+  },
+  {
+    "model": "UserRole",
+    "keys": ["UserId", "RoletId"],
+    "data": {
+      "UserId": 7,
+      "RoleId": 1
+    }
+  },
+ {
+    "model": "UserRole",
+    "keys": ["UserId", "RoleId"],
+    "data": {
+      "UserId": 8,
+      "RoleId": 1
+    }
+  },
+  {
+    "model": "UserRole",
+    "keys": ["UserId", "RoletId"],
+    "data": {
+      "UserId": 9,
+      "RoleId": 1
+    }
+  },
+ {
+    "model": "UserRole",
+    "keys": ["UserId", "RoleId"],
+    "data": {
+      "UserId": 10,
+      "RoleId": 3
+    }
+  },
+  {
+    "model": "UserRole",
+    "keys": ["UserId", "RoletId"],
+    "data": {
+      "UserId": 11,
+      "RoleId": 2
+    }
+  },
+ {
+    "model": "UserRole",
+    "keys": ["UserId", "RoleId"],
+    "data": {
+      "UserId": 12,
+      "RoleId": 3
+    }
+  }
+ ]
