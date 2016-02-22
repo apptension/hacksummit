@@ -3,6 +3,7 @@ import tutorialTemplate from '../components/tutorialDialog/tutorialDialog.html';
 export default ngInject(function HomeController($q, $scope, $mdDialog, ColorSet, Project, User, Skill, Stats) {
 
   $scope.filters = {
+    project: [],
     user: [],
     skill: []
   };
