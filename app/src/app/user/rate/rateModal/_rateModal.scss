@@ -139,6 +139,7 @@ md-dialog {
 	position: absolute;
 	bottom: 20px;
 	left: 50%;
+	margin: 0;
 	transform: translateX(-50%);
 	transition: transform .5s ease-in;
 }
