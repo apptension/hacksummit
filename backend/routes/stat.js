@@ -53,13 +53,13 @@ router.get('/', (req, res, next) => {
         [sequelize.fn('weekofyear', sequelize.col('date')), 'week'],
         [sequelize.fn('avg', sequelize.col('starred')), 'value'],
         'skillId',
-        'userId'
+        'EvaluatedUserId'
       ],
       group: [
         sequelize.fn('year', sequelize.col('date')),
         sequelize.fn('weekofyear', sequelize.col('date')),
         'skillId',
-        'userId'
+        'EvaluatedUserId'
       ],
       order: [
         sequelize.col('date')
@@ -70,11 +70,11 @@ router.get('/', (req, res, next) => {
       attributes: [
         [sequelize.fn('avg', sequelize.col('starred')), 'value'],
         'skillId',
-        'userId'
+        'EvaluatedUserId'
       ],
       group: [
         'skillId',
-        'userId'
+        'EvaluatedUserId'
       ]
     },
 
@@ -83,7 +83,7 @@ router.get('/', (req, res, next) => {
         [sequelize.fn('year', sequelize.col('date')), 'year'],
         [sequelize.fn('weekofyear', sequelize.col('date')), 'week'],
         'skillId',
-        'userId',
+        'EvaluatedUserId',
         'comment'
       ]
     },
@@ -121,9 +121,9 @@ router.get('/', (req, res, next) => {
 
 
   if (users && users.length) {
-    //query.attributes.push('userId');
-    //query.group.push('userId');
-    where.userId = users;
+    //query.attributes.push('EvaluatedUserId');
+    //query.group.push('EvaluatedUserId');
+    where.EvaluatedUserId = users;
   }
 
   query.where = where;
@@ -133,8 +133,8 @@ router.get('/', (req, res, next) => {
     $ne: null
   };
   averageQuery.where = _.clone(where);
-  if (averageQuery.where.userId) {
-    delete averageQuery.where.userId;
+  if (averageQuery.where.EvaluatedUserId) {
+    delete averageQuery.where.EvaluatedUserId;
   }
 
   if (globalQuery.where.skillId) {
@@ -168,7 +168,7 @@ router.get('/', (req, res, next) => {
 
     let mapped = result.map((el) => {
       return {
-        userId: el.getDataValue('userId'),
+        EvaluatedUserId: el.getDataValue('EvaluatedUserId'),
         skillId: el.getDataValue('skillId'),
         value: el.getDataValue('value'),
         date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week'), 10), 'weeks').format('X')
@@ -178,9 +178,9 @@ router.get('/', (req, res, next) => {
     let grouped = _.values(_.groupBy(mapped, 'skillId')).map((skillStats) => {
       return {
         skillId: skillStats[0].skillId,
-        scores: _.values(_.groupBy(skillStats, 'userId')).map((userStats) => {
+        scores: _.values(_.groupBy(skillStats, 'EvaluatedUserId')).map((userStats) => {
           return {
-            userId: userStats[0].userId,
+            EvaluatedUserId: userStats[0].EvaluatedUserId,
             scores: userStats.map((s) => {
               return _.pick(s, ['date', 'value']);
             })
@@ -191,7 +191,7 @@ router.get('/', (req, res, next) => {
 
     let commentsMapped = commentsData.map((el) => {
       return {
-        userId: el.getDataValue('userId'),
+        EvaluatedUserId: el.getDataValue('EvaluatedUserId'),
         skillId: el.getDataValue('skillId'),
         comment: el.getDataValue('comment'),
         date: moment({year: el.getDataValue('year')}).add(parseInt(el.getDataValue('week')), 'weeks').format('X')
@@ -201,9 +201,9 @@ router.get('/', (req, res, next) => {
     let commentsGrouped = _.values(_.groupBy(commentsMapped, 'skillId')).map((skillStats) => {
       return {
         skillId: skillStats[0].skillId,
-        comments: _.values(_.groupBy(skillStats, 'userId')).map((userStats) => {
+        comments: _.values(_.groupBy(skillStats, 'EvaluatedUserId')).map((userStats) => {
           return {
-            userId: userStats[0].userId,
+            EvaluatedUserId: userStats[0].EvaluatedUserId,
             comments: userStats.map((s) => {
               return _.pick(s, ['date', 'comment']);
             })
@@ -235,7 +235,7 @@ router.get('/', (req, res, next) => {
         return {
           score: stat.getDataValue('value'),
           skillId: stat.getDataValue('skillId'),
-          userId: stat.getDataValue('userId')
+          EvaluatedUserId: stat.getDataValue('EvaluatedUserId')
         };
       }),
       comments: commentsGrouped,
@@ -261,10 +261,10 @@ router.get('/contributors', (req, res, next) => {
     }],
     attributes: [
       [sequelize.fn('count', 'id'), 'score'],
-      'userId'
+      'EvaluatedUserId'
     ],
     group: [
-      'userId'
+      'EvaluatedUserId'
     ],
     order: [[sequelize.col('score'), 'DESC']],
     where: {
@@ -283,7 +283,7 @@ router.get('/contributors', (req, res, next) => {
     res.json(result.map((userData) => {
       return {
         score: userData.getDataValue('score'),
-        userId: userData.getDataValue('userId'),
+        EvaluatedUserId: userData.getDataValue('EvaluatedUserId'),
         User: userData.getDataValue('User')
       };
     }));
