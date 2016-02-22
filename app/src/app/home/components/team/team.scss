@@ -3,3 +3,86 @@
   height: 50vh;
 
 }
+.homeTeam__teamMember{
+  width: 100px;
+  height: 100px;
+  background: url('/public/images/michal_k.png') center center no-repeat;
+  background-size: cover;
+  margin-left: 50%;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  position: relative;
+  text-align: center;
+  border-bottom: 0px;
+  transition: all .2s;
+}
+
+.homeTeam__teamMember:hover{
+  border: 1px solid #fbc106;
+  transition: all .51s;
+
+  .homeTeam__teaMemberTooltip{
+    background-color: #fbc106;
+    transform-origin: center bottom;
+    transform: scale(1);
+    transition: all .51s;
+  }
+}
+
+.homeTeam__teamMember:before{
+  content:"";
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #fbc106;
+  top:0;
+  position: absolute;
+  left: 43%;
+  top: -7%;
+  transform: scale(0);
+}
+
+.homeTeam__teamMember:hover:before{
+
+  transform: scale(1);
+  transition: all .7s;
+
+
+}
+
+.homeTeam__teaMemberTooltip{
+  width: 150px;
+  height: 70px;
+  line-height: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: transparent;
+  background-color: #fbc106;
+  border-radius: 15px;
+  position: absolute;
+  vertical-align: middle;
+  transform: scale(0);
+  top: -83%;
+  left: -27%;
+  transition: all .2s;
+
+  p{
+    margin: 0 0 0 0;
+    color: #ffffff;
+  }
+
+}
+
+.homeTeam__teaMemberTooltip:after{
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #fbc106;
+  position: absolute;
+  bottom: 0;
+  transform: translate(-7px, 6px);
+
+}
