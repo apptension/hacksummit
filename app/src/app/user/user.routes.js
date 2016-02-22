@@ -1,3 +1,5 @@
+import template from './user.html';
+
 export default ngInject(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider
     .when('/user', '/user/dashboard');
@@ -6,7 +8,7 @@ export default ngInject(function ($stateProvider, $urlRouterProvider) {
     .state('app.user', {
       abstract: true,
       url: '/user',
-      template: '<ui-view></ui-view>',
+      template,
       controller: 'UserController',
       controllerAs: 'user'
     });
