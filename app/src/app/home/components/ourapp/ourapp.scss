@@ -1,30 +1,49 @@
 h1{
   font-weight: 300;
   font-size: 30pt;
+  margin: 50px 0;
 }
 
 .homeOurapp{
   width:100%;
-  min-height: 100vh;
+  min-height: 70vh;
   box-sizing: border-box;
   vertical-align: middle;
   box-shadow: inset 2px 59px 28px -53px rgba(245,245,245,1);
 }
 
+.homeOurapp__introBlock {
+  margin-bottom: 100px;
+}
 
-.homeOurapp__appImage{
-  width:59.5%;
+.homeOurapp__mainHeading {
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.homeOurapp__appImage {
+  width: 50%;
   display: inline-block;
   box-sizing: border-box;
   vertical-align: middle;
-  img{
-    width:90%;
+  text-align: right;
+  img {
+    width: 90%;
+    -webkit-box-shadow: 0px 0px 60px 10px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 60px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 60px 10px rgba(0,0,0,0.1);
   }
+}
+
+.homeOurapp__appImage:first-child {
+  text-align: left;
 }
 
 .homeOurapp__appFeatures{
 
-  width:39.5%;
+  padding: 50px 0;
+
+/*  width:39.5%;
   display: inline-block;
   box-sizing: border-box;
   padding: 5% 5% 5% 5%;
@@ -39,7 +58,7 @@ h1{
 
   h1{
     line-height: 50px;
-  }
+  }*/
 
 }
 

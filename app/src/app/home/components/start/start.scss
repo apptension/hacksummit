@@ -38,10 +38,19 @@
   font-weight: 400;
   font-style: normal;
   padding: 8px 8px 8px 8px;
+  width: 200px;
+  height: 60px;
 
   cursor: pointer;
   &:focus, &:active {
     outline: none;
+  }
+
+  transition: box-shadow 0.2s ease-in-out;
+  &:hover {
+    -webkit-box-shadow: inset 0px 0px 30px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow: inset 0px 0px 30px 1px rgba(0,0,0,0.1);
+    box-shadow: inset 0px 0px 30px 1px rgba(0,0,0,0.1);
   }
 
   span {
@@ -51,17 +60,11 @@
 }
 
 .homeStart__btnStartTeam{
-  width: 200px;
-  height: 60px;
   background-color: #009bf2;
   border-radius: 10px;
-
-
 }
 
 .homeStart__btnStartManager{
-  width: 200px;
-  height: 60px;
   background-color: #fbc006;
   border-radius: 10px;
   margin-left: 20px;

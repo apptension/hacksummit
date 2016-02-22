@@ -10,7 +10,8 @@
 }
 
 .homeHeader__getPropsy{
-  background-image: url('/public/images/get_propsy.png');
+  background: #009cf3;
+  border-radius: 10px;
   background-repeat: no-repeat;
   width: 184px;
   height: 60px;
@@ -21,9 +22,16 @@
   transform: translateX(-50%);
   color: #ffffff;
   font-weight: 600;
-  line-height: 56px;
+  line-height: 60px;
   vertical-align: middle;
   cursor: pointer;
+
+  transition: box-shadow 0.2s ease-in-out;
+  &:hover {
+    -webkit-box-shadow: inset 0px 0px 30px 1px rgba(0,0,0,0.15);
+    -moz-box-shadow: inset 0px 0px 30px 1px rgba(0,0,0,0.15);
+    box-shadow: inset 0px 0px 30px 1px rgba(0,0,0,0.15);
+  }
 
   &:focus, &:active {
     outline: none;

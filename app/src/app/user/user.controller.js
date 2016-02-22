@@ -18,7 +18,9 @@ export default ngInject(function UserController($scope, $mdDialog, User, Notific
     });
   };
 
-  openTutorial();
+  if ($state.current.name !== 'app.user.dashboard.rate') {
+    openTutorial();
+  }
 
   User.getProfile().then((me) =>{
     $scope.currentUser = me;
