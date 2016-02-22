@@ -42,3 +42,25 @@
   font-weight: 400;
   text-transform: uppercase;
 }
+
+.admin-home__wrapper {
+  display: flex;
+}
+
+.admin-home__col-left {
+  flex: 1 1 100%;
+}
+
+.admin-home__col-right {
+  flex: 0 0 260px;
+
+
+  h3 {
+    font-weight: normal;
+    font-size: 26px;
+  }
+
+  .card__value {
+    margin-top: -8px;
+  }
+}

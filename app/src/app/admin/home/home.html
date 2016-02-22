@@ -9,12 +9,24 @@
             available-projects="vm.projects"
             available-users="vm.users"/>
 
-    <div class="admin-home__skill" ng-repeat="skill in vm.stats.skills track by skill.skillId">
-        <div class="admin-home-skill__users">
-            <h3 class="admin-home-skill__title">{{ skill.name }}</h3>
-            <div users-top-list data="skill.topContributors"></div>
+    <div class="admin-home__wrapper">
+        <div class="admin-home__col-left">
+            <div class="admin-home__skill" ng-repeat="skill in vm.stats.skills track by skill.skillId">
+                <div class="admin-home-skill__users">
+                    <h3 class="admin-home-skill__title">{{ skill.name }}</h3>
+                    <div users-top-list data="skill.users"></div>
+                </div>
+
+                <user-stats-chart class="admin-home-skill__chart" data="skill.scores"></user-stats-chart>
+            </div>
         </div>
 
-        <user-stats-chart class="admin-home-skill__chart" data="skill.scores"></user-stats-chart>
+        <div class="admin-home__col-right">
+            <h3>Most active</h3>
+            <div users-top-list data="vm.contributorsList"></div>
+
+            <h3>Team quality</h3>
+            <span skill-badge data="vm.teamQuality"></span>
+        </div>
     </div>
 </div>

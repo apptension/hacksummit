@@ -45,7 +45,7 @@ export default ngInject(function HomeController($q, $scope, ColorSet, Project, U
             return userScores;
           });
 
-          skill.topContributors = {
+          skill.users = {
             list: _(this.stats.global).filter((global) => {
               return global.skillId === skill.skillId && userIds.indexOf(global.userId) >= 0;
             }).sortBy(({score}) => -score).map((global) => {
@@ -64,6 +64,21 @@ export default ngInject(function HomeController($q, $scope, ColorSet, Project, U
   Project.getList().then((projects) => {
     this.projects = projects;
   });
+
+  Stats.getContributors().then((contributors) => {
+    this.contributorsList = {
+      list: contributors
+        .sort(c => -c.score)
+        .map(c => {
+          return c.User;
+        })
+    };
+  });
+
+  this.teamQuality = {
+    name: '',
+    score: 0.84
+  };
 
   $q.all([
     skillsPromise,
