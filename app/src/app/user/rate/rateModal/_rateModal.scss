@@ -23,6 +23,10 @@ md-dialog {
 	z-index: 0;
 }
 
+[rate-modal] {
+	overflow-x: hidden;
+}
+
 .rate__title {
 	color: white;
 	margin: 0;
