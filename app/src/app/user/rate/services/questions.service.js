@@ -13,7 +13,6 @@ export default ngInject(function QuestionsService(Skill, User) {
   };
 
   this.randomizeQuestion = (ev) => {
-    debugger;
     return Skill.get(ev.SkillId).then(skill => {
       return User.get(ev.EvaluatedUserId).then(user => {
         let question;
