@@ -37,13 +37,15 @@
   color: #ffffff;
   font-weight: 400;
   font-style: normal;
+  p{
+    margin-bottom: 4px;
+  }
 }
 
 .homeStart__btnStartTeam{
   width: 285px;
   height: 60px;
   background: url('/public/images/btn_team_member.png') no-repeat;
-
 }
 
 .homeStart__btnStartManager{

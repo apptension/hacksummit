@@ -168,3 +168,18 @@
   background-size: cover;
 }
 
+
+@media screen and (min-width: 800px) and (max-width: 1380px) {
+
+  .homeTeam__desc{
+    p{
+      max-width: 90%;
+      margin-left: 5%;
+      color: #5c5757;
+    }
+  }
+
+  .homeTeam {
+    padding-top: 2%;
+  }
+}
