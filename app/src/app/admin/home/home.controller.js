@@ -24,15 +24,18 @@ export default ngInject(function HomeController($q, $scope, ColorSet, Project, U
     Stats.getList(filters).then((_stats) => {
       this.stats = _stats.plain();
 
-      skillsPromise.then((skills) => {
+      $q.all([skillsPromise, usersPromise]).then(([skills, users]) => {
         let skillsById = _.keyBy(skills, 'id');
+        let usersById = _.keyBy(users, 'id');
 
         let userColors = {};
         let usedColorsCount = 0;
         this.stats.skills = _.map(this.stats.skills, (skill) => {
-          if (skill.name) {
+          if (skillsById[skill.skillId]) {
             skill.name = skillsById[skill.skillId].name;
           }
+          let userIds = _.map(skill.scores, 'userId');
+
           skill.scores = _.map(skill.scores, (userScores) => {
             if (!userColors[userScores.userId]) {
               userColors[userScores.userId] = ColorSet[usedColorsCount % ColorSet.length];
@@ -41,6 +44,17 @@ export default ngInject(function HomeController($q, $scope, ColorSet, Project, U
             userScores.color = userColors[userScores.userId];
             return userScores;
           });
+
+          skill.topContributors = {
+            list: _(this.stats.global).filter((global) => {
+              return global.skillId === skill.skillId && userIds.indexOf(global.userId) >= 0;
+            }).sortBy(({score}) => -score).map((global) => {
+              let user = usersById[global.userId];
+              user.color = userColors[user.id];
+              return user;
+            }).value()
+          };
+
           return skill;
         });
       });

@@ -208,6 +208,7 @@ export default function LineChart(_config) {
         data
       }];
     });
+
     paths.enter().append('path').classed('line-chart-series-path', true)
       .classed('is-dashed', (d) => d.data.isDashed)
       .attr({

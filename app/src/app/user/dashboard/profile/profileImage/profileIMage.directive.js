@@ -13,7 +13,7 @@ export default ngInject(() => {
       scope.userImageBackground = () => {
         if (!scope.data) {return {};}
         return {
-          backgroundImage: `url(${scope.data.image || defaultPhoto})`
+          backgroundImage: `url(${scope.data.avatar || defaultPhoto})`
         };
       };
     }

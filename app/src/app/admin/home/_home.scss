@@ -1,5 +1,9 @@
 .adminHome__layout {
   padding: 2em;
+
+  .top-list__rank-circle {
+    border-width: 2px;
+  }
 }
 
 .adminHome__usersListItem {
@@ -15,3 +19,26 @@
   margin-bottom: 2em;
 }
 
+.admin-home__skill {
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-home-skill__users {
+  flex: 0 0 260px;
+}
+
+.admin-home-skill__chart {
+  flex: 1 1 100%;
+}
+
+.admin-home-skill__chart {
+  display: block;
+  height: 400px;
+}
+
+.admin-home-skill__title {
+  font-size: 26px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
