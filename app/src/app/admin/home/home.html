@@ -11,6 +11,7 @@
 
     <div class="admin-home__wrapper">
         <div class="admin-home__col-left">
+            <div class="admin-home__nodata" ng-show="vm.stats.skills.length==0">Oops, it seems that there’s no available data for these filters. Maybe soon?</div>
             <div class="admin-home__skill" ng-repeat="skill in vm.stats.skills track by skill.skillId">
                 <div class="admin-home-skill__users">
                     <h3 class="admin-home-skill__title">{{ skill.name }}</h3>
