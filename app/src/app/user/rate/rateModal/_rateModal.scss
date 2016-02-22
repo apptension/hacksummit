@@ -152,13 +152,14 @@ md-dialog {
 	z-index: 1;
 	color: white;
 	top: 0;
-	transition: opacity 1s ease-in;
+	transition: opacity .5s ease-in, transform .5s ease-in;
 	width: 100%;
 	height: 100%;
 	opacity: 1;
 
 	&.ng-hide {
 		opacity: 0;
+		transform: translateY(50%);
 	}
 }
 

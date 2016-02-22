@@ -6,17 +6,17 @@ export default ngInject(function QuestionsService(Skill, User) {
     return items[rndIndex];
   };
 
-  this.populate = (text, skill, user) => {
+  this.populate = (text, skill, user, me) => {
     return text
-      .replace('{SKILL}', skill.name)
-      .replace('{NAME}', user.name);
+    .replace('{SKILL}', skill.name)
+    .replace('{NAME}', user.name);
   };
 
-  this.randomizeQuestion = (skillId, userId) => {
-    return Skill.get(skillId).then(skill => {
-      return User.get(userId).then(user => {
+  this.randomizeQuestion = (ev) => {
+    return Skill.get(ev.SkillId).then(skill => {
+      return User.get(ev.EvaluatedUserId).then(user => {
         let question;
-        if(skill.isSoft) {
+        if (skill.isSoft) {
           let lcName = skill.name.toLowerCase();
           question = this.randomItem(questions.soft[lcName]);
         } else {

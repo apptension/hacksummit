@@ -37,14 +37,16 @@ export default ngInject(($state, User, Question, Project) => {
 
       User.getSuggestedEvaluation().then((evaluation) => {
         scope.evaluation = evaluation.plain();
-        Question.randomizeQuestion(evaluation.skillId || 1, evaluation.userId || 1).then(q => {scope.question = q;});
+        Question.randomizeQuestion(evaluation).then(q => {scope.question = q;});
 
         User.get(evaluation.EvaluatedUserId).then(u => {
           scope.user = u;
+          console.log(u);
         });
 
         User.getProfile().then(u => {
           scope.me = u.name;
+          console.log(u);
         });
 
         Project.get(evaluation.ProjectId).then(p => {

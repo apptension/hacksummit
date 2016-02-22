@@ -4,7 +4,7 @@
     "keys": ["id"],
     "data": {
       "id": 1,
-      "name": "Kiwi Tapp",
+      "name": "Apptology",
       "startDate": 1454284800000,
       "endDate": 1458604800000
     }
@@ -14,27 +14,17 @@
     "keys": ["id"],
     "data": {
       "id": 2,
-      "name": "Tommy's Pen",
+      "name": "Zbys.io",
       "startDate": 1463270400000,
       "endDate": 1465862400000
     }
   },
-  {
+   {
     "model": "Project",
     "keys": ["id"],
     "data": {
       "id": 3,
-      "name": "Sorro",
-      "startDate": 1455062400000,
-      "endDate": 1463875200000
-    }
-  },
-  {
-    "model": "Project",
-    "keys": ["id"],
-    "data": {
-      "id": 4,
-      "name": "Maria Vidi",
+      "name": "Mood Baster",
       "startDate": 1457654400000,
       "endDate": 1459123200000
     }
@@ -43,8 +33,8 @@
     "model": "Project",
     "keys": ["id"],
     "data": {
-      "id": 5,
-      "name": "Godio",
+      "id": 4,
+      "name": "Malootka Moto App",
       "startDate": 1443657600000,
       "endDate": 1467244800000
     }

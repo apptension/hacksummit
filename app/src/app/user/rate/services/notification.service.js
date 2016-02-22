@@ -44,7 +44,7 @@ export default ngInject(function NotificationService($state, $rootScope) {
   this.prepareConfig = () => {
     return {
       body: 'Feel like answering a question?',
-      icon: 'http://lorempixel.com/100/100/cats/'
+      icon: '/images/logo.png'
     };
   };
 });

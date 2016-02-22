@@ -1,10 +1,11 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
-        <div flex class="admin__headerLogo">
+        <div flex="none" class="admin__headerLogo">
             <a ui-sref="app.home">
                 <logo></logo>
             </a>
         </div>
+        <div flex></div>
         <div flex="none" class="admin__notificationMenu">
             <md-button class="admin__notificationMenuButton"
                        ng-if="isNotificationPending()"

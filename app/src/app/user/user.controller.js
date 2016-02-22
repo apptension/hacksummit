@@ -1,4 +1,4 @@
-export default ngInject(function UserController($scope, User, Notification) {
+export default ngInject(function UserController($scope, User, Notification, $state) {
   $scope.isNotificationPending = () => {
     return Notification.notificationPending;
   };
