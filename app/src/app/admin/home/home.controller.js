@@ -1,4 +1,6 @@
-export default ngInject(function HomeController($q, $scope, ColorSet, Project, User, Skill, Stats) {
+import tutorialTemplate from '../components/tutorialDialog/tutorialDialog.html';
+
+export default ngInject(function HomeController($q, $scope, $mdDialog, ColorSet, Project, User, Skill, Stats) {
 
   $scope.filters = {
     user: [],
@@ -15,6 +17,15 @@ export default ngInject(function HomeController($q, $scope, ColorSet, Project, U
     return this.users;
   });
 
+  let openTutorial = () => {
+    $mdDialog.show({
+      template: tutorialTemplate,
+      parent: angular.element(document.body),
+      clickOutsideToClose: true
+    });
+  };
+
+  openTutorial();
 
   let fetchStats = (filters, oldFilters) => {
     if (_.isEqual(filters, oldFilters)) {

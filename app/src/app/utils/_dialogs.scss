@@ -20,9 +20,16 @@ md-dialog {
       text-transform: uppercase;
     }
 
+    .md-icon-button {
+      position: relative;
+      top: -5px;
+      right: 15px;
+    }
+
     &:not(.md-menu-toolbar) {
       background: #fff;
       padding-top: 12px;
+      padding-left: 30px;
 
       md-icon {
         color: rgba(0, 0, 0, 0.7);
