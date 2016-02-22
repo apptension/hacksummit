@@ -39,6 +39,9 @@
   font-style: normal;
 
   cursor: pointer;
+  &:focus, &:active {
+    outline: none;
+  }
 
   span {
     vertical-align: middle;

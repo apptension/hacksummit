@@ -6,6 +6,11 @@ export default ngInject(() => {
     template: template,
     link: function ($scope) {
       $scope.roleName = 'Role test';
+
+      $scope.scrollToMain = () => {
+        let startSectionTop = $('#start').offset().top;
+        $('html, body').animate({scrollTop:startSectionTop}, 500);
+      }
     }
   };
 });
