@@ -15,11 +15,11 @@
     <label flex="none" class="statsFilters__chipsLabel">Date range</label>
     <div layout="row" class="statsFilters__datepickerContainer" layout-align="center center">
         <div class="form__inputGroup form__inputGroup--datepicker" layout="row">
-          <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="filterDateFrom" md-placeholder="Start date"></md-datepicker>
+          <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="filterDateFrom" name="filterDateFrom" md-max-date="filterDateTo" md-placeholder="Start date"></md-datepicker>
         </div>
         <md-icon class="statsFilters__datepickersSpacer">remove</md-icon>
         <div class="form__inputGroup form__inputGroup--datepicker" layout="row">
-          <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="filterDateTo" md-placeholder="End date"></md-datepicker>
+          <md-datepicker flex="grow" class="form__input form__datepicker" ng-model="filterDateTo" name="filterDateTo" md-min-date="filterDateFrom" md-placeholder="End date"></md-datepicker>
         </div>
     </div>
   </div>

@@ -2,6 +2,7 @@
 @import 'skillBadge/skillBadge';
 @import 'profile/profile';
 @import 'topUsersList/topUsersList';
+@import 'rateButton/rateButton';
 
 md-sidenav, md-backdrop {
 	position: fixed;
@@ -41,6 +42,10 @@ md-sidenav, md-backdrop {
 	@media(max-width: 900px) {
 		flex-direction: column;
 	}
+}
+
+.contributors-title {
+	text-align: left;
 }
 
 .user-dashboard__main-col {
@@ -137,8 +142,11 @@ md-sidenav, md-backdrop {
 
 md-toast {
 	position: fixed;
+	max-width: 50%;
 }
 
 md-toast.md-default-theme .md-toast-content, md-toast .md-toast-content {
 	line-height: 130%;
+	height: auto;
+	padding: 10px;
 }

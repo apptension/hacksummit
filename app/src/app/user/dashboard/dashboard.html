@@ -9,7 +9,6 @@
                 filter-date-to="filters.endDate"
                 available-skills="vm.hardSkills"
                 available-projects="vm.projects"/>
-         <md-button class="md-raised" ui-sref="app.user.dashboard.rate" style="margin-top: 80px;">I want to rate my mates now</md-button>
     </div>
 
     <div class="user-dashboard__col-wrapper">
@@ -31,8 +30,8 @@
             <md-sidenav class="md-sidenav-right md-whiteframe-z2 user-dashboard__sidenav" md-component-id="commentSidebar" ng-cloak>
                 <div class="dashboard-sidenav__header" layout="column">
                     <div layout="row" layout-align="space-between center">
-                        <h1 class="dashboard-sidenav__title">Tips from your mates</h1>
-                        <md-button ng-click="vm.commentsClose()" class="md-icon-button dashboard-sidenav__close-button">
+                        <h1 flex="nogrow" class="dashboard-sidenav__title">Tips from your mates</h1>
+                        <md-button flex="nogrow" ng-click="vm.commentsClose()" class="md-icon-button dashboard-sidenav__close-button">
                             <md-icon class="dashboard-sidenav__close-icon"></md-icon>
                         </md-button>
                     </div>
@@ -55,10 +54,12 @@
         </div>
         <div class="user-dashboard__side-col">
             <div>
-                <h3>Contributors this week</h3>
+                <h3 class="contributors-title">Contributors this week</h3>
                 <div users-top-list data="vm.contributorsList"></div>
             </div>
         </div>
     </div>
     <ui-view></ui-view>
+
+    <rate-button></rate-button>
 </div>

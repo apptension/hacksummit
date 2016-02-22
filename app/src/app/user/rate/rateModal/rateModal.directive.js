@@ -46,6 +46,10 @@ export default ngInject(($state, User, Question, Project) => {
         User.getProfile().then(u => {
           scope.me = u.name;
         });
+
+        Project.get(evaluation.ProjectId).then(p => {
+          scope.project = p.name;
+        });
       });
 
       scope.intro = () => {

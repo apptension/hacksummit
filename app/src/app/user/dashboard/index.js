@@ -11,6 +11,7 @@ import skillBadge from './skillBadge/skillBadge.directive';
 import profileImage from './profile/profileImage/profileImage.directive';
 import profileRow from './profile/profileRow/profileRow.directive';
 import topUsers from './topUsersList/topUsersList.directive';
+import rateButton from './rateButton/rateButton.directive';
 
 
 export default angular.module('app.user.dashboard', [
@@ -24,4 +25,5 @@ export default angular.module('app.user.dashboard', [
   .directive('profileImage', profileImage)
   .directive('profileRow', profileRow)
   .directive('usersTopList', topUsers)
+  .directive('rateButton', rateButton)
   .name;

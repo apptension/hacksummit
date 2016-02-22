@@ -1,0 +1,38 @@
+.md-button.rate-btn {
+  font-size: 20px;
+  line-height: 56px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  overflow: visible;
+  box-shadow: none;
+}
+
+.rate-btn__tooltip {
+  text-transform: none;
+  position: absolute;
+  right: 100%;
+  margin-right: 8px;
+  height: 25px;
+  line-height: 25px;
+  display: inline-block;
+  background-color: #555555;
+  font-size: 12px;
+  padding: 0 18px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid #555555;
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

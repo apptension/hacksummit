@@ -13,14 +13,6 @@
                 Settings
             </md-button>
         </div>
-        <div flex="none" class="admin__notificationMenu">
-            <md-button class="admin__notificationMenuButton">
-                <div class="admin__notificationMenuIconWrapper" ng-class="{ 'admin__notificationMenuIconWrapper--active' : true }">
-                    <md-icon class="admin__notificationMenuIcon" ng-if="false">notifications</md-icon>
-                    <md-icon class="admin__notificationMenuIcon" ng-if="true">notifications_active</md-icon>
-                </div>
-            </md-button>
-        </div>
         <div flex="none" class="admin__userMenu">
             <md-menu md-position-mode="target-right target" md-offset="0 60">
                 <md-button md-menu-origin aria-label="Open user menu" class="admin__userMenuButton" ng-click="openMenu($mdOpenMenu, $event)">

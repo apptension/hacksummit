@@ -1,6 +1,7 @@
-export default ngInject(function NotificationService($state) {
+export default ngInject(function NotificationService($state, $rootScope) {
   Notification.requestPermission();
   let notificationScheduled;
+  this.notificationPending = false;
 
   this.scheduleNotfication = () => {
     this.cancelScheduled();
@@ -34,6 +35,10 @@ export default ngInject(function NotificationService($state) {
       this.proceed();
       notification.close();
     });
+
+    //propagate notification
+    this.notificationPending = true;
+    $rootScope.$apply();
   };
 
   this.prepareConfig = () => {

@@ -1,5 +1,34 @@
-<div class="home__layout">
-  <p>
-    Welcome to User page!
-  </p>
-</div>
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <div flex class="admin__headerLogo">
+            <a ui-sref="app.admin.home">
+                <logo></logo>
+            </a>
+        </div>
+        <div flex="none" class="admin__notificationMenu">
+            <md-button class="admin__notificationMenuButton"
+                       ng-if="isNotificationPending()"
+                        ui-sref="app.user.dashboard.rate">
+                <div class="admin__notificationMenuIconWrapper">
+                    <md-icon class="admin__notificationMenuIcon">notifications_active</md-icon>
+                </div>
+            </md-button>
+        </div>
+        <div flex="none" class="admin__userMenu">
+            <md-menu md-position-mode="target-right target" md-offset="0 60">
+                <md-button md-menu-origin aria-label="Open user menu" class="admin__userMenuButton" ng-click="openMenu($mdOpenMenu, $event)">
+                    <span class="main__header-username">{{ currentUser.name }}</span>
+                    <img class="admin__userMenuAvatar" ng-src="{{ currentUser.avatar }}"/>
+                </md-button>
+                <md-menu-content width="4" class="md-block">
+                    <md-menu-item>
+                        <md-button ng-click="logout()" class="md-button" aria-label="Logout">
+                            <md-icon>exit_to_app</md-icon> Logout
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </div>
+</md-toolbar>
+<ui-view></ui-view>

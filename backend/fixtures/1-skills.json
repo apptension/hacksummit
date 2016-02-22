@@ -224,74 +224,20 @@
       "isSoft": false
     }
   },
-  {
+   {
     "model": "Skill",
     "keys": ["id"],
     "data": {
       "id": 26,
-      "name": "Google Docs",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 27,
       "name": "Amazon Web Services",
       "isSoft": false
     }
   },
-  {
+   {
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 28,
-      "name": "Gantt",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 29,
-      "name": "Podio",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 30,
-      "name": "Android",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 31,
-      "name": "SEO",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 32,
-      "name": "Big Data analysis",
-      "isSoft": false
-    }
-  },
-  {
-    "model": "Skill",
-    "keys": ["id"],
-    "data": {
-      "id": 33,
+      "id": 27,
       "name": "Creativity",
       "isSoft": true
     }
@@ -300,7 +246,7 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 34,
+      "id": 28,
       "name": "Planning",
       "isSoft": true
     }
@@ -309,7 +255,7 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 35,
+      "id": 29,
       "name": "Communication",
       "isSoft": true
     }
@@ -318,7 +264,7 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 36,
+      "id": 30,
       "name": "Team work",
       "isSoft": true
     }
@@ -327,7 +273,7 @@
     "model": "Skill",
     "keys": ["id"],
     "data": {
-      "id": 37,
+      "id": 31,
       "name": "Confidence",
       "isSoft": true
     }

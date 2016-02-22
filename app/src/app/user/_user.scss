@@ -1,2 +1,17 @@
 @import 'dashboard/dashboard';
 @import 'rate/rate';
+
+.admin__notificationMenu {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.admin__notificationMenuButton {
+	line-height: 60px;
+}
+
+.admin__notificationMenuIconWrapper {
+	display: inline-block;
+	vertical-align: middle;
+}
