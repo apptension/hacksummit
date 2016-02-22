@@ -142,8 +142,11 @@ md-sidenav, md-backdrop {
 
 md-toast {
 	position: fixed;
+	max-width: 50%;
 }
 
 md-toast.md-default-theme .md-toast-content, md-toast .md-toast-content {
 	line-height: 130%;
+	height: auto;
+	padding: 10px;
 }
