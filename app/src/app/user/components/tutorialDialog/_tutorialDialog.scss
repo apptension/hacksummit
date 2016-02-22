@@ -1,0 +1,38 @@
+.userTutorial__icon {
+	display: block;
+	@include retina-sprite($user-tutorial-group);
+}
+
+.userTutorial__heading {
+	margin: 30px 0;
+	line-height: 26px;
+	font-size: 26px;
+	text-transform: none;
+}
+
+.userTutorial__container {
+	margin: 25px;
+	top: -25px;
+	font-size: 14px;
+	width: 450px;
+	line-height: 22px;
+}
+
+.userTutorial__dialog {
+	display: block;
+	width: 560px;
+
+	md-dialog-content {
+		display: block;
+		pointer-events: none;
+		margin-top: -35px;
+	}
+
+	md-toolbar {
+		z-index: -10;
+	}
+
+	md-dialog-actions {
+		margin-top: 0px;
+	}
+}

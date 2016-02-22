@@ -18,15 +18,20 @@ export default ngInject(function HomeController($q, $scope, $mdDialog, ColorSet,
     return this.users;
   });
 
-  // let openTutorial = () => {
-  //   $mdDialog.show({
-  //     template: tutorialTemplate,
-  //     parent: angular.element(document.body),
-  //     clickOutsideToClose: true
-  //   });
-  // };
+  let openTutorial = () => {
+    $mdDialog.show({
+      controller: function ($scope) {
+        $scope.close = () => {
+          $mdDialog.hide();
+        }
+      },
+      template: tutorialTemplate,
+      parent: angular.element(document.body),
+      clickOutsideToClose: true
+    });
+  };
 
-  // openTutorial();
+  openTutorial();
 
   let fetchStats = (filters, oldFilters) => {
     if (_.isEqual(filters, oldFilters)) {

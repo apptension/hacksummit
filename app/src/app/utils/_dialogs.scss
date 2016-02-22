@@ -20,6 +20,11 @@ md-dialog {
       text-transform: uppercase;
     }
 
+    md-dialog-content {
+      position: relative;
+      z-index: 1000;
+    }
+
     .md-icon-button {
       position: relative;
       top: -5px;
