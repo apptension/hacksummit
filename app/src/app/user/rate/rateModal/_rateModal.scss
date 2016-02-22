@@ -26,7 +26,10 @@ md-dialog {
 .rate__title {
 	color: white;
 	margin: 0;
-	padding-right: 30px;
+	padding: 0 30px;
+	text-transform: none;
+	font-weight: normal;
+	text-align: left;
 }
 
 .circle-button {
