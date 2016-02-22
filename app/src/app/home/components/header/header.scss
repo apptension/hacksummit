@@ -23,9 +23,14 @@
   font-weight: 600;
   line-height: 56px;
   vertical-align: middle;
+  cursor: pointer;
+
+  &:focus, &:active {
+    outline: none;
+  }
 }
 
-.homeHeader__background{
+.homeHeader__background {
   //@include retina-sprite($section-header-group);
   background-size: cover;
   width: 100%;

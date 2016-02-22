@@ -58,7 +58,7 @@ router.put('/:id/evaluation', (req, res, next) => {
       return models.Evaluation.findOne({
         where: {
           id: req.body.evaluationId,
-          EvaluatedUserId: req.params.id,
+          userId: req.params.id,
           state: models.Evaluation.attributes.state.values.PENDING
         }
       }).then(function(evaluation) {
