@@ -48,11 +48,11 @@ export default ngInject(function HomeController($q, $scope, $mdDialog, ColorSet,
           let userIds = _.map(skill.scores, 'userId');
 
           skill.scores = _.map(skill.scores, (userScores) => {
-            if (!userColors[userScores.userId]) {
-              userColors[userScores.userId] = ColorSet[usedColorsCount % ColorSet.length];
+            if (!userColors[userScores.EvaluatedUserId]) {
+              userColors[userScores.EvaluatedUserId] = ColorSet[usedColorsCount % ColorSet.length];
               usedColorsCount += 1;
             }
-            userScores.color = userColors[userScores.userId];
+            userScores.color = userColors[userScores.EvaluatedUserId];
             return userScores;
           });
 
@@ -60,11 +60,11 @@ export default ngInject(function HomeController($q, $scope, $mdDialog, ColorSet,
             list: _(this.stats.global).filter((global) => {
               return global.skillId === skill.skillId && userIds.indexOf(global.userId) >= 0;
             }).sortBy(({score}) => -score).map((global) => {
-              let user = usersById[global.userId],
-                userId = (user) ? user.id : undefined;
-              user.color = userColors[userId];
+              let user = usersById[global.EvaluatedUserId];
+              if (!user) { return null;}
+              user.color = userColors[user.id];
               return user;
-            }).value()
+            }).filter().value()
           };
 
           return skill;
