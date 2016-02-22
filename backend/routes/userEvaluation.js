@@ -14,28 +14,40 @@ router.get('/:id/evaluation', (req, res, next) => {
         }
       }).then(function(lastEvaluation) {
         if (!lastEvaluation) {
-          return models.sequelize.query('select skills.id, evaluations.id evaluate from (skills, skillroles, userroles) left join evaluations on (evaluations.SkillId=skills.id and evaluations.EvaluatedUserId=? and (evaluations.date is null or evaluations.date>=date_sub(now(), interval 7 day))) where skills.id=skillroles.SkillId and skillroles.RoleId=userroles.RoleId and userroles.UserId=? having evaluate is null', {replacements: [req.params.id, req.params.id], type: models.sequelize.QueryTypes.SELECT}).then(function(skills) {
-            if (skills.length) {
-              var skill = skills[Math.floor(Math.random() * (skills.length - 1))];
-              return models.User.findAll({
-                where: {
-                  isAdmin: 1
-                }
-              }).then(function(users) {
-                var user = users[Math.floor(Math.random() * (users.length - 1))];
-                return models.Evaluation.upsert({
-                  UserId: req.params.id,
-                  EvaluatedUserId: user.id,
-                  SkillId: skill.id
-                }).then(function() {
-                  return models.Evaluation.findOne({
-                    where: {
-                      EvaluatedUserId: req.params.id,
-                      state: models.Evaluation.attributes.state.values.PENDING
-                    }
-                  }).then(function(evaluation) {
-                    return res.json(evaluation);
-                  });
+
+          return models.sequelize.query('select s.id as skillId, u.id as userId, p.id as projectId from users u \
+          left join userProjects up on u.id = up.userid \
+          left join projects p on up.projectid = p.id \
+          left join userRoles ur on ur.userId = u.id \
+          left join roles r on r.id = ur.roleId \
+          left join skillRoles sr on sr.roleId = r.id \
+          left join skills s on s.id = sr.skillId \
+          where u.isAdmin = 0 and u.id != ? and u.id NOT IN ( \
+            select distinct EvaluatedUserId from evaluations e where userId = ? and e.date>=date_sub(now(), interval 1 day) \
+          ) \
+          order by rand() \
+          limit 1', {replacements: [req.params.id, req.params.id], type: models.sequelize.QueryTypes.SELECT}).then(function(result) {
+
+            if (result.length) {
+              console.log('result', result, {
+                UserId: req.params.id,
+                EvaluatedUserId: result.userId,
+                SkillId: result.skillId,
+                ProjectId: result.projectId
+              });
+              return models.Evaluation.upsert({
+                UserId: req.params.id,
+                EvaluatedUserId: result[0].userId,
+                SkillId: result[0].skillId,
+                ProjectId: result[0].projectId
+              }).then(function() {
+                return models.Evaluation.findOne({
+                  where: {
+                    UserId: req.params.id,
+                    state: models.Evaluation.attributes.state.values.PENDING
+                  }
+                }).then(function(evaluation) {
+                  return res.json(evaluation);
                 });
               });
             } else {
