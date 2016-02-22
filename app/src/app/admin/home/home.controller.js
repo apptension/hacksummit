@@ -17,15 +17,15 @@ export default ngInject(function HomeController($q, $scope, $mdDialog, ColorSet,
     return this.users;
   });
 
-  let openTutorial = () => {
-    $mdDialog.show({
-      template: tutorialTemplate,
-      parent: angular.element(document.body),
-      clickOutsideToClose: true
-    });
-  };
+  // let openTutorial = () => {
+  //   $mdDialog.show({
+  //     template: tutorialTemplate,
+  //     parent: angular.element(document.body),
+  //     clickOutsideToClose: true
+  //   });
+  // };
 
-  openTutorial();
+  // openTutorial();
 
   let fetchStats = (filters, oldFilters) => {
     if (_.isEqual(filters, oldFilters)) {
@@ -60,8 +60,9 @@ export default ngInject(function HomeController($q, $scope, $mdDialog, ColorSet,
             list: _(this.stats.global).filter((global) => {
               return global.skillId === skill.skillId && userIds.indexOf(global.userId) >= 0;
             }).sortBy(({score}) => -score).map((global) => {
-              let user = usersById[global.userId];
-              user.color = userColors[user.id];
+              let user = usersById[global.userId],
+                userId = (user) ? user.id : undefined;
+              user.color = userColors[userId];
               return user;
             }).value()
           };
