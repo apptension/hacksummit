@@ -9,7 +9,7 @@ export default ngInject(() => {
 
       $scope.scrollToMain = () => {
         let startSectionTop = $('#start').offset().top;
-        $('html, body').animate({scrollTop:startSectionTop}, 500);
+        $('html, body').animate({scrollTop: startSectionTop}, 500);
       }
     }
   };
