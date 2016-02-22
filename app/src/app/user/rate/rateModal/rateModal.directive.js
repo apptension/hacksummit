@@ -1,6 +1,6 @@
 import template from './rateModal.html';
 
-export default ngInject(($state, User, Question, Project) => {
+export default ngInject(($state, User, Question, Project, Notification) => {
   return {
     restrict: 'A',
     template,
@@ -74,6 +74,8 @@ export default ngInject(($state, User, Question, Project) => {
           value: answer,
           comment: scope.feedbackText
         }).finally(() => {
+          Notification.notificationPending = false;
+          Notification.scheduleNotfication();
           $state.go('app.user.dashboard');
         });
       };
