@@ -1,6 +1,11 @@
 @import 'dashboard/dashboard';
 @import 'rate/rate';
 
+.admin__headerLogo {
+	cursor: pointer;
+	display: inline-block;
+}
+
 .admin__notificationMenu {
 	display: inline-block;
 	height: 100%;
