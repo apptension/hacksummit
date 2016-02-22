@@ -74,6 +74,8 @@ export default ngInject(function HomeController($q, $scope, $mdDialog, ColorSet,
           };
 
           return skill;
+        }).filter(s =>  {
+          return skills.find(si => si.id === s.skillId);
         });
       });
     });

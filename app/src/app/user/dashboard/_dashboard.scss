@@ -65,7 +65,7 @@ md-sidenav, md-backdrop {
 }
 
 .dashboard-sidenav__title {
-	text-align: center;
+	text-align: left;
 	margin: 0px;
 	font-size: 24px;
 	line-height: 24px;
@@ -78,6 +78,8 @@ md-sidenav, md-backdrop {
 .dashboard-sidenav__header {
 	width: 346px;
 	margin: 110px 57px 12px 57px;
+	position: relative;
+	padding-right: 40px;
 }
 
 .dashboard-sidenav__date-range {
@@ -91,8 +93,10 @@ md-sidenav, md-backdrop {
 }
 
 .dashboard-sidenav__close-button {
-	position: relative;
+	position: absolute;
 	right: -14px;
+	margin: 0 !important;
+	top: -10px;
 }
 
 .dashboard-sidenav__comment-content {
