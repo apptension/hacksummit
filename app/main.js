@@ -20,6 +20,6 @@ require('angular');
 /**
  * Include your application
  */
-require('./app');
+require('./src/app');
 
-window.moment = require('moment')
+window.moment = require('moment');

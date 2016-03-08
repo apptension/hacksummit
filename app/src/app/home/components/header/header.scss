@@ -9,20 +9,40 @@
   box-shadow: initial;
 }
 
-.homeHeader__getPropsy{
+.homeHeader__form {
+  font-size: 0;
+}
+
+.homeHeader__input {
+  background: #000;
+  color: #fff;
+  font-size: 24px;
+  border: 0;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  height: 58px;
+  padding: 10px 24px;
+  line-height: 38px;
+  vertical-align: middle;
+
+  &:focus, &:active {
+    outline: none;
+  }
+}
+
+.homeHeader__button {
+  margin-left: -8px;
   background: #009cf3;
-  border-radius: 10px;
-  background-repeat: no-repeat;
-  width: 184px;
-  height: 60px;
-  position: absolute;
+  border-radius: 8px;
+  border: 0;
+  font-size: 20px;
+  width: auto;
+  height: 58px;
+  padding: 10px 24px;
   display: inline-block;
-  top: 70%;
-  left: 50%;
-  transform: translateX(-50%);
   color: #ffffff;
   font-weight: 600;
-  line-height: 60px;
+  line-height: 38px;
   vertical-align: middle;
   cursor: pointer;
 
@@ -36,6 +56,13 @@
   &:focus, &:active {
     outline: none;
   }
+}
+
+.homeHeader__responses {
+  color: #fff;
+  font-size: 20px;
+  margin: 40px auto 0;
+  max-width: 780px;
 }
 
 .homeHeader__background {
@@ -62,20 +89,26 @@
 
 .homeHeader__bannerText{
   color: #FFFFFF;
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 300;
-
+  margin: 0;
+  line-height: 46px;
 }
 
-.homeHeader__bannerTextWrapper{
-  display:inline-block;
+.homeHeader__bannerSubText{
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 300;
+  margin: 50px 0;
+}
+
+.homeHeader__wrapper{
   vertical-align: middle;
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 0;
   right: 0;
-  transform: translateY(-50%);
 }
 
 .homeHeader__btnWrapper{

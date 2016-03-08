@@ -71,10 +71,22 @@
 }
 
 .homeStart__banner{
+  position: relative;
   width: 100%;
-  max-height: 60vh;
+  min-height: 60vh;
   background: url("/public/images/middleSection.png") no-repeat;
   background-size: 100% auto;
   background-position: center center;
 }
 
+.homeStart__bannerText {
+  font-size: 48px;
+  color: #fff;
+  font-weight: 300;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 70px 120px;
+}

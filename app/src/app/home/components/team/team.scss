@@ -2,12 +2,14 @@
   width: 100%;
   min-height: 90vh;
   padding-top: 7%;
+  box-shadow: inset 2px 59px 28px -53px whitesmoke;
+  margin-bottom: 120px;
 }
 
 .homeTeam__teamRow{
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  max-width: 70%;
+  margin: 20px auto;
 }
 
 .homeTeam__desc{
@@ -25,8 +27,6 @@
     margin-bottom: 50px;
   }
 }
-
-
 
 .homeTeam__teamMember{
   width: 100px;

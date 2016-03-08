@@ -7,6 +7,7 @@ import ourappDirective from './components/ourapp/ourapp.directive';
 import teamDirective from './components/team/team.directive';
 import footerDirective from './components/footer/footer.directive';
 import HomeController from './home.controller';
+import mailChimpService from '../services/mailChimp.service';
 
 import routing from './home.routes';
 
@@ -18,5 +19,6 @@ export default angular.module('app.home', [
   .directive('ourappDirective', ourappDirective)
   .directive('teamDirective', teamDirective)
   .directive('footerDirective', footerDirective)
+  .service('mailChimpService', mailChimpService)
   .config(routing)
   .name;
