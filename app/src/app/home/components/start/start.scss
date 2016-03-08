@@ -12,15 +12,20 @@
 }
 
 .homeStart__message{
-  width: 80%;
-  margin-left: 10%;
-  min-height: 40vh;
+  width: 90%;
+  margin: 0 auto;
   font-weight: 300;
-  font-style: italic;
+  padding: 180px 0;
+
   h3 {
-    font-weight: 400;
     display: inline-block;
-    margin-top: 4em;
+    margin-top: 80px;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #000;
+    text-align: center;
+    width: 100%;
   }
 }
 
@@ -75,7 +80,7 @@
   width: 100%;
   min-height: 60vh;
   background: url("/public/images/middleSection.png") no-repeat;
-  background-size: 100% auto;
+  background-size: cover;
   background-position: center center;
 }
 
@@ -89,4 +94,68 @@
   right: 0;
   text-align: center;
   margin: 70px 120px;
+}
+
+.homeStart__logos {
+  text-align: center;
+}
+
+.homeStart__logo {
+  padding: 0 30px;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1255px) {
+  .homeStart__message{
+    padding: 100px 0;
+
+    h3 {
+      margin-top: 60px;
+      font-size: 28px;
+      line-height: 40px;
+    }
+  }
+
+  .homeStart__logos {
+    margin: 0 -10px;
+  }
+
+  .homeStart__logo {
+    padding: 0 10px;
+  }
+
+  .homeStart__bannerText {
+    font-size: 32px;
+    margin: 50px 60px;
+  }
+}
+
+
+
+@media screen and (max-width: 767px) {
+  .homeStart__message{
+    padding: 60px 0;
+
+    h3 {
+      margin-top: 40px;
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+
+  .homeStart__logos {
+    margin: -10px 0;
+  }
+
+  .homeStart__logo {
+    padding: 10px 0;
+    max-width: 60%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .homeStart__bannerText {
+    font-size: 28px;
+    margin: 30px 20px;
+  }
 }

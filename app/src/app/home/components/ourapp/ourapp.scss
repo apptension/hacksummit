@@ -1,4 +1,4 @@
-h1{
+.homeOurapp__appFeaturesHeader {
   font-weight: 300;
   font-size: 30pt;
   margin: 50px 0;
@@ -37,13 +37,171 @@ h1{
   }
 }
 
+.homeOurapp__appImage--mobile {
+  display: none;
+}
+
 .homeOurapp__appImage:first-child {
   text-align: left;
 }
 
 .homeOurapp__appFeatures{
-
   padding: 50px 0;
-
 }
 
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .homeOurapp {
+
+    &.layout-row {
+      display: block;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    &.layout-row > .flex-40, &.layout-row > .flex-40,
+    &.layout-row > .flex-50, &.layout-row > .flex-50 {
+      -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+      flex: 1 1 100%;
+      max-width: 100%;
+      padding: 20px 0;
+    }
+
+
+    .offset-10, .flex-offset-10 {
+      margin-left: 0;
+    }
+  }
+
+  .homeOurapp__appImage {
+    width: 90%;
+    text-align: center;
+
+    &:first-child {
+      text-align: center;
+    }
+  }
+
+  .homeOurapp__appImage--desktop {
+    display: none;
+  }
+
+  .homeOurapp__appImage--mobile {
+    display: inline-block;
+  }
+
+  .homeOurapp__appFeatures {
+    padding: 0;
+  }
+
+  .homeOurapp__appFeaturesHeader {
+    margin: 10px 0;
+    font-size: 32px;
+  }
+
+  .homeOurapp__appFeaturesParagraph {
+    font-size: 16px;
+    margin: 15px 5%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1255px) {
+  .homeOurapp__introBlock {
+    margin: 60px 0;
+
+    &.layout-row > .flex-30, &.layout-row > .flex-30 {
+      -webkit-flex: 1 1 40%;
+      -ms-flex: 1 1 40%;
+      flex: 1 1 40%;
+      max-width: 40%
+    }
+
+    &.layout-row > .flex-10, &.layout-row > .flex-10 {
+      -webkit-flex: 1 1 5%;
+      -ms-flex: 1 1 5%;
+      flex: 1 1 5%;
+      max-width: 5%
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .homeOurapp__introBlock {
+    margin: 20px 0;
+
+    &.layout-row {
+      display: block;
+    }
+
+    &.layout-row > .flex-30, &.layout-row > .flex-30 {
+      -webkit-flex: 1 1 90%;
+      -ms-flex: 1 1 90%;
+      flex: 1 1 90%;
+      max-width: 90%;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    &.layout-row > .flex-10, &.layout-row > .flex-10 {
+      -webkit-flex: 1 1 0%;
+      -ms-flex: 1 1 0%;
+      flex: 1 1 0%;
+      max-width: 0%
+    }
+  }
+
+  .homeOurapp {
+
+    &.layout-row {
+      display: block;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    &.layout-row > .flex-40, &.layout-row > .flex-40,
+    &.layout-row > .flex-50, &.layout-row > .flex-50 {
+      -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+      flex: 1 1 100%;
+      max-width: 100%;
+      padding: 10px 0;
+    }
+
+
+    .offset-10, .flex-offset-10 {
+      margin-left: 0;
+    }
+  }
+
+  .homeOurapp__appImage {
+    width: 90%;
+    text-align: center;
+
+    &:first-child {
+      text-align: center;
+    }
+  }
+
+  .homeOurapp__appImage--desktop {
+    display: none;
+  }
+
+  .homeOurapp__appImage--mobile {
+    display: inline-block;
+  }
+
+  .homeOurapp__appFeatures {
+    padding: 0;
+  }
+
+  .homeOurapp__appFeaturesHeader {
+    margin: 10px 5%;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .homeOurapp__appFeaturesParagraph {
+    font-size: 14px;
+    margin: 15px 5%;
+  }
+}

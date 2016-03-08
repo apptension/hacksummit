@@ -35,9 +35,7 @@ export default angular.module('app', [
   uirouter,
   error404,
   home,
-  admin,
   api,
-  user,
   ngMaterial,
   ngAnimate
 ]).config(routing)
